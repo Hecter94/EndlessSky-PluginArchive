@@ -10,12 +10,11 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
-
 #contents:
 # - midnight pug tributes
 # - midnight pug reinforcements
 # - dream crystal missions
-
+# - Cthogha Pug
 
 
 mission "Sabotage: Jump Drive (Pug) (boarding)"
@@ -25,7 +24,7 @@ mission "Sabotage: Jump Drive (Pug) (boarding)"
 	repeat
 	deadline 1
 	source
-		government "Pug" "Pug (Wanderer)"
+		government "Pug" "Pug (Wanderer)" "Pug (Cthogha)"
 		not attributes "automaton"
 		not category "Fighter" "Drone"
 	destination "Earth"
@@ -46,19 +45,6 @@ mission "Sabotage: Jump Drive (Pug) (boarding)"
 			scene "outfit/jump drive (damaged)"
 			`As soon as you dock with the Pug ship, a strange energy wave flows across your hull and into the Jump Drive on your ship. You should probably have it checked out the next time you're at an outfitter...`
 				accept
-	npc kill
-		to spawn
-			"reputation: Pug" < 0
-		government "Pug (Wanderer)"
-		personality entering heroic vindictive
-		fleet "Small Pug"
-	npc kill
-		to spawn
-			"reputation: Pug (Wanderer)" < 0
-		government "Pug (Wanderer)"
-		personality entering heroic vindictive
-		fleet "Large Pug (Wanderer)"
-
 
 
 ######################################
@@ -67,32 +53,6 @@ mission "Sabotage: Jump Drive (Pug) (boarding)"
 #
 ######################################
 
-
-
-mission "Midnight Pug Tribute"
-	non-blocking
-	landing
-	invisible
-	on offer
-		event "midnight pug tribute"
-		fail
-
-event "midnight pug tribute"
-	planet "Vara Pug"
-		tribute 1
-			threshold 3000
-			fleet "Small Pug (Wanderer)" 15
-			fleet "Large Pug (Wanderer)" 3
-	planet Pugglemug
-		tribute 1
-			threshold 3000
-			fleet "Small Pug" 15
-			fleet "Large Pug" 3
-	planet Pugglequat
-		tribute 1
-			threshold 3000
-			fleet "Small Pug" 15
-			fleet "Large Pug" 3
 
 mission "Midnight Pug Deneb Game Over"
 	non-blocking
@@ -117,7 +77,6 @@ event "midnight pug deneb game over"
 		remove tribute
 
 
-
 ######################################
 #
 # Midnight Pug Reinforcements
@@ -125,72 +84,62 @@ event "midnight pug deneb game over"
 ######################################
 
 
-
-mission "Midnight Pug Reinforcements 1"
-	non-blocking
-	landing
-	invisible
-	on offer
-		event "midnight pug reinforcements 1"
-		fail
-
-event "midnight pug reinforcements 1"
-	fleet "Small Pug (Wanderer)"
-		add variant 1
-			"Pug Zibruka (Seeker)"
-		add variant 1
-			"Pug Zibruka (Seeker)" 2
-		add variant 1
-			"Pug Enfolta (Seeker)"
-		add variant 1
-			"Pug Enfolta (Seeker)"
-			"Pug Zibruka (Seeker)"
-		add variant 1
-			"Pug Enfolta (Zapper)"
-		add variant 1
-			"Pug Enfolta (Zapper)"
-			"Pug Zibruka (Seeker)"
-	fleet "Large Pug (Wanderer)"
-		add variant 1
-			"Pug Enfolta (Seeker)"
-			"Pug Zibruka (Seeker)" 2
-		add variant 1
-			"Pug Enfolta (Seeker)" 2
-		add variant 1
-			"Pug Zibruka (Seeker)" 5
-		add variant 1
-			"Pug Maboro (Seeker)"
-			"Pug Zibruka (Seeker)" 2
-		add variant 1
-			"Pug Maboro (Seeker)"
-			"Pug Enfolta (Seeker)"
-			"Pug Zibruka (Seeker)"
-		add variant 1
-			"Pug Maboro (Seeker)"
-			"Pug Enfolta (Seeker)" 2
-		add variant 1
-			"Pug Maboro (Seeker)"
-			"Pug Enfolta (Seeker)"
-			"Pug Zibruka (Seeker)" 2
-		add variant 1
-			"Pug Enfolta (Zapper)"
-			"Pug Zibruka (Seeker)" 2
-		add variant 1
-			"Pug Enfolta (Zapper)" 2
-		add variant 1
-			"Pug Maboro (Zapper)"
-			"Pug Zibruka" 2
-		add variant 1
-			"Pug Maboro (Zapper)"
-			"Pug Enfolta (Zapper)"
-			"Pug Zibruka"
-		add variant 1
-			"Pug Maboro (Zapper)"
-			"Pug Enfolta (Zapper)" 2
-		add variant 1
-			"Pug Maboro (Zapper)"
-			"Pug Enfolta (Zapper)"
-			"Pug Zibruka (Seeker)" 2
+fleet "Small Pug (Wanderer)"
+	add variant 1
+		"Pug Zibruka (Seeker)"
+	add variant 1
+		"Pug Zibruka (Seeker)" 2
+	add variant 1
+		"Pug Enfolta (Seeker)"
+	add variant 1
+		"Pug Enfolta (Seeker)"
+		"Pug Zibruka (Seeker)"
+	add variant 1
+		"Pug Enfolta (Zapper)"
+	add variant 1
+		"Pug Enfolta (Zapper)"
+		"Pug Zibruka (Seeker)"
+fleet "Large Pug (Wanderer)"
+	add variant 1
+		"Pug Enfolta (Seeker)"
+		"Pug Zibruka (Seeker)" 2
+	add variant 1
+		"Pug Enfolta (Seeker)" 2
+	add variant 1
+		"Pug Zibruka (Seeker)" 5
+	add variant 1
+		"Pug Maboro (Seeker)"
+		"Pug Zibruka (Seeker)" 2
+	add variant 1
+		"Pug Maboro (Seeker)"
+		"Pug Enfolta (Seeker)"
+		"Pug Zibruka (Seeker)"
+	add variant 1
+		"Pug Maboro (Seeker)"
+		"Pug Enfolta (Seeker)" 2
+	add variant 1
+		"Pug Maboro (Seeker)"
+		"Pug Enfolta (Seeker)"
+		"Pug Zibruka (Seeker)" 2
+	add variant 1
+		"Pug Enfolta (Zapper)"
+		"Pug Zibruka (Seeker)" 2
+	add variant 1
+		"Pug Enfolta (Zapper)" 2
+	add variant 1
+		"Pug Maboro (Zapper)"
+		"Pug Zibruka" 2
+	add variant 1
+		"Pug Maboro (Zapper)"
+		"Pug Enfolta (Zapper)"
+		"Pug Zibruka"
+	add variant 1
+		"Pug Maboro (Zapper)"
+		"Pug Enfolta (Zapper)" 2
+	add variant 1
+		"Pug Maboro (Zapper)"
+		"Pug Enfolta (Zapper)"
+		"Pug Zibruka (Seeker)" 2
 
 
 mission "Midnight Pug Reinforcements 2"
@@ -381,7 +330,6 @@ event "midnight pug reinforcements 2"
 ######################################
 
 
-
 mission "Dream Crystal 1A"
 	invisible
 	minor
@@ -495,7 +443,8 @@ mission "Dream Crystal 4"
 	minor
 	clearance
 	name "Escort Mr. Sandman"
-	description "Escort the <npc> to <destination>."
+	description "Transport Mr. Sandman to <destination>."
+	passengers 1
 	source
 		attributes "pirate"
 		not attributes "uninhabited"
@@ -505,30 +454,31 @@ mission "Dream Crystal 4"
 		not attributes "uninhabited"
 	to offer
 		has "Dream Crystal 3: failed"
-		not "event: dream crystal outfitters"
+#		not "event: dream crystal outfitters"
 		random < 5 - "deferred Dream Crystal 4"
 	on offer
 		conversation
 			scene "outfit/dream crystal"
-			`You run into a familiar man wearing clerical robes and wielding an ornate staff. "Greetings dreamer! It must be fate that we meet again. Would you be willing to escort me to <destination>? There are some who would stop me from delivering dreams of galactic peace."`
+			`You run into a familiar man wearing clerical robes and wielding an ornate staff. "Greetings dreamer! It must be fate that we meet again. Would you be willing to transport me to <destination>? There are some who would stop me from delivering dreams of galactic peace."`
 			choice
 				`	"Sure, I'm okay with that."`
 					accept
 				`	"Sorry, I'm not heading in that direction."`
 					defer
+	npc
+		government "Pirate (Rival)"
+		system destination
+		personality waiting plunders harvests
+		fleet "pirate raid"
+	npc
+		government "Pirate (Rival)"
+		system destination
+		personality waiting staying plunders harvests
+		fleet "pirate raid"
 	on defer
 		"deferred Dream Crystal 4" ++
 	on accept
 		"reputation: Independent (Killable)" >?= 10
-	npc save accompany
-		government "Independent (Killable)"
-		personality target escort pacifist
-		fleet
-			names "dream weaver"
-			cargo 1
-			outfitters "Dream Crystal"
-			variant
-				"Pug Zibruka"
 	on complete
 		clear "Dream Crystal 4: offered"
 		clear "deferred Dream Crystal 4"
@@ -536,27 +486,6 @@ mission "Dream Crystal 4"
 		conversation
 			scene "outfit/dream crystal"
 			`Mr. Sandman thanks you for escorting him safely to <planet> and gives you a Dream Crystal in gratitude. "Spread peace in your travels," he says as you part ways.`
-			
-mission "Dream Crystal Outfitters"
-	non-blocking
-	landing
-	invisible
-	to offer
-		"Dream Crystal 4: done" >= 3
-	on offer
-		event "dream crystal outfitters"
-		fail
-		
-event "dream crystal outfitters"
-	outfitter "Pirate Basics"
-		add "Dream Crystal"
-	outfitter "Pirate Advanced"
-		add "Dream Crystal"
-	planet Zenith
-		add outfitter "Dream Crystal"
-	planet Freedom
-		add outfitter "Dream Crystal"
-
 
 
 ship "Hallucination" "Hallucination (hai)"
@@ -629,3 +558,271 @@ mission "Dream Crystal Hallucination"
 		
 	on complete
 		log `Tried using the Dream Crystal to visit a "higher plane". It wasn't a nice trip.`
+
+
+######################################
+#
+# Cthogha Pug
+#
+######################################
+
+
+fleet "Small Pug (Cthogha)"
+	government "Pug (Cthogha)"
+	names "pug"
+	cargo 1
+	personality
+		heroic
+	variant 1
+		"Savage Zibruka"
+	variant 2
+		"Savage Zibruka" 2
+	variant 2
+		"Savage Enfolta"
+	variant 1
+		"Savage Enfolta"
+		"Savage Zibruka"
+
+fleet "Large Pug (Cthogha)"
+	government "Pug (Cthogha)"
+	names "pug"
+	cargo 1
+	personality
+		heroic
+	variant 1
+		"Savage Enfolta"
+		"Savage Zibruka" 2
+	variant 1
+		"Savage Enfolta" 2
+	variant 1
+		"Savage Zibruka" 5
+	variant 2
+		"Savage Maboro"
+		"Savage Zibruka" 2
+	variant 3
+		"Savage Maboro"
+		"Savage Enfolta"
+		"Savage Zibruka"
+	variant 2
+		"Savage Maboro"
+		"Savage Enfolta" 2
+	variant 1
+		"Savage Maboro"
+		"Savage Enfolta"
+		"Savage Zibruka" 2
+
+mission "Midnight Pug Cthogha First Contact"
+	landing
+	invisible
+	source Poggers
+	to offer
+		not "event: midnight poggers abandoned"
+	on offer
+		set "language: Pug (Cthogha)"
+		conversation
+			`The Pug here don't seem to speak your language. After you try talking to them, one starts poking its wrist while uttering "beeps", "boops", and "bleeps". As you start to lose interest it utters "Ring! Riing! Riiing! Pugga, mugga dugga. Hugga bugga? Tugga yugga, wugga sugga. Click." The pug lowers its wrist and turns to you. "You're a long way from home human. Why are you here?"`
+			choice
+				`	"I used a Quantum Bloodstone and a wormhole opened."`
+				`	"I want to explore this region of space."`
+					goto region
+			`	The Pug sighs. "Oh, the stolen wormhole borer... That's interesting. So do you not have a Bloodstone to go back?"`
+			choice
+				`	"I want to explore this region of space."`
+					goto region
+				`	"No, can you help?"`
+						to display
+							not "flagship attribute: quantum bloodstone"
+			`	The Pug shrugs. "That's not something we keep in stock. But there might be a way to make them. You might even find alternatives if you look hard enough."`
+				goto end
+			label region
+			`	The Pug shrugs. "Was there anything in particular you wanted to know about?"`
+			choice
+				`	"I want to know about Cthogha."`
+				`	"I want to know about the Quarg here."`
+					goto quarg
+					to display
+						has "Midnight Quarg Cthogha First Contact: offered"
+				`	"I want to know about the Ignitia."`
+					goto ignitia
+					to display
+						or
+							has "Midnight Ignitia First Contact (boarding): offered"
+							has "Midnight Ignitia First Contact (landing): offered"
+				`	"I want to know about the Justicar."`
+					goto justicar
+					to display
+						or
+							has "Midnight Justicar First Contact Boarding: offered"
+							has "Midnight Justicar First Contact 2: offered"
+				`	"I want to know about the Nova Fireflies"`
+					goto firefly
+			`	The Pug answers, "That super giant monstrosity at the center of this proto-galaxy? Once, long ago, it threatened your galaxy. We changed its course. You're welcome." The Pug starts to walk away.`
+				goto end
+			label quarg
+			`	The Pug answers, "A long time ago they tried to use their silly Quarloques to contain Cthogha. They failed." The Pug shakes its head dramatically and starts to walk away.`
+				goto end
+			label ignitia
+			`	The Pug answers, "They're a challenge. Their language isn't something we can naturally articulate and their environmental needs are... difficult. But they have a lot of potential!" The Pug confidently nods then starts to walk away.`
+				goto end
+			label justicar
+			`	The Pug answers, "They're a lost cause. The Justicar seemed so promising at first. But then they allowed their machines to take control of their society. Eventually they'll go extinct and their machines will follow them." The Pug shakes its head dramatically and starts to walk away.`
+				goto end
+			label firefly
+			`	The Pug answers, "They're wild creatures that make their nests in supernovas. They prefer novas that are not too young or too old." The Pug shrugs and starts to walk away.`
+			label end
+			choice
+				`	"Wait! Can't you tell me more?"`
+				`	(Let it go.)`
+					decline
+			`	"I'm getting bored. Explore this area and find out for yourself. Feel free to come back and challenge us for tribute anytime. Now that might be interesting."`
+				decline
+
+mission "Midnight Puarglepug"
+	landing
+	invisible
+	non-blocking
+	source Puarglepug
+	to offer
+		not "event: midnight poggers abandoned"
+	on offer
+		event "midnight puarglepug" 0
+		conversation
+			scene "outfit/unknown"
+			`As you descend through the atmosphere, it becomes clear that this planet is not a gas giant. Someone exerted what must have been tremendous effort to hide what appears to be a duplicate of Pugglemug here.`
+				decline
+
+event "midnight puarglepug"
+	planet "Puarglepug"
+		attributes "midnight" "uninhabited"
+
+
+mission "Midnight Pug Cthogha Confrontation"
+	landing
+	invisible
+	source "Puarglepug"
+	to offer
+		has "Midnight Pug Cthogha First Contact: offered"
+		has "event: midnight poggers abandoned"
+	on offer
+		conversation
+			scene "outfit/popcorn box"
+			`	As you take in the sights of the spaceport, a voice from behind you catches your attention. "Are you enjoying the show?" Turning around, you see a Pug holding a large box of popcorn. "Want some? It's got 'movie theater' butter. This was supposedly a popular snack with a segment of your species population a millenia ago." The Pug shoves a handfull of the popcorn into its mouth. "Mmm! Ths s vry tsty."`
+			choice
+				`	"You used me."`
+				`	"You knew I'd lead the Quarg away."`
+			scene "planet/wormhole-cinder"
+			`	The Pug grins. "We expected them to go home a long time ago. But the Quarg who we allowed to steal the wormhole borer didn't take them with it." The Pug munches on more popcorn. After swallowing it continues. "But you did great! You found the wormhole borer and figured out how to open it." It crunches more popcorn. "Even so, the Quarg were reluctant to do what needed to be done to acquire the keys to pass through the gate. To make matters worse, they became chummy with the robotic law mongers even after a few of them were tossed into Incarceration Cells." The Pug shakes its head. "But now that they're gone we don't have to worry about them interfering with our war plans!" The Pug reaches into the popcorn box. "Oops, I guess there's nothing left for you." It tosses the box aside which vanishes into nothingness.`
+			choice
+				`	"What are you trying to accomplish?"`
+				`	(Punch the Pug!)`
+					goto punch
+			scene "outfit/blood drive"
+			`	"The Ignitia are on the cusp of making their own Jump Drives. That isn't our fault, in case you were wondering. This conflict was inevitable. Practically everyone on the Justicar side is stuffed into an Incarceration Cell. The best they can hope for is to be freed with the collapse of their robot overlords. If there are reasonable people among them, perhaps they'll realize that both sides have planets that they can't use but the other side can and build a peaceful future off of that." The Pug pauses before asking, "How does it feel, seeing one of our projects from this side?" You remember the Pug invasion at the end of the Free Worlds war.`
+			choice
+				`	"Repugnant."`
+				`	(Punch the Pug!)`
+					goto punch
+			`	The Pug laughs. For some reason the laughter is contagious and you start laughing yourself. When the laughter subsides, the Pug is gone.`
+				decline
+			label punch
+			`	You try. The Pug grabs your arm and flawlessly performs the karate move you once saw on a video long ago. You end up lying on the ground looking up at the sky. "You're too tense human. Relax. You need to be calm, like water." The Pug starts performing some martial arts maneuvers. It moves gracefully despite its awkwardly long limbs. "Wah tah!" You roll over to stand up. When you're back on your feet, the Pug is gone.`
+				decline
+
+
+mission "Midnight Pug Cthogha First Contact (Late)"
+	landing
+	invisible
+	source "Puarglepug"
+	to offer
+		has "event: midnight poggers abandoned"
+		not "Midnight Pug Cthogha First Contact: offered"
+	on offer
+		set "language: Pug (Cthogha)"
+		conversation
+			`The Pug here don't seem to speak your language. After you try talking to them, one starts poking its wrist while uttering "beeps", "boops", and "bleeps". As you start to lose interest it utters "Ring! Riing! Riiing! Pugga, mugga dugga. Hugga bugga? Tugga yugga, wugga sugga. Click." The pug lowers its wrist and turns to you. "You're a long way from home human. Why are you here?"`
+			choice
+				`	"I want to explore this region of space."`
+				`	"That's my question!"`
+					goto explain
+			`	The Pug shrugs. "Was there anything in particular you wanted to know about?"`
+			choice
+				`	"I want to know about Cthogha."`
+				`	"I want to know about the Ignitia."`
+					goto ignitia
+					to display
+						or
+							has "Midnight Ignitia First Contact (boarding): offered"
+							has "Midnight Ignitia First Contact (landing): offered"
+				`	"I want to know about the Justicar."`
+					goto justicar
+					to display
+						or
+							has "Midnight Justicar First Contact Boarding: offered"
+							has "Midnight Justicar First Contact 2: offered"
+				`	"I want to know about the Quarg that were here."`
+					goto quarg
+					to display
+						has "Midnight Quarg Cthogha First Contact: offered"
+				`	"I want to know about the Nova Fireflies"`
+					goto firefly
+			`	The Pug answers, "That super giant monstrosity at the center of this proto-galaxy? Once, long ago, it threatened your galaxy. We changed its course. You're welcome." The Pug starts to walk away.`
+				goto end
+			label ignitia
+			`	The Pug answers, "They're a challenge. Their language isn't something we can naturally articulate and their environmental needs are... difficult. But they have a lot of potential!" The Pug confidently nods then starts to walk away.`
+				goto end
+			label justicar
+			`	The Pug answers, "They're a lost cause. The Justicar seemed so promising at first. But then they allowed their machines to take control of their society. Eventually they'll go extinct and their machines will follow them." The Pug shakes its head dramatically and starts to walk away.`
+				goto end
+			label quarg
+			`	The Pug answers, "A long time ago they tried to use their silly Quarloques to contain Cthogha. They failed." The Pug shakes its head dramatically and starts to walk away.`
+				goto end
+			label firefly
+			`	The Pug answers, "They're wild creatures that make their nests in supernovas. They prefer novas that are not too young or too old." The Pug shrugs and starts to walk away.`
+			label end
+			choice
+				`	"What are you trying to accomplish?"`
+			label explain
+			scene "outfit/blood drive"
+			`	"We've been preparing for a war between the Ignitia and the Justicar. The Ignitia are on the cusp of making their own Jump Drives. That isn't our fault, in case you were wondering. This conflict was inevitable. Practically everyone on the Justicar side is stuffed into an Incarceration Cell. The best they can hope for is to be freed with the collapse of their robot overlords. If there are reasonable people among them, perhaps they'll realize that both sides have planets that they can't use but the other side can and build a peaceful future off of that." The Pug pauses before asking, "How does it feel, seeing one of our projects from this side?" You remember the Pug invasion at the end of the Free Worlds war.`
+			choice
+				`	"Repugnant."`
+				`	(Punch the Pug!)`
+					goto punch
+			`	The Pug laughs. For some reason the laughter is contagious and you start laughing yourself. When the laughter subsides, the Pug is gone.`
+				decline
+			label punch
+			`	You try. The Pug grabs your arm and flawlessly performs the karate move you once saw on a video long ago. You end up lying on the ground looking up at the sky. "You're too tense human. Relax. You need to be calm, like water." The Pug starts performing some martial arts maneuvers. It moves gracefully despite its awkwardly long limbs. "Wah tah!" You roll over to stand up. When you're back on your feet, the Pug is gone.`
+				decline
+
+
+########################################
+#
+# deprecated
+#
+########################################
+
+
+mission "Midnight Pug Reinforcements 1"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+	on offer
+		event "midnight pug reinforcements 1"
+		fail
+
+event "midnight pug reinforcements 1"
+
+mission "Dream Crystal Outfitters"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		"Dream Crystal 4: done" >= 3
+	on offer
+		event "dream crystal outfitters" 0
+		fail
+		
+event "dream crystal outfitters"

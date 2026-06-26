@@ -191,7 +191,7 @@ mission "Ancestral Unfettered Miners Patch"
 		has "event: Completed Journey to the Southwest"
 		not "midnight ancestral unfettered miners patched"
 	on offer
-		event "Ancestral Unfettered Miners Patch"
+		event "Ancestral Unfettered Miners Patch" 0
 		fail
 
 event "Completed Journey to the Southwest"
@@ -202,8 +202,7 @@ event "Completed Journey to the Southwest"
 		add fleet "Ancestral Unfettered" 6000
 		add fleet "Ancestral Unfettered Miners" 8000
 	planet Oldhome
-		remove attributes
-			"uninhabited"
+		remove attributes "uninhabited"
 		add description `The Unfettered have uncovered underground bunkers filled with supplies and equipment. They've even found some completed ships, ready for launch. It's as if the Hai were prepared to return someday.`
 		spaceport `The spaceport was once concealed underneath a thick forest canopy. Despite the Unfettered's attempt to clear away the brush, branches and leaves are still scattered across the landing pads.`
 
@@ -238,8 +237,7 @@ event "Unfettered Expand in Ancestral Lands"
 	planet Takerstone
 		add description `Unfettered scavengers have started searching the rocky crevices in search of a salvageable warship. They aren't having much success.`
 	planet Wildland
-		remove attributes
-			"uninhabited"
+		remove attributes "uninhabited"
 		spaceport `The Unfettered have converted part of the ruins into a spaceport. It seems the civilization that once lived here used it to launch and land terrestrial aircraft.`
 
 mission "Unfettered Expand in Ancestral Lands Patch"
@@ -250,7 +248,7 @@ mission "Unfettered Expand in Ancestral Lands Patch"
 		has "event: Unfettered Expand in Ancestral Lands"
 		not "midnight ancestral unfettered miners patched"
 	on offer
-		event "Unfettered Expand in Ancestral Lands Patch"
+		event "Unfettered Expand in Ancestral Lands Patch" 0
 		fail
 
 event "Unfettered Expand in Ancestral Lands Patch"
@@ -280,8 +278,7 @@ event "It came from the desert..."
 			fleet "Ancestral Unfettered Defense" 10
 			fleet "Ancestral Unfettered" 5
 	planet Nearwater
-		remove attributes
-			"uninhabited"
+		remove attributes "uninhabited"
 		spaceport `The "spaceport" is the exposed flagstones of a former Hai fortress. A section of crumbling wall provides some shelter for the Unfettered captain and his ship unfortunate enough to be assigned the duty of port authority.`
 		tribute 200
 			threshold 500
@@ -289,8 +286,7 @@ event "It came from the desert..."
 			fleet "Ancestral Unfettered Defense" 5
 			fleet "Ancestral Unfettered" 10
 	planet Drywaste
-		remove attributes
-			"uninhabited"
+		remove attributes "uninhabited"
 		tribute 200
 			threshold 500
 			fleet "Ancestral Unfettered Elite Defense"
@@ -312,71 +308,6 @@ event "It came from the canyon..."
 event "It came from the ocean..."
 	system Heiahai
 		add fleet "Large Unfettered" 6000
-
-mission "Angry Squirrels: Unfettered Expand in Ancestral Lands Patch"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "event: Unfettered Expand in Ancestral Lands"
-		not "midnight journey to the southwest patched"
-	on offer
-		event "Unfettered Expand in Ancestral Lands Patch"
-		fail
-
-event "Unfettered Expand in Ancestral Lands Patch"
-	system Ehmahai
-		government "Hai (Friendly Unfettered)"
-	system Heiahai
-		government "Hai (Friendly Unfettered)"
-	system Zubahai
-		government "Hai (Friendly Unfettered)"
-	planet Oldhome
-		remove shipyard "Unfettered Basics"
-		remove outfitter "Unfettered Basics"
-		remove attributes unfettered
-		add shipyard "Unfettered Ancestral"
-		add outfitter "Unfettered Ancestral"
-
-mission "Angry Squirrels: It came from the desert... Patch"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "event: It came from the desert..."
-		not "midnight journey to the southwest patched"
-	on offer
-		event "It came from the desert... Patch"
-		fail
-
-event "It came from the desert... Patch"
-	planet Oldhome
-		tribute 300
-			threshold 800
-			fleet "Ancestral Unfettered Elite Defense"
-			fleet "Ancestral Unfettered Defense" 15
-	planet Nearwater
-		remove attributes unfettered
-		tribute 200
-			threshold 500
-			fleet "Ancestral Unfettered Elite Defense"
-			fleet "Ancestral Unfettered Defense" 10
-	planet Drywaste
-		remove attributes unfettered
-		tribute 200
-			threshold 500
-			fleet "Ancestral Unfettered Elite Defense"
-			fleet "Ancestral Unfettered Defense" 10
-	planet Wildland
-		remove attributes unfettered
-		remove shipyard "Unfettered Basics"
-		remove outfitter "Unfettered Basics"
-		add outfitter "Unfettered Ancestral"
-		tribute 300
-			threshold 800
-			fleet "Ancestral Unfettered Elite Defense"
-			fleet "Ancestral Unfettered Defense" 15
-
 
 
 shipyard "Unfettered Ancestral"
@@ -476,8 +407,11 @@ mission "Angry Squirrels: Megalocoleus Intro Patch"
 
 mission "Angry Squirrels: It came from the desert..."
 	non-blocking
-	landing
+	transition
 	invisible
+	source
+		system Ehmahai
+	destination Earth
 	source
 		government "Hai" "Hai (Unfettered)"
 		not attributes "hai ancestral lands"
@@ -493,11 +427,17 @@ mission "Angry Squirrels: It came from the desert..."
 		system "Ehmahai"
 		personality waiting staying timid uninterested
 		ship "Megalocoleus" "Go Jyo"
+		on kill
+			set "Angry Squirrels: It came from the desert...: done"
+			fail
 		
 mission "Angry Squirrels: It came from the canyon..."
 	non-blocking
-	landing
+	transition
 	invisible
+	source
+		system Zubahai
+	destination Earth
 	source
 		government "Hai" "Hai (Unfettered)"
 		not attributes "hai ancestral lands"
@@ -514,6 +454,9 @@ mission "Angry Squirrels: It came from the canyon..."
 		system "Zubahai"
 		personality waiting staying timid uninterested
 		ship "Megalocoleus" "Hak Kai"
+		on kill
+			set "Angry Squirrels: It came from the canyon...: done"
+			fail
 		
 
 mission "Ancestral Lands: Nova Firefly Swarm"
@@ -560,3 +503,33 @@ mission "Ancestral Lands: Nova Firefly Swarm"
 		"reputation: Hai (Friendly Unfettered)" += 5
 		payment 150000
 		dialog `The Unfettered pay you <payment> for your assistance.`
+
+
+#############################################
+#
+# deprecated
+#
+#############################################
+
+mission "Angry Squirrels: Unfettered Expand in Ancestral Lands Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+	on offer
+		fail
+
+event "Unfettered Expand in Ancestral Lands Patch"
+
+mission "Angry Squirrels: It came from the desert... Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+	on offer
+		fail
+
+event "It came from the desert... Patch"
+

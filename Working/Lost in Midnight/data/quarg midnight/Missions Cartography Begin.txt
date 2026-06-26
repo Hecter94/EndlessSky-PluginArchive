@@ -115,7 +115,7 @@ mission "Quash: Humanika Infiltration 2"
 			`You can hear Commander muttering to himself,"'It'll be easy,' it said. 'You're the best,' it said. I never should have trusted that damn Quarg..."`
 			choice
 				`	"What Quarg?"`
-			scene "thumbnail/wardragon"
+			scene "thumbnail/quarg wardragon"
 			`	"Nevermind that! There's a Wardragon on our tail! Just focus on getting us to Trinket in one piece."`
 	npc evade
 		government "Quarg"
@@ -163,7 +163,6 @@ mission "Quash: Humanika Infiltration 2 Patch"
 		fail
 
 
-
 mission "Cartography: Quarg Hitchhiker 1"
 	minor
 	name "Quarg Hitch Hiker"
@@ -172,7 +171,6 @@ mission "Cartography: Quarg Hitchhiker 1"
 		government "Pirate"
 		attributes "north pirate" "south pirate" "core pirate"
 		not attributes "midnight"
-	destination Janus
 	waypoint Orbona
 	passengers 1
 	blocked "Hint: Some missions only appear when you have enough open bunks/cargo space required for the mission."
@@ -217,7 +215,6 @@ mission "Cartography: Quarg Hitchhiker 1"
 			and
 				has "randomize Cartography: Quarg Hitch Hiker 1"
 				random < 20
-
 	on offer
 		conversation
 			`You are surprised to see a Quarg approaching you. "Greetings human. I am in need of transport. Can you help me? I can pay you 90,000 credits after we arrive."`
@@ -230,47 +227,41 @@ mission "Cartography: Quarg Hitchhiker 1"
 				`	"My ship isn't outfitted to accommodate Quarg-sized passengers."`
 					goto accommodations
 				`	"What is a Quarg doing on a pirate world?"`
-			
 			`	"Ah, even a Quarg can fall victim to misfortune. But perhaps my fortunes will take a turn for the better."`
 				goto negotiation
-
 			label accommodations
 			`	"Do not concern yourself. I can manage some discomfort."`
 				goto negotiation
-			
 			label end
-			`	"I am glad to hear that. My name is Quash. I'm going to Janus, in the Archipelago."`
+			`	"I am glad to hear that. My name is Quash. I'm going to Skuld, in the Archipelago."`
 			choice
 				`	"My name is <first> <last>. I'm not familiar with those locations."`
-
 			`	"Simply take me to Orbona. Once there the path forward will become clear."`
 					accept
-
-	on accept
-		event "Archipelago reveal"
-		set "archipelago inaccessible patched"
-
 	on defer
 		set "randomize Cartography: Quarg Hitchhiker 1"
 
-	npc
-		government "Pirate"
+mission "Cartography: Quarg Hitchhiker 1.5"
+	transition
+	name "Quarg Hitch Hiker"
+	description "The path forward to <destination> has been revealed."
+	source
 		system Orbona
-		personality waiting staying plunders harvests
-		fleet "pirate raid"
-
-	on enter Orbona
+	destination Janus
+	to offer
+		has "Cartography: Quarg Hitchhiker 1: active"
+	on offer
+		fail "Cartography: Quarg Hitchhiker 1"
+		event "Archipelago reveal"
+		set "archipelago inaccessible patched"
 		dialog `When you arrive in Orbona, Quash asks you to transmit a certain coded signal far beyond the edge of the system. Not long after, your navigational computer shows a hyperspace link to a new system has opened! "As promised, the path ahead is clear," says Quash.`
-
 	on enter Archipelago
 		conversation
 			scene "scene/scene-archipelago"
 			`You've visited systems that had more than one star, but what spreads out before you can only be described as a star cluster. You count four star systems in the immediate vicinity. There are intermittent flashes of light as their heliospheres collide, forming bursts of exploding plasma. Amazingly, people live here. There is a surprisingly high amount of traffic, with a variety of different ships moving between the various star systems. Three of the systems have habitable planets, and Quash directs you to land on one of them.`
-	on visit
-		dialog `You look for Quash, but realize that it took a ride on one of your escorts! Better depart and wait for your escorts to arrive in this star system.`
 	on complete
 		dialog `Quash says, "Meet me at landing pad Q in the spaceport after an hour to receive your payment. As for the transmission data that unlocks the path to Archipelago, feel free to use it as a bonus for a job well done."`
-
+		
 event "Archipelago reveal"
 	system Archipelago
 		remove hidden
@@ -287,12 +278,13 @@ mission "Archipelago Inaccessible Patch"
 		event "Archipelago reveal"
 		fail
 
-
 mission "Cartography: Quarg Hitchhiker 2"
 	invisible
 	source Janus
 	to offer
-		has "Cartography: Quarg Hitchhiker 1: done"
+		or
+			has "Cartography: Quarg Hitchhiker 1: done"
+			has "Cartography: Quarg Hitchhiker 1.5: done"
 	on offer
 		conversation
 			scene "thumbnail/carabao-thumb"
@@ -302,11 +294,9 @@ mission "Cartography: Quarg Hitchhiker 2"
 				`	(Enter the ship.)`
 					goto enter
 				`	(Do not enter the ship.)`
-			
 			`	You tell Quash that it can keep its payment.`
 			`	"Oh?" Quash responds. "Well, if you insist. Far be it for me to deny your generosity. It was a pleasure doing business with you, Captain <first> <last>. I look forward to employing your services again someday." The boarding ramp retracts into the Carabao and the hatch closes.`
 				decline
-			
 			label enter
 			scene "outfit/quarg countermeasures"
 			`	Soon after you enter, your eyes adjust to the low light. One corner of the room is occupied by an alien device that provides the only internal light source. On the floor is a pouch, a briefcase, and a series of bloodstains.`
@@ -316,17 +306,14 @@ mission "Cartography: Quarg Hitchhiker 2"
 					goto departure
 				`	(Take the briefcase.)`
 				`	(Take both.)`
-				
 			`	As soon as you touch the briefcase, the entry hatch slams shut. "Tsk. tsk. Captain <first> <last>, I had hoped we could continue to do business in the future." The device in the corner of the room brightens with an eerie light. The heat in the room is also rising. "However, I can't have business associates who are unable to follow simple instructions." Your hair and skin are burning as you bleed out on the floor. Quash's words are drowned out by your screams. After a few moments, the room is dark and silent once again.`
 				die
-			
 			label departure
 			action
-				log "People" "Quash" `An unusual Quarg hitchhiker I met on a pirate world. Quash needed transportation to Janus, another pirate world, in the Archipelago system. Quash has an unusual city ship, a Carabao. It has been featured in many horror stories which have the hapless colonists die gruesome deaths due to accidents caused by the ship's automated systems.`
+				log "People" "Quash" `An unusual Quarg hitchhiker I met on a pirate world. Quash needed transportation to Skuld, another pirate world, in the Archipelago system. Quash has an unusual city ship, a Carabao. It has been featured in many horror stories which have the hapless colonists die gruesome deaths due to accidents caused by the ship's automated systems.`
 				payment 90000
 			`	You scoop up the pouch and begin heading for the exit. "Fare well, Captain <first> <last>. It was a pleasure doing business with you. I look forward to employing your services again someday."`
 				decline
-
 
 
 mission "Cartography: The Map Obtained"
@@ -687,13 +674,10 @@ mission "Cartography: Quarg Hitchhiker 3"
 				accept
 	on accept
 		event "Diyu hyperlinks"
-	on complete
-		dialog `Quash directs you to a certain canyon. In a deep secluded area surrounded by steep canyon walls, you find a tunnel large enough to squeeze your ship through...`
 		
 event "Diyu hyperlinks"
 	link Mora Diyu
 	link Fala Diyu
-
 
 
 mission "Cartography: Quarg Hitchhiker 4"
@@ -721,7 +705,8 @@ mission "Cartography: Quarg Hitchhiker 4"
 				"ships: Superheavy" + "ships: Heavy Warship" + "ships: Utility" >= 1
 			
 			`	Suddenly the pirate ship opens fire, shooting Quash in the back! The ship is reorienting its guns towards you. It looks like they've decided your ship is an easy target. You'd better get out of here fast.`
-			`MISSION FAILED: You have failed a key part of the Cartography plot. If life were a game, you could load a previous save file and try again, preferably with a more powerful warship.`
+			``
+			`[MISSION FAILED] You have failed a key part of the Cartography plot. If life were a game, you could load a previous save file and try again, preferably with a more powerful warship.`
 				flee
 			
 			label "armament deterrence"
@@ -1462,7 +1447,7 @@ mission "Cartography: Rum Cellar Side Trip"
 				not "event: link chasm"
 			action
 				clear pokerscore
-			scene scene "outfit/map"
+			scene "outfit/map"
 			`	The other players have had enough. One of them shares the hyperlink codes for entering this system with you before leaving. These appear to be same codes you already have. Quash offers you praise. "Congratulations! You demonstrated remarkable skill at that game. I tried playing once before. It did not suit me."`
 				accept
 			label bust
@@ -1474,7 +1459,7 @@ mission "Cartography: Rum Cellar Side Trip"
 			action
 				event "link chasm"
 				clear pokerscore
-			scene scene "outfit/map"
+			scene "outfit/map"
 			`	The other players have had enough. One of them shares the hyperlink codes for entering this system with you before leaving. Quash offers you praise. "Congratulations! You demonstrated remarkable skill at that game. I tried playing once before. It did not suit me."`
 				accept
 	on enter
@@ -2143,7 +2128,7 @@ mission "Cartography: Midnight's Lost Orphan"
 			scene "planet/ice0"
 			`This frozen planet has been separated from its home system and floats free in the empty void. Although the world is uninhabited, there are Quarg ruins here. Most of the buildings have been demolished by some unknown force. As is typical for a Quarg world, the air is too thin for human comfort.`
 			`	You see the Halcyon parked at one of the spaceport landing pads. Attempts to hail it results in no reply. Before you can finish putting on an environmental suit, Quash has already left the Halcyon and entered the nearby ruin. It's as if the enigmatic Quarg forgot that you were accompanying it.`
-			`	A few rusting derelict Quarg ships covered by thick frost occupy some of the other landing pads. Most show signs of combat damage. The corpses nearby give the impression that they were frantically trying to repair one of these ships when something caused an abrupt and violent end to their lives. You're uncertain how many centuries they've been here, but the cold has preserved them well enough for you to discern the twisted horrifying expressions they had on their faces.`
+			`	A few rusting derelict Quarg ships covered by thick frost occupy some of the other landing pads. Most show signs of combat damage. The corpses nearby give the impression that they were frantically trying to repair one of these ships when something caused an abrupt and violent end to their lives. You're uncertain how many centuries they've been here, but the cold has preserved them well enough for you to discern twisted horrifying expressions on their faces.`
 			`	Overhead, flashes of lightning from the nebula above serve as the main source of lighting on the planet's surface. The eerie glow occasionally flickers as activity shifts among the clouds, causing shadows cast by the ruins to dance about wildly. The ringworld shard seems to hover over the horizon like a tombstone for this dead world.`
 			choice
 				`	(Follow Quash into the ruin.)`
@@ -2158,7 +2143,7 @@ mission "Cartography: Midnight's Lost Orphan"
 				`	(Track the moving object.)`
 			
 			scene "outfit/midnight lost orphan"
-			`	From the way it acts, you're certain this is an alien life form. It looks translucent, as if it consists of a hazy mist. The entity seems to be aware of your presence and you suspect it has been observing you. Slowly, it starts to descend.`
+			`	From the way it acts, you're certain this is an alien lifeform. It looks translucent, as if it consists of a hazy mist. The entity seems to be aware of your presence and you suspect it has been observing you. Slowly, it starts to descend.`
 			`	"Back away from the entity, Captain <first> <last>." Quash enters the chamber and gives you a stern warning. The mysterious entity hesitates, seeming to study the actions of its two guests.`
 			choice
 				`	(Do as Quash says. Back away from the entity.)`

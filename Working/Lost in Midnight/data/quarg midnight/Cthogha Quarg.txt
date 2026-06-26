@@ -1,0 +1,403 @@
+# Copyright (c) 2022 by Michael Arsollon
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+phrase "friendly Quarg Cthogha"
+	word
+		`My kin at home do well?`
+		`My kin at home is strong?`
+		`You friend my kin at home?`
+		`You find blood stone?`
+		`We trap big fire. Big fire escape.`
+
+phrase "disabled Quarg Cthogha"
+	word
+		`Ship no go. You help make ship go.`
+
+phrase "hostile Quarg Cthogha"
+	word
+		`You bad! No good! We fight!`
+
+mission "Midnight Quarg Cthogha First Contact"
+	transition
+	invisible
+	name "Blood Stone"
+	description `Harvest a "blood stone" from a "sky stone" and deliver it to <destination>.`
+	source
+		system "Quarto"
+	destination "Quarry"
+	on offer
+		set "language: Quarg (Cthogha)"
+		conversation
+			scene "planet/station0old"
+			`The Quarg station in this system hails you. They do not speak your language, but after studying you they send a written message. The cultural data archive from Alexandria indicates a 66% match with ancient Cuneiform! Perhaps this is a regional dialect or a predecessor to it. The message roughly translates as: "We know you home. You walk far. We in trap. You road home?"`
+			choice
+				`	"I had blood stone. Door open. Stone is key."`
+			scene "outfit/bloodcore"
+			`	"We dig sky stone. No find blood stone. You bring blood stone. We trade." The transmission ends.`
+				accept
+	to complete
+		has "outfit: Quantum Bloodcore"
+
+mission "Midnight Quarg Cthogha Quantum Bloodstone"
+	minor
+	repeat
+	name "Quantum Bloodstone"
+	description "Bring two Quantum Bloodcores to <destination>. The Quarg will keep one and modify the remaining one for you."
+	source "Quarry"
+	to offer
+		has "language: Quarg (Cthogha)"
+		has "outfit: Quantum Bloodcore"
+		random < 70 + "outfit: Quantum Bloodcore"
+		"quarry bloodstone" < 5
+	on offer
+		conversation
+			scene "outfit/bloodcore"
+			`A some Quarg approach you. "You dig blood core? Bring more here. We make blood stone.`
+			choice
+				`	"I bring two blood core. You make blood stone."`
+					accept
+					to display
+						"outfit: Quantum Bloodcore" < 2
+				`	"I have two blood core. You make blood stone."`
+					to display
+						"outfit: Quantum Bloodcore" >= 2
+				`	"No want blood stone. I keep blood core."`
+					decline
+			action
+				outfit "Quantum Bloodcore" -2
+				outfit "Quantum Bloodstone" 1
+				"quarry bloodstone" ++
+			scene "outfit/bloodstone"
+			`The Quarg keep one Quantum Bloodcore and modify the other one into a Quantum Bloodstone.`
+				decline
+	to complete 
+		"outfit: Quantum Bloodcore" >= 2
+	on complete
+		outfit "Quantum Bloodcore" -2
+		outfit "Quantum Bloodstone" 1
+		"quarry bloodstone" ++
+		conversation
+			scene "outfit/bloodstone"
+			`You have delivered two Quantum Bloodcores. The Quarg keep one and modify the other one into a Quantum Bloodstone.`
+
+mission "Midnight Quarry Typhon Refugee"
+	minor
+	clearance
+	name "Typhon Refugees"
+	description "Escort the <npc> and its fleet to <destination>"
+	source Quarry
+	destination "Alta Hai"
+	to offer
+		"quarry bloodstone" >= 3
+		random < 70
+	on offer
+		conversation
+			`A group of Quarg approach. "We have much blood stone. Want go home. You lead way?"`
+			choice
+				`	"Yes, I lead way home."`
+				`	"No, not now."`
+					defer
+			`	The Quarg turn several shades of pastel colors in response and eagerly prepare to depart.`
+				accept
+	on accept
+		"quarry bloodstone" -= 3
+	npc save accompany
+		government "Quarg (Cthogha)"
+		personality target escort timid
+		fleet
+			names "quarg"
+			cargo 3
+			commodities "Food" "Equipment" "Electronics"
+			variant
+				"Quarg Typhon (Bloodstone)"
+				"Quarg Naga (Bloodstone)" 2
+	on complete
+		"reputation: Quarg" += 5
+		"reputation: Quarg (Hai)" += 25
+		"reputation: Quarg (Kor Efret)" += 5
+		"reputation: Quarg (Gegno)" += 5
+		"reputation: Quarg (Incipias)" += 5
+		"reputation: Quarg (Cthogha)" += 50
+		outfit "Quantum Bloodstone" 1
+		conversation
+			`The Quarg of <planet> were surprised when you arrived but have welcomed the refugees from Quarry. The Quarg from Quarry are happy to finally meet other Quarg. The captain of the <npc> says something to a representative of the ringworld, who flashes a dark shade of purple. It responds to the captain, who turns blue.`
+			choice
+				`	"Is something wrong?"`
+			scene "outfit/bloodstone"
+			`	The ringworld Quarg turns to you. "Your friends were so grateful for your assistance that they wanted to give you one of their ships. Obviously, we cannot allow that and have informed them of this fact. However, we have identified a foreign object on one of their ships and hope you will accept it as a token of gratitude." It is a Quantum Bloodstone. "Have safe travels captain."`
+
+
+mission "Midnight Quarg Cthogha Bloodstone Drive"
+	minor
+	name "Bloodstone Drive"
+	description "Bring two Blood Drives to <destination>. The Quarg will keep one and modify the remaining one for you."
+	source "Quarry"
+	to offer
+		has "language: Quarg (Cthogha)"
+		has "outfit: Blood Drive"
+		random < 70 + "outfit: Blood Drive"
+	on offer
+		conversation
+			scene "outfit/bloodstone drive"
+			`A some Quarg approach you. "You fight fire man? Take blood walk. Bring more here. We make blood jump.`
+			choice
+				`	"I bring two blood walk. You make blood jump."`
+					accept
+					to display
+						"outfit: Blood Drive" < 2
+				`	"I have two blood walk. You make blood jump."`
+					to display
+						"outfit: Blood Drive" >= 2
+				`	"No want blood jump. I keep blood walk."`
+					decline
+			action
+				outfit "Blood Drive" -2
+				outfit "Bloodstone Drive" 1
+				"quarry blood drive" ++
+			scene "outfit/bloodstone drive"
+			`The Quarg keep one Blood Drive and modify the other one into a Bloodstone Drive.`
+				decline
+	to complete 
+		"outfit: Blood Drive" >= 2
+	on complete
+		outfit "Blood Drive" -2
+		outfit "Bloodstone Drive" 1
+		"quarry blood drive" ++
+		conversation
+			scene "outfit/bloodstone drive"
+			`You have delivered two Blood Drives. The Quarg keep one and modify the other one into a Bloodstone Drive.`
+
+mission "Midnight Quarry Zahhak Refugee"
+	minor
+	clearance
+	name "Zahhak Refugees"
+	description "Escort the <npc> and its fleet to <destination>"
+	source Quarry
+	destination "Alta Hai"
+	to offer
+		has "quarry blood drive"
+		"quarry bloodstone" >= 2
+		random < 70
+	on offer
+		conversation
+			`A group of Quarg approach. "We have much blood jump. Want go home. You lead way?"`
+			choice
+				`	"Yes, I lead way home."`
+				`	"No, not now."`
+					defer
+			`	The Quarg turn several shades of pastel colors in response and eagerly prepare to depart.`
+				accept
+	on accept
+		"quarry bloodstone" -= 2
+	npc save accompany
+		government "Quarg (Cthogha)"
+		personality target escort timid
+		fleet
+			names "quarg"
+			cargo 3
+			commodities "Food" "Equipment" "Electronics"
+			variant
+				"Quarg Zahhak (Bloodstone Drive)"
+				"Quarg Naga (Bloodstone)" 2
+	on complete
+		"reputation: Quarg" += 5
+		"reputation: Quarg (Hai)" += 25
+		"reputation: Quarg (Kor Efret)" += 5
+		"reputation: Quarg (Gegno)" += 5
+		"reputation: Quarg (Incipias)" += 5
+		"reputation: Quarg (Cthogha)" += 50
+		outfit "Bloodstone Drive" 1
+		conversation
+			`The Quarg of <planet> were surprised when you arrived but have welcomed the refugees from Quarry. The Quarg from Quarry are happy to finally meet other Quarg. The captain of the <npc> says something to a representative of the ringworld, who flashes a dark shade of purple. It responds to the captain, who turns blue.`
+			choice
+				`	"Is something wrong?"`
+			scene "outfit/bloodstone drive"
+			`	The ringworld Quarg turns to you. "Your friends were so grateful for your assistance that they wanted to give you one of their ships. Obviously, we cannot allow that and have informed them of this fact. However, we have identified a foreign object on one of their ships and hope you will accept it as a token of gratitude." It is a Bloodstone Drive. "Have safe travels captain."`
+
+mission "Midnight Quarry Final Refugee"
+	minor
+	clearance
+	name "Quarry Refugees"
+	description "Escort the <npc> and its fleet to <destination>"
+	source Quarry
+	destination "Alta Hai"
+	to offer
+		has "Midnight Quarry Typhon Refugee: done"
+		has "Midnight Quarry Zahhak Refugee: done"
+	on offer
+		conversation
+			`A group of Quarg approach. "Last group. Want go home. You lead way?"`
+			choice
+				`	"Yes, I lead way home."`
+				`	"No, not now."`
+					defer
+			`	"Leave no thing here." The Quarg prepare to depart. They seem less festive than the other groups. Perhaps, as the final group, it is because they are shutting the station down.`
+			``
+			`	(You won't be able to access the outfitter here once you depart.)`
+				accept
+	on accept
+		event "midnight Quarg Cthogha abandoned"
+	on enter
+		conversation
+			scene "planet/station0oldd"
+			`The Quarg fleet circles Quarry one final time. Though it remains intact, all of its systems are powered down.`
+				accept
+	npc save accompany
+		government "Quarg (Cthogha)"
+		personality target escort timid
+		fleet
+			names "quarg"
+			cargo 3
+			commodities "Food" "Equipment" "Electronics"
+			variant
+				"Quarg Typhon (Bloodstone Drive)"
+				"Quarg Zahhak (Bloodstone)"
+				"Quarg Naga (Bloodstone)" 4
+	on complete
+		event "midnight poggers abandoned"
+		"reputation: Quarg" += 5
+		"reputation: Quarg (Hai)" += 25
+		"reputation: Quarg (Kor Efret)" += 5
+		"reputation: Quarg (Gegno)" += 5
+		"reputation: Quarg (Incipias)" += 5
+		"reputation: Quarg (Cthogha)" += 50
+		outfit "Bloodstone Drive" 1
+		conversation
+			`Again, the Quarg of <planet> welcome the refugees from Quarry. The Quarg from Quarry are happy to finally meet other Quarg. The captain of the <npc> says something to a representative of the ringworld, who flashes a dark shade of purple. It responds to the captain, who turns blue.`
+			choice
+				`	"Is something wrong?"`
+			scene "outfit/bloodstone"
+			scene "outfit/bloodstone drive"
+			`	The ringworld Quarg turns to you. "Your friends were so grateful for your assistance that they wanted to give you one of their ships. Obviously, we cannot allow that and have informed them of this fact. However, we have identified foreign objects on two of their ships and hope you will accept them as a tokens of gratitude." They are a Bloodstone Drive and a Quantum Bloodstone. "Have safe travels captain."`
+
+event "midnight Quarg Cthogha abandoned"
+	system Quarto
+		government "Uninhabited"
+		remove fleet "Quarg Cthogha Miners"
+		remove object "Puarglepug"
+			sprite planet/saturn
+			distance 1668.01
+			period 715.605
+		add object "Puarglepug"
+			sprite planet/saturn
+			distance 1668.01
+			period 715.605
+			object Quarry
+				sprite planet/station0oldd
+					scale 0.5
+				distance 274
+				period 13.0929
+	planet Quarry
+		attributes uninhabited station midnight
+		landscape land/station5dark
+		description `This station once served as the Quarg's primary home in this remote corner of the universe. It is now abandoned with the systems powered down.`
+		remove spaceport
+		remove outfitter
+		remove bribe
+		remove security
+		government Uninhabited
+	system "Ardeat Ur"
+		remove fleet "Quarg Cthogha Miners"
+	system "Clusum Ur"
+		remove fleet "Quarg Cthogha Miners"
+	system "Flamma Ur"
+		remove fleet "Quarg Cthogha Miners"
+	system SN-1984y
+		fleet "Nova Firefly Scout" 3000
+	system SN-2014y
+		fleet "Nova Firefly Scout" 3000
+	system SN-2492y
+		fleet "Nova Firefly Scout" 3000
+
+event "midnight poggers abandoned"
+	unvisit "Pyra"
+	unvisit "Quarto"
+	link Pyra "Ignium Haen"
+	link Pyra "Clusum Ur"
+	system Pyra
+		government "Uninhabited"
+		fleet "Ignitia Military" 800
+		fleet "Justicar Patrol" 1200
+	planet Poggers
+		attributes uninhabited midnight
+		landscape land/lava7ver8
+		description `Except for a single abandoned city on the peak of the highest mountain near the arctic poles, this rocky world is unsettled. However, there are some conspicuous areas of leveled ground large enough to build cities on scattered across the planet's surface. The heat at the equator is too hot for a human to visit. While you can survive there, you do not see any wildlife in this harsh environment.`
+		remove spaceport
+		port "Space_port?"
+			recharges all
+			services "offers missions"
+			description `There is no one here to assist in refueling your ship, but there is abandoned equipment you can use to do it yourself.`
+		remove bribe
+		remove security
+		remove tribute
+	system Quarto
+		government "Pug (Cthogha)"
+		remove object "Puarglepug"
+			sprite planet/saturn
+			distance 1668.01
+			period 715.605
+		add object "Puarglepug"
+			sprite planet/ocean2
+			distance 1668.01
+			period 715.605
+			object Quarry
+				sprite planet/station0oldd
+					scale 0.5
+				distance 274
+				period 13.0929
+		add object "Bloodstone Portal (SN-8)"
+			sprite planet/wormhole-cinder
+			distance 3000.0
+			period 1776.0
+		fleet "Small Pug (Cthogha)" 800
+		fleet "Large Pug (Cthogha)" 1400
+	system SN-8
+		add object "Bloodstone Portal (SN-8)"
+			sprite planet/wormhole-cinder
+			period 1
+	planet "Puarglepug"
+		remove "display name"
+		attributes "midnight"
+		bribe 0
+		security 0.9
+		remove government
+		outfitter "Basic Expansions"
+		tribute 1
+			threshold 3000
+			fleet "Small Pug (Cthogha)" 15
+			fleet "Large Pug (Cthogha)" 3
+	system "Clusum Ur"
+		add fleet "Ignitia Miners" 2000
+	system "Ignium Haen"
+		add fleet "Justicar Patrol" 4000
+	outfitter "Justicar"
+		remove "Large Incarceration Cell"
+	fleet "Justicar Patrol"
+		variant 5
+			"Judgement"
+			"Bailiff Drone" 2
+		variant 3
+			"Judgement"
+			"Witness Drone" 2
+		variant 2
+			"Judgement" 2
+			"Bailiff Drone" 2
+			"Witness Drone" 2
+
+
+planet "Bloodstone Portal (SN-8)"
+	attributes midnight "requires: quantum bloodstone"
+	government "Uninhabited"
+	wormhole "Cthogha Exit"
+
+wormhole "Cthogha Exit"
+	link "Quarto" "SN-8"
+	link "SN-8" "Quarto"

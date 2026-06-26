@@ -23,8 +23,9 @@ outfit "Navarch License"
 ################################
 
 
-outfit "Piercer Access Temporary License"
+outfit "Piercer Access Temporary"
 	"display name" "Piercer Tech"
+	plural "Piercer Techs"
 	category "Ammunition"
 	series "Ammunition"
 	index 04034
@@ -43,9 +44,10 @@ outfit "Piercer Access Temporary License"
 	description "	The version available for purchase is written in an alien language you don't understand..."
 	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
 	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
-	
+
 outfit "Piercer Tech License"
 	"display name" "Piercer Tech"
+	plural "Piercer Techs"
 	category "Licenses"
 	series "Technology"
 	index 04034
@@ -69,11 +71,12 @@ outfitter "Piercer Access"
 		attributes "outfitter"
 		outfits "Piercer Missile"
 	stock
-		"Piercer Access Temporary License"
+		"Piercer Access Temporary"
 
 outfitter "Piercer Missile Restock"
 	to sell
 		or
+			has "outfit: Piercer Access Temporary"
 			has "license: Piercer Access Temporary"
 			has "license: Piercer Tech"
 
@@ -82,6 +85,7 @@ outfitter "Midnight Piercer Missile Restock"
 		has "gamerule: universal ammo restocking"
 		has "outfit: Piercer Missile Depot"
 		or
+			has "outfit: Piercer Access Temporary"
 			has "license: Piercer Access Temporary"
 			has "license: Piercer Tech"
 	location
@@ -89,21 +93,23 @@ outfitter "Midnight Piercer Missile Restock"
 	stock
 		"Piercer Missile"
 
-mission "Midnight Tech: Piercer Access Permanent"
+mission "Midnight Tech: Piercer Access Permanent License"
 	entering
 	invisible
+	non-blocking
 	destination Earth
 	to offer
-		has "license: Piercer Access Temporary"
+		has "outfit: Piercer Access Temporary"
 		not "license: Piercer Tech"
 	on offer
-		clear "license: Piercer Access Temporary"
+		outfit "Piercer Access Temporary" -1
 		set "license: Piercer Tech"
 		fail
 
 mission "Midnight Research: Piercer Tech"
-	entering
+	transition
 	invisible
+	non-blocking
 	destination Earth
 	to offer
 		has "outfit (flagship installed): Piercer Missile"
@@ -112,6 +118,7 @@ mission "Midnight Research: Piercer Tech"
 		has "outfit (flagship installed): Research Data (Chem)"
 		has "outfit (flagship installed): Research Data (Phys)"
 		has "license: Javelin Tech"
+		not "outfit: Piercer Access Temporary"
 		not "license: Piercer Access Temporary"
 		not "license: Piercer Tech"
 		random < 5 + ( "flagship attribute: research bonus" / 10 )
@@ -131,8 +138,9 @@ mission "Midnight Research: Piercer Tech"
 				decline
 
 
-outfit "Cluster Mine Access Temporary License"
+outfit "Cluster Mine Access Temporary"
 	"display name" "Cluster Mine Tech"
+	plural "Cluster Mine Techs"
 	category "Ammunition"
 	series "Ammunition"
 	index 04044
@@ -151,9 +159,10 @@ outfit "Cluster Mine Access Temporary License"
 	description "	The version available for purchase is written in an alien language you don't understand..."
 	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
 	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
-	
+
 outfit "Cluster Mine Tech License"
 	"display name" "Cluster Mine Tech"
+	plural "Cluster Mine Techs"
 	category "Licenses"
 	series "Technology"
 	index 04044
@@ -177,11 +186,12 @@ outfitter "Cluster Mine Access"
 		attributes "outfitter"
 		outfits "Cluster Mine"
 	stock
-		"Cluster Mine Access Temporary License"
+		"Cluster Mine Access Temporary"
 
 outfitter "Cluster Mine Restock"
 	to sell
 		or
+			has "outfit: Cluster Mine Access Temporary"
 			has "license: Cluster Mine Access Temporary"
 			has "license: Cluster Mine Tech"
 
@@ -190,6 +200,7 @@ outfitter "Midnight Cluster Mine Restock"
 		has "gamerule: universal ammo restocking"
 		has "outfit: Cluster Mine Depot"
 		or
+			has "outfit: Cluster Mine Access Temporary"
 			has "license: Cluster Mine Access Temporary"
 			has "license: Cluster Mine Tech"
 	location
@@ -197,21 +208,23 @@ outfitter "Midnight Cluster Mine Restock"
 	stock
 		"Cluster Mine"
 
-mission "Midnight Tech: Cluster Mine Access Permanent"
+mission "Midnight Tech: Cluster Mine Access Permanent License"
 	entering
 	invisible
+	non-blocking
 	destination Earth
 	to offer
-		has "license: Cluster Mine Access Temporary"
+		has "outfit: Cluster Mine Access Temporary"
 		not "license: Cluster Mine Tech"
 	on offer
-		clear "license: Cluster Mine Access Temporary"
+		outfit "Cluster Mine Access Temporary" -1
 		set "license: Cluster Mine Tech"
 		fail
 
 mission "Midnight Research: Cluster Mine Tech"
-	entering
+	transition
 	invisible
+	non-blocking
 	destination Earth
 	to offer
 		has "outfit (flagship installed): Cluster Mine"
@@ -220,6 +233,7 @@ mission "Midnight Research: Cluster Mine Tech"
 		has "outfit (flagship installed): Research Data (Chem)"
 		has "outfit (flagship installed): Research Data (Phys)"
 		has "license: Plunder Mine Tech"
+		not "outfit: Cluster Mine Access Temporary"
 		not "license: Cluster Mine Access Temporary"
 		not "license: Cluster Mine Tech"
 		random < 5 + ( "flagship attribute: research bonus" / 10 )
@@ -239,8 +253,9 @@ mission "Midnight Research: Cluster Mine Tech"
 				decline
 
 
-outfit "Firelight Access Temporary License"
+outfit "Firelight Access Temporary"
 	"display name" "Firelight Tech"
+	plural "Firelight Techs"
 	category "Ammunition"
 	series "Ammunition"
 	index 04014
@@ -262,6 +277,7 @@ outfit "Firelight Access Temporary License"
 	
 outfit "Firelight Tech License"
 	"display name" "Firelight Tech"
+	plural "Firelight Techs"
 	category "Licenses"
 	series "Technology"
 	index 04014
@@ -285,11 +301,12 @@ outfitter "Firelight Access"
 		attributes "outfitter"
 		outfits "Firelight Missile"
 	stock
-		"Firelight Access Temporary License"
+		"Firelight Access Temporary"
 
 outfitter "Firelight Restock"
 	to sell
 		or
+			has "outfit: Firelight Access Temporary"
 			has "license: Firelight Access Temporary"
 			has "license: Firelight Tech"
 
@@ -298,6 +315,7 @@ outfitter "Midnight Firelight Restock"
 		has "gamerule: universal ammo restocking"
 		has "outfit: Firelight Missile Depot"
 		or
+			has "outfit: Firelight Access Temporary"
 			has "license: Firelight Access Temporary"
 			has "license: Firelight Tech"
 	location
@@ -305,21 +323,23 @@ outfitter "Midnight Firelight Restock"
 	stock
 		"Firelight Missile"
 
-mission "Midnight Tech: Firelight Access Permanent"
+mission "Midnight Tech: Firelight Access Permanent License"
 	entering
 	invisible
+	non-blocking
 	destination Earth
 	to offer
-		has "license: Firelight Access Temporary"
+		has "outfit: Firelight Access Temporary"
 		not "license: Firelight Tech"
 	on offer
-		clear "license: Firelight Access Temporary"
+		outfit "Firelight Access Temporary" -1
 		set "license: Firelight Tech"
 		fail
 
 mission "Midnight Research: Firelight Tech"
-	entering
+	transition
 	invisible
+	non-blocking
 	destination Earth
 	to offer
 		has "outfit (flagship installed): Firelight Missile"
@@ -328,6 +348,7 @@ mission "Midnight Research: Firelight Tech"
 		has "outfit (flagship installed): Research Data (Chem)"
 		has "outfit (flagship installed): Research Data (Phys)"
 		has "license: Torpedo Tech"
+		not "outfit: Firelight Access Temporary"
 		not "license: Firelight Access Temporary"
 		not "license: Firelight Tech"
 		random < 5 + ( "flagship attribute: research bonus" / 10 )
@@ -348,8 +369,9 @@ mission "Midnight Research: Firelight Tech"
 
 
 
-outfit "Firestorm Access Temporary License"
+outfit "Firestorm Access Temporary"
 	"display name" "Firestorm Tech"
+	plural "Firestorm Techs"
 	category "Ammunition"
 	series "Ammunition"
 	index 04024
@@ -368,9 +390,10 @@ outfit "Firestorm Access Temporary License"
 	description "	The version available for purchase is written in an alien language you don't understand..."
 	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
 	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
-	
+
 outfit "Firestorm Tech License"
 	"display name" "Firestorm Tech"
+	plural "Firestorm Techs"
 	category "Licenses"
 	series "Technology"
 	index 04024
@@ -394,11 +417,12 @@ outfitter "Firestorm Access"
 		attributes "outfitter"
 		outfits "Firestorm Torpedo"
 	stock
-		"Firestorm Access Temporary License"
+		"Firestorm Access Temporary"
 
 outfitter "Firestorm Torpedo Restock"
 	to sell
 		or
+			has "outfit: Firestorm Access Temporary"
 			has "license: Firestorm Access Temporary"
 			has "license: Firestorm Tech"
 
@@ -407,6 +431,7 @@ outfitter "Midnight Firestorm Torpedo Restock"
 		has "gamerule: universal ammo restocking"
 		has "outfit: Firestorm Torpedo Depot"
 		or
+			has "outfit: Firestorm Access Temporary"
 			has "license: Firestorm Access Temporary"
 			has "license: Firestorm Tech"
 	location
@@ -414,21 +439,23 @@ outfitter "Midnight Firestorm Torpedo Restock"
 	stock
 		"Firestorm Torpedo"
 
-mission "Midnight Tech: Firestorm Access Permanent"
+mission "Midnight Tech: Firestorm Access Permanent License"
 	entering
 	invisible
+	non-blocking
 	destination Earth
 	to offer
-		has "license: Firestorm Access Temporary"
+		has "outfit: Firestorm Access Temporary"
 		not "license: Firestorm Tech"
 	on offer
-		clear "license: Firestorm Access Temporary"
+		outfit "Firestorm Access Temporary" -1
 		set "license: Firestorm Tech"
 		fail
 
 mission "Midnight Research: Firestorm Tech"
-	entering
+	transition
 	invisible
+	non-blocking
 	destination Earth
 	to offer
 		has "outfit (flagship installed): Firestorm Torpedo"
@@ -437,6 +464,7 @@ mission "Midnight Research: Firestorm Tech"
 		has "outfit (flagship installed): Research Data (Chem)"
 		has "outfit (flagship installed): Research Data (Phys)"
 		has "license: Firelight Tech"
+		not "outfit: Firestorm Access Temporary"
 		not "license: Firestorm Access Temporary"
 		not "license: Firestorm Tech"
 		random < 3 + ( "flagship attribute: research bonus" / 10 )
@@ -463,8 +491,9 @@ mission "Midnight Research: Firestorm Tech"
 ################################
 
 
-outfit "Magnetic Mine Access Temporary License"
+outfit "Magnetic Mine Access Temporary"
 	"display name" "Magnetic Mine Tech"
+	plural "Magnetic Mine Techs"
 	category "Ammunition"
 	series "Ammunition"
 	index 04048
@@ -483,9 +512,10 @@ outfit "Magnetic Mine Access Temporary License"
 	description "	The version available for purchase is written in an alien language you don't understand..."
 	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
 	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
-	
+
 outfit "Magnetic Mine Tech License"
 	"display name" "Magnetic Mine Tech"
+	plural "Magnetic Mine Techs"
 	category "Licenses"
 	series "Technology"
 	index 04048
@@ -509,12 +539,13 @@ outfitter "Magnetic Mine Access"
 		attributes "outfitter"
 		outfits "Magnetic Mine"
 	stock
-		"Magnetic Mine Access Temporary License"
+		"Magnetic Mine Access Temporary"
 
 outfitter "Midnight Magnetic Mine Restock"
 	to sell
 		has "gamerule: universal ammo restocking"
 		or
+			has "outfit: Magnetic Mine Access Temporary"
 			has "license: Magnetic Mine Access Temporary"
 			has "license: Magnetic Mine Tech"
 		or
@@ -526,21 +557,23 @@ outfitter "Midnight Magnetic Mine Restock"
 	stock
 		"Magnetic Mine"
 
-mission "Midnight Tech: Magnetic Mine Access Permanent"
+mission "Midnight Tech: Magnetic Mine Access Permanent License"
 	entering
 	invisible
+	non-blocking
 	destination Earth
 	to offer
-		has "license: Magnetic Mine Access Temporary"
+		has "outfit: Magnetic Mine Access Temporary"
 		not "license: Magnetic Mine Tech"
 	on offer
-		clear "license: Magnetic Mine Access Temporary"
+		outfit "Magnetic Mine Access Temporary" -1
 		set "license: Magnetic Mine Tech"
 		fail
 
 mission "Midnight Research: Magnetic Mine Tech"
-	entering
+	transition
 	invisible
+	non-blocking
 	destination Earth
 	to offer
 		has "outfit (flagship installed): Magnetic Mine"
@@ -549,6 +582,7 @@ mission "Midnight Research: Magnetic Mine Tech"
 		has "outfit (flagship installed): Research Data (Chem)"
 		has "outfit (flagship installed): Research Data (Phys)"
 		has "license: Cluster Mine Tech"
+		not "outfit: Magnetic Mine Access Temporary"
 		not "license: Magnetic Mine Access Temporary"
 		not "license: Magnetic Mine Tech"
 		random < 3 + ( "flagship attribute: research bonus" / 10 )
@@ -567,3 +601,180 @@ mission "Midnight Research: Magnetic Mine Tech"
 			`	(Gained Magnetic Mine Tech)`
 				decline
 
+
+###############################
+#
+# deprecated
+#
+###############################
+
+
+outfit "Piercer Access Temporary License"
+	"display name" "Piercer Tech"
+	plural "Piercer Techs"
+	category "Ammunition"
+	series "Ammunition"
+	index 04034
+	licenses
+		Navarch
+	cost 3500000
+	thumbnail "outfit/tech piercer"
+	"base research rate" 0.05
+	"requires Javelin Tech" 1
+	"requires Piercer Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Piercer Missiles. Having this makes it possible for any outfitter to offer Piercer Missiles even if it is normally not stocked there."
+	description "	The version available for purchase is written in an alien language you don't understand..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
+
+mission "Midnight Tech: Piercer Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Piercer Access Temporary"
+		not "license: Piercer Tech"
+	on offer
+		clear "license: Piercer Access Temporary"
+		set "license: Piercer Tech"
+		fail
+
+outfit "Cluster Mine Access Temporary License"
+	"display name" "Cluster Mine Tech"
+	plural "Cluster Mine Techs"
+	category "Ammunition"
+	series "Ammunition"
+	index 04044
+	licenses
+		Navarch
+	cost 3500000
+	thumbnail "outfit/tech korath mine"
+	"base research rate" 0.05
+	"requires Plunder Mine Tech" 1
+	"requires Cluster Mine" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Cluster Mines. Having this makes it possible for any outfitter to offer Cluster Mines even if it is normally not stocked there."
+	description "	The version available for purchase is written in an alien language you don't understand..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
+
+mission "Midnight Tech: Cluster Mine Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Cluster Mine Access Temporary"
+		not "license: Cluster Mine Tech"
+	on offer
+		clear "license: Cluster Mine Access Temporary"
+		set "license: Cluster Mine Tech"
+		fail
+
+outfit "Firelight Access Temporary License"
+	"display name" "Firelight Tech"
+	plural "Firelight Techs"
+	category "Ammunition"
+	series "Ammunition"
+	index 04014
+	licenses
+		Navarch
+	cost 7600000
+	thumbnail "outfit/tech firelight"
+	"base research rate" 0.05
+	"requires Torpedo Tech" 1
+	"requires Firelight Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Firelight Missiles. Having this makes it possible for any outfitter to offer Firelight Missiles even if it is normally not stocked there."
+	description "	The version available for purchase is written in an alien language you don't understand..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
+	
+mission "Midnight Tech: Firelight Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Firelight Access Temporary"
+		not "license: Firelight Tech"
+	on offer
+		clear "license: Firelight Access Temporary"
+		set "license: Firelight Tech"
+		fail
+
+outfit "Firestorm Access Temporary License"
+	"display name" "Firestorm Tech"
+	plural "Firestorm Techs"
+	category "Ammunition"
+	series "Ammunition"
+	index 04024
+	licenses
+		Navarch
+	cost 19800000
+	thumbnail "outfit/tech firestorm torpedo"
+	"base research rate" 0.03
+	"requires Firelight Tech" 1
+	"requires Firestorm Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Firestorm Torpedos. Having this makes it possible for any outfitter to offer Firestorm Torpedos even if it is normally not stocked there."
+	description "	The version available for purchase is written in an alien language you don't understand..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
+
+mission "Midnight Tech: Firestorm Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Firestorm Access Temporary"
+		not "license: Firestorm Tech"
+	on offer
+		clear "license: Firestorm Access Temporary"
+		set "license: Firestorm Tech"
+		fail
+
+outfit "Magnetic Mine Access Temporary License"
+	"display name" "Magnetic Mine Tech"
+	plural "Magnetic Mine Techs"
+	category "Ammunition"
+	series "Ammunition"
+	index 04048
+	licenses
+		Navarch
+	cost 3500000
+	thumbnail "outfit/tech magnetic mine"
+	"base research rate" 0.03
+	"requires Cluster Mine Tech" 1
+	"requires Magnetic Mine" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Magnetic Mines. Having this makes it possible for any outfitter to offer Magnetic Mines even if it is normally not stocked there."
+	description "	The version available for purchase is written in an alien language you don't understand..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
+
+mission "Midnight Tech: Magnetic Mine Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Magnetic Mine Access Temporary"
+		not "license: Magnetic Mine Tech"
+	on offer
+		clear "license: Magnetic Mine Access Temporary"
+		set "license: Magnetic Mine Tech"
+		fail

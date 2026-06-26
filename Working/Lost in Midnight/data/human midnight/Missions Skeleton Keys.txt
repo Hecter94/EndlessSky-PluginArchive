@@ -24,7 +24,7 @@ mission "Skeleton Key North 0"
 		fail
 
 event "midnight skeleton key north zero timer"
-	
+
 mission "Skeleton Key North 1"
 	minor
 	name "Search for Tod"
@@ -794,56 +794,59 @@ mission "Skeleton Keys, Three 3 (Cadrelock Rock)"
 				`	(Plug in the third key.)`
 				`	(Maybe another time...)`
 					goto delay
-			scene "thumbnail/starcadia-thumb"
-			`	A section of the wall retracts, revealing a passage leading farther into the rock. It leads to a concealed hangar, where a ship you're unfamiliar with is parked. The entry hatch is open.`
+			scene "thumbnail/volary-thumb"
+			`	A section of the wall retracts, revealing a passage leading farther into the rock. It leads to a concealed hangar, where a ship you're unfamiliar with is parked. At first glance, it resembles a Modified Aerie. But after a closer inspection, this is a heavier warship. The entry hatch is open.`
 			choice
 				`	(Have a look inside.)`
 				`	(Maybe another time...)`
 					goto delay
 			scene "scene/scene-sivael3cropdark"
-			`	Looking through the halls and rooms, it appears that no one is aboard. While searching the ship's computers, you find data files about it. This is the Starcadia, a Deep Security prototype that was in development near the end of the Alpha War. The Starcadia was stolen before the design could be finalized for mass production. The blueprints are on file and you can see that the technology on it is a bit dated. However, this was a cutting edge ship for its time, easily surpassing the Navy Frigate.`
+			`	Looking through the halls and rooms, it appears that no one is aboard. While searching the ship's computers, you find data files about it. This is the Volary, a Deep Security prototype that was in development near the end of the Alpha War. The Volary was stolen before the design could be finalized for mass production. The blueprints are on file and you can see that the technology on it is a bit dated. However, this was a cutting edge ship for its time, easily surpassing the Navy Frigate.`
 				goto end
 			label delay
-			`	You put away the Skeleton Keys. You've decided that the secrets of Cadrelock Rock will have to wait for another day...`
+			`	You put away the Skeleton Keys. The secrets of Cadrelock Rock will have to wait for another day...`
 				defer
 			label revisit
-			`	Do you want to see the Starcadia again?`
+			`	Do you want to see the Volary again?`
 			choice
 				`	(Check on the ship.)`
 				`	(Keep it secret. Keep it safe.)`
 					defer
-			scene "thumbnail/starcadia-thumb"
+			scene "thumbnail/volary-thumb"
 			`	It's still here.`
 			label end
 			``
-			`	To claim the Starcadia, you'll have to return with 48 crew members (Land on an inhabited planet with 48 empty bunks to recruit them).`
+			`	To claim the Volary, you'll have to return with 24 crew members (Land on an inhabited planet with 48 empty bunks to recruit them).`
 				decline
 	on decline
 		clear "Skeleton Keys, Three 4: offered"
 
 mission "Skeleton Keys, Three 4"
 	landing
-	name "Starcadia"
-	description "Bring 48 crew to <destination> and retrieve the Starcadia."
-	passengers 48
-	blocked "Even if you found a dedicated crew for the Starcadia, you don't have 48 empty bunks to carry them."
+	non-blocking
+	name "Volary"
+	description "Bring <bunks> crew to <destination> and retrieve the Volary."
+	passengers 24
+	blocked "Even if you found a dedicated crew for the Volary, you don't have <bunks> empty bunks to carry them."
 	source
-		not attributes "uninhabited"
+		attributes spaceport
 	destination "Cadrelock Rock"
 	to offer
 		has "Skeleton Keys, Three 3 (Cadrelock Rock): declined"
 	on offer
 		conversation
-			scene "thumbnail/starcadia-thumb"
-			`Do you want to recruit a crew for the Starcadia?`
+			scene "thumbnail/volary-thumb"
+			`Do you want to recruit a crew for the Volary?`
+			``
+			`	(They will join you as passengers.)`
 			choice
-				`	(Recruit a crew for the Starcadia.)`
-				`	(Abandon the Starcadia.)`
+				`	(Recruit a crew for the Volary.)`
+				`	(Abandon the Volary.)`
 					goto abandon
-			`	You recruit 48 crew members for the Starcadia. Return to <destination> and retrieve the ship.`
+			`	You recruit <bunks> crew members for the Volary. Return to <destination> and retrieve the ship.`
 				accept
 			label abandon
-			`	You've decided to abandon the Starcadia for now.`
+			`	You've decided to abandon the Volary for now.`
 				decline
 	on decline
 		clear "Skeleton Keys, Three 3 (Cadrelock Rock): offered"
@@ -851,16 +854,16 @@ mission "Skeleton Keys, Three 4"
 		clear "Skeleton Keys, Three 4: declined"
 	on abort
 		clear "Skeleton Keys, Three 4: offered"
-		dialog `You've decided to abandon the Starcadia for now.`
+		dialog `You've decided to abandon the Volary for now.`
 	on fail
 		clear "Skeleton Keys, Three 4: offered"
-		dialog `You no longer have enough crew for the Starcadia! You'll have to try recruiting more.`
+		dialog `You no longer have enough crew for the Volary! You'll have to try recruiting more.`
 	on complete
-		give ship "Starcadia (Prototype)" "Starcadia"
-		log `Used the three "Skeleton Keys" to recover the Deep Security prototype ship "Starcadia" from a hidden vault on "Cadrelock Rock". The ship was stolen near the end of the Alpha War. Who stole it and hid it there is a mystery.`
+		give ship "Volary (Prototype)" "Volary"
+		log `Used the three "Skeleton Keys" to recover the Deep Security prototype ship "Volary" from a hidden vault on "Cadrelock Rock". The ship was stolen near the end of the Alpha War. Who stole it and hid it there is a mystery.`
 		conversation
-			scene "thumbnail/starcadia-thumb"
-			`The new crew members board the Starcadia and prepare to launch. The camouflaged entrance to the hangar bay slides open and the latest addition to your fleet is ready to depart.`
+			scene "thumbnail/volary-thumb"
+			`The new crew members board the Volary and prepare to launch. The camouflaged entrance to the hangar bay slides open and the latest addition to your fleet is ready to depart.`
 
 mission "Skeleton Key Observer"
 	non-blocking
@@ -957,23 +960,8 @@ event "smuggler's den rebellion ends"
 		fleet "Small Northern Pirates" 2000
 		fleet "Large Northern Pirates" 4000
 
-mission "Skeleton Key Restore Men Comets"
-	non-blocking
-	landing
-	invisible
-	to offer
-		or
-			has "event: smuggler's den independent restored"
-			has "event: smuggler's den rebellion ends"
-	on offer
-		event "skeleton key restore men comets"
-		fail
 
-event "skeleton key restore men comets"
-	system Men
-		add fleet "Comet" 40000
-
-
+# The Starcadia is deprecated; The mission name is kept the same.
 mission "Skeleton Keys Starcadia Deep Epilogue"
 	landing
 	invisible
@@ -984,7 +972,7 @@ mission "Skeleton Keys Starcadia Deep Epilogue"
 		not attributes "uninhabited"
 	to offer
 		has "Skeleton Keys, Three 4: done"
-		has "flagship model: Starcadia"
+		has "ship model: Volary"
 		not "captain of atrocity"
 	on offer
 		conversation
@@ -996,23 +984,23 @@ mission "Skeleton Keys Starcadia Deep Epilogue"
 					goto statute
 				`	(Run.)`
 					goto run
-			scene "thumbnail/starcadia-thumb"
-			`	"Of course you didn't steal it. The Starcadia was stolen long before you were even born. Most people wouldn't recognize it today. Still, Deep Security would appreciate the opportunity to study the ship. It was originally our ship, after all."`
+			scene "thumbnail/volary-thumb"
+			`	"Of course you didn't steal it. The Volary was stolen long before you were even born. Most people wouldn't recognize it today. Still, Deep Security would appreciate the opportunity to study the ship. It was originally our ship, after all."`
 				goto blueprints
 			label statute
-			scene "thumbnail/starcadia-thumb"
-			`	"You have a point. The Starcadia was stolen long enough ago that most people wouldn't recognize it today. Still, Deep Security would appreciate the opportunity to study the ship. It was originally our ship, after all."`
+			scene "thumbnail/volary-thumb"
+			`	"You have a point. The Volary was stolen long enough ago that most people wouldn't recognize it today. Still, Deep Security would appreciate the opportunity to study the ship. It was originally our ship, after all."`
 			label blueprints
 			choice
 				`	"Don't you have the original blue prints?"`
 				`	(Run.)`
 					goto run
 			scene "thumbnail/dagger"
-			`	"The only copy is in that ship's computer and was lost when the Starcadia was stolen. Don't worry, we'll let you keep this ship. We are only interested in regaining the blue prints and checking if any modifications were done since it was stolen." While the officer is talking, a pair of Daggers pass overhead...`
+			`	"The only copy is in that ship's computer and was lost when the Volary was stolen. Don't worry, we'll let you keep this ship. We are only interested in regaining the blue prints and checking if any modifications were done since it was stolen." While the officer is talking, a pair of Daggers pass overhead...`
 			choice
 				`	"Alright, you can study the <ship>."`
 				`	(Run.)`
-			scene "thumbnail/starcadia-thumb"
+			scene "thumbnail/volary-thumb"
 			`	"Thank you for your cooperation Captain <last>." The officers call in a tech team and they retrieve the blue prints. While doing so, they make additional scans of the <ship>. Satisfied with their data, they release you.`
 				decline
 			label run
@@ -1095,6 +1083,39 @@ mission "Skeleton Keys Starcadia Deep Epilogue"
 		event "starcadia added to deep security" 60
 
 
+mission "Midnight Starcadia Trade In"
+	landing
+	non-blocking
+	name "Starcadia Trade In"
+	description "Land on <destination> with a Starcadia as your flagship to trade it in for a stock Volary. (All outfits on the Starcadia will be lost.)"
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Neutral" "Independent" "Pirate"
+		attributes "spaceport"
+		not attributes "uninhabited"
+	destination Valhalla
+	to offer
+		has "Skeleton Keys, Three 4: done"
+		has "ship model (all): Starcadia"
+		not "Midnight Starcadia Trade In: active"
+	on offer
+		conversation
+			scene "thumbnail/starcadia-thumb"
+			scene "thumbnail/volary-thumb"
+			`You receive a message: "The Starcadia has been deprecated. Visit <destination> with a Starcadia as your flagship to trade it in for a stock Volary. Make sure to uninstall any outfits from it that you want to keep.`
+			`	(All outfits installed on the Starcadia will be lost.)`
+				accept
+	on visit
+		dialog "You need to set the Starcadia as your flagship to trade it in for a Volary. Make sure to uninstall any outfits from it that you want to keep."
+	to complete
+		has "flagship model model: Starcadia"
+	on complete
+		take ship "Starcadia"
+		give ship "Volary"
+		conversation
+			scene "thumbnail/midnight hauler vi-thumb"
+			`The shipyard on <planet> has provided you with a new Volary in exchange for your deprecated Starcadia.`
+
+
 # Alternate reveal for Cadrelock Rock
 mission "Skeletons Declined: Cadrelock Rock Reveal"
 	minor
@@ -1162,40 +1183,27 @@ mission "Skeletons Declined: Cadrelock Rock Reveal"
 				random < 75
 			scene "thumbnail/argosy"
 			`You see a severely damaged Argosy being repaired.`
-			choice
-				`	(Ask what happened.)`
-					goto ask
-				`	(Ignore it.)`
-					defer
+				goto ask
 			label one
 			branch two
 				random < 66
-			scene "thumbnail/clipper"
-			`You see a severely damaged Clipper being repaired.`
-			choice
-				`	(Ask what happened.)`
-					goto ask
-				`	(Ignore it.)`
-					defer
+			scene "thumbnail/hauler i"
+			`You see a severely damaged Hauler being repaired.`
+				goto ask
 			label two
 			branch three
 				random < 50
-			scene "thumbnail/hauler i"
-			`You see a severely damaged Hauler being repaired.`
-			choice
-				`	(Ask what happened.)`
-					goto ask
-				`	(Ignore it.)`
-					defer
+			scene "thumbnail/clipper"
+			`You see a severely damaged Clipper being repaired.`
+				goto ask
 			label three
 			scene "thumbnail/freighter"
 			`You see a severely damaged Freighter being repaired.`
+			label ask
 			choice
 				`	(Ask what happened.)`
-					goto ask
 				`	(Ignore it.)`
 					defer
-			label ask
 			scene "outfit/fuel pod"
 			`	"We were trying to get through the Dirt Tunnel, that string of uninhabited systems on the southern edge of the Dirt Belt. But we got low on fuel. It seemed that we'd be stranded for a while, but one of the crew spotted some sort of structure built into an asteroid. After getting a closer look, we realized it was a hidden refueling station! We docked and started filling our fuel tanks."`
 			choice
@@ -1216,3 +1224,24 @@ mission "Skeletons Declined: Cadrelock Rock Reveal"
 		set "Randomize Skeletons Declined: Cadrelock Rock Reveal"
 	on decline
 		event "midnight: reveal cadrelock rock in eber"
+
+
+####################################
+#
+# deprecated
+#
+####################################
+
+mission "Skeleton Key Restore Men Comets"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+	on offer
+		event "skeleton key restore men comets"
+		fail
+
+event "skeleton key restore men comets"
+#	system Men
+#		add fleet "Comet" 40000

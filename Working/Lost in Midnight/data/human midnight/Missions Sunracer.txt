@@ -10,41 +10,27 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
+system Mirfak
+	add fleet "Merchant Sunracers" 3600
+	add object "Checkpoint Solus"
+		sprite planet/checkpoint
+			delay 2
+		distance 1887
+		period 12
+		offset 120
+	add object "Checkpoint Geminae"
+		sprite planet/checkpoint
+			delay 2
+		distance 1887
+		period 12
+		offset 240
+	add object "Checkpoint Tertio"
+		sprite planet/checkpoint
+			delay 2
+		distance 1887
+		period 12
+		offset 360
 
-shipyard "Sunracer"
-	"Sunracer"
-
-mission "Midnight Add Sunracers"
-	non-blocking
-	landing
-	invisible
-	on offer
-		event "midnight add sunracers"
-		fail
-
-event "midnight add sunracers"
-	system Mirfak
-		add fleet "Merchant Sunracers" 3600
-		add object "Checkpoint Solus"
-			sprite planet/checkpoint
-				delay 2
-			distance 1887
-			period 12
-			offset 120
-		add object "Checkpoint Geminae"
-			sprite planet/checkpoint
-				delay 2
-			distance 1887
-			period 12
-			offset 240
-		add object "Checkpoint Tertio"
-			sprite planet/checkpoint
-				delay 2
-			distance 1887
-			period 12
-			offset 360
-	planet Sunracer
-		add shipyard Sunracer
 
 mission "Midnight Sunracer Intro"
 	minor
@@ -63,12 +49,37 @@ mission "Midnight Sunracer Intro"
 			`Apply to become a professional race pilot! Check the job board often for Sunracer Qualifier opportunities.`
 			``
 			`Requirements:`
+			`	~ Must have a Pilot's License`
 			`	~ Must be piloting a ship solo`
 			`	~ Maximum weight limit is 300 tons (including installed outfits)`
 			`	~ Testing Fee: 1,000 credits`
 			``
 			`Pilots who meet the qualification requirements will be issued a Sunracer license. (License Fee: 50,000 credits)`
 				decline
+
+mission "Midnight Sunracer Qualifier Fake"
+	job
+	name "Sunracer: Qualifier"
+	description "Want to be a professional racer? Earn a Sunracer License by passing the Sunracer Qualifier! Visit <planet> then return to <origin>. Crew Limit: 1 (Weight Limit: 300 tons) [Test Fee: 1,000 credits / License Fee: 50,000 credits]"
+	source Sunracer
+	destination "Checkpoint Solus"
+	to offer
+		has "Midnight Sunracer Intro: declined"
+		has "license: Fake Pilot's"
+		not "license: Pilot's"
+		not "license: Sunracer"
+		not "Midnight Sunracer Qualifier 1: active"
+		not "Midnight Sunracer Qualifier 2: active"
+		credits > 100000
+		random < 90
+	on offer
+		payment 1000
+		conversation
+			scene "outfit/license fake"
+			`After submitting an application your Fake Pilot's License is detected! You convince the racing officials to not report this to The Republic, but they reject your application. Of course, the 1,000 credit testing fee is non-refundable...`
+			``
+			`	You should be able to apply again once you acquire a real Pilot's License.`
+		fail
 
 mission "Midnight Sunracer Qualifier 1"
 	job
@@ -79,6 +90,7 @@ mission "Midnight Sunracer Qualifier 1"
 	destination "Checkpoint Solus"
 	to offer
 		has "Midnight Sunracer Intro: declined"
+		has "license: Pilot's"
 		credits > 100000
 		random < 90
 	to fail
@@ -1881,10 +1893,19 @@ mission "Sunracer Afterburner 1"
 		random < 70
 	on offer
 		conversation
+			branch approach
+				not "license: Pilot's"
 			scene "outfit/license"
+			label approach
 			`	A young man in a green flight suit approaches you. "You're a pilot too, right?"`
 			choice
 				`	"Yeah, I'm a pilot. Do you need something?"`
+					to display
+						has "license: Pilot's"
+					goto race
+				`	"Uh, sure... I'm a pilot. Do you need something?"`
+					to display
+						not "license: Pilot's"
 					goto race
 				`	"Beat it kid. I don't have time to train you."`
 			`	"I'm not looking for training," he says.`
@@ -1907,6 +1928,21 @@ mission "Sunracer Afterburner 1"
 		ship "Flivver (Hybrid Afterburner 18)" "Shamrock"
 	on fail
 		dialog `[MISSION FAILED] The <npc> was destroyed! If life were a game, you could load a save file and try again.`
+
+ship "Flivver" "Flivver (Hybrid Afterburner 18)"
+	swizzle 18
+	add attributes
+		"threshold percentage" 0.75
+	outfits
+		"D14-RN Shield Generator"
+		"Fuel Canister"
+		"Hybrid Afterburner"
+		"KP-6 Photovoltaic Array"
+		Supercapacitor
+		"X1200 Ion Steering"
+		"X1700 Ion Thruster"
+		"nGVF-BB Fuel Cell"
+		Hyperdrive
 
 mission "Sunracer Afterburner 2"
 	landing
@@ -2277,3 +2313,49 @@ mission "Midnight Sunracer Lionheart Sponsorship 2"
 		conversation
 			scene "thumbnail/modified flivver-thumb"
 			`When you leave the <ship> there is a camera crew waiting for you. A Lionheart representative arrives with the Accelerator in tow. They make a big show of publicly registering it to you. The photo op ends with the representative wishing you good luck on your next race.`
+
+
+#############################
+#
+# fleets
+#
+#############################
+
+fleet "Merchant Sunracers"
+	government "Merchant"
+	personality lingering pacifist
+	cargo 0
+	variant 1
+		"Sunracer (Plasma Afterburner 0)"
+		"Sunracer (Atomic Afterburner 2)"
+		"Sunracer (Racing 3)"
+		"Sunracer (Plasma Afterburner 4)"
+		"Sunracer (Atomic Afterburner 5)"
+		"Sunracer (Javelin 6)"
+	variant 1
+		"Sunracer (Atomic Afterburner 0)"
+		"Sunracer (Plasma Afterburner 2)"
+		"Sunracer (Racing 3)"
+		"Sunracer (Atomic Afterburner 4)"
+		"Sunracer (Plasma Afterburner 5)"
+		"Sunracer (Javelin 6)"
+
+
+#############################
+#
+# deprecated
+#
+#############################
+
+mission "Midnight Add Sunracers"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+	on offer
+		event "midnight add sunracers" 0
+		fail
+
+event "midnight add sunracers"
+

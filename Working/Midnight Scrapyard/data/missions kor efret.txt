@@ -10,75 +10,122 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details
 
 
+tip "requires Fireswarm Missile:"
+	`Requires the indicated outfit installed on your flagship to research this tech.`
+
+outfit "Korath Fireswarm Access Temporary License"
+	"display name" "Fireswarm Missile Tech"
+	plural "Fireswarm Missile Techs"
+	category "Ammunition"
+	series "Ammunition"
+	index 04015
+	licenses
+		Navarch
+	cost 7600000
+	thumbnail "outfit/tech korath fireswarm"
+	"base research rate" 0.04
+	"requires Torpedo Tech" 1
+	"requires Fireswarm Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Fireswarm Missiles. Having this makes it possible for any outfitter to offer Fireswarm Missiles even if it is normally not stocked there."
+	description "	The version available for purchase is written in an alien language you don't understand..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
+	
+outfit "Korath Fireswarm Tech License"
+	"display name" "Fireswarm Missile Tech"
+	plural "Fireswarm Missile Techs"
+	category "Licenses"
+	series "Technology"
+	index 04015
+	licenses
+		Navarch
+	cost 7600000
+	thumbnail "outfit/tech korath fireswarm"
+	"base research rate" 0.04
+	"requires Torpedo Tech" 1
+	"requires Fireswarm Missile" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Korath Fireswarms. Having this makes it possible for any outfitter to offer Korath Fireswarms even if it is normally not stocked there."
+
+outfitter "Korath Fireswarm Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Korath Fireswarm Tech"
+	location
+		attributes "outfitter"
+		outfits "Korath Fireswarm"
+	stock
+		"Korath Fireswarm Access Temporary License"
+
+outfitter "Midnight Korath Fireswarm Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "license: Korath Fireswarm Access Temporary"
+			has "license: Korath Fireswarm Tech"
+		or
+			has "outfit: Korath Fireswarm Launcher"
+			has "outfit: Korath Fireswarm Nest"
+			has "outfit: Korath Fireswarm Depot"
+	location
+		attributes "outfitter"
+	stock
+		"Korath Fireswarm"
+
+mission "Midnight Tech: Korath Fireswarm Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Korath Fireswarm Access Temporary"
+		not "license: Korath Fireswarm Tech"
+	on offer
+		clear "license: Korath Fireswarm Access Temporary"
+		set "license: Korath Fireswarm Tech"
+		fail
+
+mission "Midnight Research: Korath Fireswarm Tech"
+	transition
+	invisible
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Korath Fireswarm"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Torpedo Tech"
+		not "license: Korath Fireswarm Access Temporary"
+		not "license: Korath Fireswarm Tech"
+		random < 4 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Chem)" -1
+		outfit "Research Data (Phys)" -1
+		set "license: Korath Fireswarm Tech"
+		conversation
+			scene "outfit/tech korath fireswarm"
+			`You have successfully completed Korath Fireswarm Tech research. This makes it possible for any outfitter to offer Fireswarm Missiles even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained Fireswarm Missile Tech)`
+				decline
+
 
 ######################
+#
 # Kor Efret Missions
+#
 ######################
-
-
-
-outfitter "Korath Basics"
-	"Burrower Mining Beam"
-	"Korath Scanner"
-	"Scavenger Turret"
-
-mission "Midnight Scrapyard Add Shelf-Sloop"
-	non-blocking
-	landing
-	invisible
-	on offer
-		event "midnight scrapyard add shelf-sloop"
-		fail
-
-event "midnight scrapyard add shelf-sloop"
-	fleet "Kor Efret Miners"
-		add variant 1
-			"Shelf-Sloop"
-
-
-mission "Scrapyard: Add Fireswarm Kor Efret"
-	non-blocking
-	landing
-	invisible
-	on offer
-		event "add fireswarm kor efret"
-		fail
-
-event "add fireswarm kor efret"
-	fleet "Kor Efret Home"
-		add variant 4
-			"Echo-Galleon"
-		add variant 6
-			"Arch-Carrack"
-		add variant 2
-			"Charm-Shallop"
-		add variant 2
-			"Echo-Galleon (Fireswarm)"
-		add variant 3
-			"Arch-Carrack (Fireswarm)"
-		add variant 1
-			"Charm-Shallop (Fireswarm)"
-		add variant 1
-			"Korath World-Ship (Fireswarm)"
-			"Eave-Skiff" 3
-		add variant 1
-			"Korath World-Ship B (Fireswarm)"
-			"Eave-Skiff" 3
-		add variant 1
-			"Korath World-Ship C (Fireswarm)"
-			"Eave-Skiff" 3
-	fleet "Kor Efret Miners"
-		add variant 2
-			"Charm-Shallop"
-		add variant 1
-			"Charm-Shallop (Fireswarm)"
-
-outfitter "Korath Fireswarm"
-	"Korath Fireswarm"
-	"Korath Fireswarm Nest"
-	"Korath Fireswarm Depot"
-	"Korath Fireswarm Launcher"
-
 
 
 mission "Scrapyard: Escort Kor Efret Visitors"
@@ -552,7 +599,6 @@ event "add echo-galleon to kor efret scrapyard"
 		add "Echo-Galleon"
 
 
-
 mission "Scrapyard Derelict World Ship"
 	landing
 	invisible
@@ -680,25 +726,6 @@ ship "Korath World-Ship" "Scrapyard World-Ship (Crippled)"
 	bay "Fighter" 0 -70
 		under
 		"launch effect" "korath external"
-
-
-
-mission "Scrapyard: Add Kor Efret Scanners"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "Scrapyard Derelict World Ship: done"
-	on offer
-		event "add kor efret scanners"
-		fail
-
-event "add kor efret scanners"
-	fleet "Kor Efret Miners"
-		add variant 1
-			"Charm-Shallop (Scanner)"
-		add variant 1
-			"Charm-Shallop (Fireswarm Scanner)"
 
 
 mission "Scrapyard: Ranger Construction"
@@ -1640,7 +1667,7 @@ mission "Scrapyard: Wanderer Planetary Survey"
 	repeat
 	deadline
 	name "Wanderer Planetary Survey"
-	description "Escort the <npc> on a survey expedition to <stopovers>. Then escort them back to <destination> by <date>. Payment is <payment>."
+	description "Escort the <npc> on a survey expedition to <stopovers>. Then escort them back to <destination> by <date>. Payment is <payment> and shared Research Data."
 	source
 		government "Wanderer"
 		neighbor near "Kaliptari"
@@ -1668,15 +1695,16 @@ mission "Scrapyard: Wanderer Planetary Survey"
 			variant
 				"Strong Wind"
 	on complete
-		payment 300000
-		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet> and pays you <payment>.`
+		payment 250000
+		outfit "Research Data"
+		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet>. They share their data and pay you <payment>.`
 
 
 
 mission "Scrapyard: Wanderer Survey Rescue [Makferuti]"
 	job
 	name "Wanderer Missing Survey"
-	description "A survey expedition lead by the <npc> to <waypoints> has gone missing. Find the <npc> and escort them back to <destination>. Payment is <payment>."
+	description "A survey expedition lead by the <npc> to <waypoints> has gone missing. Find the <npc> and escort them back to <destination>. Payment is <payment> and shared Research Data."
 	source
 		government "Wanderer"
 		neighbor near "Kaliptari"
@@ -1703,14 +1731,15 @@ mission "Scrapyard: Wanderer Survey Rescue [Makferuti]"
 		dialog `The crew is grateful for your assistance and request that you escort them back to <destination>.`
 	on complete
 		payment
-		payment 400000
+		payment 350000
 		"Scrapyard Threat Level" ++
-		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet> and pays you <payment>.`
+		outfit "Research Data"
+		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet>. They share their data and pay you <payment>.`
 
 mission "Scrapyard: Wanderer Survey Rescue [Celeborim]"
 	job
 	name "Wanderer Missing Survey"
-	description "A survey expedition lead by the <npc> to <waypoints> has gone missing. Find the <npc> and escort them back to <destination>. Payment is <payment>."
+	description "A survey expedition lead by the <npc> to <waypoints> has gone missing. Find the <npc> and escort them back to <destination>. Payment is <payment> and shared Research Data."
 	source
 		government "Wanderer"
 		neighbor near "Kaliptari"
@@ -1737,14 +1766,15 @@ mission "Scrapyard: Wanderer Survey Rescue [Celeborim]"
 		dialog `The crew is grateful for your assistance and request that you escort them back to <destination>.`
 	on complete
 		payment
-		payment 400000
+		payment 350000
 		"Scrapyard Threat Level" ++
-		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet> and pays you <payment>.`
+		outfit "Research Data"
+		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet>. They share their data and pay you <payment>.`
 
 mission "Scrapyard: Wanderer Survey Rescue [Asikafarnut]"
 	job
 	name "Wanderer Missing Survey"
-	description "A survey expedition lead by the <npc> to <waypoints> has gone missing. Find the <npc> and escort them back to <destination>. Payment is <payment>."
+	description "A survey expedition lead by the <npc> to <waypoints> has gone missing. Find the <npc> and escort them back to <destination>. Payment is <payment> and shared Research Data."
 	source
 		government "Wanderer"
 		neighbor near "Kaliptari"
@@ -1771,14 +1801,15 @@ mission "Scrapyard: Wanderer Survey Rescue [Asikafarnut]"
 		dialog `The crew is grateful for your assistance and request that you escort them back to <destination>.`
 	on complete
 		payment
-		payment 400000
+		payment 350000
 		"Scrapyard Threat Level" ++
-		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet> and pays you <payment>.`
+		outfit "Research Data"
+		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet>. They share their data and pay you <payment>.`
 
 mission "Scrapyard: Wanderer Survey Rescue [Sobarati]"
 	job
 	name "Wanderer Missing Survey"
-	description "A survey expedition lead by the <npc> to <waypoints> has gone missing. Find the <npc> and escort them back to <destination>. Payment is <payment>."
+	description "A survey expedition lead by the <npc> to <waypoints> has gone missing. Find the <npc> and escort them back to <destination>. Payment is <payment> and shared Research Data."
 	source
 		government "Wanderer"
 		neighbor near "Kaliptari"
@@ -1805,14 +1836,15 @@ mission "Scrapyard: Wanderer Survey Rescue [Sobarati]"
 		dialog `The crew is grateful for your assistance and request that you escort them back to <destination>.`
 	on complete
 		payment
-		payment 400000
+		payment 350000
 		"Scrapyard Threat Level" ++
-		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet> and pays you <payment>.`
+		outfit "Research Data"
+		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet>. They share their data and pay you <payment>.`
 
 mission "Scrapyard: Wanderer Survey Rescue [Silikatakfar]"
 	job
 	name "Wanderer Missing Survey"
-	description "A survey expedition lead by the <npc> to <waypoints> has gone missing. Find the <npc> and escort them back to <destination>. Payment is <payment>."
+	description "A survey expedition lead by the <npc> to <waypoints> has gone missing. Find the <npc> and escort them back to <destination>. Payment is <payment> and shared Research Data."
 	source
 		government "Wanderer"
 		neighbor near "Kaliptari"
@@ -1839,14 +1871,15 @@ mission "Scrapyard: Wanderer Survey Rescue [Silikatakfar]"
 		dialog `The crew is grateful for your assistance and request that you escort them back to <destination>.`
 	on complete
 		payment
-		payment 350000
+		payment 300000
 		"Scrapyard Threat Level" ++
-		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet> and pays you <payment>.`
+		outfit "Research Data"
+		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet>. They share their data and pay you <payment>.`
 
 mission "Scrapyard: Wanderer Survey Rescue [Ferukistek]"
 	job
 	name "Wanderer Missing Survey"
-	description "A survey expedition lead by the <npc> to <waypoints> has gone missing. Find the <npc> and escort them back to <destination>. Payment is <payment>."
+	description "A survey expedition lead by the <npc> to <waypoints> has gone missing. Find the <npc> and escort them back to <destination>. Payment is <payment> and shared Research Data."
 	source
 		government "Wanderer"
 		neighbor near "Kaliptari"
@@ -1873,14 +1906,15 @@ mission "Scrapyard: Wanderer Survey Rescue [Ferukistek]"
 		dialog `The crew is grateful for your assistance and request that you escort them back to <destination>.`
 	on complete
 		payment
-		payment 350000
+		payment 300000
 		"Scrapyard Threat Level" ++
-		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet> and pays you <payment>.`
+		outfit "Research Data"
+		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet>. They share their data and pay you <payment>.`
 
 mission "Scrapyard: Wanderer Survey Rescue [Eneremprukt]"
 	job
 	name "Wanderer Missing Survey"
-	description "A survey expedition lead by the <npc> to <waypoints> has gone missing. Find the <npc> and escort them back to <destination>. Payment is <payment>."
+	description "A survey expedition lead by the <npc> to <waypoints> has gone missing. Find the <npc> and escort them back to <destination>. Payment is <payment> and shared Research Data."
 	source
 		government "Wanderer"
 		neighbor near "Kaliptari"
@@ -1907,14 +1941,15 @@ mission "Scrapyard: Wanderer Survey Rescue [Eneremprukt]"
 		dialog `The crew is grateful for your assistance and request that you escort them back to <destination>.`
 	on complete
 		payment
-		payment 350000
+		payment 300000
 		"Scrapyard Threat Level" ++
-		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet> and pays you <payment>.`
+		outfit "Research Data"
+		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet>. They share their data and pay you <payment>.`
 
 mission "Scrapyard: Wanderer Survey Rescue [Mesuket]"
 	job
 	name "Wanderer Missing Survey"
-	description "A survey expedition lead by the <npc> to <waypoints> has gone missing. Find the <npc> and escort them back to <destination>. Payment is <payment>."
+	description "A survey expedition lead by the <npc> to <waypoints> has gone missing. Find the <npc> and escort them back to <destination>. Payment is <payment> and shared Research Data."
 	source
 		government "Wanderer"
 		neighbor near "Kaliptari"
@@ -1941,119 +1976,16 @@ mission "Scrapyard: Wanderer Survey Rescue [Mesuket]"
 		dialog `The crew is grateful for your assistance and request that you escort them back to <destination>.`
 	on complete
 		payment
-		payment 350000
+		payment 300000
 		"Scrapyard Threat Level" ++
-		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet> and pays you <payment>.`
-
-
-outfit "Korath Fireswarm Access Temporary License"
-	"display name" "Fireswarm Missile Tech"
-	category "Ammunition"
-	series "Ammunition"
-	index 04015
-	licenses
-		Navarch
-	cost 7600000
-	thumbnail "outfit/tech korath fireswarm"
-	"base research rate" 0.04
-	"requires Torpedo Tech" 1
-	"requires Fireswarm Missile" 1
-	"requires Ammo Basics" 1
-	"requires Research Data" 1
-	"requires Research Data (Chem)" 1
-	"requires Research Data (Phys)" 1
-	description "This technical manual details how to manufacture Fireswarm Missiles. Having this makes it possible for any outfitter to offer Fireswarm Missiles even if it is normally not stocked there."
-	description "	The version available for purchase is written in an alien language you don't understand..."
-	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
-	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
-	
-outfit "Korath Fireswarm Tech License"
-	"display name" "Fireswarm Missile Tech"
-	category "Licenses"
-	series "Technology"
-	index 04015
-	licenses
-		Navarch
-	cost 7600000
-	thumbnail "outfit/tech korath fireswarm"
-	"base research rate" 0.04
-	"requires Torpedo Tech" 1
-	"requires Fireswarm Missile" 1
-	"requires Ammo Basics" 1
-	"requires Research Data" 1
-	"requires Research Data (Chem)" 1
-	"requires Research Data (Phys)" 1
-	description "This technical manual details how to manufacture Korath Fireswarms. Having this makes it possible for any outfitter to offer Korath Fireswarms even if it is normally not stocked there."
-
-outfitter "Korath Fireswarm Access"
-	to sell
-		has "gamerule: universal ammo restocking"
-		not "license: Korath Fireswarm Tech"
-	location
-		attributes "outfitter"
-		outfits "Korath Fireswarm"
-	stock
-		"Korath Fireswarm Access Temporary License"
-
-outfitter "Midnight Korath Fireswarm Restock"
-	to sell
-		has "gamerule: universal ammo restocking"
-		or
-			has "license: Korath Fireswarm Access Temporary"
-			has "license: Korath Fireswarm Tech"
-		or
-			has "outfit: Korath Fireswarm Launcher"
-			has "outfit: Korath Fireswarm Nest"
-			has "outfit: Korath Fireswarm Depot"
-	location
-		attributes "outfitter"
-	stock
-		"Korath Fireswarm"
-
-mission "Midnight Tech: Korath Fireswarm Access Permanent"
-	entering
-	invisible
-	destination Earth
-	to offer
-		has "license: Korath Fireswarm Access Temporary"
-		not "license: Korath Fireswarm Tech"
-	on offer
-		clear "license: Korath Fireswarm Access Temporary"
-		set "license: Korath Fireswarm Tech"
-		fail
-
-mission "Midnight Research: Korath Fireswarm Tech"
-	entering
-	invisible
-	destination Earth
-	to offer
-		has "outfit (flagship installed): Korath Fireswarm"
-		has "outfit (flagship installed): Ammo Basics"
-		has "outfit (flagship installed): Research Data"
-		has "outfit (flagship installed): Research Data (Chem)"
-		has "outfit (flagship installed): Research Data (Phys)"
-		has "license: Torpedo Tech"
-		not "license: Korath Fireswarm Access Temporary"
-		not "license: Korath Fireswarm Tech"
-		random < 4 + ( "flagship attribute: research bonus" / 10 )
-	on offer
-		outfit "Research Data" -1
-		outfit "Research Data (Chem)" -1
-		outfit "Research Data (Phys)" -1
-		set "license: Korath Fireswarm Tech"
-		conversation
-			scene "outfit/tech korath fireswarm"
-			`You have successfully completed Korath Fireswarm Tech research. This makes it possible for any outfitter to offer Fireswarm Missiles even if it is normally not stocked there."`
-			``
-			`	(Lost 1 Research Data)`
-			`	(Lost 1 Research Data (Chem))`
-			`	(Lost 1 Research Data (Phys))`
-			`	(Gained Fireswarm Missile Tech)`
-				decline
+		outfit "Research Data"
+		dialog `The captain of the <npc> thanks you for safely escorting them back to <planet>. They share their data and pay you <payment>.`
 
 
 #######################
+#
 # Deprecated
+#
 #######################
 
 mission "Add Fireswarm World-Ships"
@@ -2076,8 +2008,6 @@ mission "Scrapyard: Exiled Explorers"
 	on offer
 		fail
 event "exiled explorers"
-
-
 
 mission "Scrapyard: Warmonger Construction"
 	landing
@@ -2146,7 +2076,6 @@ mission "Scrapyard: Warmonger Fireswarm Update"
 	to offer
 		never
 
-
 event "Warmonger Fireswarm Update"
 	fleet "Kor Efret Home"
 		add variant 5
@@ -2182,7 +2111,6 @@ mission "Scrapyard: Efret Grappler Warmongers"
 	invisible
 	to offer
 		never
-
 
 event "Efret Grappler Warmongers"
 	fleet "Kor Efret Home"
@@ -2242,3 +2170,42 @@ event "add kor efret fireswarms"
 		add outfitter "Korath Fireswarm"
 	planet "Setar Fort"
 		add outfitter "Korath Fireswarm"
+
+mission "Midnight Scrapyard Add Shelf-Sloop"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+	on offer
+		event "midnight scrapyard add shelf-sloop"
+		fail
+
+event "midnight scrapyard add shelf-sloop"
+
+mission "Scrapyard: Add Fireswarm Kor Efret"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+	on offer
+		event "add fireswarm kor efret"
+		fail
+
+event "add fireswarm kor efret"
+
+mission "Scrapyard: Add Kor Efret Scanners"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "Scrapyard Derelict World Ship: done"
+	on offer
+		event "add kor efret scanners"
+		fail
+
+event "add kor efret scanners"
+
+

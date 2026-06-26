@@ -389,8 +389,6 @@ mission "Harvesting: Mysterious Treasure Greenrock"
 			variant
 				"Falcon (Plasma)"
 			variant
-				"Falcon (Laser Chaser)"
-			variant
 				"Falcon (Javelin)"
 			variant
 				"Osprey"
@@ -406,8 +404,6 @@ mission "Harvesting: Mysterious Treasure Greenrock"
 				"Osprey (Laser)"
 			variant
 				"Osprey (Missile)"
-			variant
-				"Osprey (Particle Anti-Missile)"
 			variant
 				"Bastion"
 			variant
@@ -825,66 +821,6 @@ mission "Treasure Map: Terminus Patch"
 	on offer
 		event "Treasure: Terminus"
 		fail
-
-mission "Treasure Map: Kugel"
-	minor
-	name "Treasure Map: Kugel"
-	description "Use an Asteroid Scanner to search <waypoints> for buried treasures. (The treasures will be there even after completing/aborting this mission)"
-	source
-		government "Pirate"
-	waypoint "Kugel"
-	to offer
-		random < 1
-	on offer
-		conversation
-			scene "outfit/map"
-			`A woman wearing a black eyepatch approaches you. "Would you be interested in purchasing a treasure map for 1,000,000 credits?"`
-			`	This seems like a dubious offer, but then again it could be real. Do you buy the map?`
-			choice
-				`	(Buy the map.)`
-				`	(Don't buy the map.)`
-					defer
-			scene "outfit/asteroid scanner"
-			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
-			choice
-				`	"Them?"`
-			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
-				accept
-	on accept
-		log "Treasure Maps" "Purchased a treasure map for the Kugel system."
-		payment -1000000
-		"Treasure Hunter" ++
-		"reputation: Independent" ++
-		event "Treasure: Kugel"
-	on enter "Kugel"
-		"reputation: Independent (Killable)" >?= 10
-		dialog `There is someone else mining the asteroids. Perhaps you're not the only one who bought a treasure map.`
-	npc kill
-		government "Independent (Killable)"
-		system "Kugel"
-		personality waiting staying mining harvests uninterested
-			confusion 10
-		fleet "Treasure Hunters"
-
-event "Treasure: Kugel"
-	system Kugel
-		add minables treasure 1 3
-
-mission "Treasure Map: Kugel Patch"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "event: Treasure: Terminus"
-		not "Treasure: Terminus Patched"
-		not "event: Treasure: Kugel"
-	on offer
-		event "Treasure: Kugel Patch"
-		fail
-
-event "Treasure: Kugel Patch"
-	system Kugel
-		remove minables treasure 1 3
 
 mission "Treasure Map: Gamma Cassiopeiae"
 	minor
@@ -1469,3 +1405,72 @@ mission "Treasure Map: Sadr"
 event "Treasure: Sadr"
 	system Sadr
 		add minables treasure 1 3
+
+
+#########################################
+#
+# deprecated
+#
+#########################################
+
+
+mission "Treasure Map: Kugel"
+	minor
+	name "Treasure Map: Kugel"
+	description "Use an Asteroid Scanner to search <waypoints> for buried treasures. (The treasures will be there even after completing/aborting this mission)"
+	source
+		government "Pirate"
+	waypoint "Kugel"
+	to offer
+		never
+#		random < 1
+	on offer
+		conversation
+			scene "outfit/map"
+			`A woman wearing a black eyepatch approaches you. "Would you be interested in purchasing a treasure map for 1,000,000 credits?"`
+			`	This seems like a dubious offer, but then again it could be real. Do you buy the map?`
+			choice
+				`	(Buy the map.)`
+				`	(Don't buy the map.)`
+					defer
+			scene "outfit/asteroid scanner"
+			`	You exchange your credits for "the map", which includes an Asteroid Scanner frequency. The seller explains, "Travel to <waypoints> and use this frequency to scan the asteroids. You'd never find them without this."`
+			choice
+				`	"Them?"`
+			`	The seller nods before walking away. It isn't clear how many of those asteroids have treasures in them, but finding them could keep you busy for a long time...`
+				accept
+	on accept
+		log "Treasure Maps" "Purchased a treasure map for the Kugel system."
+		payment -1000000
+		"Treasure Hunter" ++
+		"reputation: Independent" ++
+		event "Treasure: Kugel"
+	on enter "Kugel"
+		"reputation: Independent (Killable)" >?= 10
+		dialog `There is someone else mining the asteroids. Perhaps you're not the only one who bought a treasure map.`
+	npc kill
+		government "Independent (Killable)"
+		system "Kugel"
+		personality waiting staying mining harvests uninterested
+			confusion 10
+		fleet "Treasure Hunters"
+
+event "Treasure: Kugel"
+	system Kugel
+		add minables treasure 1 3
+
+mission "Treasure Map: Kugel Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "event: Treasure: Terminus"
+#		not "Treasure: Terminus Patched"
+#		not "event: Treasure: Kugel"
+	on offer
+		event "Treasure: Kugel Patch"
+		fail
+
+event "Treasure: Kugel Patch"
+

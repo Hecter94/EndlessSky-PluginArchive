@@ -17,8 +17,9 @@
 ################################
 
 
-outfit "Tracker Access Temporary License"
+outfit "Tracker Access Temporary"
 	"display name" "Tracker Tech"
+	plural "Tracker Techs"
 	category "Ammunition"
 	series "Ammunition"
 	index 02013
@@ -31,9 +32,10 @@ outfit "Tracker Access Temporary License"
 	description "This technical manual details how to manufacture Hai Trackers. Having this makes it possible for any outfitter to offer Hai Trackers even if it is normally not stocked there."
 	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
 	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
-	
+
 outfit "Tracker Tech License"
 	"display name" "Tracker Tech"
+	plural "Tracker Techs"
 	category "Licenses"
 	series "Technology"
 	index 02013
@@ -52,11 +54,12 @@ outfitter "Tracker Access"
 		attributes "outfitter"
 		outfits "Hai Tracker"
 	stock
-		"Tracker Access Temporary License"
+		"Tracker Access Temporary"
 
 outfitter "Hai Tracker Restock"
 	to sell
 		or
+			has "outfit: Tracker Access Temporary"
 			has "license: Tracker Access Temporary"
 			has "license: Tracker Tech"
 
@@ -65,6 +68,7 @@ outfitter "Midnight Hai Tracker Restock"
 		has "gamerule: universal ammo restocking"
 		has "outfit: Tracker Storage Depot"
 		or
+			has "outfit: Tracker Access Temporary"
 			has "license: Tracker Access Temporary"
 			has "license: Tracker Tech"
 	location
@@ -72,26 +76,29 @@ outfitter "Midnight Hai Tracker Restock"
 	stock
 		"Hai Tracker"
 
-mission "Midnight Tech: Tracker Access Permanent"
+mission "Midnight Tech: Tracker Access Permanent License"
 	entering
 	invisible
+	non-blocking
 	destination Earth
 	to offer
-		has "license: Tracker Access Temporary"
+		has "outfit: Tracker Access Temporary"
 		not "license: Tracker Tech"
 	on offer
-		clear "license: Tracker Access Temporary"
+		outfit "Tracker Access Temporary" -1
 		set "license: Tracker Tech"
 		fail
 
 mission "Midnight Research: Tracker Tech"
-	entering
+	transition
 	invisible
+	non-blocking
 	destination Earth
 	to offer
 		has "outfit (flagship installed): Hai Tracker"
 		has "outfit (flagship installed): Ammo Basics"
 		has "outfit (flagship installed): Research Data"
+		not "outfit: Tracker Access Temporary"
 		not "license: Tracker Access Temporary"
 		not "license: Tracker Tech"
 		random < 5 + ( "flagship attribute: research bonus" / 10 )
@@ -107,8 +114,9 @@ mission "Midnight Research: Tracker Tech"
 				decline
 
 
-outfit "Railgun Access Temporary License"
+outfit "Railgun Access Temporary"
 	"display name" "Railgun Tech"
+	plural "Railgun Techs"
 	category "Ammunition"
 	series "Ammunition"
 	index 02023
@@ -124,6 +132,7 @@ outfit "Railgun Access Temporary License"
 	
 outfit "Railgun Tech License"
 	"display name" "Railgun Tech"
+	plural "Railgun Techs"
 	category "Licenses"
 	series "Technology"
 	index 02023
@@ -142,11 +151,12 @@ outfitter "Railgun Access"
 		attributes "outfitter"
 		outfits "Railgun Slug"
 	stock
-		"Railgun Access Temporary License"
+		"Railgun Access Temporary"
 
 outfitter "Railgun Slug Restock"
 	to sell
 		or
+			has "outfit: Railgun Access Temporary"
 			has "license: Railgun Access Temporary"
 			has "license: Railgun Tech"
 
@@ -155,6 +165,7 @@ outfitter "Midnight Railgun Slug Restock"
 		has "gamerule: universal ammo restocking"
 		has "outfit: Railgun Slug Depot"
 		or
+			has "outfit: Railgun Access Temporary"
 			has "license: Railgun Access Temporary"
 			has "license: Railgun Tech"
 	location
@@ -162,26 +173,29 @@ outfitter "Midnight Railgun Slug Restock"
 	stock
 		"Railgun Slug"
 
-mission "Midnight Tech: Railgun Access Permanent"
+mission "Midnight Tech: Railgun Access Permanent License"
 	entering
 	invisible
+	non-blocking
 	destination Earth
 	to offer
-		has "license: Railgun Access Temporary"
+		has "outfit: Railgun Access Temporary"
 		not "license: Railgun Tech"
 	on offer
-		clear "license: Railgun Access Temporary"
+		outfit "Railgun Access Temporary" -1
 		set "license: Railgun Tech"
 		fail
 
 mission "Midnight Research: Railgun Tech"
-	entering
+	transition
 	invisible
+	non-blocking
 	destination Earth
 	to offer
 		has "outfit (flagship installed): Railgun Slug"
 		has "outfit (flagship installed): Ammo Basics"
 		has "license: Gatling Ammo Tech"
+		not "outfit: Railgun Access Temporary"
 		not "license: Railgun Access Temporary"
 		not "license: Railgun Tech"
 		random < 6 + ( "flagship attribute: research bonus" / 10 )
@@ -202,8 +216,9 @@ mission "Midnight Research: Railgun Tech"
 ################################
 
 
-outfit "Displacer Access Temporary License"
+outfit "Displacer Access Temporary"
 	"display name" "Displacer Tech"
+	plural "Displacer Techs"
 	category "Ammunition"
 	series "Ammunition"
 	index 02008
@@ -222,6 +237,7 @@ outfit "Displacer Access Temporary License"
 
 outfit "Displacer Tech License"
 	"display name" "Displacer Tech"
+	plural "Displacer Techs"
 	category "Licenses"
 	series "Technology"
 	index 02008
@@ -242,12 +258,13 @@ outfitter "Displacer Access"
 		attributes "outfitter"
 		outfits "Hai Displacer"
 	stock
-		"Displacer Access Temporary License"
+		"Displacer Access Temporary"
 
 outfitter "Hai Displacer Restock"
 	to sell
 		has "gamerule: universal ammo restocking"
 		or
+			has "outfit: Displacer Access Temporary"
 			has "license: Displacer Access Temporary"
 			has "license: Displacer Tech"
 		or
@@ -259,26 +276,29 @@ outfitter "Hai Displacer Restock"
 	stock
 		"Hai Displacer"
 
-mission "Midnight Tech: Displacer Access Permanent"
+mission "Midnight Tech: Displacer Access Permanent License"
 	entering
 	invisible
+	non-blocking
 	destination Earth
 	to offer
-		has "license: Displacer Access Temporary"
+		has "outfit: Displacer Access Temporary"
 		not "license: Displacer Tech"
 	on offer
-		clear "license: Displacer Access Temporary"
+		outfit "Displacer Access Temporary" -1
 		set "license: Displacer Tech"
 		fail
 
 mission "Midnight Research: Displacer Tech"
-	entering
+	transition
 	invisible
+	non-blocking
 	destination Earth
 	to offer
 		has "outfit (flagship installed): Hai Displacer"
 		has "outfit (flagship installed): Ammo Basics"
 		has "outfit (flagship installed): Research Data"
+		not "outfit: Displacer Access Temporary"
 		not "license: Displacer Access Temporary"
 		not "license: Displacer Tech"
 		random < 5 + ( "flagship attribute: research bonus" / 10 )
@@ -292,4 +312,99 @@ mission "Midnight Research: Displacer Tech"
 			`	(Lost 1 Research Data)`
 			`	(Gained Displacer Tech)`
 				decline
+
+
+###############################
+#
+# deprecated
+#
+###############################
+
+
+outfit "Tracker Access Temporary License"
+	"display name" "Tracker Tech"
+	plural "Tracker Techs"
+	category "Ammunition"
+	series "Ammunition"
+	index 02013
+	cost 1000000
+	thumbnail "outfit/tech hai tracker"
+	"base research rate" 0.05
+	"requires Hai Tracker" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	description "This technical manual details how to manufacture Hai Trackers. Having this makes it possible for any outfitter to offer Hai Trackers even if it is normally not stocked there."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
+
+mission "Midnight Tech: Tracker Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Tracker Access Temporary"
+		not "license: Tracker Tech"
+	on offer
+		clear "license: Tracker Access Temporary"
+		set "license: Tracker Tech"
+		fail
+
+outfit "Railgun Access Temporary License"
+	"display name" "Railgun Tech"
+	plural "Railgun Techs"
+	category "Ammunition"
+	series "Ammunition"
+	index 02023
+	cost 13000
+	thumbnail "outfit/tech railslug"
+	"base research rate" 0.06
+	"requires Gatling Ammo Tech" 1
+	"requires Railgun Slug" 1
+	"requires Ammo Basics" 1
+	description "This technical manual details how to manufacture Railgun Slugs. Having this makes it possible for any outfitter to offer Railgun Slugs even if it is normally not stocked there."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
+	
+mission "Midnight Tech: Railgun Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Railgun Access Temporary"
+		not "license: Railgun Tech"
+	on offer
+		clear "license: Railgun Access Temporary"
+		set "license: Railgun Tech"
+		fail
+
+outfit "Displacer Access Temporary License"
+	"display name" "Displacer Tech"
+	plural "Displacer Techs"
+	category "Ammunition"
+	series "Ammunition"
+	index 02008
+	licenses
+		"Unfettered Militia"
+	cost 1000000
+	thumbnail "outfit/tech hai displacer"
+	"base research rate" 0.05
+	"requires Hai Displacer" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	description "This technical manual details how to manufacture Hai Displacers. Having this makes it possible for any outfitter to offer Hai Displacers even if it is normally not stocked there."
+	description "	Only the True Hai may access the secret technology for making Unfettered weapons."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
+
+mission "Midnight Tech: Displacer Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Displacer Access Temporary"
+		not "license: Displacer Tech"
+	on offer
+		clear "license: Displacer Access Temporary"
+		set "license: Displacer Tech"
+		fail
 

@@ -9,6 +9,10 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
+outfitter "Remnant"
+	add "EMP Torpedo Storage Depot"
+
+
 ################################################
 #
 # Weapons
@@ -16,8 +20,7 @@
 ################################################
 
 
-outfit "Inhibitor Blaster"
-	"display name" "Modified Inhibitor"
+outfit "Modified Inhibitor"
 	plural "Modified Inhibitors"
 	category "Guns"
 	series "Guns"
@@ -171,10 +174,12 @@ outfit "EMP Torpedo Storage Depot"
 		Remnant
 	cost 196000
 	thumbnail "outfit/emp depot"
-	"mass" 10
+#	"mass" 10
+	"mass" 9.6
 	"cargo space" -40
 	"energy capacity" 800
-	"emp torpedo capacity" 14
+#	"emp torpedo capacity" 14
+	"emp torpedo capacity" 24
 	ammo "EMP Torpedo"
 	"required crew" 1
 	description "The EMP Torpedo Storage Depot stages extra ammunition in your cargo bay for weapons that use EMP torpedoes. The ammunition is ready to be withdrawn for use. Storing it this way uses more cargo space than if it were packed away in sealed crates. An extra crewmember is required to maintain inventory."
@@ -200,16 +205,17 @@ mission "Midnight Add Teciimach Canister Depot"
 	invisible
 	non-blocking
 	to offer
-		has "event: remnant: teciimach deployment"
-		has "event: midnight add ammunition depots"
+		never
+#		has "event: remnant: teciimach deployment"
+#		has "event: midnight add ammunition depots"
 	on offer
-		event "midnight add teciimach canister depot"
+		event "midnight add teciimach canister depot" 0
 		fail
 
 event "midnight add teciimach canister depot"
-	outfitter "Remnant"
-		remove "EMP Torpedo Storage Depot"
-		add "Teciimach Canister Depot"
+#	outfitter "Remnant"
+#		remove "EMP Torpedo Storage Depot"
+#		add "Teciimach Canister Depot"
 
 
 
@@ -234,8 +240,11 @@ outfit "Engine Restraint"
 	description "An Engine Restraint will reduce the mobility of any ship it is installed on. Remnant crews able to board an enemy ship may attach this device onto the enemy engine systems to sabotage their maneuverability."
 	description "	If you find this installed on your ship, get rid of it as soon as possible!"
 
+
+# allows Research Laboratory to add 1% bonus to ammo research
 outfit "Research Laboratory"
 	"research bonus" 0.01
+
 
 ################################################
 #
@@ -253,7 +262,7 @@ outfit "Heart of Nightmare"
 	"mass" 10
 	"outfit space" 10
 	"radar jamming" 30
-	"optical jamming" 20
+	"optical jamming" 2
 	"energy capacity" 100
 	"energy generation" 1
 	"heat generation" 0.5
@@ -281,3 +290,57 @@ outfit "Reverberator Rifle"
 	"capture defense" 9
 	"unplunderable" 1
 	"unique" 1
+
+outfit "Void Rifle Display"
+	category "Unique"
+	series "Functional Unique"
+	index 50
+	licenses
+		Remnant
+	cost 500000
+	thumbnail "outfit/void rifle display"
+	"capture attack" .2
+	"capture defense" .2
+	"unique" 1
+	"unplunderable" 1
+	description "This Void Rifle is a museuam quality display piece dating back several centuries. While the internal components no longer function, it has been well maintained by its previous owner. However as a weapon it is nothing more than a fancy club."
+
+################################################
+#
+# Deprecated
+#
+################################################
+
+
+outfit "Inhibitor Blaster"
+	plural "Inhibitor Blasters"
+	category "Guns"
+	series "Guns"
+	index 03010
+	licenses
+		Remnant
+	cost 471000
+	thumbnail "outfit/inhibitor blaster"
+	"mass" 16
+	"outfit space" -16
+	"weapon capacity" -16
+	"gun ports" -1
+	weapon
+		sprite "projectile/inhibitor"
+			"frame rate" 10
+			"no repeat"
+		sound "inhibitor"
+		"hit effect" "inhibitor impact" 3
+		"inaccuracy" .5
+		"velocity" 36
+		"random velocity" .5
+		"lifetime" 24
+		"reload" 13
+		"firing energy" 26
+		"firing heat" 45.5
+		"firing force" 19.5
+		"shield damage" 26
+		"hull damage" 19.5
+		"hit force" 58.5
+		"slowing damage" .5
+	description `This modified version of the Inhibitor Cannon lacks the firing synchronization of the standard Remnant version. The result is that instead of firing a volley of inhibitor projectiles, a group of these weapons will produce a steady stream. Intimate knowledge of how the weapon works is necessary to make this sort of modification while leaving the weapon's other attributes unchanged.`

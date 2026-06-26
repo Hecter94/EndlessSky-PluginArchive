@@ -460,25 +460,6 @@ event "House Unuk Sol Saryd"
 	system "Sol Saryd"
 		add fleet "Acorn Saryd" 20000
 
-mission "House Unuk Sol Saryd Fleet Patch"
-	landing
-	non-blocking
-	invisible
-	to offer
-		has "event: House Unuk Sol Saryd"
-		not "House Unuk Sol Saryd Fleet Patched"
-	on offer
-		event "House Unuk Sol Saryd Fleet Patch"
-		fail
-
-event "House Unuk Sol Saryd Fleet Patch"
-	system Unukalhai
-		remove fleet "Acorn Arach"
-		add fleet "Acorn Saryd" 20000
-	system "Sol Saryd"
-		remove fleet "Acorn Arach"
-		add fleet "Acorn Saryd" 20000
-
 
 mission "House Unuk Business Kimek 1"
 	landing
@@ -546,25 +527,6 @@ event "House Unuk Sol Kimek"
 	system Unukalhai
 		add fleet "Acorn Kimek" 20000
 	system "Sol Kimek"
-		add fleet "Acorn Kimek" 20000
-		
-mission "House Unuk Sol Kimek Fleet Patch"
-	landing
-	non-blocking
-	invisible
-	to offer
-		has "event: House Unuk Sol Kimek"
-		not "House Unuk Sol Kimek Fleet Patched"
-	on offer
-		event "House Unuk Sol Saryd Fleet Patch"
-		fail
-
-event "House Unuk Sol Kimek Fleet Patch"
-	system Unukalhai
-		remove fleet "Acorn Arach"
-		add fleet "Acorn Kimek" 20000
-	system "Sol Saryd"
-		remove fleet "Acorn Arach"
 		add fleet "Acorn Kimek" 20000
 
 
@@ -707,6 +669,8 @@ mission "House Unuk Cookie Crook 1"
 				decline
 	to complete
 		has "House Unuk Cookie Crook 2: done"
+	to fail
+		has "House Unuk Cookie Crook 2: failed"
 	on complete
 		payment 5
 		dialog `You deliver a package of acorn cookies to the kids and collect your payment of <payment>. It's not much, but at least you made some kids happy.`
@@ -754,4 +718,40 @@ mission "House Unuk Cookie Crook 2"
 	on complete
 		payment 1000000
 		conversation
-			`You offer 50 tons of acorn cookies to the spaceport convenience store. The manager quietly pays you <payment> for them. The people here must really like these acorn cookies. You make sure to keep a package for that other client you originally needed cookies for.`
+			`You offer 50 tons of acorn cookies to the spaceport convenience store. The manager quietly pays you <payment> for them. The people here must really like these cookies. You make sure to keep a package for that other client you originally needed cookies for.`
+
+
+##############################
+#
+# deprecated
+#
+##############################
+
+mission "House Unuk Sol Saryd Fleet Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "event: House Unuk Sol Saryd"
+#		not "House Unuk Sol Saryd Fleet Patched"
+	on offer
+		event "House Unuk Sol Saryd Fleet Patch"
+		fail
+
+event "House Unuk Sol Saryd Fleet Patch"
+
+		
+mission "House Unuk Sol Kimek Fleet Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "event: House Unuk Sol Kimek"
+#		not "House Unuk Sol Kimek Fleet Patched"
+	on offer
+		event "House Unuk Sol Saryd Fleet Patch"
+		fail
+
+event "House Unuk Sol Kimek Fleet Patch"

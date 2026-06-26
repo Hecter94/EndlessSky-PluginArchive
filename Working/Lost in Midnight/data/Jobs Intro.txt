@@ -18,16 +18,8 @@ mission "Intro Cargo [0]"
 	source "New Boston"
 	destination "New Greenland"
 	to offer
-		not "ships: Light Warship"
-		not "ships: Medium Warship"
-		not "ships: Heavy Warship"
-		not "ships: Superheavy" 
-		not "ships: Utility"
-		not "ships: Space Liner"
-		not "ships: Heavy Freighter"
-		not "Intro [1 Freighter]: offered"
-		not "Intro [1 Interceptor]: offered"
-		not "Intro [1 Transport]: offered"
+		"days since start" == 0
+		has "start: default"
 	on accept
 		conversation
 			scene "outfit/cooling ducts"
@@ -334,7 +326,7 @@ mission "Intro Bounty Hunting: Tweedledee & Tweedledum"
 	on enter
 		dialog `Carol hails you: "Bounties tend to be within one or two systems from where the job was offered. Particularly troublesome targets can be a little farther away."`
 	on enter
-		dialog `Carol hails you: "Don't be discouraged if they aren't here. Just keep searching the systems near <system> and you'll find them eventually!"`
+		dialog `Carol hails you: "Back in the old days, we had to blindly search around for bounty targets. We now have eyewitness sightings posted online to guide us. Check the mission screen to see the target's last known location."`
 	npc accompany save
 		government "Bounty Hunter (licensed)"
 		personality escort timid vindictive
@@ -343,7 +335,7 @@ mission "Intro Bounty Hunting: Tweedledee & Tweedledum"
 		government "Bounty"
 		system
 			distance 1 2
-		personality target waiting staying disables harvests
+		personality target waiting staying disables harvests marked tracked
 			confusion 20
 		ship "Berserker (Energy Cannons)" "Tweedledee"
 		ship "Berserker (Energy Cannons)" "Tweedledum"

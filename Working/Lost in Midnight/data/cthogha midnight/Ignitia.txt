@@ -1,0 +1,642 @@
+# Copyright (c) 2022 by Michael Arsollon
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+government "Ignitia"
+	swizzle 0
+	color "governments: Republic"
+	"crew attack" 2.1
+	"crew defense" 3.9
+	language "Ignitia"
+	"player reputation" 0
+	"attitude toward"
+		"Hai (Unfettered)" -.01
+
+government "Ignitia (Military)"
+	"display name" "Ignitia"
+	swizzle 6
+	color "governments: Republic"
+	"crew attack" 2.1
+	"crew defense" 3.9
+	language "Ignitia"
+	"player reputation" -10
+	"attitude toward"
+		"Ignitia" .01
+		"Pug (Cthogha)" -.01
+		"Quarg (Cthogha)" -.01
+		"Justicar" -.01
+		"Hai (Unfettered)" -.01
+
+outfit "Ignus-Lance"
+	category "Guns"
+	cost 766000
+	thumbnail "outfit/ignus-lance"
+	"mass" 22
+	"outfit space" -22
+	"weapon capacity" -22
+	"gun ports" -1
+	weapon
+		sprite "projectile/ignus-lance"
+			"frame rate" 12
+			"random start frame"
+		sound "fire-lance"
+		"hit effect" "fire-lance impact"
+		"inaccuracy" .4
+		"velocity" 350
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 2.5
+		"firing heat" 1.7
+		"shield damage" 3.5
+		"hull damage" 1.5
+		"heat damage" 12
+		"burn damage" .15
+	description "The Ignus-Lance is a short-range beam weapon that inflicts intense heat damage to anything it strikes."
+
+
+outfit "Combustion Torpedo"
+	plural "Combustion Torpedoes"
+	series "Ammunition"
+	index 09050
+	category "Ammunition"
+	cost 4400
+	thumbnail "outfit/combustion torpedo"
+	"mass" .5
+	"heat generation" 0.1
+	"combustion torpedo capacity" -1
+	description "Combustion Torpedoes are ammunition for the Combustion Launcher. Each Combustion Launcher can hold 27 of them. You cannot install torpedoes unless you have also installed a launcher to fire them from."
+
+outfit "Combustion Storage Rack"
+	category "Ammunition"
+	series "Ammunition"
+	index 09050
+	cost 98000
+	thumbnail "outfit/combustion storage"
+	"mass" 8
+	"outfit space" -12
+	"combustion torpedo capacity" 12
+	ammo "Combustion Torpedo"
+	description "The Combustion Storage Rack is used to store extra ammunition for Combustion Launchers."
+
+outfit "Combustion Depot"
+	plural "Combustion Depot"
+	category "Ammunition"
+	series "Ammunition"
+	index 09050
+	cost 196000
+	thumbnail "outfit/combustion depot"
+	"mass" 16
+	"cargo space" -40
+	"combustion torpedo capacity" 24
+	ammo "Combustion Torpedo"
+	"required crew" 1
+	description "The Combustion Depot stages extra ammunition in your cargo bay for weapons that use Combustion Torpedoes. The ammunition is ready to be withdrawn for use. Storing it this way uses more cargo space than if it were packed away in sealed crates. An extra crewmember is required to maintain inventory."
+
+outfit "Combustion Launcher"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 09110
+	cost 583000
+	thumbnail "outfit/combustion launcher"
+	"mass" 9
+	"outfit space" -18
+	"weapon capacity" -18
+	"gun ports" -1
+	"combustion torpedo capacity" 15
+	weapon
+		sprite "projectile/torpedo"
+			"frame rate" 2
+			"random start frame"
+		sound "nuke"
+		stream
+		ammo "Combustion Torpedo"
+		icon "icon/combustion torpedo"
+		"live effect" "hypernuke smoke" 1280
+		"fire effect" "combustion torpedo fire"
+		"hit effect" "nuke explosion"
+		"hit effect" "combustion ring" 30
+		"die effect" "tiny explosion"
+		"inaccuracy" 1
+		"velocity" 9
+		"lifetime" 600
+		"random lifetime" 1000
+		"range override" 5400
+		"reload" 75
+		"firing energy" 4
+		"firing fuel" 2
+		"firing heat" 90
+		"acceleration" .12
+		"drag" .02
+		"turn" 1.5
+		"homing"
+			"throttle control"
+		"infrared tracking" .8
+		"blast radius" 200
+		"shield damage" 700
+		"hull damage" 100
+		"heat damage" 4800
+		"burn damage" 48
+		"hit force" 135
+		"missile strength" 40
+	description "Combustion Torpedoes create a small nuclear reaction that irradiates the target with residual heat after the initial impact. The infrared tracking makes it easier for subsequent torpedoes to find their target."
+
+effect "combustion torpedo fire"
+	sprite "effect/sidewinder fire"
+		"no repeat"
+		"frame rate" 30
+		"scale" 1.5
+	"lifetime" 9
+	"random velocity" 2
+
+effect "combustion ring"
+	sprite "effect/combustion ring"
+		"no repeat"
+		"frame rate" 7
+	"lifetime" 60
+	"random angle" 360
+	"random frame rate" 6
+	"random velocity" 4
+	"velocity scale" 0.1
+
+
+outfit "Solar Scoop"
+	category "Systems"
+	series "Ramscoops"
+	index 09010
+	cost 40000
+	thumbnail "outfit/solar scoop"
+	"mass" 6
+	"outfit space" -6
+	"ramscoop" 0.5
+	description "These simple ramscoops provide fuel for several Ignitian outfits."
+
+
+outfit "Blood Drive"
+	category "Systems"
+	series "Drives"
+	index 20
+	cost 500000
+	thumbnail "outfit/blood drive"
+	"mass" 20
+	"outfit space" -20
+	"hyperdrive fuel" 150
+	"jump fuel" 200
+	"jump speed" .3
+	"jump drive" 1
+	"jump range" 1
+	"quantum keystone" 1
+	"quantum bloodstone" 1
+	description "Somehow, the technological development of the Ignitia skipped the Hyperdrive and leaped directly to a rudimentary Jump Drive. While this device is limited to travel along hyperspace lanes, it is clear that their researchers are on course to figuring out how to make true Jump Drives."
+
+outfit "Bloodstone Drive"
+	category "Systems"
+	series "Drives"
+	index 20
+	cost 4000000
+	thumbnail "outfit/bloodstone drive"
+	"mass" 20
+	"outfit space" -20
+	"jump fuel" 200
+	"jump speed" .3
+	"jump drive" 1
+	"quantum keystone" 1
+	"quantum bloodstone" 1
+	description "The workings of the jump drive are a total mystery. The best that human scientists have been able to find out is that this device is a containment field for matter in a state that cannot normally exist in this universe; if the drive is opened up, the field collapses and its contents disappear. Therefore, even though a few jump drives have been captured over the years, it has so far proved impossible to reverse engineer them."
+	description "	This Jump Drive is manufactured with special materials that give it a quality which regular Jump Drives lack."
+
+outfit "Cauldron Core"
+	category "Systems"
+	series "Shields"
+	index 09030
+	cost 343000
+	thumbnail "outfit/cauldron core"
+	"mass" 120
+	"outfit space" -120
+	"hull repair rate" 1.25
+	"hull fuel" .03
+	"burn resistance" 0.5
+	"energy generation" 6.1
+	"heat generation" 12
+	"self destruct" 0.5
+	description "The Ignitia seem to regard the Cauldron Core with a sense of mysticism. Maintaining it involves the performance of rituals which do not appear to have any relation to its generated output."
+
+outfit "Crucible Core"
+	category "Systems"
+	series "Shields"
+	index 09020
+	cost 343000
+	thumbnail "outfit/crucible core"
+	"mass" 90
+	"outfit space" -90
+	"hull repair rate" 0.5
+	"hull fuel" .02
+	"burn resistance" 0.25
+	"energy generation" 4.2
+	"heat generation" 10
+	"self destruct" 0.25
+	description "The Ignitia seem to regard the Crucible Core with a sense of mysticism. Maintaining it involves the performance of rituals which do not appear to have any relation to its generated output."
+
+
+outfit "Rubicon Capacitor"
+	category "Power"
+	series "Batteries"
+	index 09010
+	cost 34000
+	thumbnail "outfit/rubicon capacitor"
+	"mass" 12
+	"outfit space" -12
+	"energy capacity" 9000
+	"energy consumption" .4
+	"burn resistance" 0.005
+	"heat capacity" 460
+	description "These crystals can store a surprising amount of power in a compact form. They are easily found on Ignus, the Ignitia homeworld."
+	description "	The capacitors tend to leak small amounts of energy but are well suited to absorbing heat."
+
+
+outfit "Ignitian Engines"
+	plural "Ignitian Engines"
+	category "Engines"
+	series "Engines"
+	index 09020
+	"cost" 276000
+	thumbnail "outfit/ignition engines"
+	"mass" 38
+	"outfit space" -38
+	"engine capacity" -38
+	"heat capacity" 130
+	"thrust" 20.6
+	"thrusting energy" 1.2
+	"thrusting heat" 3.4
+	"flare sprite" "effect/ignition flare/small"
+		"frame rate" 8
+	"flare sound" "plasma small"
+	"turn" 420.0
+	"turning energy" 0.7
+	"turning heat" 2.1
+	"steering flare sprite" "effect/ignition flare/small"
+		"frame rate" 8
+	"steering flare sound" "plasma tiny"
+	"afterburner thrust" 20.76
+	"afterburner energy" 1.5
+	"afterburner heat" 6.25
+	"afterburner fuel" 0.038
+	"afterburner effect" "korath afterburner tiny"
+	description "The Ignitia incorporate afterburners into every engine design. Separating them is an alien concept that they find incomprehensible."
+
+ship "Fulgur"
+	sprite "ship/fulgur"
+	"uncapturable"
+	attributes
+		category "Light Warship"
+		"cost" 1900000
+		"hull" 5000
+		"required crew" 4
+		"bunks" 6
+		"mass" 260
+		"drag" 3.4
+		"heat dissipation" .8
+		"fuel capacity" 300
+		"cargo space" 30
+		"outfit space" 278
+		"weapon capacity" 88
+		"engine capacity" 76
+		"heat protection" 1
+		"magma diver" 1
+		weapon
+			"blast radius" 150
+			"burn damage" 9000
+			"shield damage" 7000
+			"hull damage" 6000
+			"hit force" 5000
+	outfits
+		"Ignus-Lance" 2
+		"Combustion Launcher" 2
+		"Combustion Torpedo" 30
+		"Rubicon Capacitor"
+		"Cauldron Core"
+		"Solar Scoop"
+		"Ignitian Engines"
+		"Blood Drive"
+	engine -23 27
+	engine 23 27
+	gun -23 -24 "Ignus-Lance"
+	gun 23 -24 "Ignus-Lance"
+	gun -23 -24 "Combustion Launcher"
+	gun 23 -24 "Combustion Launcher"
+	"explode" "nuke explosion (small)"
+	"explode" "nuke residue fast" 10
+	"explode" "nuke residue slow" 10
+	"final explode" "final explosion large"
+	description "The Fulgur is the most advanced ship produced by the Ignitia. It features the most heat resistant hull their shipyards are capable of constructing, a necessity for ships constructed on Ignus."
+	description " This ship can land on the super heated environments of lava planets. Of course, this protection does not extend to any crew or passengers who disembark after landing..."
+
+ship "Fulgur" "Fulgur (Bunks)"
+	"uncapturable"
+	outfits
+		"Ignus-Lance" 2
+		"Combustion Launcher" 2
+		"Combustion Torpedo" 30
+		"Rubicon Capacitor"
+		"Crucible Core"
+		"Bunk Room"
+		"Ignitian Engines"
+		"Blood Drive"
+
+ship "Fulgur" "Fulgur (Cargo)"
+	"uncapturable"
+	outfits
+		"Ignus-Lance" 2
+		"Combustion Launcher" 2
+		"Combustion Torpedo" 30
+		"Rubicon Capacitor"
+		"Crucible Core"
+		"Cargo Expansion"
+		"Ignitian Engines"
+		"Blood Drive"
+
+ship "Fulgur" "Fulgur (Combustion)"
+	"uncapturable"
+	outfits
+		"Combustion Launcher" 4
+		"Combustion Storage Rack"
+		"Combustion Depot"
+		"Combustion Torpedo" 96
+		"Rubicon Capacitor"
+		"Crucible Core"
+		"Cargo Expansion"
+		"Solar Scoop"
+		"Ignitian Engines"
+		"Blood Drive"
+
+ship "Fulgur" "Fulgur (Lance)"
+	"uncapturable"
+	outfits
+		"Ignus-Lance" 4
+		"Rubicon Capacitor"
+		"Cauldron Core"
+		"Ignitian Engines"
+		"Blood Drive"
+
+ship "Fulgur" "Fulgur (Miner)"
+	"uncapturable"
+	outfits
+		"Ignus-Lance" 4
+		"Rubicon Capacitor"
+		"Crucible Core"
+		"Cargo Expansion"
+		"Ignitian Engines"
+		"Blood Drive"
+
+ship "Fulgur" "Fulgur (Engines)"
+	"uncapturable"
+	outfits
+		"Ignus-Lance" 2
+		"Combustion Launcher" 2
+		"Combustion Torpedo" 30
+		"Rubicon Capacitor"
+		"Crucible Core"
+		"Ignitian Engines" 2
+		"Blood Drive"
+
+fleet "Ignitia Merchant"
+	government "Ignitia"
+	personality timid appeasing
+		confusion 30
+	cargo 3
+	commodities "Metal" "Heavy Metals" "Industrial"
+	names "Ignitia"
+	variant 1
+		"Fulgur (Bunks)"
+	variant 1
+		"Fulgur (Cargo)"
+
+fleet "Ignitia Miners"
+	government "Ignitia"
+	personality mining timid plunders harvests
+		confusion 20
+	cargo 0
+	names "Ignitia"
+	variant 2
+		"Fulgur (Lance)"
+	variant 2
+		"Fulgur (Miner)"
+	variant 1
+		"Fulgur (Lance)" 2
+	variant 1
+		"Fulgur (Miner)" 2
+	variant 1
+		"Fulgur (Lance)"
+		"Fulgur (Miner)"
+
+fleet "Ignitia Military"
+	government "Ignitia (Military)"
+	personality heroic vindictive
+		confusion 10
+	cargo 1
+	commodities "Metal" "Heavy Metals" "Industrial"
+	names "Ignitia Military"
+	variant 1
+		"Fulgur (Combustion)" 3
+	variant 1
+		"Fulgur (Engines)" 3
+	variant 1
+		"Fulgur (Lance)" 3
+	variant 1
+		"Fulgur (Combustion)"
+		"Fulgur (Engines)" 2
+	variant 1
+		"Fulgur (Combustion)" 2
+		"Fulgur (Engines)"
+	variant 1
+		"Fulgur (Combustion)"
+		"Fulgur (Lance)" 2
+	variant 1
+		"Fulgur (Combustion)" 2
+		"Fulgur (Lance)"
+	variant 1
+		"Fulgur (Combustion)" 3
+		"Fulgur (Engines)" 2
+	variant 1
+		"Fulgur (Combustion)" 2
+		"Fulgur (Engines)" 3
+	variant 1
+		"Fulgur (Combustion)" 3
+		"Fulgur (Lance)" 2
+	variant 1
+		"Fulgur (Combustion)" 2
+		"Fulgur (Lance)" 3
+
+phrase "Ignitia Military"
+	word
+		"Igneus"
+	word
+		" "
+	phrase
+		"Ignitia Prefix"
+		"Ignitia Suffix"
+
+phrase "Ignitia"
+	phrase
+		"Ignitia Prefix"
+	phrase
+		"Ignitia Suffix"
+
+phrase "Ignitia Prefix"
+	word
+		"Bla"
+		"Cald"
+		"Dar"
+		"Dev"
+		"Draeg"
+		"Drak"
+		"Faer"
+		"Feug"
+		"Fir"
+		"Gar"
+		"Inf"
+		"Kil"
+		"Kin"
+		"Mag"
+		"Plas"
+		"Stok"
+
+phrase "Ignitia Suffix"
+	word
+		"a"
+		"era"
+		"erno"
+		"is"
+		"ma"
+		"nero"
+		"ra"
+		"ren"
+		"ro"
+		"us"
+		"zen"
+
+
+mission "Midnight Ignitia First Contact (boarding)"
+	boarding
+	invisible
+	source
+		government "Ignitia" government "Ignitia (Military)"
+	destination "Earth"
+	on offer
+		conversation
+			scene "outfit/attention"
+			`As soon as you dock with the alien ship, your sensors alert you to extreme hazardous temperatures on the other side of the hatch. Boarding the ship is out of the question. The aliens on the other side are probably detecting the same dangers over here...`
+				decline
+
+
+outfit "Combustion Torpedo Access Temporary"
+	"display name" "Combustion Torpedo Tech"
+	plural "Combustion Techs"
+	category "Ammunition"
+	series "Ammunition"
+	index 09050
+	licenses
+		"Ignitia Forgemaster"
+	cost 4400000
+	thumbnail "outfit/tech combustion"
+	"base research rate" 0.04
+	"requires Heavy Rocket Tech" 1
+	"requires Torpedo Tech" 1
+	"requires Combustion Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Combustion Torpedos. Having this makes it possible for any outfitter to offer Combustion Torpedos even if it is normally not stocked there."
+	description "	The version available for purchase is written in an alien language you don't understand..."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
+	
+outfit "Combustion Torpedo Tech License"
+	"display name" "Combustion Torpedo Tech"
+	plural "Combustion Torpedo Techs"
+	category "Licenses"
+	series "Technology"
+	index 09050
+	licenses
+		"Ignitia Forgemaster"
+	thumbnail "outfit/tech combustion"
+	"base research rate" 0.04
+	"requires Heavy Rocket Tech" 1
+	"requires Torpedo Tech" 1
+	"requires Combustion Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Combustion Torpedos. Having this makes it possible for any outfitter to offer Combustion Torpedos even if it is normally not stocked there."
+
+outfitter "Combustion Torpedo Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Combustion Torpedo Tech"
+	location
+		attributes "outfitter"
+		outfits "Combustion Torpedo"
+	stock
+		"Combustion Torpedo Access Temporary"
+
+outfitter "Combustion Torpedo Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Combustion Storage Rack"
+			has "outfit: Combustion Depot"
+			has "outfit: Combustion Launcher"
+		or
+			has "outfit: Combustion Torpedo Access Temporary"
+			has "license: Combustion Torpedo Tech"
+	location
+		attributes "outfitter"
+	stock
+		"Combustion Torpedo"
+
+mission "Midnight Tech: Combustion Torpedo Access Permanent License"
+	entering
+	invisible
+	non-blocking
+	destination Earth
+	to offer
+		has "outfit: Combustion Torpedo Access Temporary"
+		not "license: Combustion Torpedo Tech"
+	on offer
+		outfit "Combustion Torpedo Access Temporary" -1
+		set "license: Combustion Torpedo Tech"
+		fail
+
+mission "Midnight Research: Combustion Torpedo Tech"
+	transition
+	invisible
+	non-blocking
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Combustion Torpedo"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Heavy Rocket Tech"
+		has "license: Torpedo Tech"
+		not "outfit: Combustion Torpedo Access Temporary"
+		not "license: Combustion Torpedo Tech"
+		random < 4 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Phys)" -1
+		set "license: Combustion Torpedo Tech"
+		conversation
+			scene "outfit/emp torpedo"
+			`You have successfully completed Combustion Torpedo Tech research. This makes it possible for any outfitter to offer Combustion Torpedos even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained Combustion Torpedo Tech)`
+				decline

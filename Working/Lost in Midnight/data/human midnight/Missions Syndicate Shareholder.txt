@@ -143,7 +143,10 @@ mission "Titania: Syndicate Stock Vote"
 event "titania: syndicate bonds issued"
 	outfitter "Syndicate Stock"
 		add "Syndicate Bond (Titania)"
-
+	outfitter "Syndicate Basics"
+		add "Syndicate Bond (Titania)"
+	outfitter "Syndicate Advanced"
+		add "Syndicate Bond (Titania)"
 
 
 mission "Titania: Syndicate Republic Bribery"
@@ -220,9 +223,17 @@ mission "Titania: Syndicate Republic Bribery"
 event "titania bond cancel"
 	outfitter "Syndicate Stock"
 		remove "Syndicate Bond (Titania)"
+	outfitter "Syndicate Basics"
+		remove "Syndicate Bond (Titania)"
+	outfitter "Syndicate Advanced"
+		remove "Syndicate Bond (Titania)"
 
 event "titania syndicate enters eteron"
 	outfitter "Syndicate Stock"
+		remove "Syndicate Bond (Titania)"
+	outfitter "Syndicate Basics"
+		remove "Syndicate Bond (Titania)"
+	outfitter "Syndicate Advanced"
 		remove "Syndicate Bond (Titania)"
 	system Eteron
 		add fleet "Small Syndicate" 4000
@@ -350,29 +361,6 @@ event "titania station construction d"
 			fleet "Small Syndicate" 5
 
 event "titania: syndicate bonds matured"
-
-
-
-mission "Titania Station Docking Bay Patch"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "event: titania station construction d"
-		not "titania docking bay patched"
-	on offer
-		event "titania station docking bay patch"
-		fail
-
-event "titania station docking bay patch"
-	planet "Titania Station"
-		add port "Docking_Port"
-			description `A computer terminal at the docking bay allows communications with the station crew. Anyone using this system must watch an advertisement for Syndicate products and services before proceeding.`
-			recharges
-				shields
-				energy
-			services
-				"job board"
 
 
 mission "Titania: Syndicate Bond Mature"
@@ -768,3 +756,24 @@ mission "Titania: Transport workers to <planet> [huge]"
 		payment 16000
 		dialog "You wish the workers the best of luck on <planet>, and collect your payment of <payment>."
 
+
+##############################
+#
+# deprecated
+#
+##############################
+
+
+mission "Titania Station Docking Bay Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "event: titania station construction d"
+#		not "titania docking bay patched"
+	on offer
+		event "titania station docking bay patch"
+		fail
+
+event "titania station docking bay patch"

@@ -376,9 +376,8 @@ mission "Escort Requiem Alpha"
 		government "Independent (Killable)"
 		personality waiting staying plunders nemesis
 		system destination
-		fleet "Large Independent (Killable)"
-		fleet "Small Independent (Killable)"
-
+		ship "Firebird (Energy Cannons)" "Abyssal Fire"
+		ship "Modified Aerie" "Murderous Intent"
 	npc kill
 		government "Independent (Killable)"
 		personality launching escort timid
@@ -422,8 +421,8 @@ mission "Protection: Marauder Double Cross"
 		never
 	npc save
 		government "Bounty (Disguised)"
-		personality harvests plunders heroic
-		fleet "Marauder Bounty (Disguised)"
+		personality harvests plunders heroic marked
+		fleet "Marauder Independent"
 	on enter Mintaka
 		dialog `Treachery! The <npc> turns its weapons on you!`
 		"reputation: Bounty (Disguised)" <?= -1000
@@ -785,14 +784,14 @@ mission "Kudgel's Cudgel"
 		fleet "pirate raid" 2
 	npc kill
 		government "Bounty (Disguised)"
-		personality target launching plunders heroic mute
+		personality target launching plunders heroic mute marked
 			confusion 20
 		"cargo settings"
 			cargo 0
 		ship "Mule (Cudgel)" "Kudgel's Cudgel"
 		ship "Dagger (Cudgel)" "Kudgel's Surprise"
 		on kill
-			"reputation: Bounty (Disguised)" >?= 0
+			"reputation: Bounty (Disguised)" >?= 1
 			dialog "You survived the trecherous attack by Kudgel's Cudgel and its fighter escort. Check with the authorities on <destination> for any outstanding bounties on Captain Kudgel's crew."
 	on abort
 		"reputation: Bounty (Disguised)" >?= 1
@@ -865,7 +864,7 @@ phrase "drowned happiness"
 fleet "TMBR Billboard"
 	government "Bounty (Disguised)"
 	names "drowned happiness"
-	personality timid
+	personality timid marked
 	cargo 1
 	outfitters "Nuke"
 	variant
@@ -927,7 +926,7 @@ mission "Peace Tour 1"
 			`"You're leaving me stranded here? Thanks for nothing."`
 	npc accompany save
 		government "Bounty (Disguised)"
-		personality target timid
+		personality target timid marked
 		fleet "TMBR Billboard"
 	on fail
 		"reputation: Bounty (Disguised)" >?= 1
@@ -981,6 +980,38 @@ event "add nukes of peace"
 	system Diyu
 		add fleet NukeCore 20000
 
+fleet NukeNorth
+	government "Pirate"
+	names "pirate"
+	cargo 1
+	personality plunders
+		confusion 20
+	variant 1
+		"Modified Argosy (Nuclear)"
+	variant 1
+		"Missileboat (Nuclear)"
+
+fleet NukeCore
+	government "Pirate"
+	names "pirate"
+	cargo 1
+	personality plunders
+		confusion 20
+	variant 1
+		"Modified Argosy (Nuclear)"
+	variant 1
+		"Manta (Nuclear)"
+		
+fleet NukeSouth
+	government "Pirate"
+	names "pirate"
+	cargo 1
+	personality plunders
+		confusion 20
+	variant 1
+		"Modified Argosy (Nuclear)"
+	variant 1
+		"Clipper (Nuclear)"
 
 mission "Peace Tour 2"
 	name "Bounty: <npc>"
@@ -1011,19 +1042,15 @@ mission "Peace Tour 2"
 			scene "scene/scene-explosion"
 			`	Despite your best efforts, there is no escaping the explosion.`
 				die
-
 			label trydisarm
 			branch disarm
 				random < 20
-
 			scene "scene/scene-explosion"
 			`	Despite your effort, you were unable to disarm the warhead before it explodes. If life were a game, you could load a save file and try disarming it again. You might have better success if you learn how these devices work.`
 				die
-
 			label disarm
 			`	Somehow, you managed to safely disarm a nuclear warhead! You hand the disarmed warhead over to the authorities and explain what happened.`
 				goto end
-
 			label trydeactivate
 			`	Recalling what you previously learned about nuke activation settings, you pop open a panel and see the activation code is set at "6-6-6". Enter the deactivation code. It is:`
 			choice
@@ -1035,10 +1062,8 @@ mission "Peace Tour 2"
 			scene "scene/scene-explosion"
 			`	Unfortunately, you must have remembered the deactivation code incorrectly. You barely have time to register this as you are instantly vaporized in the nuclear blast. If this were a game, you could load a save file and search your logbook for a clue.`
 				die
-
 			label deactivate
 			`	Fortunately, you correctly remembered the deactivation code. You hand over the disarmed warhead over to the authorities and explain what happened.`
-
 			label end
 			scene "portrait/human59"
 			`	The government of <origin> is grateful for your assistance and rewards you with 1,000,000 credits. They have issued an additional 1,000,000 credit bounty on the person that left you the rigged nuclear device.`
@@ -1049,7 +1074,7 @@ mission "Peace Tour 2"
 	npc kill
 		government "Bounty"
 		system Kugel
-		personality target uninterested fleeing
+		personality target uninterested fleeing marked
 		fleet "TMBR Billboard"
 		dialog `You finally stopped the <npc> from distributing nukes across the galaxy. Return to <origin> to collect the bounty.`
 	on complete
@@ -1141,24 +1166,19 @@ mission "Midnight Market: Nukes of Peace?"
 					defer
 			branch legitimate
 				random < 75
-				
 			`	Suddenly you are ambushed from behind! There's no room for discussion. These people are out for blood!`
 			choice
 				`	(Fight.)`
 				`	(Run.)`
 					goto death
-			
 			branch death
 				random < 25
-				
 			`	Fortunately you are armed and manage to fight off your attackers. With nothing better to do, you decide to check out some of those shops on the long walk back to the spaceport.`
 				defer
-
 			label death
 			scene "scene/scene-bloodyknife"
 			`	Before you can draw your weapon, sudden pain pierces your back! You turn to see one of your attackers holding a knife covered with your blood. The rest of them close in to finish you off...`
 				die
-
 			label legitimate
 			scene "outfit/nuke"
 			`	After a long walk you arrive at what looks like an abandoned store. The doors and windows are boarded up. Despite this, you notice someone move to hide behind a curtain on the upper floor. The stranger leads you to a side entrance. Inside are a pair of massive crates. The stranger opens one, saying "Behold! Nuclear missiles, a powerful addition to your arsenal. Just confirm payment of 2,000,000 credits on this datapad and they're yours."`
@@ -1174,27 +1194,22 @@ mission "Midnight Market: Nukes of Peace?"
 					goto refuse
 				`	(Steal the Nuclear Missiles.)`
 			`	You pull out your gun and tell the stranger you'll be taking the missiles for free.`
-
 			branch thief
 				random < 20
 			scene "scene/scene-bloodyknife"
 			`	The room explodes in a burst of violence as guards suddenly swarm in from other rooms in the building. You manage to put several down before one of them gets lucky with a knife. Your hands become slick with blood as you grasp at the wound. The surviving guards put a bullet into your head.`
 				die
-
 			label thief
 			`	The room explodes in a burst of violence as guards suddenly swarm in from other rooms in the building. Though you expend all of your bullets in the fire fight, you miraculously come out of that bloodbath unharmed. A search of the building reveals several more crates in a hidden underground bunker. You begin the arduous task of hauling them back to your ship.`
 				decline
-
 			label refuse
 			action
 				"Midnight Market" --
 			`	The stranger puts away the datapad while some guards enter from adjoining rooms. "It appears our negotiations have failed. Please find your own way back to the spaceport." You begin the long walk back. Maybe you can grab something to eat from one of the shops you passed earlier...`
 				defer
-
 			label purchase
 			`	"Good choice captain. We'll help haul them back to your ship." Several burly men appear from other rooms in the building and help load the crates into a truck. The ride back is smooth and uneventful.`
 				accept
-
 			label show
 			`	The seller opens a panel on the missile's side. "Have you read the Bible?"`
 			choice
@@ -1282,7 +1297,6 @@ mission "Nuke Deactivation Code"
 				log `Today I learned the activation code for a Nuclear Missile is "6-6-6" and the deactivation is "2-3-4". At least, that's what the sales clerk at the Solace outfitter claimed.`
 			`	The sales clerk closes the panel. "Thanks for listening to this lecture. Please use your Nuclear Missiles responsibly!"`
 				decline
-
 
 
 phrase "subsi tours"
@@ -1522,10 +1536,9 @@ mission "Pot-o'-honey"
 			names "pirate"
 			variant
 				"Bactrian (Hai Weapons)"
-
 	npc kill
 		government "Bounty (Disguised)"
-		personality target marked launching harvests plunders
+		personality target marked launching harvests plunders marked
 			confusion 20
 		ship "Bulk Freighter (hai drones)" "Pot-o'-honey"
 		fleet
@@ -1538,7 +1551,6 @@ mission "Pot-o'-honey"
 			action
 				"reputation: Bounty (Disguised)" >?= 1
 			`The Pot-o'-honey and its drones have been defeated. You make a mental note to check with the authorities on <destination> to see if there is any reward for your effort.`
-
 	on abort
 		"reputation: Bounty (Disguised)" >?= 1
 	on fail
@@ -1586,7 +1598,7 @@ mission "Escort Trap Freighter (Hai)"
 		fleet "Small Northern Pirates" 4
 	npc kill
 		government "Bounty (Disguised)"
-		personality target marked launching harvests plunders
+		personality target marked launching harvests plunders marked
 			confusion 20
 		fleet
 			names "civilian"
@@ -1636,7 +1648,7 @@ mission "Escort Trap Freighter (Human)"
 		fleet "pirate raid" 5
 	npc kill
 		government "Bounty (Disguised)"
-		personality target marked launching harvests plunders
+		personality target marked launching harvests plunders marked
 			confusion 20
 		fleet
 			names "civilian"
@@ -1654,7 +1666,6 @@ mission "Escort Trap Freighter (Human)"
 		"reputation: Bounty (Disguised)" >?= 1
 		payment 150000
 		dialog `You research the <npc> and find an outstanding bounty for <payment>. With a video recording of your battle in hand, you head for the job board office to claim your reward.`
-
 
 
 conversation "microbot defense death"
@@ -1682,7 +1693,7 @@ mission "Thraal: Moreau"
 		conversation
 			action
 				set "met Thraal"
-			scene "ship/star explorer"
+			scene "thumbnail/star explorer-thumb"
 			`After introductions you learn that the man's name is Thraal. "I was aboard a ship, a Star Explorer named Icarus. We acquired a Jump Drive and were exploring this region of space. I had gone out in the Shuttle Pod to do some asteroid mining when aliens, the Korath, attacked the Icarus. Icarus fled, abandoning me in this system.`
 			choice
 				`	"It's amazing that you survived alone out here!"`
@@ -1780,7 +1791,6 @@ mission "Thraal: Moreau (Killed)"
 		set "Thraal: Moreau (Failed): offered"
 		set "Thraal: Moreau (Failed): declined"
 		fail
-
 
 
 mission "Prisoner Bribe Offer (Job)"
@@ -1921,7 +1931,6 @@ mission "Prisoner Bribe Release (Job)"
 		personality entering nemesis plunders
 			confusion 20
 		fleet "pirate raid" 3
-
 
 
 mission "Stranded Dirtbelt Saboteur"

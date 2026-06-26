@@ -629,7 +629,7 @@ mission "QKBlade: Bearer of The Blade 2"
 
 event "Stolen Snake Blade"
 
-mission "QKBlade: Bearer of The Blade 3A"
+mission "QKBlade: Bearer of The Blade 3 (Duels)"
 	invisible
 	minor
 	repeat
@@ -637,95 +637,23 @@ mission "QKBlade: Bearer of The Blade 3A"
 		government "Hai" "Hai (Unfettered)"
 	to offer
 		has "event: stolen Quantum Key Blade timer"
-		or
-			has "outfit (flagship installed): Quantum Dragon Blade"
-			has "outfit (flagship installed): Quantum Phoenix Blade"
-			has "outfit (flagship installed): Quantum Snake Blade"
-			has "outfit (flagship installed): Quantum Tiger Blade"
-			has "outfit (flagship installed): Quantum Turtle Blade"
+		has "flagship attribute: quantum keyblade"
 		or
 			and
 				has "flagship planet attribute: unfettered"
-				"QKBlade: duels won" <= 2
+				"QKBlade: duels won" <= 3
 				random < 20
 			and
 				has "flagship planet attribute: hai"
-				"QKBlade: duels won" <= 2
+				"QKBlade: duels won" <= 3
 				random < 15
 			and
 				has "flagship planet attribute: unfettered"
-				"QKBlade: duels won" >= 5
+				"QKBlade: duels won" >= 4
 				random < 10
 			and
 				has "flagship planet attribute: hai"
-				"QKBlade: duels won" >= 3
-				random < 5
-	on offer
-		conversation
-			scene "outfit/quantum dragon blade"
-			`It's after midnight by the time you head back to your ship. The area is deserted when a short figure in a hooded cloak steps out of a nearby alley. It pulls out a long knife and charges at you! You scarcely have time to draw the Quantum Key Blade to defend yourself. What will you do?`
-			choice
-				`	(Feint.)`
-					goto success
-				`	(Parry.)`
-					goto draw
-				`	(Strike.)`
-					goto strike
-				`	(Wield the terrifying power of Midnight's Lost Orphan.)`
-					to display
-						has "outfit (flagship installed): Midnight's Lost Orphan"
-					goto orphan
-			label orphan
-			action
-				"captain of atrocity" ++
-				outfit "Evidence of ********" 1
-				set "license: Nightmare Fuel"
-			scene "outfit/midnight lost orphan"
-			`	You are the Demon Captain of Atrocities. The power of Midnight's Lost Orphan flows through you. With a simple gesture, the Unfettered is sent flying into the side of a building! It crumples to the ground in a bloody heap.`
-				decline
-			label strike
-			`	Your attempt at swordsmanship fails as the attacker's blade sinks into your chest. The murderer is a Hai, probably an Unfettered. He grabs the Quantum Key Blade and cackles in glee as your life blood drains away...`
-				die
-			label draw
-			`	You and your assailant both take up a defensive stance, neither willing to commit to an attack. The element of surprise gone, your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
-				defer
-			label success
-			`	You bait your assailant with a feint and follow up with an attack through the opening in his defense. Your blade draws blood and your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
-				accept
-	on accept
-		"QKBlade: duels won" ++
-		fail
-
-mission "QKBlade: Bearer of The Blade 3B"
-	invisible
-	minor
-	repeat
-	source
-		government "Hai" "Hai (Unfettered)"
-	to offer
-		has "event: stolen Quantum Key Blade timer"
-		or
-			has "outfit (flagship installed): Quantum Dragon Blade"
-			has "outfit (flagship installed): Quantum Phoenix Blade"
-			has "outfit (flagship installed): Quantum Snake Blade"
-			has "outfit (flagship installed): Quantum Tiger Blade"
-			has "outfit (flagship installed): Quantum Turtle Blade"
-		or
-			and
-				has "flagship planet attribute: unfettered"
-				"QKBlade: duels won" <= 2
-				random < 20
-			and
-				has "flagship planet attribute: hai"
-				"QKBlade: duels won" <= 2
-				random < 15
-			and
-				has "flagship planet attribute: unfettered"
-				"QKBlade: duels won" >= 5
-				random < 10
-			and
-				has "flagship planet attribute: hai"
-				"QKBlade: duels won" >= 3
+				"QKBlade: duels won" >= 4
 				random < 5
 	on offer
 		conversation
@@ -735,80 +663,31 @@ mission "QKBlade: Bearer of The Blade 3B"
 				`	(Feint.)`
 					goto feint
 				`	(Parry.)`
-					goto success
-				`	(Strike.)`
-					goto draw
-				`	(Wield the terrifying power of Midnight's Lost Orphan.)`
-					to display
-						has "outfit (flagship installed): Midnight's Lost Orphan"
-					goto orphan
-			label orphan
-			action
-				"captain of atrocity" ++
-				outfit "Evidence of ********" 1
-				set "license: Nightmare Fuel"
-			scene "outfit/midnight lost orphan"
-			`	You are the Demon Captain of Atrocities. The power of Midnight's Lost Orphan flows through you. With a simple gesture, the Unfettered is sent flying into the side of a building! It crumples to the ground in a bloody heap.`
-				decline
-			label feint
-			`	Your attempt at swordsmanship fails as the attacker's blade sinks into your chest. The murderer is a Hai, probably an Unfettered. He grabs the Quantum Key Blade and cackles in glee as your life blood drains away...`
-				die
-			label draw
-			`	You and your assailant both attack, barely managing to avoid each other's blow. The element of surprise gone, your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
-				defer
-			label success
-			`	You parry the attack and counter with one of your own. Your blade draws blood and your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
-				accept
-	on accept
-		"QKBlade: duels won" ++
-		fail
-
-mission "QKBlade: Bearer of The Blade 3C"
-	invisible
-	minor
-	repeat
-	source
-		government "Hai" "Hai (Unfettered)"
-	to offer
-		has "event: stolen Quantum Key Blade timer"
-		or
-			has "outfit (flagship installed): Quantum Dragon Blade"
-			has "outfit (flagship installed): Quantum Phoenix Blade"
-			has "outfit (flagship installed): Quantum Snake Blade"
-			has "outfit (flagship installed): Quantum Tiger Blade"
-			has "outfit (flagship installed): Quantum Turtle Blade"
-		or
-			and
-				has "flagship planet attribute: unfettered"
-				"QKBlade: duels won" <= 2
-				random < 20
-			and
-				has "flagship planet attribute: hai"
-				"QKBlade: duels won" <= 2
-				random < 15
-			and
-				has "flagship planet attribute: unfettered"
-				"QKBlade: duels won" >= 5
-				random < 10
-			and
-				has "flagship planet attribute: hai"
-				"QKBlade: duels won" >= 3
-				random < 5
-	on offer
-		conversation
-			scene "outfit/quantum dragon blade"
-			`It's after midnight by the time you head back to your ship. The area is deserted when a short figure in a hooded cloak steps out of a nearby alley. It pulls out a long knife and charges at you! You scarcely have time to draw the Quantum Key Blade to defend yourself. What will you do?`
-			choice
-				`	(Feint.)`
-					goto draw
-				`	(Parry.)`
 					goto parry
 				`	(Strike.)`
-					goto success
+					goto strike
+				`	(Quantum Shift.)[experience required]`
+					to activate
+						"QKBlade: duels won" >= 4
+					to display
+						"QKBlade: duels won" <= 3
+				`	(Quantum Shift.)`
+					to display
+						"QKBlade: duels won" >= 4
 				`	(Wield the terrifying power of Midnight's Lost Orphan.)`
 					to display
 						has "outfit (flagship installed): Midnight's Lost Orphan"
 					goto orphan
+			label quantum
+			branch quantum-success
+				random < ( "QKBlade: duels won" + 36 )
+			`	You had hoped your previous duel experience would grant you the skill to activate Quantum Shifting in time to evade the enemy. Unfortunately, you still fumble the activation and the attacker's blade sinks into your chest. The murderer is a Hai, probably an Unfettered. He grabs the Quantum Key Blade and cackles in glee as your life blood drains away...`
+				die
+			label quantum-success
+			action
+				"reputation: Hai (Unfettered)" --
+			`	You're skilled enough with the Quantum Keyblade to activate quantum shifting quickly enough to evade the enemy. The Hai attacker studies you a moment before sneering and scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
+				defer
 			label orphan
 			action
 				"captain of atrocity" ++
@@ -817,19 +696,63 @@ mission "QKBlade: Bearer of The Blade 3C"
 			scene "outfit/midnight lost orphan"
 			`	You are the Demon Captain of Atrocities. The power of Midnight's Lost Orphan flows through you. With a simple gesture, the Unfettered is sent flying into the side of a building! It crumples to the ground in a bloody heap.`
 				decline
-			label parry
+			label strike
+			branch strike-draw
+				random < 33
+			branch strike-success
+				random < 33
 			`	Your attempt at swordsmanship fails as the attacker's blade sinks into your chest. The murderer is a Hai, probably an Unfettered. He grabs the Quantum Key Blade and cackles in glee as your life blood drains away...`
 				die
-			label draw
+			label strike-draw
+			`	You and your assailant both attack, barely managing to avoid each other's blow. The element of surprise gone, your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
+				defer
+			label strike-success
+			action
+				"QKBlade: duels won" ++
+				"reputation: Hai (Unfettered)" ++
+				"reputation: Hai Merchant (Sympathizers)" ++
+				"reputation: Hai (Unfettered Civilians)" ++
+				"reputation: Hai (Friendly Unfettered)" ++
+			`	You see through your attacker's feint and strike when an opportunity presents itself. Your blade draws blood and your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
+				decline
+			label parry
+			branch parry-draw
+				random < 33
+			branch parry-success
+				random < 33
+			`	Your attempt at swordsmanship fails as the attacker's blade sinks into your chest. The murderer is a Hai, probably an Unfettered. He grabs the Quantum Key Blade and cackles in glee as your life blood drains away...`
+				die
+			label parry-draw
+			`	You and your assailant both take up a defensive stance, neither willing to commit to an attack. The element of surprise gone, your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
+				defer
+			label parry-success
+			action
+				"QKBlade: duels won" ++
+				"reputation: Hai (Unfettered)" ++
+				"reputation: Hai Merchant (Sympathizers)" ++
+				"reputation: Hai (Unfettered Civilians)" ++
+				"reputation: Hai (Friendly Unfettered)" ++
+			`	You parry the attack and counter with one of your own. Your blade draws blood and your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
+				decline
+			label feint
+			branch feint-draw
+				random < 33
+			branch feint-success
+				random < 33
+			`	Your attempt at swordsmanship fails as the attacker's blade sinks into your chest. The murderer is a Hai, probably an Unfettered. He grabs the Quantum Key Blade and cackles in glee as your life blood drains away...`
+				die
+			label feint-draw
 			`	You and your assailant both attempt a feint, to no avail. The element of surprise gone, your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
 				defer
-			label success
-			`	You see through your attacker's feint and strike when an opportunity presents itself. Your blade draws blood and your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
-				accept
-	on accept
-		"QKBlade: duels won" ++
-		fail
-
+			label feint-success
+			action
+				"QKBlade: duels won" ++
+				"reputation: Hai (Unfettered)" ++
+				"reputation: Hai Merchant (Sympathizers)" ++
+				"reputation: Hai (Unfettered Civilians)" ++
+				"reputation: Hai (Friendly Unfettered)" ++
+			`	You bait your assailant with a feint and follow up with an attack through the opening in his defense. Your blade draws blood and your attacker mutters a curse while scurrying off into the darkness. Realizing that a Hai running on all four limbs is too fast for a human to follow, you don't bother to pursue.`
+				decline
 
 
 mission "QKBlade: Bearer of The Blade 4"
@@ -1173,12 +1096,41 @@ mission "QKBlade: Honor of the Blade Bearer - Courier (Unfettered)"
 #
 ###################################
 
+mission "QKBlade: Bearer of The Blade 3A"
+	invisible
+	minor
+	source
+		government "Hai" "Hai (Unfettered)"
+	to offer
+		never
+	on offer
+		fail
+
+mission "QKBlade: Bearer of The Blade 3B"
+	invisible
+	minor
+	source
+		government "Hai" "Hai (Unfettered)"
+	to offer
+		never
+	on offer
+		fail
+
+mission "QKBlade: Bearer of The Blade 3C"
+	invisible
+	minor
+	source
+		government "Hai" "Hai (Unfettered)"
+	to offer
+		never
+	on offer
+		fail
+
 mission "QKBlade: Bearer of The Blade 3D"
 	invisible
 	minor
 	source
-		government "Hai (Unfettered)"
-		not attributes "uninhabited"
+		government "Hai" "Hai (Unfettered)"
 	to offer
 		never
 	on offer
@@ -1188,8 +1140,7 @@ mission "QKBlade: Bearer of The Blade 3E"
 	invisible
 	minor
 	source
-		government "Hai (Unfettered)"
-		not attributes "uninhabited"
+		government "Hai" "Hai (Unfettered)"
 	to offer
 		never
 	on offer
@@ -1199,8 +1150,7 @@ mission "QKBlade: Bearer of The Blade 3F"
 	invisible
 	minor
 	source
-		government "Hai (Unfettered)"
-		not attributes "uninhabited"
+		government "Hai" "Hai (Unfettered)"
 	to offer
 		never
 	on offer

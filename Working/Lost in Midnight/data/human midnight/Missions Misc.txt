@@ -30,7 +30,7 @@ mission "Biohazard 1: Star Explorer"
 				random < 5
 	on offer
 		conversation
-			scene "ship/star explorer"
+			scene "thumbnail/star explorer-thumb"
 			`A navy officer approaches you. "Do you have combat experience? We are offering <payment> to any pilots that can fight to help track down the ship known as Biohazard and rescue any people they have kidnapped. The Biohazard has raided several merchant ships in the north over the last few days. The victims could be sold into slavery or suffer some other horrible fate."`
 			`	What will you do?`
 			choice
@@ -62,7 +62,7 @@ mission "Biohazard 1: Star Explorer"
 			action
 				set "license: Nightmare Fuel"
 			scene "outfit/brig"
-			`When you board the ship, no defenders challenge you. Occasional screams can be heard in the distance. Your search for the kidnapped victims leads you to the ships brig. But the prisoners have escaped! A few dead bodies of the prisoners remain. Each has the alphanumeric sequence "BH-031" tattooed onto the back of their neck. You also notice their skin is mottled with greenish patches...`
+			`When you board the ship, no defenders challenge you. Occasional screams can be heard in the distance. Your search for the kidnapped victims leads you to the ship's brig. But the prisoners have escaped! A few dead bodies of the prisoners remain. Each has the alphanumeric sequence "BH-031" tattooed onto the back of their neck. You also notice their skin is mottled with greenish patches...`
 			choice
 				`	(Continue your search.)`
 			scene "outfit/medical bay"
@@ -161,8 +161,7 @@ mission "Biohazard 2: Bulk Freighter"
 			names "slave drones"
 			cargo 0
 			variant
-				"Pirate Drone" 6
-				"Pirate Drone (Modified)" 6
+				"Mining Drone" 12
 	npc board
 		government "Bounty"
 		system Atik
@@ -173,7 +172,7 @@ mission "Biohazard 2: Bulk Freighter"
 			action
 				set "license: Nightmare Fuel"
 			scene "outfit/brig"
-			`When you board the ship, no defenders challenge you. The ship is eerily quiet. Your search for the kidnapped victims leads you to the ships brig. But no one is being held here.`
+			`When you board the ship, no defenders challenge you. The ship is eerily quiet. Your search for the kidnapped victims leads you to the ship's brig. But no one is being held here.`
 			choice
 				`	(Continue your search.)`
 			scene "outfit/pug biodefenses"
@@ -284,7 +283,7 @@ mission "Blue Ridge 2"
 				`	"Why isn't there a Hyperdrive?"`
 			scene "outfit/unknown"
 			`	She grins and answers, "It's for security, so thieves can't just take the ship and flee the system." It sounds like a reasonable explanation.`
-			`	But then she leans in and whispers conspiratorially, "There are rumors that Han Sizer got ahold of some alien device, like the ones the Quarg use instead of a Hyperdrive. Supposedly, the government confiscated it after he died." She leans back, "But whether that's true or not, who can say?" She smiles mischievously and you wonder if that's just a story they tell museum guests to enhance the legend of Han Sizer.`
+			`	But then she leans in and whispers conspiratorially, "There are rumors that Han Sizer got ahold of some alien device, like the ones the Quarg use instead of a Hyperdrive. Supposedly, the government confiscated it after he died." She leans back, "But whether that's true or not, who can say?" She smiles mischievously and you're uncertain if that's just a story they tell museum guests to enhance the legend of Han Sizer.`
 				decline
 
 
@@ -341,7 +340,7 @@ mission "Bounty Hunting: Angry Chicken"
 		government "Bounty"
 		system
 			distance 1 2
-		personality target waiting staying disables harvests
+		personality target waiting staying disables harvests marked tracked
 			confusion 20
 		ship "Modified Firebird (Modified Hyperdrive)" "Angry Chicken"
 		dialog `Rocky hails you: "That wasn't so tough. Let's head back to <planet> and split the reward."`
@@ -350,7 +349,6 @@ mission "Bounty Hunting: Angry Chicken"
 	on complete
 		payment 60000
 		dialog `The government of <planet> gratefully pays you 120,000 credits for eliminating the Angry Chicken. Rocky claims half for himself and wishes you farewell.`
-
 
 
 mission "Drunk Pilot"
@@ -371,7 +369,7 @@ mission "Drunk Pilot"
 				`	(Ignore him.)`
 					defer
 			`	"Eight days! How the hell is anyone supposed to get that done in eight days?" He chugs down his beer and orders another.`
-			`	One of his crew mates responds, "Even with extra Fuel Pods, it takes ten days with no stops to refuel. I don't see how it can be done any faster." He finishes off his beer and orders another.`
+			`	One of his crew mates responds, "Even when we tried adding extra Fuel Pods, it takes ten days with no stops to refuel. I don't see how it can be done any faster." He finishes off his beer and orders another.`
 			`	"It must be a scam. A scam!" The captain accepts his fresh beer from the waitress and immediately chugs it down. "I'll bet Wang Xiang Tai is just awarding the Special Supply Run jobs to their friends and claiming that they completed the New China Supply Run." The waitress comes to collect his empty mug and he orders another.`
 			`	"Yeah, that must be it." A third man with a whisky bottle downs a shot and refills his glass.`
 			branch "diyu"
@@ -381,7 +379,7 @@ mission "Drunk Pilot"
 				`	(Head back to your ship.)`
 					goto end
 			label "diyu"
-			`	They keep going on about how unfair it is. By the time they leave, you've learned that their ship is named the <npc> and they've been trying and failing to complete the New China Supply Run job given out at "Wang Xiang Tai". It seems completing the job gives a pilot access to better quality jobs there.`
+			`	They keep going on about how unfair it is. By the time they leave, you've learned that their ship is named the <npc> and they've been trying and failing to complete the New China Supply Run job given out at Wang Xiang Tai. It seems completing the job gives a pilot access to better quality jobs there.`
 			choice
 				`	(Head back to your ship.)`
 					goto end
@@ -400,10 +398,10 @@ mission "Drunk Pilot"
 		government "Bounty"
 		personality target waiting uninterested forbearing coward appeasing mute
 			confusion 120
-		ship "Modified Clipper (Smuggler)" "Wild Turkey"
+		ship "Modified Firebird (Smuggler)" "Wild Turkey"
 		on disable
 			payment 10000
-			dialog `You've disabled the Wild Turkey. Leave them to sober up. The authorities reward you with 10,000 credits for helping to stop the Wild Turkey. That captain will probably have to pay a fine and take a pilot safety class or have his license revoked.`
+			dialog `You've disabled the <npc>. Leave them to sober up. The authorities reward you with 10,000 credits for helping to stop the Wild Turkey. That captain will probably have to pay a fine and take a pilot safety class or have his license revoked.`
 			fail
 		on kill
 			dialog `[MISSION FAILED]: You failed to disable the Wild Turkey without destroying it.`
@@ -673,6 +671,7 @@ mission "Free Worlds: Katya Surveillance Pod Sale (Pirate)"
 
 mission "Free Worlds: Katya Surveillance Pod Sale (Trinket)"
 	invisible
+	deadline 2
 	source Trinket
 	to offer
 		"credits" > 122500
@@ -738,6 +737,8 @@ mission "Free Worlds: Katya Surveillance Pod Sale (Trinket)"
 		government "Bounty Hunter"
 		personality waiting staying vindictive coward
 		fleet "Bounty Hunters"
+		on kill
+			fail
 
 
 mission "Free Worlds Infiltrator 1"
@@ -837,7 +838,7 @@ mission "Free Worlds Infiltrator 2 failure"
 
 
 mission "Infiltrator: Secret Data"
-	entering
+	transition
 	invisible
 	deadline 30
 	source
@@ -940,40 +941,6 @@ mission "Infiltrator: War Begins"
 		system Pollux
 		personality waiting staying surveillance timid mute
 		ship "Infiltrator" "Discretion"
-
-
-
-mission "Kraz Adds Twin Torpedo Pods"
-	landing
-	name "Twin Torpedo Pod"
-	description "Find and deliver a Twin Torpedo Pod to <destination>. Barmy will try to reverse engineer them."
-	source
-		government "Free Worlds"
-		attributes "spaceport"
-		not attributes "uninhabited"
-	destination "Rust"
-	to offer
-		has "event: deep sky tech available"
-		has "event: add twin torpedo pods"
-		has "event: stack core for sale"
-		random < 70
-	on offer
-		conversation
-			scene "outfit/twintorpedopod"
-			`You receive a message from Barmy Edwards: "Hi <first>! Reports from the Militia indicate that pirates have developed a new weapon to keep pace with the Navy's Typhoon Torpedoes. The Free Worlds wants us to get ahold of one and reverse engineer it for our own use. Do you think you can find a Twin Torpedo Pod and deliver it to <destination>?" You could try to buy one from a pirate outfitter or plunder one off of a pirate ship.`
-			choice
-				`	"Sure, I'll get one for you."`
-				`	"Sorry, I'm not up for that."`
-					decline
-			`	"I knew I could count on you!" Hopefully Barmy won't need to use your ship for target practice once you deliver this weapon.`
-				accept
-	on complete
-		outfit "Twin Torpedo Pod" -1
-		event "kraz twin torpedo pods" 15
-		conversation
-			scene "outfit/twintorpedopod"
-			`You deliver the Twin Torpedo Pod to Barmy's lab at Kraz. "Thanks <first>! The modifications seem simple enough. With luck, we'll have it available at some of our outfitters in a couple of weeks." As Barmy studies some wiring on the Twin Torpedo Pod, you quietly head back to your ship before he decides that he wants to try shooting it at something.`
-
 
 
 mission "Limit Breaker Intro"
@@ -1115,18 +1082,97 @@ mission "Midnight FW Epilogue: JJ and Brother Greg"
 		government "Pirate"
 		personality waiting staying harvests plunders
 			confusion 10
-		ship "Marauder Leviathan (Shields)" "Golden Serpent"
+		ship "Marauder Leviathan" "Golden Serpent"
 	npc
 		government "Pirate"
 		system Girtab
 		personality waiting staying harvests plunders
 			confusion 10
-		ship "Marauder Falcon (Shields)" "Golden Talons"
+		ship "Marauder Falcon" "Golden Talons"
 	on complete
 		payment 1000000
 		"reputation: Independent" ++
 		conversation
 			`You and JJ exchanged war stories during the journey. Brother Greg had a few stories of his own to contribute. There were more than a few injured Navy and Militia crash survivors who arrived at the monastery seeking treatment. JJ salutes you. "Thanks again, <first>. I'll make sure you get bonus pay for your assistance." The Free Worlds deposits <payment> into your account.`
+
+
+mission "Midnight FW Plasma Missile 1"
+	landing
+	name "Weapon Testing"
+	description "When you have time, report to <destination>, where Barmy Edward has another weapon he would like you to test."
+	source
+		near "Kraz" 1 100
+	destination "Rust"
+	to offer
+		has "FW Southern Battle 1B: offered"
+		not "event: dreadnoughts for sale"
+		random < 15
+	on offer
+		conversation
+			`A message arrives for you soon after you land. It's from Barmy Edward, the weapons engineer at Kraz Cybernetics. He writes: "Hello, Captain <last>! I've been working on another weapon and am trying to find a volunteer to help out with the testing. If you're interested in getting your hands on some new technology, drop by Rust and come visit our factory."`
+				accept
+
+mission "Midnight FW Plasma Missile 2"
+	landing
+	name "Weapon Testing"
+	description "A test ship with new weaponry is in orbit around <planet>. Fight and disable it (but do not board or destroy it!) and then land to give Barmy Edward feedback on its performance."
+	source "Rust"
+	to offer
+		has "Midnight FW Plasma Missile 1: done"
+	on offer
+		conversation
+			branch late
+				has "event: dreadnoughts for sale"
+			`You received a message recently from Barmy Edward, asking you to stop by the Kraz Cybernetics facility to help test a new weapon. Do you want to visit them now?`
+			choice
+				`	(Yes.)`
+				`	(No.)`
+					defer
+			scene "outfit/plasma missile"
+			`	You find Barmy Edward studying what appears to be a Meteor Missile that's been painted purple. "Thanks for coming. We're under pressure to give the Free Worlds something to keep pace with recent advancements in Republic technology. I've decided to push forward on a previous proposal that was rejected for being too risky...`
+			choice
+				`	"Wait, the idea was already rejected?"`
+			`	Barmy clears his throat. "Well, that was a long time ago, before the war. But since management is looking for a quick solution, I think it'll be accepted under the circumstances. That's where you come in." He gestures at the missile. "Plasma Missiles. The component chemicals are inert until impact, at which time they are compressed together resulting in a plasma explosion. We've outfitted the Doombat with them. We'll need you engage in combat against it. As before, make sure you don't destroy it. Return here and we can review the results."`
+			choice
+				`	"Okay, sounds simple enough."`
+				`	"Sorry, this sounds a bit too risky. I'd rather not be involved in this sort of testing."`
+					decline
+			`	"I knew I could count on you! I've waited so long for this day..." Barmy seems eager to get started.`
+				accept
+			label late
+			scene "outfit/plasma missile"
+			`	Barmy Edward thanks you for traveling all the way out to Rust. However, testing on Plasma Missiles was completed without your assistance.`
+				decline
+	npc disable save
+		personality disables heroic staying
+		government "Test Dummy"
+		ship "Doombat (Plasma Missile)" "Doombat"
+	on visit
+		dialog `You've landed on <planet>, but you have not disabled the <npc> yet. Disable it before returning.`
+	on complete
+		event "plasma missiles available" 30
+		log "Assisted Barmy Edward with another weapon test: this time, missiles that cause a plasma explosion on impact. They might work best when combined with other plasma weapons."
+		conversation
+			scene "outfit/flamethrower"
+			`You head to the hangar to meet up with Barmy Edward, and find him tinkering with the missile you saw earlier. "So, what did you think?"`
+			choice
+				`	"I'm amazed this didn't already exist."`
+				`	"It's still vulnerable to anti-missiles."`
+					goto anti-missile
+				`	"The Inferno Rockets used by pirates are more terrifying."`
+					goto inferno
+			`	"It's a simple upgrade, isn't it? I suggested making them a year before the war started but management thought selling them was too risky. The on-going war has caused them to reconsider."`
+			`	"When will it be available for sale?" you ask.`
+				goto available
+			label anti-missile
+			`	"True, but the heat generated from any that do get through will also aid the infrared trackers for subsequent missiles. Being able to deliver a plasma explosion from such a distance will make the enemy more vulnerable to Plasma Cannons and Flamethrowers once they engage at closer range."`
+			`	"That is an interesting point," you say. "Are they available for sale yet?"`
+				goto available
+			label inferno
+			`	"Hmph. I came up with my idea first. Their rockets are unguided and if they hit anything too close are likely to overheat the ship firing them as well."`
+			`	"I guess that makes sense," you say, "Are you going to be making them available for sale?"`
+			label available
+			`	"Once we have production going we should have them for sale in a month or so," he says. "Thanks for your help." You say goodbye and head back to your ship.`
 
 
 mission "Midnight FW Pug 2C: Jump Drive (Limit Distance)"
@@ -1270,6 +1316,80 @@ mission "Midnight FW Pug 2C: Modified Hyperdrive (Hai)"
 		set "FW Pug 2C: done"
 
 
+mission "Midnight Heart of Iron"
+	minor
+	repeat
+	deadline 14
+	name "Heart of Iron"
+	description "A wanted criminal is traveling on an infamous smuggler ship named the <npc>. It will be passing through this system soon. Board the ship and detain the criminal in a brig, then bring him to <destination> by <date>. Reward for capture: <payment>."
+	passengers 1
+	to offer
+		not "midnight heart of iron killed"
+		has "outfit (installed): Brig"
+		has "Bounty Hunting (Medium, Boarding, Entering): done"
+		"combat rating" > 168
+		random < 70 - ( "midnight heart of iron deferred" * 55 )
+	source
+		government "Republic" "Free Worlds" "Syndicate"
+		attributes "frontier"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "frontier"
+		not attributes "uninhabited"
+		distance 2 6
+	substitutions
+		"<local government>" "Republic"
+			has "flagship planet government: Republic"
+		"<local government>" "Free Worlds"
+			has "flagship planet government: Free Worlds"
+		"<local government>" "Syndicate"
+			has "flagship planet government: Syndicate"
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`A <local government> officer approaches you. "Captain <last>! I've heard you have experience capturing criminals and bringing them to trial for justice. Would you be willing to lend us your skills to catch a notorious criminal?"`
+			choice
+				`	"Give me the details."`
+				`	"I'm too busy to help you."`
+					defer
+			scene "thumbnail/ironbird-thumb"
+			`	He responds, "The criminal is riding on the <npc>. It's become infamous among smugglers and human traffickers. Centuries of modifications have molded it into an ideal vessel for evading security scans. If you can board the <npc>, detain the criminal in a brig then bring him to <destination> by <date> for a reward of <payment>."`
+			choice
+				`	"I'll help."`
+				`	"I'm not interested."`
+					decline
+			`	The officer breaths a sigh of relief. "Thanks!  Our previous attempts to catch the <npc> have failed. We suspect they will be passing through this system soon."`
+				accept
+	on defer
+		set "midnight heart of iron deferred"
+	npc board
+		government "Bounty (Disguised)"
+		personality timid fleeing marked uninterested entering target
+		"cargo settings"
+			cargo 1
+			outfitters "Contraband"
+		ship "Ironbird" "Heart of Iron"
+		dialog "You blast your way onto the ship and confine the the criminal to your ship's brig. Time to deliver them to <planet>."
+		on kill
+			set "midnight heart of iron killed"
+	on visit
+		dialog phrase "generic bounty hunting boarding on visit"
+	on complete
+		payment
+		payment 525000
+		"reputation: Republic" ++
+		"reputation: Syndicate" ++
+		"reputation: Free Worlds" ++
+		conversation
+			scene "thumbnail/ironbird-thumb"
+			branch escaped
+				not "midnight heart of iron killed"
+			`The government of <planet> gratefully pays you <payment> for apprehending the captain of the <npc>. This ship and its crew will no longer be a threat to galactic security.`
+				accept
+			label escaped
+			`The government of <planet> gratefully pays you <payment> for apprehending the captain of the <npc>. However, allowing the crew to escape means that the <npc> is likely to threaten galactic security again.`
+
+
 mission "Midnight Independent Humanitarian"
 	name "Emergency Supplies to <planet>"
 	description "Bring <cargo> to the lawless world of <destination>, to help alleviate a natural disaster."
@@ -1282,6 +1402,7 @@ mission "Midnight Independent Humanitarian"
 		government "Republic" "Free Worlds" "Syndicate" "Quarg" "Neutral"
 	destination
 		government "Pirate" "Independent"
+		not attributes "station"
 		distance 2 10
 	clearance
 	on offer
@@ -1557,7 +1678,7 @@ mission "Midnight Republic Weapons Confiscation"
 	invisible
 	source
 		government "Republic"
-		attributes paradise urban rich
+		attributes paradise urban rich wealthy
 		not attributes station uninhabited
 	to offer
 		"flagship required crew" > 2
@@ -2073,10 +2194,13 @@ mission "Pandora's Problems 1"
 			`	"It's... empty?" The camera catches a glimpse of Harold looking around in confusion before being knocked violently to the floor as the video feed is cut off!`
 			`	The display switches to a nervous anchorwoman who apologizes for "technical difficulties" then cuts to a commercial break.`
 			`	The crowd bursts into a cacophony as suddenly everyone has an opinion on what was just witnessed.`
+			choice
+				`	(Listen.)`
 			`	"I knew it was a trap."`
 			`	"This was probably just a publicity stunt."`
 			`	"Pandora's Box? It's a hoax if you ask me."`
 			`	"I'd bet Harold is being arrested right now."`
+			`	"Nah, I'm guessing this is fake news."`
 			`	When the commercial break is over, the news program has moved on to another topic. No mention is made of what happened to Harold or Pandora's Box...`
 				decline
 				
@@ -2475,11 +2599,13 @@ mission "Smuggler's Den Advanced Shields"
 			cargo 1
 			commodities "Electronics" "Equipment" "Industrial"
 			variant
-				"Marauder Arrow (Shields)"
-				"Marauder Falcon (Shields)"
-				"Marauder Leviathan (Shields)"
-				"Marauder Manta (Shields)"
-				"Marauder Splinter (Shields)"
+				"Marauder Arrow"
+				"Marauder Falcon"
+				"Marauder Firebird"
+				"Marauder Leviathan"
+				"Marauder Manta"
+				"Marauder Quicksilver"
+				"Marauder Splinter"
 	on fail
 		"reputation: Independent (Killable)" >?= 10
 
@@ -2503,18 +2629,28 @@ mission "Star Explorer Fan Tour"
 				has "Randomize Star Explorer Fan Tour"
 				random < 5
 	on offer
-		event "star explorer update"
 		conversation
-			scene "ship/star explorer"
+			scene "thumbnail/star explorer-thumb"
 			`You notice a long line of strangely dressed passengers waiting to board one particular ship.`
 			choice
 				`	(Ask what's going on.)`
 				`	(Ignore them.)`
 					defer
+			action
+				event "star explorer update"
 			`	"It's a cruise for fans of Star Explorer, an old Earth science fiction show," one of the people waiting in line exclaims. You find it hard to believe that all these costumes came from the same show. Some fans are dressed in simple black pants and shirts of various colors while others are wearing elaborate battle armor and make-up.`
+			branch approach
+				not "license: Pilot's"
+			scene "outfit/license"
+			label approach
 			`	Before the rabid fan can begin talking your ear off about the show, the ship's captain approaches and asks, "Excuse me, would you happen to have a pilot's license?"`
 			choice
-				`	"Sure. Do you need a pilot?"`
+				`	"Yes. Do you need a pilot?"`
+					to display
+						has "license: Pilot's"
+				`	"Uh, yeah... Do you need a pilot?"`
+					to display
+						not "license: Pilot's"
 				`	"Uh, no. No pilot's license here."`
 					goto refuse
 			scene "ship/blackbird alien"
@@ -2533,8 +2669,8 @@ mission "Star Explorer Fan Tour"
 		clear "star explorer pirate raid activated"
 	on enter
 		conversation
-			scene "ship/star explorer"
-			`	Orchestral music plays as a message from the Star Explorer's captain is transmitted, "This is Captain Tim Smirk of the Last Frontier. The Star Explorer wasn't just a show. It was an ancient space exploration vessel from the early days of Hyperspace travel. Its design was heavily influenced by an old Earth science-fiction show with the same name as a marketing gimmick to entice young people to leave Sol and risk their lives exploring the vast unknown. Of the few that haven't been lost or destroyed, there are some still being used as actual science and exploration vessels. We'll be traveling to <waypoints> in search of new life and peaceful civilizations as we explore in the Last Frontier. But beware! The dreaded Grabons could attack us along the way! Rest assured I will endeavor to keep us safe along with our escort, Captain <first> <last> and the <ship>." Apparently that was an address meant for the passengers. Nice touch, adding your name at the end.`
+			scene "thumbnail/star explorer-thumb"
+			`	Orchestral music plays as a message from the Star Explorer's captain is transmitted, "This is Captain Tim Smirk of the Last Frontier. The Star Explorer wasn't just a work of fiction. It was an ancient space exploration vessel from the early days of Hyperspace travel. Its design was heavily influenced by an old Earth science-fiction show with the same name as a marketing gimmick to entice young people to leave Sol and risk their lives exploring the vast unknown. Of the few that haven't been lost or destroyed, there are some still being used as actual science and exploration vessels. We'll be traveling to <waypoints> in search of new life and peaceful civilizations as we explore in the Last Frontier. But beware! The dreaded Grabons could attack us along the way! Rest assured I will endeavor to keep us safe along with our escort, Captain <first> <last> and the <ship>." Apparently that was an address meant for the passengers. Nice touch, adding your name at the end.`
 
 	on enter "Mirzam"
 		dialog `Captain Smirk sends out a message, "Red Alert! Hostile Grabons are attacking!" This must be one of the mock battles. You're only supposed to disable them, but those lasers are real...`
@@ -2611,7 +2747,7 @@ mission "Star Explorer Fan Tour"
 		clear "star explorer pirate raid activated"
 		log `Escorted the "Last Frontier," a Star Explorer. It was a refreshing change from the usual escort missions: a multi-day cruise around the Paradise Worlds featuring mock battles with "aliens" mixed in with some galactic sight-seeing.`
 		conversation
-			scene "ship/star explorer"
+			scene "thumbnail/star explorer-thumb"
 			`	"This is Captain Tim Smirk of the Last Frontier. Our Star Explorer has safely returned to <planet> with the help of Captain <first> <last> and the <ship>. Even though the Grabons are still a threat, we will continue our mission to search for new life and peaceful civilizations as we explore in the Last Frontier. Remember to stop by the gift shop as you exit the ship!" Orchestral music plays while you find <payment> deposited into your account.`
 		
 ship "Blackbird" "Alien Blackbird"
@@ -2634,15 +2770,13 @@ ship "Blackbird" "Alien Blackbird"
 
 mission "Star Explorer Korath Raid"
 	non-blocking
-	landing
+	transition
 	invisible
 	source
-		attributes "core"
+		system "Kor Ak'Mari"
 	destination Earth
 	to offer
 		has "event: star explorer update"
-	on offer
-		require "Jump Drive"
 	on enter "Kor Ak'Mari"
 		dialog `The Korath are in the process of plundering a disabled Star Explorer...`
 	npc 
@@ -3457,3 +3591,22 @@ mission "Southern Fiance (Parker, Perlman, Hoakes) 3"
 				decline
 
 
+########################################
+#
+# deprecated
+#
+########################################
+
+
+mission "Kraz Adds Twin Torpedo Pods"
+	landing
+	source
+		government "Free Worlds"
+		attributes "spaceport"
+		not attributes "uninhabited"
+	destination "Rust"
+	to offer
+		never
+	on offer
+		event "kraz twin torpedo pods"
+		fail

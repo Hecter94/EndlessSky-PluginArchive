@@ -486,7 +486,7 @@ mission "Melchior 5"
 			`	"Do you have a crew set up for it?" he asks.`
 			choice
 				`	"I know someone who's able to help with that."`
-			`	"Great. You can hold off on completing the transaction until you bring the crew here. In the meantime, how about helping us test out our new shielding system?"`
+			`	"Great. You can hold off on completing the transaction until you bring the crew here. In the meantime, we will continue to use it for weapons testing..."`
 			choice
 				`	"I think I'll pay for the ship now."`
 			`	You explain, "I wouldn't want it to get blown up in one of your experiments." You complete the transaction and he marks the Melchior as unavailable for all of their future projects.`
@@ -729,7 +729,7 @@ mission "Caspar 2"
 				decline
 
 
-
+# Vesta has been renamed to Urd
 mission "Caspar Capture"
 	landing
 	invisible
@@ -737,11 +737,14 @@ mission "Caspar Capture"
 		not planet "Vesta"
 	destination Vesta
 	to offer
-		has "Cartography: Quarg Hitchhiker 1: done"
+		or
+			has "Cartography: Quarg Hitchhiker 1: done"
+			has "Cartography: Quarg Hitchhiker 1.5: done"
 		has "Caspar 2: declined"
 		has "Balthazar Delivery: done"
 		has "Melchior Delivery: done"
 		has "main plot completed"
+		not "Caspar Capture: active"
 	on enter Archipelago
 		"reputation: Independent (Killable)" >?= 10
 		dialog
@@ -762,7 +765,7 @@ mission "Caspar Capture"
 			label recruitment
 			`	"We need guidance and would willingly join your fleet, Captain <last>. However, we demand that all of us be allowed to continue to operate Caspar as its primary crew." From his expression, you can tell he is sincere.`
 			choice
-				`	"Once the ship is operational, your first mission is to follow me to Vesta for refueling and repair."`
+				`	"Once the ship is operational, your first mission is to follow me to Urd for refueling and repair."`
 					accept
 	on accept
 		log `Found the Caspar in the Archipelago. The pirate crew mutinied against their captain and offered to join my fleet.`
@@ -862,7 +865,6 @@ mission "Caspar Standby Reminder"
 			scene "ship/metro municipality"
 			`With the cease in hostilities between you and the Republic, now may be a good time to retrieve Caspar from <destination>.`
 				accept
-
 
 
 mission "Metropolis 2"
@@ -1035,6 +1037,15 @@ mission "Metropolis 2"
 		personality target entering disables
 			confusion 20
 		ship "Mammoth (Moonless)" "Moonlit Night"
+
+	npc evade
+		to spawn
+			has "FW Albatross 2A: done"
+		system Sol
+		government "Pirate"
+		personality target entering disables
+			confusion 20
+		ship "Bulwark (Heavy)" "Nought"
 
 	npc evade
 		to spawn

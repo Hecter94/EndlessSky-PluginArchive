@@ -80,6 +80,7 @@ government "Doomsday Device"
 
 
 outfit "Graviton Channeler"
+	plural "Graviton Channelers"
 	category "Turrets"
 	thumbnail outfit/unknown
 	cost 218700
@@ -111,6 +112,7 @@ outfit "Graviton Channeler"
 	description "You have no idea how this works."
 
 outfit "Quantum Paradox Diffusion"
+	plural "Quantum Paradox Diffusions"
 	category "Turrets"
 	thumbnail outfit/unknown
 	cost 5000000
@@ -135,6 +137,7 @@ outfit "Quantum Paradox Diffusion"
 	description "You have no idea how this works."
 
 outfit "Quantum Paradox Inversion"
+	plural "Quantum Paradox Inversions"
 	category "System"
 	thumbnail outfit/unknown
 	cost 10530000
@@ -148,6 +151,7 @@ outfit "Quantum Paradox Inversion"
 	description "You have no idea how this works."
 
 outfit "Quantum Paradox Propulsion"
+	plural "Quantum Paradox Propulsions"
 	category "Engines"
 	thumbnail outfit/unknown
 	"cost" 8015000
@@ -181,6 +185,7 @@ effect "paradox propulsion"
 
 
 outfit "Imaginary Number Fusion Matrix"
+	plural "Imaginary Number Fusion Matrices"
 	category "Power"
 	thumbnail outfit/unknown
 	cost 141500000
@@ -197,6 +202,7 @@ outfit "Imaginary Number Fusion Matrix"
 
 
 outfit "Omni-Directional Photonic Emitter"
+	plural "Omni-Directional Photonic Emitters"
 	category "Turrets"
 	thumbnail outfit/unknown
 	cost 36000000
@@ -226,6 +232,7 @@ outfit "Omni-Directional Photonic Emitter"
 
 
 outfit "Space Differential Stabilizer"
+	plural "Space Differential Stabilizers"
 	category "Turrets"
 	thumbnail outfit/unknown
 	"mass" 45
@@ -249,6 +256,7 @@ outfit "Space Differential Stabilizer"
 
 
 outfit "Zero Division Core"
+	plural "Zero Division Cores"
 	category "Power"
 	thumbnail outfit/unknown
 	cost 7150000
@@ -425,11 +433,13 @@ fleet "Small Crystal Sentry"
 
 
 mission "Geddonia's Folly (Corpse)"
-	landing
+	transition
 	invisible
+	source
+		system Kalsolli
 	destination "Corpse"
 	on enter Kalsolli
-		event "Reveal Temeh"
+		event "Reveal Temeh" 0
 		set "temeh inaccessible patched"
 		log "Factions" "Geddonia" `Geddonia was a highly advanced species older than the Drak. They were small spheres of light with telekinetic powers that lived in large crystalline structures. The only active remnant of their civilization is a doomsday device called the Worldcrusher.`
 		conversation
@@ -457,34 +467,39 @@ mission "Temeh Inaccessible Patch"
 		has "event: Reveal Temeh"
 		not "temeh inaccessible patched"
 	on offer
-		event "Reveal Temeh"
+		event "Reveal Temeh" 0
 		fail
 
 
 mission "First Contact: Geddonia"
 	non-blocking
-	landing
+	entering
 	invisible
+	source
+		system Temeh
 	destination "Corpse"
 	npc kill
 		system Temeh
 		government "Doomsday Device"
 		personality waiting staying mining vindictive unconstrained
 		ship "Worldcrusher" "???"
-		conversation
-			action
-				set "First Contact: Geddonia: done"
-			`A telepathic voice speaks to you again. "Congratulations. You are one of a very few who have managed to force the Worldcrusher to phase into another quantum space time. None can predict when it will return."`
-			choice
-				`	"You mean it wasn't destroyed?"`
-			`	"The Worldcrusher is a techonological marvel. The mind that spawned it was a pinnacle of genius unlikely to be reached again. The construct propels itself by quantum shifting on a sub atomic level. Whenever it exists, it simultaneously does not exist. And while it does not exist now, it continues to exist elsewhen. The paradox diffusion waves surrounding it are the result of reality attempting to resolve this conundrum to account for the displacement caused by the effect of..." The voice continues on, but you are starting to develop a headache and are unable to focus on the thoughts being forced upon you.`
-			`	Eventually the voice fades and your consciousness briefly latches onto something. You have a vague memory of being lectured about a cat in a box that was both alive and dead at the same time, until the box was opened. Or something like that. Then the headache intensifies.`
-				accept
+		on kill
+			set "First Contact: Geddonia: done"
+			conversation
+				`A telepathic voice speaks to you again. "Congratulations. You are one of a very few who have managed to force the Worldcrusher to phase into another quantum space time. None can predict when it will return."`
+				choice
+					`	"You mean it wasn't destroyed?"`
+				`	"The Worldcrusher is a techonological marvel. The mind that spawned it was a pinnacle of genius unlikely to be reached again. The construct propels itself by quantum shifting on a sub atomic level. Whenever it exists, it simultaneously does not exist. And while it does not exist now, it continues to exist elsewhen. The paradox diffusion waves surrounding it are the result of reality attempting to resolve this conundrum to account for the displacement caused by the effect of..." The voice continues on, but you are starting to develop a headache and are unable to focus on the thoughts being forced upon you.`
+				`	Eventually the voice fades and your consciousness briefly latches onto something. You have a vague memory of being lectured about a cat in a box that was both alive and dead at the same time, until the box was opened. Or something like that. Then the headache intensifies.`
+					accept
+			fail
 
 mission "Geddonian Worldcrusher"
 	non-blocking
-	landing
+	entering
 	invisible
+	source
+		system Temeh
 	destination "Corpse"
 	to offer
 		has "First Contact: Geddonia: done"
@@ -496,11 +511,11 @@ mission "Geddonian Worldcrusher"
 		fleet
 			names "???"
 			cargo 0
-			variant
+			variant 3
 				"Crystal Sentry" 3
-			variant
+			variant 2
 				"Crystal Sentry" 5
-			variant
+			variant 1
 				"Crystal Sentry" 7
 	npc kill
 		system Temeh

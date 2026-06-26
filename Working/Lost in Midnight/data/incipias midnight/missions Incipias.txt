@@ -10,6 +10,243 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
+mission "Midnight Incipias First Contact Update"
+	non-blocking
+	landing
+	invisible
+	source
+		not government "Hicemus" "Incipias Civilian" "Conlatio"
+	to offer
+		has "Incipias: Help The Stranded 2: offered"
+	on offer
+		event "midnight incipias first contact update"
+		fail
+
+event "midnight incipias first contact update"
+	shipyard "Hicemus"
+		add "Nimbo Cumulus"
+	fleet "Hicemus Standard Surveilance"
+		add variant 1
+			"Nimbo Cumulus (Military)"
+		add variant 2
+			"Nimbo Cumulus (Military)" 2
+		add variant 1
+			"Nimbus"
+			"Nimbo Cumulus (Military)"
+		add variant 1
+			"Venta"
+			"Nimbo Cumulus (Military)"
+	fleet "Incipias Standard Mining"
+		add variant 1
+			"Nimbo Cumulus"
+		add variant 1
+			"Nimbo Cumulus" 2
+		add variant 1
+			"Nimbo Stratus"
+			"Nimbo Cumulus"
+		add variant 1
+			"Nimbus (Mining)"
+			"Nimbo Cumulus"
+	fleet "Incipias Standard Trade"
+		add variant 1
+			"Nimbo Cumulus"
+
+
+mission "Midnight Incipias Arcus Expedition 1"
+	minor
+	name "Arcus Expedition"
+	description "Escort the Arcus, a newly constructed transport-freighter to <system>."
+	source "Pon'tes"
+	destination "Turra"
+	to offer
+		has "event: midnight incipias first contact update"
+	on offer
+		conversation
+			branch repeat
+				has "Midnight Incipias Arcus Expedition 1: deferred"
+			scene "thumbnail/nimbo cumulus-thumb"
+			`You notice several new ships docked at the spaceport. As you look at them, an Incipias approaches you while flashing multiple colors. Clearly, it is trying to catch your attention.`
+			label pursuit
+			choice
+				`	(Acknowledge its presence.)`
+					goto converse
+				`	(Try to evade it.)`
+			`	You do your best to rush through the alien corridors of the station, but your feet cannot match the effortless gliding of your pursuer...`
+				goto pursuit
+			label repeat
+			`As you walk through the spaceport you notice an Incipias following you while flashing multiple colors. Clearly, it is trying to catch your attention.`
+				goto pursuit
+			label converse
+			`	The Incipias slows down as does the rate of its color fluctuations. Finally, the translator is able to interpret what it is trying to say. "Hello outer-traveler. Your assistance to our previous exploration vessel-ship has not been forgotten. We will be embarking on another voyage-expedition to <system>. Would you have any interest-curiosity to join us?"`
+			choice
+				`	"Yes, I would like to participate."`
+					goto participate
+				`	"What do you want me to do?"`
+					goto explain
+				`	I don't have time for this right now."`
+				`	"No, I am not interested in this."`
+					decline
+			`	The Incipias glows blue. "I understand. Perhaps next time." If slowly drifts way, it's lights dim...`
+				defer
+			label explain
+			`	The Incipias explains, "We will attempt a jump-shift to <system>. This time, we will use a vessel-ship that can carry enough crew and cargo to serve as the core for a colony-station."`
+			choice
+				`	"Looks like a good plan. I will participate."`
+				`	"Sorry, I am not interested in this."`
+					decline
+			label participate
+			scene "thumbnail/arcus-thumb"
+			`	"Thank you. Our vessel-ship is a newly constructed transport-freighter: the Arcus. It is the first of it's kind-type. We hope it will not be the last."`
+				accept
+	npc save
+		government "Hicemus"
+		system "Dom'us"
+		personality target waiting staying timid
+		ship "Arcus FTL" "HIC Arcus #000001"
+		on kill
+			set "HIC Arcus #000001 destroyed"
+	on enter "Hui'uc"
+		fail
+
+mission "Midnight Incipias Arcus Expedition 2"
+	transition
+	name "Arcus Expedition"
+	description "Return the crew of the Arcus to <destination>."
+	source
+		system "Hui'uc"
+	destination "Pon'tes"
+	to offer
+		has "Midnight Incipias Arcus Expedition 1: offered"
+		not "HIC Arcus #000001 destroyed"
+	on offer
+		conversation
+			scene "thumbnail/arcus derelict-thumb"
+			`Soon after arriving, you notice the Arcus appears different. It seems to have aged from years, perhaps even decades, of neglect. It hails the <ship>. The signal is weak, but stable enough for the translator to convey a message. "Greetings, I presume you are the outer-helper our progenitors would light of..." The signal stutters.`
+			``
+			`	"... are not sure why, but after entering the space-between something surprise-unexpected occured. Our vessel-ship remained trapped there for two generation cycles. We used the supplies to sustain ourselves and our vessel-ship, but perhaps that may have only extended-prolonged the duration of our imprisonment..." The signal stutters again.`
+			``
+			`	"... eventually the power systems briefly falter-failed. To our surprise-unexpected, the vessel-ship was released once its systems were no longer operational. Outer-helper, we ask that you return us to <destination> on your vessel-ship. We no longer have enough supplies or crew to..." The signal failes completely. It appears you will have to board their ship if you want to help them.`
+				accept
+	npc board
+		government "Derelict (Boardable)"
+		system "Hui'uc"
+		personality target waiting staying derelict mute
+		ship "Arcus Derelict" "HIC Arcus #000001"
+		dialog "The few remaining crew light their gratitude. From what you can see, much of the ship has been repurposed to prioritize long term survival over normal operations."
+		on board
+			set "HIC Arcus #000001 destroyed"
+	on complete
+		event "midnight add arcus" 30
+		conversation
+			scene "scene/scene-dom'us"
+			`The Arcuses crew are grateful to finally see the home of their progenitors. While conversing with them during the journey, you learned that they are what humans would consider grandchildren of the original crew of the Arcus. The actual cause of their multi-generational entrapment is a mystery, but the research data they brought back should help Incipias scientists progress closer to achieving safe FTL travel.`
+
+event "midnight add arcus"
+	shipyard "Hicemus"
+		add "Arcus"
+	fleet "Incipias Standard Trade"
+		add variant 1
+			"Arcus"
+
+
+mission "Midnight Incipias Nimbus Expedition 1"
+	minor
+	name "Arcus Expedition"
+	description "Escort a Nimbus, to <system>."
+	source "Pon'tes"
+	destination "Occupas"
+	to offer
+		has "event: midnight add arcus"
+	on offer
+		conversation
+			`As soon as you open the hatch of the <ship>, you find an Incipias outside flashing multiple colors. It gradually slows down before settling on a dull shade of green as it waits patiently for you to activate your translator.`
+			choice
+				`	"Hello. Do you need something from me?"`
+				`	"Why are you here?"`
+			`	It slowly resumes flashing. "Welcome back outer-traveler. We are about to begin-start a new voyage-expedition to <system>. Would you have any interest-curiosity to accompany us?" The Incipias pauses, resuming a neutral shade of green.`
+			choice
+				`	"Will you be using another Arcus?"`
+			scene "thumbnail/nimbus"
+			`	"The Arcus was designed for missions to establish-create a colony-station. Our goal now will only-merely be to scout-explore <system> and test some modifications-updates to our interspace technology-device. It is our hope that you would be willing to assist if we encounter a surprise-unexpected occurence."`
+			choice
+				`	"I would be happy to help."`
+					goto help
+				`	"I am not able to help this time."`
+				`	"I have no interest in helping."`
+					decline
+			`	The Incipias glows blue. "I understand. Perhaps next time." If slowly drifts way, it's lights dim...`
+				defer
+			label help
+			`	The Incipias flashes several colors. "The crew will be pleased-excited to know that you will accompany them on this voyage-expedition. Thank you." It floats away, its lights bright.`
+				accept
+	npc save
+		government "Hicemus"
+		system "Dom'us"
+		personality target waiting staying timid
+		ship "Nimbus FTL Midnight" "HIC Fata #000001"
+		on kill
+			set "HIC Fata #000001 destroyed"
+	on enter "Il'le"
+		fail
+
+mission "Midnight Incipias Nimbus Expedition 2"
+	transition
+	name "Arcus Expedition"
+	description "Return to <destination> to inform them of the fate of the expedition to Il'le."
+	source
+		system "Il'le"
+	destination "Pon'tes"
+	to offer
+		has "Midnight Incipias Nimbus Expedition 1: offered"
+		not "HIC Fata #000001 destroyed"
+	on offer
+		set "HIC Fata #000001 destroyed"
+		conversation
+			scene "scene/scene-explosion"
+			`The Nimbus you were escorting explodes as soon as it enters the system! Perhaps something went wrong with their experimental FTL drive... There don't appear to be any survivors. All you can do for them is return to <destination> and inform the station of their fate.`
+				accept
+	on complete
+		event "midnight deploy castellanus" 30
+		conversation
+			scene "thumbnail/nimbus"
+			`The Hicemus are troubled by the news of the destruction of the Nimbus sent to Il'le. The flashing lights of the ensuing conversation are too much for your translator to fully interpret, but it does catch mention of developing a stronger ship hull to help survive the journey between systems.`
+
+event "midnight deploy castellanus"
+	outfitter "Hicemus"
+		add "Deflection Beam"
+	shipyard "Hicemus"
+		add "Castellanus"
+	fleet "Hicemus Standard Surveilance"
+		add variant 1
+			"Castellanus (Military)"
+		add variant 1
+			"Castellanus (Military)"
+			"Nimbo Cumulus (Military)" 2
+	fleet "Incipias Standard Mining"
+		add variant 1
+			"Castellanus (Mining)"
+	fleet "Incipias Standard Trade"
+		add variant 1
+			"Castellanus"
+
+mission "Midnight Incipias Avenging Castellanus"
+	non-blocking
+	landing
+	invisible
+	to offer
+		"reputation: Hicemus" < -100
+		not "Midnight Incipias Nimbus Expedition 2: done"
+	to complete
+		never
+	npc kill
+		government "Hicemus"
+		system "Dom'us"
+		personality waiting staying heroic vindictive
+		ship "Castellanus (Military)" "HIC Ulcera #ba0101"
+		on kill
+			event "midnight deploy castellanus" 15
+			fail
+
 
 mission "Scrapyard Quarg Incipias Update"
 	non-blocking
@@ -63,7 +300,3 @@ fleet "Quarg Incipias Buffer"
 		"Quarg Tiamat"
 		"Quarg Cockatrice" 2
 		"Quarg Zilant" 2
-
-
-
-

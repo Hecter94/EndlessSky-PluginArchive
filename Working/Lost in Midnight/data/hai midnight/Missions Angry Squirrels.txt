@@ -12,11 +12,11 @@
 
 
 # Contents:
+# - misc
 # - Become an arms dealer for the Unfettered.
 # - Offend the Hai when they find out.
 # - Dominate the Unfettered.
 # - Jump Drive trading
-
 
 
 mission "Sabotage: Ionic Snare (boarding)"
@@ -80,8 +80,6 @@ mission "Sabotage: Ionic Snare (Hai) (boarding)"
 		government "Hai (Unfettered)"
 		personality entering heroic plunders
 		fleet "Large Hai"
-
-
 
 mission "Midnight Hai Distress"
 	invisible
@@ -160,6 +158,79 @@ mission "Midnight Unfettered Distress"
 		fleet "Small Unfettered"
 
 
+mission "Midnight Unfettered returning home 1"
+	minor
+	description "Chaka, the Hai you smuggled out of Unfettered space wants to visit his family on <destination>."
+	source "Hai-home"
+	destination "Darkcloak"
+	clearance
+	passengers 1
+	to offer
+		has "Unfettered returning home: done"
+		or
+			has "event: wanderers: sestor eliminated"
+			has "event: wanderers: sestor planets unrestricted"
+		random < 70
+	on offer
+		conversation
+			`A young Hai is waiting for you at the <ship>'s landing pad. "You are the <first> <last>! You remember me? I am one who ask you to take me from the Unfettered space." After a moment you recognize him. His fur is healthier and his clothes are nicer than they were back then. He also seems to have gained some weight.`
+			choice
+				`	"You seem to be doing well."`
+			`	"Hai here are so nice. They give me much since I arrive. But I worry about family I left behind. Could you bring me to them on <destination>?"`
+			choice
+				`	"They may not welcome you."`
+			`	He seems crestfallen. "You think so?" he asks.`
+			choice
+				`	"I am certain. You should stay here."`
+				`	"Perhaps you can come with me and find out, but don't get your hopes up."`
+					goto end
+			label refuse
+			`	Disappointed, the youth leaves. You hope you made the right choice.`
+				decline
+			label end
+			`	"Thank you. I never tell my name before, Chaka." You show Chaka to one of your bunk rooms. He has a larger bag with him this time.`
+				accept
+	on visit
+		dialog `You look for Chaka, but realize that he took a ride on one of your escorts! Better depart and wait for your escorts to arrive in this star system.`
+	on complete
+		payment 50000
+		dialog `Chaka thanks you for transporting him and pays you <payment>.`
+
+mission "Midnight Unfettered returning home 2"
+	landing
+	description "Return Chaka to <destination>."
+	source "Darkcloak"
+	destination "Hai-home"
+	clearance
+	passengers 1
+	to offer
+		has "Midnight Unfettered returning home 1: done"
+	on offer
+		conversation
+			`When Chaka leaves your ship, several Unfettered glare at him. His groomed fur and fine clothes make him stand out at the spaceport...`
+			choice
+				`	"Maybe I should go with you."`
+				`	"Are you going to be okay on your own?"`
+				`	(Shut the hatch and let him fend for himself.)`
+					goto abandon
+			`	"Maybe you come. Meet my family. We share dinner and make festive!" Chaka's family home is some distance away from the spaceport. Along the way, several more Unfettered stare at Chaka like hungry predators catching sight of easy prey. But realizing you are traveling at his side with your weapon makes them lose interest.`
+			`	After a long journey, you finally arrive. The sun is setting as the two of you walk along the path that leads to the entrance to his family's home, a humble shack among many in the factory district. Some young Hai children run out to meet you. Chaka hugs them and lowers his bag. He pulls out some candy and toys which the children gleefully accept. "Tama and Ebuu, my young kin. They grow so much since I last seeing them."`
+			`	Two older Hai step out. "My parents." The children run back to stand at their side. Chaka walks to his father. They speak in Hai. They are standing too far away for your translator to pick out what they are saying. Chaka pulls out a satchel and offers it to his father. The old Hai knocks it out of his hands and a pile of credits spills out onto the ground. He points at you before crossing his arms and turning his back to Chaka. Chaka's mother follows her husband's lead. After a moment's hesitation, the children drop the gifts and follow their parent's example.`
+			`	Chaka's shoulder's slump. After a moment of silence, he walks back to you. "He say I am not True Hai. He say to leave and never return. You can take me back to <planet>, yes?"`
+			choice
+				`	"Of course."`
+			`	You both return to the <ship> in silence.`
+				accept
+			label abandon
+			`	You swiftly shut the hatch and watch as two Unfettered approach Chaka. They begin a brutal fight of bare claws and incisors. After a few minutes Chaka stands alone, bloodied but triumphant in having chased his attackers off. His fur is no longer groomed and the fine clothes are in tatters. A few toys fell out of his bag. He quickly scoops them up and scampers off without looking back. Hopefully he'll fare well on his own...`
+				decline
+	on visit
+		dialog `You look for Chaka, but realize that he took a ride on one of your escorts! Better depart and wait for your escorts to arrive in this star system.`
+	on complete
+		payment 50000
+		log "Minor People" "Chaka" `The young Hai you previously smuggled out of Unfettered space. His family no longer recognizes him as a True Hai and asked him to never return.`
+		log `You took Chaka, the Hai you previously smuggled out of Unfettered space, back to checkup on his family. They did not welcome him, refusing to recognize Chaka as a True Hai. Instead, they told him to return to Hai-home and never return.`
+		dialog `Chaka thanks you for transporting him back to <planet>. He pays you <payment> before departing from your ship.`
 
 
 #################################
@@ -1261,8 +1332,8 @@ mission "Midnight Hunted (Unfettered)"
 #########################################
 
 mission "Angry Squirrels: planet Varu Mer'ek"
-	non-blocking
 	landing
+	non-blocking
 	invisible
 	to offer
 		has "event: wanderers: varu mer'ek evacuated"
@@ -1278,8 +1349,8 @@ event "unfettered tribute Varu Mer'ek"
 			fleet "Small Unfettered" 3
 
 mission "Angry Squirrels: planet Kort Vek'kri"
-	non-blocking
 	landing
+	non-blocking
 	invisible
 	to offer
 		or
@@ -1295,10 +1366,10 @@ event "unfettered tribute Vek'kri"
 			threshold 5000
 			fleet "Large Unfettered" 7
 			fleet "Small Unfettered" 3
-			
+
 mission "Angry Squirrels: more planets"
-	non-blocking
 	landing
+	non-blocking
 	invisible
 	to offer
 		has "event: wanderers: more systems lost"
@@ -1331,13 +1402,13 @@ event "unfettered tribute Var' Kar'i'i"
 
 
 mission "Angry Squirrels: planet Varu K'est"
-	non-blocking
 	landing
+	non-blocking
 	invisible
 	to offer
 		has "Wanderers: Alpha Surveillance J: done"
 	on offer
-		event "unfettered tribute Varu K'est" 64
+		event "unfettered tribute Varu K'est"
 		fail
 
 event "unfettered tribute Varu K'est"
@@ -1349,9 +1420,9 @@ event "unfettered tribute Varu K'est"
 
 
 mission "Angry Squirrels: Wanderer Tribute Patch"
+	landing
 	non-blocking
 	invisible
-	landing
 	to offer
 		has "event: wanderer tribute patch"
 	on offer

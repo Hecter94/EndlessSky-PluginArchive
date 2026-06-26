@@ -10,118 +10,69 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
+shipyard "Advanced Northern Pirates"
+	add "Garbage Scow"
+shipyard "Advanced Core Pirates"
+	add "Garbage Scow"
+shipyard "Advanced Southern Pirates"
+	add "Garbage Scow"
+shipyard "Dirt Belt Pirates"
+	add "Rukh"
 
-mission "Midnight Expansion: Add Fuel Stabilizer"
-	non-blocking
-	landing
-	invisible
-	on offer
-		event "add fuel stabilizer"
-		set "fuel stabilizer sales patched"
-		fail
-
-event "add fuel stabilizer"
-	outfitter "Advanced Fuel"
-		add "Fuel Stabilizer"
-
-mission "Midnight Expansion: Add Fuel Stabilizer Patch"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "Midnight Expansion: Add Fuel Stabilizer: failed"
-		not "fuel stabilizer sales patched"
-	on offer
-		event "add fuel stabilizer"
-		set "fuel stabilizer sales patched"
-		fail
+outfitter "Advanced Fuel"
+	add "Fuel Stabilizer"
 
 
-mission "Midnight Expansion: Add Garbage Scows"
-	non-blocking
-	landing
-	invisible
-	on offer
-		event "add garbage scows"
-		set "added ccor garbage scows"
-		set "added smuggler garbage scows"
-		fail
-
-event "add garbage scows"
-	shipyard "Advanced Northern Pirates"
-		add "Garbage Scow"
-	shipyard "Advanced Core Pirates"
-		add "Garbage Scow"
-	shipyard "Advanced Southern Pirates"
-		add "Garbage Scow"
-	fleet "Large Northern Merchants"
-		add variant 1
-			"Garbage Scow"
-	fleet "Large Core Merchants"
-		add variant 1
-			"Garbage Scow"
-	fleet "Large Southern Merchants"
-		add variant 1
-			"Garbage Scow (Jammer)"
-	fleet "Large Dirt Belt Pirates"
-		add variant 1
-			"Garbage Scow (Turbo)"
-		add variant 1
-			"Modified Garbage Scow"
-			"Rancor (Turbo Blaster)" 2
-	fleet "Large CCOR"
-		add variant 1
-			"Garbage Scow (Stinger)"
-		add variant 1
-			"Modified Garbage Scow (Quad Blaster)"
-			"Berserker (Limit Break)" 2
-	fleet "pirate raid"
-		add variant 1
-			"Garbage Scow (Stinger)"
-	fleet "pirate raid (rivals)"
-		add variant 1
-			"Garbage Scow (Stinger)"
-	fleet "Large Independent"
-		add variant 1
-			"Garbage Scow (Stinger)"
-	fleet "Smugglers"
-		add variant 2
-			"Garbage Scow (Smuggler)"
-
-mission "Midnight Expansion: Add CCOR Garbage Scows"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "event: add garbage scows"
-		not "added ccor garbage scows"
-	on offer
-		event "add ccor garbage scows"
-		fail
-
-event "add ccor garbage scows"
-	fleet "Large CCOR"
-		add variant 1
-			"Garbage Scow (Stinger)"
-		add variant 1
-			"Modified Garbage Scow (Quad Blaster)"
-			"Berserker (Limit Break)" 2
-
-mission "Midnight Expansion: Add Smuggler Garbage Scows"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "event: add garbage scows"
-		not "added smuggler garbage scows"
-	on offer
-		event "add smuggler garbage scows"
-		fail
-
-event "add smuggler garbage scows"
-	fleet "Smugglers"
-		add variant 2
-			"Garbage Scow (Smuggler)"
+fleet "Bounty Hunters"
+	add variant 1
+		"Rukh (Heavy)"
+fleet "Hired Guns"
+	add variant 1
+		"Rukh (Heavy)"
+		"Firebird (Laser)" 2
+fleet "Large CCOR"
+	add variant 1
+		"Garbage Scow (Stinger)"
+	add variant 1
+		"Modified Garbage Scow (Quad Blaster)"
+		"Berserker (Limit Break)" 2
+fleet "Large Dirt Belt Pirates"
+	add variant 1
+		"Garbage Scow (Turbo)"
+	add variant 1
+		"Modified Garbage Scow"
+		"Rancor (Turbo Blaster)" 2
+	add variant 1
+		"Rukh (Energy Cannons)"
+	add variant 1
+		"Rukh (Turbo Blaster)"
+fleet "Large Core Merchants"
+	add variant 1
+		"Garbage Scow"
+fleet "Large Northern Merchants"
+	add variant 1
+		"Garbage Scow"
+fleet "Large Southern Merchants"
+	add variant 1
+		"Garbage Scow (Jammer)"
+fleet "pirate raid"
+	add variant 1
+		"Garbage Scow (Stinger)"
+	add variant 1
+		"Rukh (Energy Cannons)"
+fleet "pirate raid (rivals)"
+	add variant 1
+		"Garbage Scow (Stinger)"
+	add variant 1
+		"Rukh (Energy Cannons)"
+fleet "Large Independent"
+	add variant 1
+		"Garbage Scow (Stinger)"
+	add variant 1
+		"Rukh"
+fleet "Smugglers"
+	add variant 2
+		"Garbage Scow (Smuggler)"
 
 
 mission "Midnight Expansion: Update Garbage Scows"
@@ -173,26 +124,6 @@ event "update garbage scows"
 	fleet "pirate raid (rivals)"
 		add variant 1
 			"Modified Garbage Scow (Quad Blaster)"
-
-mission "Midnight Expansion: Add Raid Modified Garbage Scows"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "event: update garbage scows"
-		not "added raid modified garbage scows"
-	on offer
-		event "add raid modified garbage scows"
-		fail
-
-event "add raid modified garbage scows"
-	fleet "pirate raid"
-		add variant 1
-			"Modified Garbage Scow (Quad Blaster)"
-	fleet "pirate raid (rivals)"
-		add variant 1
-			"Modified Garbage Scow (Quad Blaster)"
-
 
 
 mission "Midnight Expansion: Bounty Hunting (Boarding, Stinger Missile)"
@@ -351,12 +282,11 @@ mission "Midnight Expansion: Waste Disposal"
 	name "Waste disposal on <planet>"
 	job
 	repeat
-	description "Urgent waste disposal is needed. Transport <cargo> to <destination> to keep property values from falling. Payment is <payment>."
+	description "Urgent toxic waste disposal is needed. Transport <cargo> to <destination> to keep property values from falling. Payment is <payment>."
 	cargo "Garbage" 6 40
 	to offer
 		random < 5
-	on offer
-		require "Radiological Containment"
+		has "outfit: Radiological Containment"
 	source
 		government "Republic"
 		attributes "paradise"
@@ -390,8 +320,7 @@ mission "Midnight Expansion: Waste recycling on <planet>"
 	cargo "Garbage" 15 100
 	to offer
 		random < 10
-	on offer
-		require "Radiological Containment"
+		has "outfit: Radiological Containment"
 	source
 		government Syndicate
 	destination
@@ -473,8 +402,6 @@ mission "Midnight Expansion: Garbage Escort (Double Cross)"
 	on enter
 	on enter
 	on enter
-	on enter
-	on enter
 		"reputation: Bounty (Disguised)" <?= -1000
 		log "Minor People" "Geryon" `Geryon turned out to be a pirate himself. I knew there was something rotten about him.`
 		conversation
@@ -521,46 +448,9 @@ mission "Midnight Expansion: Garbage Escort (Double Cross)"
 				"Modified Argosy (Stinger)"
 	npc accompany save
 		government "Bounty (Disguised)"
-		personality target waiting plunders harvests
+		personality target escort waiting plunders harvests marked
 		ship "Garbage Scow (Heavy)" "Venomous Manticore"
 
-
-
-mission "Midnight Expansion: Add Rukh"
-	non-blocking
-	landing
-	invisible
-	on offer
-		event "add rukh"
-		fail
-
-event "add rukh"
-	shipyard "Dirt Belt Pirates"
-		add "Rukh (Modified Blaster)"
-	fleet "pirate raid"
-		add variant 1
-			"Rukh"
-	fleet "pirate raid (rivals)"
-		add variant 1
-			"Rukh"
-	fleet "Large Dirt Belt Pirates"
-		add variant 1
-			"Rukh"
-		add variant 1
-			"Rukh (Turbo Blaster)"
-	fleet "Large Independent"
-		add variant 1
-			"Rukh"
-	fleet "Bounty Hunters"
-		add variant 1
-			"Rukh (Heavy)"
-	fleet "Bounty Hunter (licensed)"
-		add variant 1
-			"Rukh (Heavy)"
-	fleet "Hired Guns"
-		add variant 1
-			"Rukh (Heavy)"
-			"Firebird (Laser)" 2
 
 mission "Midnight Expansion: FW Prisoner Parole Add On"
 	landing
@@ -687,8 +577,12 @@ mission "Midnight Expansion: Rukh Blueprints"
 		government "Bounty Hunter"
 		personality nemesis disables waiting plunders
 		ship "Rukh (Energy Cannons)" "Rain Dancer"
+	on fail
+		event "add marauder rukh" 30
+	on abort
+		event "add marauder rukh" 30
 	on complete
-		event "add marauder rukh"
+		event "add marauder rukh" 30
 		conversation
 			scene "scene/scene-empty box"
 			branch slow
@@ -768,7 +662,6 @@ event "add marauder rukh"
 			"Marauder Rukh (Heavy)"
 			"Marauder Raven"
 			"Marauder Quicksilver"
-
 
 
 mission "Midnight Scum & Villainy 1A"
@@ -966,7 +859,7 @@ mission "Midnight Scum & Villainy 2"
 			label board
 			scene "thumbnail/AESmisc bulwark"
 			`	You, Jon, and the woman search the job board for bounties. After a while, you find a post that may be related. "A heavy warship named Scum & Villainy has been preying on merchant ships near <system>. Find it and put a stop to their raids. Return to <destination> for payment. (3,000,000 credits)"`
-			`	"Three million! I could pay off my debt with that." Jon looks to you. "Captain <last>, would you be willing to team up with me on this?"`
+			`	"Three million! I could pay off my debt with that." Jon looks to you. "Captain <last>, would a war hero be willing to team up with me on this?"`
 			`	"Hold on!" The woman interrupts. "Listen buster, I'm not letting you off the hook just yet."`
 			`	"Well maybe you should tag along and see for yourself." But Jon's sarcastic reply doesn't make her back down.`
 			`	"I think I'll do that." The woman turns to you. "He said you're a war hero? My name is Lia Skystrider. I'll be joining in on this expedition. And I expect a fair share of the reward money when we bring this pirate to justice." She glances at Jon, who smirks and rolls his eyes while shaking his head.`
@@ -994,7 +887,7 @@ mission "Midnight Scum & Villainy 2"
 			label boardlia
 			scene "thumbnail/AESmisc bulwark"
 			`	You, Lia, and the accused man search the job board for bounties. After a while, you find a post that may be related. "A heavy warship named Scum & Villainy has been preying on merchant ships near <system>. Find it and put a stop to their raids. Return to <destination> for payment. (3,000,000 credits)"`
-			`	"Three million! I could pay off my debt with that." The man looks to you. "She said you're a war hero? My name's Jon Silo. Would you be willing to team up with me on this?"`
+			`	"Three million! I could pay off my debt with that." The man looks to you. "Aren't you <first> <last>, the war hero? My name's Jon Silo. Would you be willing to team up with me on this?"`
 			`	"Hold on!" Lia interrupts. "Listen buster, I'm not letting you off the hook just yet."`
 			`	"Well maybe you should tag along and see for yourself." But Jon's sarcastic reply doesn't make her back down.`
 			`	"I think I'll do that." Lia turns to you. "I'll be joining in on this expedition. Of course I expect a fair share of the reward money when we bring this pirate to justice." She glances at Jon, who smirks and rolls his eyes while shaking his head.`
@@ -1261,3 +1154,105 @@ mission "Midnight Modified Cargo Star"
 		personality waiting staying vindictive heroic
 		fleet "Large Syndicate"
 		fleet "Small Syndicate" 2
+
+
+####################################
+#
+# deprecated
+#
+####################################
+
+
+mission "Midnight Expansion: Add Fuel Stabilizer"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+	on offer
+		event "add fuel stabilizer"
+		set "fuel stabilizer sales patched"
+		fail
+
+event "add fuel stabilizer"
+
+mission "Midnight Expansion: Add Fuel Stabilizer Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "Midnight Expansion: Add Fuel Stabilizer: failed"
+#		not "fuel stabilizer sales patched"
+	on offer
+		event "add fuel stabilizer"
+		set "fuel stabilizer sales patched"
+		fail
+
+mission "Midnight Expansion: Add Garbage Scows"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+	on offer
+		event "add garbage scows"
+		set "added ccor garbage scows"
+		set "added smuggler garbage scows"
+		fail
+
+event "add garbage scows"
+
+mission "Midnight Expansion: Add CCOR Garbage Scows"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "event: add garbage scows"
+#		not "added ccor garbage scows"
+	on offer
+		event "add ccor garbage scows"
+		fail
+
+event "add ccor garbage scows"
+
+mission "Midnight Expansion: Add Smuggler Garbage Scows"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "event: add garbage scows"
+#		not "added smuggler garbage scows"
+	on offer
+		event "add smuggler garbage scows"
+		fail
+
+event "add smuggler garbage scows"
+
+mission "Midnight Expansion: Add Raid Modified Garbage Scows"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "event: update garbage scows"
+#		not "added raid modified garbage scows"
+	on offer
+		event "add raid modified garbage scows"
+		fail
+
+event "add raid modified garbage scows"
+
+mission "Midnight Expansion: Add Rukh"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+	on offer
+		event "add rukh"
+		fail
+
+event "add rukh"

@@ -9,6 +9,23 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
+outfitter "Hai Intermediate"
+	add "Tracker Storage Depot"
+
+outfitter "Hai Advanced"
+	add "Ion Flash Bang"
+	add "Tracker Storage Depot"
+
+outfitter "Hai Security"
+	add "Tracker Storage Depot"
+
+outfitter "Unfettered Basics"
+	add "Barracks"
+	add "Ion Flash Bang"
+	add "Phantom Tracker (Gun)"
+	add "Phantom Tracker (Turret)"
+
+
 ###################################
 #
 # Weapons
@@ -52,6 +69,30 @@ effect "heavy pulse impact"
 	"random spin" 4
 	"random velocity" .6
 	"velocity scale" -.1
+
+
+outfit "Hoarder Beam"
+	category "Turrets"
+	series "Tractor Beams"
+	index 03010
+	cost 84000
+	thumbnail "outfit/hoarder beam"
+	"mass" 23
+	"outfit space" -23
+	"weapon capacity" -23
+	"turret mounts" -1
+	weapon
+		"hardpoint sprite" "hardpoint/hoarder beam"
+		"hardpoint offset" 4.
+		sound "tractor beam"
+		"hit effect" "scavenger tractor beam"
+		"tractor beam" 8
+		"velocity" 350
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 2.8
+		"firing heat" 1.2
+	description "Hai tractor technology has greater range than human Tractor Beams. It was more common in the ancient Hai empire. Among modern Hai, only the Unfettered still utilize it."
 
 
 outfit "Ion Pulse Cannon"
@@ -239,8 +280,10 @@ outfit "Displacer Storage Pod"
 	index 02006
 	cost 28000
 	thumbnail "outfit/hai displacer storage"
-	"mass" 4.4
-	"outfit space" -10
+#	"mass" 4.4
+	"mass" 2.4
+#	"outfit space" -10
+	"outfit space" -8
 	"displacer capacity" 28
 	ammo "Hai Displacer"
 	description "The Displacer Storage Pod is used to store extra ammunition for Displacer Pods."
@@ -252,7 +295,8 @@ outfit "Displacer Storage Depot"
 	index 02007
 	cost 56000
 	thumbnail "outfit/hai displacer depot"
-	"mass" 8.8
+#	"mass" 8.8
+	"mass" 4.8
 	"cargo space" -30
 	"displacer capacity" 56
 	ammo "Hai Displacer"
@@ -265,8 +309,10 @@ outfit "Hai Displacer Pod"
 	index 02005
 	cost 450000
 	thumbnail "outfit/hai displacer pod"
-	"mass" 8
-	"outfit space" -19
+#	"mass" 8
+	"mass" 5
+#	"outfit space" -19
+	"outfit space" -16
 	"weapon capacity" -19
 	"gun ports" -1
 	"displacer capacity" 56
@@ -281,7 +327,7 @@ outfit "Hai Displacer Pod"
 		"hit effect" "tracker impact"
 		"hit effect" "tracker cloud" 3
 		"die effect" "tracker impact"
-		"inaccuracy" 20
+		"inaccuracy" 18
 		"velocity" 14
 		"lifetime" 475
 		"reload" 60
@@ -299,7 +345,7 @@ outfit "Hai Displacer Pod"
 		"hit force" 525
 		"missile strength" 48
 	description "Displacers are Trackers that have had their optical tracking hardware replaced with holographic projectors. These create phantom missiles that escort the Displacer towards its target, helping it to slip through the enemy's anti-missile defenses."
-
+	description "	Unfettered engineers attempted to mitigate the loss of optical tracking by improving accuracy during launch and installing additional infrared sensors."
 
 outfit "Hai Nutcracker"
 	category "Secondary Weapons"
@@ -336,12 +382,12 @@ outfit "Hai Nutcracker"
 		"firing heat" 400
 		"acceleration" .7
 		"drag" .1
-		"turn" 4
+		"turn" 1.2
 		"homing"
 			"leading"
 			"throttle control"
 		"optical tracking" 1
-		"infrared tracking" .5
+		"infrared tracking" .4
 		"trigger radius" 30
 		"blast radius" 200
 		"shield damage" 11000
@@ -404,6 +450,8 @@ outfit "Phantom Tracker (Turret)"
 			"frame rate" 10
 			"random start frame"
 		icon "icon/tracker"
+		"arc" 0.001
+		"turret turn" 0.001
 		"inaccuracy" 10
 		"velocity" 15
 		"lifetime" 235
@@ -459,7 +507,7 @@ mission "Midnight Add Railgun Slug Depot"
 	to offer
 		has "event: pond strider mass production v2"
 	on offer
-		event "midnight add railgun slug depot"
+		event "midnight add railgun slug depot" 0
 		fail
 
 event "midnight add railgun slug depot"
@@ -528,7 +576,7 @@ outfit "Modified Hyperdrive (Hai)"
 	"mass" 30
 	"outfit space" -30
 	"jump speed" .2
-	"jump fuel" 75
+	"jump fuel" 60
 	"hyperdrive" 1
 	description "At its height, the Hai empire stretched across an expanse almost double the size of human space. Fluctuator Drives are a relic of this bygone age. They are the result of research into making a fuel efficient Hyperdrive for facilitating travel from one end of the empire to the other."
 
@@ -543,7 +591,7 @@ outfit "Modified Nugget Finder"
 	"outfit space" -5
 	"outfit scan power" 25
 	"outfit scan efficiency" 15
-	"asteroid scan power" 40
+	"asteroid scan power" 35
 	"atmosphere scan" 100
 	"heat generation" 2
 	description "As its name suggests, the Nugget Finder was originally used by the ancient Hai to mine asteroids and harvest gas giants. However, the Unfettered discovered that a few subtle adjustments allow it to target a ship and identify the outfits it has installed."
@@ -699,43 +747,6 @@ outfit "Quantum Turtle Blade"
 	"scan brightness" 1
 	"quantum keyblade" 1
 
-mission "Midnight Add Illegal Key Blades"
-	landing
-	invisible
-	non-blocking
-	to offer
-		has "flagship attribute: illegal (Hai)"
-		has "flagship attribute: quantum keyblade"
-	on offer
-		event "midnight add illegal key blades"
-		fail
-
-event "midnight add illegal key blades"
-	government "Hai"
-		add illegals
-			"Quantum Tiger Blade" 2500000
-			"Quantum Snake Blade" 2500000
-			"Quantum Phoenix Blade" 2500000
-			"Quantum Turtle Blade" 2500000
-	government "Hai Merchant"
-		add illegals
-			"Quantum Tiger Blade" 2500000
-			"Quantum Snake Blade" 2500000
-			"Quantum Phoenix Blade" 2500000
-			"Quantum Turtle Blade" 2500000
-	government "Hai Merchant (Sympathizers)"
-		add illegals
-			"Quantum Tiger Blade" 2500000
-			"Quantum Snake Blade" 2500000
-			"Quantum Phoenix Blade" 2500000
-			"Quantum Turtle Blade" 2500000
-	government "Hai Merchant (Human)"
-		add illegals
-			"Quantum Tiger Blade" 2500000
-			"Quantum Snake Blade" 2500000
-			"Quantum Phoenix Blade" 2500000
-			"Quantum Turtle Blade" 2500000
-
 
 #############################
 #
@@ -750,3 +761,25 @@ outfit "Unfettered Militia License"
 	cost 0
 	thumbnail "outfit/unknown"
 	description "The Unfettered Militia license exists in both verbal and physical form: Simply claim that you have one. If anyone objects, physically convince them of their error in judgement. It's the Unfettered way."
+
+
+#############################
+#
+# deprecated
+#
+#############################
+
+
+mission "Midnight Add Illegal Key Blades"
+	landing
+	invisible
+	non-blocking
+	to offer
+		never
+#		has "flagship attribute: illegal (Hai)"
+#		has "flagship attribute: quantum keyblade"
+	on offer
+		event "midnight add illegal key blades"
+		fail
+
+event "midnight add illegal key blades"

@@ -485,7 +485,7 @@ mission "Plasma Cluster Cannons"
 		"credits" > 2660000
 		random < 70
 	on offer
-		require "Plasma Cluster Cannon" 0
+		require "Plasma Charge Cannon" 0
 		conversation
 			scene "outfit/plasma cluster cannon"
 			branch "liberator"
@@ -505,7 +505,7 @@ mission "Plasma Cluster Cannons"
 					decline
 	on accept
 		payment 1330000
-		outfit "Plasma Cluster Cannon" 7
+		outfit "Plasma Charge Cannon" 7
 		fail
 		
 mission "Plasma Cluster Cannons 2"
@@ -518,14 +518,14 @@ mission "Plasma Cluster Cannons 2"
 			has "SB-Labs Vindicator 4: done"
 			has "Oathbreaker Liberator 4: done"
 	on offer
-		require "Plasma Cluster Cannon"
+		require "Plasma Charge Cannon"
 		conversation
 			scene "outfit/plasma cluster cannon"
 			`After returning to your ship, you notice one of your Plasma Charge Cannons is missing! The thieves managed to bypass your security systems.`
 				decline
 	on decline
 		log `One of my Plasma Charge Cannons was stolen. The thieves managed the bypass your security systems.`
-		outfit "Plasma Cluster Cannon" -1
+		outfit "Plasma Charge Cannon" -1
 		event "Plasma Cluster Cannon pirate development" 30
 
 event "Plasma Cluster Cannon pirate development"
@@ -556,9 +556,9 @@ mission "Plasma Cluster Cannons 3"
 		system
 			distance 1 2
 		personality target waiting staying plunders harvests
-		ship "Marauder Vanguard (Plasma Cluster)" "Firebrand"
-		ship "Marauder Vanguard (Plasma Cluster)" "Fire Staff"
-		ship "Marauder Vanguard (Plasma Cluster)" "Fire Spitter"
+		ship "Marauder Vanguard (Plasma Charge)" "Firebrand"
+		ship "Marauder Vanguard (Plasma Charge)" "Fire Staff"
+		ship "Marauder Vanguard (Plasma Charge)" "Fire Spitter"
 		dialog `You've defeated the <npc> and it's fleet. Return to <destination> for payment.`
 		on kill
 			payment 600000
@@ -568,39 +568,15 @@ mission "Plasma Cluster Cannons 3"
 				`The government of <planet> rewards you with <payment> for eliminating the <npc> and its fleet. Unfortunately, those ships were armed with Plasma Charge Cannons. Pirates must have used the one that was stolen from you to develop their own.`
 			fail
 
-outfitter "Plasma Cluster Cannon"
-	"Plasma Cluster Cannon"
+outfitter "Plasma Charge Cannon"
+	"Plasma Charge Cannon"
 			
 event "Plasma Cluster Cannons pirate core"
 	planet "New Tortuga"
-		add outfitter "Plasma Cluster Cannon"
+		add outfitter "Plasma Charge Cannon"
 	fleet "Large Core Pirates"
 		add variant 1
-			"Vanguard (Plasma Cluster)"
-
-mission "Plasma Cluster Cannon New Tortuga Patch"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "event: Plasma Cluster Cannons pirate core"
-		not "plasma cluster cannon new tortuga patched"
-	on offer
-		event "plasma cluster cannon new tortuga patch"
-		fail
-
-event "plasma cluster cannon new tortuga patch"
-	planet "New Tortuga"
-		add outfitter "Plasma Cluster Cannon"
-	planet "Buccaneer Bay"
-		remove outfitter "Plasma Cluster Cannon"
-	planet Covert
-		remove outfitter "Plasma Cluster Cannon"
-	planet "Deadman's Cove"
-		remove outfitter "Plasma Cluster Cannon"
-	planet Stormhold
-		remove outfitter "Plasma Cluster Cannon"
-
+			"Vanguard (Plasma Charge)"
 
 
 mission "Plexus Prototype 1"
@@ -871,7 +847,7 @@ mission "Plasma Cluster Cannons: Rust"
 		government "Alpha"
 		system destination
 		personality heroic vindictive harvests
-		ship "Dreadnought (Plasma Cluster)" "Gratuitous Violence"
+		ship "Dreadnought (Plasma Charge)" "Gratuitous Violence"
 
 	on complete
 		payment 175000
@@ -1004,32 +980,55 @@ event "Dreadnought Evolution - Plexus"
 
 event "Dreadnought Evolution - Vindicator"
 	planet Rust
-		add outfitter "Plasma Cluster Cannon"
+		add outfitter "Plasma Charge Cannon"
 	shipyard "Southbound Advanced"
 		add "Vindicator"
 	fleet "Large Free Worlds"
 		add variant 1
 			"Vindicator"
 		add variant 1
-			"Dreadnought (Plasma Cluster)"
+			"Dreadnought (Plasma Charge)"
 	fleet "Large Militia"
 		add variant 1
 			"Vindicator"
 		add variant 1
-			"Dreadnought (Plasma Cluster)"
+			"Dreadnought (Plasma Charge)"
 
 event "Dreadnought Evolution - Liberator"
 	planet Rust
-		add outfitter "Plasma Cluster Cannon"
+		add outfitter "Plasma Charge Cannon"
 	shipyard "Southbound Advanced"
 		add "Liberator"
 	fleet "Large Free Worlds"
 		add variant 1
 			"Liberator"
 		add variant 1
-			"Dreadnought (Plasma Cluster)"
+			"Dreadnought (Plasma Charge)"
 	fleet "Large Militia"
 		add variant 1
 			"Liberator"
 		add variant 1
-			"Dreadnought (Plasma Cluster)"
+			"Dreadnought (Plasma Charge)"
+
+
+#################################
+#
+# deprecated
+#
+#################################
+
+
+mission "Plasma Cluster Cannon New Tortuga Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "event: Plasma Charge Cannons pirate core"
+#		not "plasma cluster cannon new tortuga patched"
+	on offer
+		event "plasma cluster cannon new tortuga patch" 0
+		fail
+
+event "plasma cluster cannon new tortuga patch"
+

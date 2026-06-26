@@ -10,8 +10,10 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
-# Contents: new indigenous life forms and predators
+# Contents: new indigenous lifeforms and predators
 
+outfit Mouthparts?
+	"unplunderable" 1
 
 ship "Astero Nautilus"
 	plural "Astero Nautiluses"
@@ -280,6 +282,7 @@ ship "Astero Nautilus" "Vanguard?"
 	"final explode" "final explosion medium"
 
 outfit "Tentacles?"
+	plural "Tentacles?"
 	category "Guns"
 	thumbnail "outfit/unknown"
 	cost 20000
@@ -656,7 +659,7 @@ ship "Corpse Trickster"
 		"inscrutable" 1
 		"gaslining" 1
 		"ramscoop" 1
-		"optical jamming" 40
+		"optical jamming" 4
 	outfits
 		Mandibles? 5
 		"Corpse Trickster Ruse?"
@@ -677,6 +680,7 @@ ship "Corpse Trickster"
 	description "	Corpse Tricksters also have the ability to create hypnotic illusions, though the means by which it accomplishes this are a mystery. A favored tactic is creating an image of a Subsidurial to lure a fresh host. Alternatively, it might make multiple images of itself to intimidate and confuse other predators."
 
 outfit "Corpse Trickster Ruse?"
+	plural "Corpse Trickster Ruses?"
 	category "Secondary Weapons"
 	thumbnail "outfit/unknown"
 	"gun ports" -1
@@ -699,6 +703,7 @@ outfit "Corpse Trickster Ruse?"
 		"phasing"
 
 outfit "Corpse Trickster Submunition"
+	plural "Corpse Trickster Submunitions"
 	weapon
 		sprite "ship/corpse trickster/corpse trickster head"
 			rewind
@@ -718,6 +723,7 @@ outfit "Corpse Trickster Submunition"
 		"phasing"
 
 outfit "Corpse Trickster Illusion?"
+	plural "Corpse Trickster Illusions?"
 	category "Secondary Weapons"
 	thumbnail "outfit/unknown"
 	"gun ports" -1
@@ -746,6 +752,7 @@ outfit "Corpse Trickster Illusion?"
 		"phasing"
 
 outfit "Corpse Trickster Mirage?"
+	plural "Corpse Trickster Mirages?"
 	category "Secondary Weapons"
 	thumbnail "outfit/unknown"
 	"gun ports" -1
@@ -781,6 +788,7 @@ outfit "Corpse Trickster Mirage?"
 		"phasing"
 
 outfit "Corpse Trickster Submunition (Slow)"
+	plural "Corpse Trickster Submunitions (Slow)"
 	weapon
 		sprite "ship/corpse trickster/corpse trickster head"
 			rewind
@@ -843,6 +851,7 @@ ship "Corpse Trickster Body"
 
 ship "Corpse Trickster Body" "Corpse Trickster Body B"
 	"display name" "Subsidurial"
+	plural "Subsidurials"
 	noun "creature"
 	sprite "ship/corpse trickster/corpse trickster body b"
 	"never disabled"
@@ -862,6 +871,7 @@ outfit "Aggression?"
 		"hull damage" 0.01
 
 outfit "Subsidurial Bait?"
+	plural "Subsidurial Bait?"
 	category "Turrets"
 	thumbnail "outfit/unknown"
 	"turret mounts" -1
@@ -1016,11 +1026,11 @@ ship "Gray Eye"
 		"hyperdrive" 1
 		"jump speed" .2
 	outfits
-		Mandibles? 3
+		Mouthparts? 3
 		Tail? 1
-	gun 0 -97 Mandibles?
-	gun -23 -95 Mandibles?
-	gun 23 -95 Mandibles?
+	gun 0 -97
+	gun -23 -95
+	gun 23 -95
 	gun 0 70 Tail?
 		angle 180
 	turret -28 0
@@ -1028,7 +1038,7 @@ ship "Gray Eye"
 	leak "blood" 30 50
 	explode "blood" 45
 	"final explode" "subsidurial death"
-	description "Gray Eyes are very old Subsidurials that have developed thicker hides. They have also learned how to make a powerful slap with their tails. While they still retain the peaceful disposition of their younger siblings, Gray Eyes are often vindictive when attacked."
+	description "Gray Eyes are very old Subsidurials that have developed thicker hides. They have also learned how to make a powerful slap with their tails. While they still retain the peaceful disposition of their younger siblings, Gray Eyes are often vindictive when provoked."
 
 ship "Gray Eye" "Gray Eyed"
 	sprite "ship/grayeye flip"
@@ -1098,13 +1108,72 @@ mission "Ayab's Revenge"
 				`	"But I have my own..."`
 				`	"I never agreed..."`
 			`"Welcome to my fleet, <last>! I'll see you up in orbit!" The man stomps off to terrorize other bar patrons. You're still not sure what just happened.`
+			branch ayab-atik
+				rancom < 25
+			branch ayab-misam
+				random < 33
+			branch ayab-polaris
+				random < 50
+			action
+				set "ayab-sheratan"
+			``
 				accept
+			label ayab-atik
+			action
+				set "ayab-atik"
+			``
+				accept
+			label ayab-misam
+			action
+				set "ayab-misam"
+			``
+				accept
+			label ayab-polaris
+			action
+				set "ayab-polaris"
+			``
+				accept
+
 	npc kill
+		to spawn
+			has "ayab-sheratan"
 		government "Indigenous Lifeform"
-		system Kugel
+		system Sheratan
 		personality target waiting staying uninterested mining harvests ramming mute
 		fleet "Gray Eye"
 		dialog `Captain Ayab cheers. "Finally, the Gray Eye is no more! Let's get back to <destination>! Drink's on me!"`
+		on kill
+			clear "ayab-sheratan"
+	npc kill
+		to spawn
+			has "ayab-atik"
+		government "Indigenous Lifeform"
+		system Atik
+		personality target waiting staying uninterested mining harvests ramming mute
+		fleet "Gray Eye"
+		dialog `Captain Ayab cheers. "Finally, the Gray Eye is no more! Let's get back to <destination>! Drink's on me!"`
+		on kill
+			clear "ayab-atik"
+	npc kill
+		to spawn
+			has "ayab-misam"
+		government "Indigenous Lifeform"
+		system Misam
+		personality target waiting staying uninterested mining harvests ramming mute
+		fleet "Gray Eye"
+		dialog `Captain Ayab cheers. "Finally, the Gray Eye is no more! Let's get back to <destination>! Drink's on me!"`
+		on kill
+			clear "ayab-misam"
+	npc kill
+		to spawn
+			has "ayab-polaris"
+		government "Indigenous Lifeform"
+		system Polaris
+		personality target waiting staying uninterested mining harvests ramming mute
+		fleet "Gray Eye"
+		dialog `Captain Ayab cheers. "Finally, the Gray Eye is no more! Let's get back to <destination>! Drink's on me!"`
+		on kill
+			clear "ayab-polaris"
 	npc save
 		government "Creature Hunter"
 		personality escort heroic vindictive
@@ -1257,6 +1326,7 @@ ship "Ionic Leech"
 	description "These creatures have infested the Northern Passage since before humans colonized the north. They crave the power generated by ships and are somehow able to consume it through the use of organs uniquely evolved for the task. While they're a rare sight, captains who have the misfortune of encountering them will find that they attack in large swarms."
 
 outfit "Ionic Mouthparts?"
+	plural "Ionic Mouthparts?"
 	category "Guns"
 	thumbnail "outfit/mouthparts"
 	cost 20000
@@ -1324,6 +1394,8 @@ mission "First Contact: Ionic Leech"
 	deadline 2
 	source 
 		planet "Farpoint" "Maelstrom" "Sunracer" "Skillet" "Prime" "Stormhold"
+	to offer
+		"days since start" > 0
 	on offer
 		log "Factions" "Ionic Leeches" `These creatures have infested the Northern Passage since before humans colonized the north. They crave the power generated by ships and are somehow able to consume it through the use of organs uniquely evolved for the task. While they're a rare sight, captains who have the misfortune of encountering them will find that they attack in large swarms.`
 		conversation
@@ -1453,6 +1525,7 @@ effect "blue blood"
 	"random spin" 5
 
 outfit "Lightning Tendril?"
+	plural "Lightning Tendrils?"
 	category "Secondary Weapons"
 	thumbnail "outfit/unknown"
 	cost 1800000
@@ -1477,6 +1550,7 @@ outfit "Lightning Tendril?"
 		"scrambling damage" .4
 
 outfit "Digester?"
+	plural "Digesters?"
 	category "Guns"
 	thumbnail "outfit/unknown"
 	cost 10000
@@ -1524,7 +1598,7 @@ mission "First Contact: Luminazoa"
 		log "Factions" "Luminazoa" `The exposed mantle of Hell's Maw is home to a thriving colony of these creatures. While they are content to harmlessly scavenge for minerals, they can become dangerous when provoked. One of their tendrils is able to emit electrical bursts which can disrupt a ship's power systems.`
 		conversation
 			scene "ship/luminazoa/luminazoa"
-			`You wait until the exposed core is facing away from the sun and pick a landing spot near the edge of the planet's broken crust. Even at night the ambient heat here is intense, with temperatures slightly above the recommended safety limits for your environmental suit. Your ship's scanners alert you to the presence of several large life forms moving about on the rocky terrain below. Their translucent bodies gives them the appearance of ghostly jellyfish. While observing them consume the exposed minerals from the planet's gaping wound, you see occasional flashes of light when they create some form of energy discharge. Between the presence of these creatures and other environmental hazards, it's probably not a good idea to disembark.`
+			`You wait until the exposed core is facing away from the sun and pick a landing spot near the edge of the planet's broken crust. Even at night the ambient heat here is intense, with temperatures slightly above the recommended safety limits for your environmental suit. Your ship's scanners alert you to the presence of several large lifeforms moving about on the rocky terrain below. Their translucent bodies gives them the appearance of ghostly jellyfish. While observing them consume the exposed minerals from the planet's gaping wound, you see occasional flashes of light when they create some form of energy discharge. Between the presence of these creatures and other environmental hazards, it's probably not a good idea to disembark.`
 				accept
 	on accept
 		event "Luminazoa Hell's Maw"
@@ -1772,6 +1846,7 @@ outfitter "Murkspores"
 	"Murkspores"
 
 outfit "Murkmold Bay"
+	plural "Murkmold Bays"
 	category "Systems"
 	series "Expansions"
 	index 10
@@ -1797,6 +1872,7 @@ outfit "Murkmold Bunks"
 	description "This bunk room is infested with Murkmold, a protein rich primordial ooze that forms on Murkmold patches. While in this state, it is uninhabitable for your crew."
 
 outfit "Murkmold"
+	plural "Murkmold"
 	category "Special"
 	series "Sabotage"
 	index 007
@@ -1814,7 +1890,8 @@ outfit "Murkmold"
 	description `	"Spread the mold..."`
 
 mission "Midnight Murkcap"
-	landing
+	entering Murk
+	destination Earth
 	invisible
 	non-blocking
 	repeat
@@ -1826,7 +1903,7 @@ mission "Midnight Murkcap"
 			not "Midnight Murkcap: offered"
 			and
 				has "Midnight Murkcap: offered"
-				random < 10
+				random < 30
 	npc kill
 		government "Indigenous Lifeform"
 		system Murk
@@ -1868,8 +1945,9 @@ mission "Midnight Murkmold Bay"
 				decline
 
 mission "Midnight Murkmold Bunks"
-	entering
+	transition
 	invisible
+	non-blocking
 	destination Earth
 	repeat
 	to offer
@@ -1995,7 +2073,7 @@ mission "Midnight Murkmold Propagation 5"
 		fail
 
 mission "Midnight Murkmold Death"
-	entering
+	transition
 	invisible
 	destination Earth
 	repeat
@@ -2056,6 +2134,7 @@ ship "Rock Scavenger"
 	description "Rock Scavengers look fearsome, but they are actually quite passive if left alone. Unfortunately they are often hunted for their meat, which is considered a delicacy on the Paradise planets."
 
 outfit Mandibles?
+	plural Mandibles?
 	category "Guns"
 	thumbnail "outfit/mouthparts"
 	cost 10000
@@ -2076,6 +2155,7 @@ outfit Mandibles?
 		"firing force" -7.5
 
 outfit "Rock Scavenger Meat"
+	plural "Rock Scavenger Meat"
 	category "Special"
 	cost 1200000
 	thumbnail "outfit/rock scavenger meat"
@@ -2732,3 +2812,91 @@ mission "Coalition: Exterminate Plasma Parasites 3"
 		payment 1000000
 		dialog `While the collateral damage was severe, the Heliarchs are grateful for your assistance with eliminating the parasitic infestation and reward you with <payment>.`
 
+
+##########################
+#
+# Pincer Beast was deprecated in vanilla
+#
+##########################
+
+ship "Pincer Beast"
+	noun "creature"
+	sprite "ship/pincer beast"
+	thumbnail "thumbnail/pincer beast"
+	attributes
+		category "Unclassified"
+		"hull" 14300
+		"self destruct" 1.0
+		"automaton" 1
+		"mass" 1275
+		"drag" 14.4
+		"heat dissipation" .47
+		"cargo space" 75
+		"cooling" 13
+		"thrust" 37.5
+		"turn" 1650
+		"hull repair rate" 5
+		"energy capacity" 1000
+		"energy generation" 5
+		"jump speed" .2
+		"jump fuel" 100
+		"hyperdrive" 1
+		"ramscoop" 0.5
+		"fuel capacity" 300
+		"inscrutable" 1
+		"gaslining" 1
+		weapon
+			"blast radius" 60
+			"shield damage" 800
+			"hull damage" 900
+			"hit force" 3600
+	outfits
+		Pincer 2
+	gun -41 -45 Pincer
+	gun 41 -45 Pincer
+	leak "blood" -40 -20
+	explode "blood" 45
+	"final explode" "pincer beast shatter"
+	description `This creature appears to have an outer shell made of small asteroids held together by strands of carbon nanotubes. It pulls rocks through arms into its main cavity where it processes them to make more shell. The multi-colored hairs pointing back seem to be a drive system of sorts, manipulating the gravity field around the creature to accelerate it. There is no apparent hyperdrive mechanism, but somehow it is able to open a hyperspace window.`
+
+effect "pincer beast shatter"
+	sprite "effect/pincer beast shatter"
+		"no repeat"
+		"frame rate" 12
+	sound "pincer beast die"
+	"lifetime" 60
+	"velocity scale" .15
+	"random velocity" .4
+	"random angle" 360
+
+fleet "Pincer Beast"
+# Forest (Prey) government is deprecated in vanilla; substituting Indigenous Lifeform
+#	government "Forest (Prey)"
+	government "Indigenous Lifeform"
+	cargo 0
+	personality
+		confusion 20
+		timid mining harvests mute
+	variant
+		"Pincer Beast"
+	variant
+		"Pincer Beast" 2
+
+outfit "Pincer"
+	plural "Pincers"
+	category "Guns"
+	series "Guns"
+	index 92050
+	"gun ports" -1
+	weapon
+		sound "pincer hit"
+		"hit effect" "void sprite chewing"
+		"inaccuracy" 180
+		"velocity" 40
+		"lifetime" 1
+		"reload" 120
+		"cluster"
+		"shield damage" 1900
+		"hull damage" 1900
+		"firing energy" 40
+		"firing heat" 20

@@ -10,21 +10,12 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
-mission "Midnight Add Kvelqde-Sosrue"
-	landing
-	non-blocking
-	invisible
-	on offer
-		event "midnight add kvelqde-sosrue"
-		fail
-
-event "midnight add kvelqde-sosrue"
-	fleet "People's Houses Raiders"
-		add variant 1
-			"Kvelqde-Sosrue"
-		add variant 1
-			"Kvelqde-Sosrue"
-			"Kvelqde-Khora"
+fleet "People's Houses Raiders"
+	add variant 1
+		"Kvelqde-Sosrue"
+	add variant 1
+		"Kvelqde-Sosrue"
+		"Kvelqde-Khora"
 
 
 mission "Midnight Successor Shadow House 0"
@@ -243,8 +234,8 @@ mission "Midnight Successor House in Shadow"
 		personality waiting staying secretive uninterested timid coward quiet
 			confusion 10
 		ship "Ojde-Sado" "Deathless Myiara"
-		ship "Kvelqde-Kiitaa (OC)" "Myiara Raaja"
-		ship "Kvelqde-Kiitaa (OC)" "Myiara Sera"
+		ship "Kvelqde-Kiitaa (OC)" "Raaja-myiara"
+		ship "Kvelqde-Kiitaa (OC)" "Sera-myiara"
 
 event "midnight add shadow house shipyard"
 	planet Vade-Kella-Kaska
@@ -268,7 +259,7 @@ event "midnight add tundra espionage scanner"
 	outfitter "Shadow House"
 		add `"Tundra" Espionage Scanner`
 		add `"Tuur" Scanning Suite`
-		add `"Veldt" Combat Scanner`
+		add `"Veldt" Overcharge Scanner`
 	government "Old Houses"
 		add atrocity "Old House Secrets"
 	government "New Houses"
@@ -316,7 +307,7 @@ mission "Midnight Successor Shadow Cloak Clue"
 	invisible
 	source Vade-Kella-Kaska
 	to offer
-		"reputation: Shadow House" >= 15
+		"reputation: Shadow House" >= 5
 		has "license: Shadow House"
 		not "midnight delivered shadow house cloak"
 	on offer
@@ -386,6 +377,9 @@ event "midnight add stolsaqra-sosrue"
 	fleet "People's Shadow"
 		add variant 1
 			"Stolsaqra-Sosrue (Stealth)"
+	system Maspa-Sado
+		add fleet "People's Houses Raiders" 9000
+		add fleet "People's Shadow" 6000
 
 
 mission "Midnight Successor Shadow House Hostile"
@@ -438,4 +432,134 @@ event "midnight shadow house hostile shipyard"
 	planet Vade-Kella-Kaska
 		remove shipyard "Shadow House"
 
+
+mission "Midnight Blood Armor Activation (Flight)"
+	transition
+	invisible
+	non-blocking
+	repeat
+	destination Earth
+	to offer
+		has "event: midnight bloodstone portal"
+		has "outfit (flagship installed): Multimode Armor: Graviton"
+	on offer
+		outfit "Multimode Armor: Graviton" -1
+		outfit "Multimode Armor: Blood" 1
+		conversation
+			scene "outfit/predecessor armor bloodstone"
+			`Long dormant abilities in your Multimode Armor spontaneously activate...`
+				decline
+
+mission "Midnight Blood Armor Activation (Outfitter)"
+	transition
+	invisible
+	non-blocking
+	repeat
+	source
+		attributes "outfitter"
+		attributes "spaceport"
+	destination Earth
+	to offer
+		has "event: midnight bloodstone portal"
+		has "outfit: Multimode Armor: Graviton"
+	on offer
+		conversation
+			scene "outfit/predecessor armor bloodstone"
+			`Long dormant abilities in your Multimode Armor spontaneously activate...`
+			branch 10
+				"outfit: Multimode Armor: Graviton" >= 10
+			branch 9
+				"outfit: Multimode Armor: Graviton" == 9
+			branch 8
+				"outfit: Multimode Armor: Graviton" == 8
+			branch 7
+				"outfit: Multimode Armor: Graviton" == 7
+			branch 6
+				"outfit: Multimode Armor: Graviton" == 6
+			branch 5
+				"outfit: Multimode Armor: Graviton" == 5
+			branch 4
+				"outfit: Multimode Armor: Graviton" == 4
+			branch 3
+				"outfit: Multimode Armor: Graviton" == 3
+			branch 2
+				"outfit: Multimode Armor: Graviton" == 2
+			action
+				outfit "Multimode Armor: Graviton" -1
+				outfit "Multimode Armor: Blood" 1
+			``
+				decline
+			label 2
+			action
+				outfit "Multimode Armor: Graviton" -2
+				outfit "Multimode Armor: Blood" 2
+			``
+				decline
+			label 3
+			action
+				outfit "Multimode Armor: Graviton" -3
+				outfit "Multimode Armor: Blood" 3
+			``
+				decline
+			label 4
+			action
+				outfit "Multimode Armor: Graviton" -4
+				outfit "Multimode Armor: Blood" 4
+			``
+				decline
+			label 5
+			action
+				outfit "Multimode Armor: Graviton" -5
+				outfit "Multimode Armor: Blood" 5
+			``
+				decline
+			label 6
+			action
+				outfit "Multimode Armor: Graviton" -6
+				outfit "Multimode Armor: Blood" 6
+			``
+				decline
+			label 7
+			action
+				outfit "Multimode Armor: Graviton" -7
+				outfit "Multimode Armor: Blood" 7
+			``
+				decline
+			label 8
+			action
+				outfit "Multimode Armor: Graviton" -8
+				outfit "Multimode Armor: Blood" 8
+			``
+				decline
+			label 9
+			action
+				outfit "Multimode Armor: Graviton" -9
+				outfit "Multimode Armor: Blood" 9
+			``
+				decline
+			label 10
+			action
+				outfit "Multimode Armor: Graviton" -10
+				outfit "Multimode Armor: Blood" 10
+			``
+				decline
+
+###########################
+#
+# deprecated
+#
+###########################
+
+
+mission "Midnight Add Kvelqde-Sosrue"
+	landing
+	non-blocking
+	invisible
+	to offer
+		never
+	on offer
+		event "midnight add kvelqde-sosrue"
+		fail
+
+event "midnight add kvelqde-sosrue"
 

@@ -1,0 +1,934 @@
+# Copyright (c) 2022 by Michael Arsollon
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+
+# most of the art assets are in Lost in Midnight
+
+system Paradox
+	pos 9872.48 7031.1
+	hidden
+	attributes "midnight" "inaccessible" "notable star"
+	government Uninhabited
+	habitable 320
+	belt 1500
+	belt 4500
+	haze _menu/haze-purple
+	minables deuterium 1 1
+	minables quantumium 1 2
+	asteroids "small rock" 3 2.2118
+	asteroids "medium rock" 1 1.7684
+	asteroids "small metal" 3 2.578
+	asteroids "medium metal" 1 1.6432
+	object
+		sprite star/p0-old
+		period 10
+	object
+		sprite planet/gas16
+		distance 662.245
+		period 346.323
+		offset 180
+	object
+		sprite planet/gas17-b
+		distance 1167.25
+		period 644.39
+		offset 180
+	object
+		sprite planet/gas14-b
+		distance 1725.25
+		period 976.71
+		offset 180
+	object "Midnight Cloud (Paradox)"
+		sprite planet/smoke-purple
+			scale 2
+		distance 3056.39
+		period 1253.25
+	object "Midnight Paradox"
+		sprite planet/wormhole
+		distance 3556.39
+		period 1353.25
+		offset 180
+
+planet "Midnight Cloud (Paradox)"
+	"display name" "???"
+	attributes midnight "requires: atmosphere scan" uninhabited
+	landscape "land/nasa nebula purple1"
+	description `The thick haze from this cloud of cosmic dust obscures your vision of the stars. Your atmosphere scanner is detecting some interesting trace elements. Could anything be hiding deeper within the cloud?`
+	security 0
+	government Uninhabited
+
+planet "Midnight Paradox"
+	attributes midnight
+	government "Uninhabited"
+	wormhole "Paradox"
+
+wormhole "Paradox"
+	link "Paradox" "Watcher's Nest"
+	link "Watcher's Nest" "Paradox"
+
+
+mission "Midnight Anachronism 1"
+	transition
+	invisible
+	non-blocking
+	source
+		system "Watcher's Nest"
+	destination "Midnight Cloud (Paradox)"
+	to offer
+		has "First Contact: Rulei: declined"
+		has "event: turner hai power expansion"
+		or
+			has "event: wanderers: sestor eliminated"
+			has "event: wanderers: sestor planets unrestricted"
+		or
+			not "Cartography: Quarg Hitchhiker 1: offered"
+			has "Cartography: Quarg Hitchhiker 7: declined"
+			has "quash dead?"
+		or
+			has "SB-Labs Vindicator 4: done"
+			has "Oathbreaker Liberator 4: done"
+	on offer
+		event "midnight paradox wormhole forms" 0
+
+event "midnight paradox wormhole forms"
+	system "Watcher's Nest"
+		add object "Midnight Paradox"
+			sprite planet/wormhole
+			distance 3556.39
+			period 1353.25
+	system "Paradox"
+		remove hidden
+
+mission "Midnight Anachronism 2"
+	landing
+	clearance
+	name "Anachronism"
+	description "Visit <destination> and pick up 62 crew members to operate the Time Skipper. Then return to the dust cloud at Paradox to retrieve the ship."
+	source "Midnight Cloud (Paradox)"
+	destination "Pugglemug"
+	to offer
+		has "Midnight Anachronism 1: done"
+	on offer
+		conversation
+			scene "thumbnail/AESmisc caster"
+			`Hidden within the dust cloud is a ship. It is powered down but does not appear damaged. There is no response to your hails.`
+			choice
+				`	(Board the ship.)`
+				`	(Ignore this for now...)`
+					defer
+			`	The crew is dead. There are no signs of a struggle. The corpses have completely rotted away, but they wore human clothing. The captain's clothes are particularly similar to your own. A datapad is at the captain's side.`
+			choice
+				`	(Turn it on.)`
+			`	Power cells long dormant fire up, bringing the data pad back to life. The text is in your language! Much of the data is corrupted, but you find the captain's final log entry:`
+			``
+			`	"Our mission hit an unexpected complication. The trajectory of the Quantum Drive was disrupted by the manifestation of a temporal aftershock in the chronology. The Time Skipper arrived in one piece. But the drive was damaged and we arrived 888 years too early. Fortunately, I know where we are. I doubt we'll encounter anyone from our galaxy in this place, so we are unlikely to disrupt the chronology of this world line. And the presence of the Star Gazers means they can lead you here when you need to be. Our target is probably going to arrive at World's End soon after you read this. Do not allow the target to reach our galaxy. The future depends on it. We'll do our best to preserve this ship and its technology to aid you in completing the mission. I'm certain you will succeed." - Captain <first> <last>"`
+				accept
+
+mission "Midnight Anachronism 3"
+	landing
+	name "Anachronism"
+	description "Transport 62 crew members to the dust cloud at Paradox to retrieve the Time Skipper."
+	source "Pugglemug"
+	destination "Midnight Cloud (Paradox)"
+	passengers 62
+	blocked "Return to Pugglemug when you have 62 empty bunks to accomodate the crew of the Time Skipper."
+	to offer
+		has "Midnight Anachronism 2: done"
+	on offer
+		conversation
+			scene "thumbnail/AESmisc caster"
+			`Recruit 62 crew to operate the Time Skipper?`
+			choice
+				`	(Gather the crew.)`
+				`	(Not now...)`
+					defer
+			`	Now that you have the crew, transport them to the dust cloud at Paradox to retrieve the Time Skipper.`
+				accept
+	on complete
+		give ship "Anachronism" "Time Skipper"
+
+mission "Midnight Anachronism 4"
+	landing
+	name "Anachronism"
+	description "Visit the outfitter at <destination> to familiarize yourself with the weapons and systems installed on the Time Skipper."
+	source "Midnight Cloud (Paradox)"
+	destination "Vara K'chrai"
+	to offer
+		has "Midnight Anachronism 3: done"
+	on offer
+		conversation
+			scene "thumbnail/AESmisc caster"
+			`Your new crew cleans up the Time Skipper and is ready to fly it out of the dust cloud! Pugglemug doesn't have the facilities you need to study the ship. Take it to <destination> and familiarize yourself with its weapons and systems at the outfitter.`
+				accept
+
+mission "Midnight Anachronism 5"
+	landing
+	name "World's End"
+	description "Your target will appear at <waypoints> soon. Whoever it is cannot be allowed to reach your galaxy."
+	source "Vara K'chrai"
+	waypoint "World's End"
+	to offer
+		has "Midnight Anachronism 4: done"
+	on offer
+		event "midnight quantum wormhole forms"
+		conversation
+			scene "thumbnail/AESmisc caster"
+			`Once you are done familiarizing yourself with the weapons and systems installed on Tomorrow's Yesterday, you'll need to prepare for battle. The target described by the previous captain should appear at <waypoints> soon...`
+				accept
+	on enter "World's End"
+		conversation
+			scene "planet/wormhole quantum"
+			`A strange wormhole has appeared. Something is coming out...`
+			choice
+				`	(Get ready.)`
+			scene "thumbnail/vyuira"
+			`	A familiar voice penetrates your consciousness. The voice of Quash. It says, "Captain <first> <last>, you hound me even here!?! Hmm... you seem much younger than when I saw you last. Ah, I see now. You must be from the local world line. Excellent! I shall take great pleasure in killing you. In doing so, I shall kill countless versions of you that populate multiple alternate future time paths!" Quash's presence leaves your consciousness.`
+				accept
+	npc kill
+		government "Nemesis"
+		system "World's End"
+		personality target waiting staying vindictive mute
+			confusion 10
+		ship "vyu-Ira (wounded)" "Sanctity"
+		on disable
+			dialog `The alien ship has stopped moving...`
+		on board
+			conversation
+				scene "scene/scene-guts"
+				`You find a strange wound in the hull of the alien ship. Quash's corpse occupies the wound, partially absorbed into the ship...`
+					accept
+		on kill
+			set "vyu-Ira (Quash) destroyed"
+			fail
+
+event "midnight quantum wormhole forms"
+	system "World's End"
+		add object
+			sprite "planet/wormhole quantum"
+			distance 1300
+			period 349.820
+			offset 235
+
+"landing message" "You are not sure what this is, but it's not something you can land on."
+	"planet/wormhole quantum"
+
+mission "Midnight Anachronism 6"
+	transition
+	non-blocking
+	invisible
+	deadline 2
+	destination Earth
+	to offer
+		has "vyu-Ira (Quash) destroyed"
+	on offer
+		conversation
+			scene "scene/scene-ghost maboro"
+			`A fleet of Pug ships decloak when you enter the system. The flagship hails you. "Congratulations! All the branching timestreams appear to be in order."`
+			choice
+				`	"Who are you?"`
+				`	"What do you want?"`
+			`	"We are the temporal security team. We clean up any paradoxes that might destablize the chronology. But that doesn't matter. We've altered the mental structure of you and your crew to prevent you from discussing any of this or your recent battle with anyone, even among yourselves. It appears the Quantum Drive on Tomorrow's Yesterday was damaged and the other paradoxes left behind seem inconsequential. But we'll keep an eye on you just to be safe. Have a nice day!" The Pug closes communications.`
+				accept
+	npc kill
+		government "Pug (Ghost)"
+		personality target waiting timid
+		fleet
+			names "pug"
+			cargo 0
+			variant
+				"Ghost Maboro"
+				"Ghost Enfolta" 2
+				"Ghost Zibruka" 4
+		on kill
+			fail
+
+
+###########################################
+#
+# Ammo Restocking
+#
+###########################################
+
+
+outfit "Future Tech License"
+	category "Licenses"
+	thumbnail "outfit/unknown"
+	description "This is beyond your technical understanding. You'll have to research this on your own to figure it out."
+
+outfit "Quantum Torpedo Access Temporary"
+	"display name" "Quantum Torpedo Tech"
+	plural "Quantum Torpedo Techs"
+	category "Ammunition"
+	series "Ammunition"
+	licenses
+		"Future Tech"
+	cost 2800000
+	thumbnail "outfit/tech quantum torpedo"
+	"base research rate" 0.00
+	"requires Quantum Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Ammo Expertise" 1
+	"requires Research Data" 1
+	"requires Research Data (Bio)" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Quantum Torpedoes. Having this makes it possible for any outfitter to offer Star Tail Cells even if it is normally not stocked there."
+	description "	This is beyond your technical understanding. You'll have to reverse engineer this tech using your own foundational knowledge as a guide."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
+
+outfit "Quantum Torpedo Tech License"
+	"display name" "Quantum Torpedo Tech"
+	plural "Quantum Torpedo Techs"
+	category "Licenses"
+	series "Technology"
+	licenses
+		"Future Tech"
+	thumbnail "outfit/tech quantum torpedo"
+	"base research rate" 0.00
+	"requires Star Tail Cell" 1
+	"requires Ammo Basics" 1
+	"requires Ammo Expertise" 1
+	"requires Research Data" 1
+	"requires Research Data (Bio)" 1
+	"requires Research Data (Chem)" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Quantum Torpedoes. Having this makes it possible for any outfitter to offer Star Tail Cells even if it is normally not stocked there."
+
+outfitter "Quantum Torpedo Access"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Quantum Torpedo Tech"
+	location
+		attributes "outfitter"
+		outfits "Quantum Torpedo"
+	stock
+		"Quantum Torpedo Access Temporary"
+
+outfitter "Quantum Torpedo Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		not "license: Quantum Torpedo Tech"
+	location
+		attributes "outfitter"
+	to sell
+		or
+			has "outfit: Quantum Torpedo Access Temporary"
+			has "license: Quantum Torpedo Tech"
+		or
+			has "outfit: Quantum Torpedo Launcher"
+			has "outfit: Quantum Torpedo Pod"
+			has "outfit: Quantum Torpedo Rack"
+			has "outfit: Quantum Torpedo Depot"
+	stock
+		"Quantum Torpedo"
+
+mission "Midnight Tech: Quantum Torpedo Access Permanent License"
+	entering
+	invisible
+	non-blocking
+	destination Earth
+	to offer
+		has "outfit: Quantum Torpedo Access Temporary"
+		not "license: Quantum Torpedo Tech"
+	on offer
+		outfit "Quantum Torpedo Access Temporary" -1
+		set "license: Quantum Torpedo Tech"
+		fail
+
+mission "Midnight Research: Quantum Torpedo Tech"
+	transition
+	invisible
+	non-blocking
+	destination Earth
+	to offer
+		has "outfit (flagship installed): Quantum Torpedo"
+		has "outfit (flagship installed): Ammo Basics"
+		has "outfit (flagship installed): Research Data"
+		has "outfit (flagship installed): Research Data (Bio)"
+		has "outfit (flagship installed): Research Data (Chem)"
+		has "outfit (flagship installed): Research Data (Phys)"
+		has "license: Ammo Expertise"
+		not "outfit: Quantum Torpedo Access Temporary"
+		not "license: Quantum Torpedo Tech"
+		random < 0 + ( "flagship attribute: research bonus" / 10 )
+	on offer
+		outfit "Research Data" -1
+		outfit "Research Data (Bio)" -1
+		outfit "Research Data (Chem)" -1
+		outfit "Research Data (Phys)" -1
+		set "license: Quantum Torpedo Tech"
+		conversation
+			scene "outfit/tech quantum torpedo"
+			`You have successfully completed Quantum Torpedo Tech research. This makes it possible for any outfitter to offer Quantum Torpedoes even if it is normally not stocked there."`
+			``
+			`	(Lost 1 Research Data)`
+			`	(Lost 1 Research Data (Bio))`
+			`	(Lost 1 Research Data (Chem))`
+			`	(Lost 1 Research Data (Phys))`
+			`	(Gained Quantum Torpedo Tech)`
+				decline
+
+
+###########################################
+#
+# Time Skipper
+#
+###########################################
+
+
+ship "Anachronism"
+	sprite "ship/AESmisc caster"
+	thumbnail "thumbnail/AESmisc caster"
+	attributes
+		category "Heavy Warship"
+		"cost" 3000000
+		"shields" 60000
+		"hull" 25000
+		"required crew" 60
+		"bunks" 90
+		"mass" 360
+		"drag" 9.3
+		"heat dissipation" .5
+		"fuel capacity" 800
+		"cargo space" 50
+		"outfit space" 995
+		"weapon capacity" 501
+		"engine capacity" 158
+		"spinal mount" 1
+		"fused circuits" -1
+		"quantum phase adapter" -1
+		weapon
+			"blast radius" 250
+			"shield damage" 1000
+			"hull damage" 500
+			"hit force" 1500
+	outfits
+		"Electron Ion Turret" 2
+		"Heavy Double Anti-Missile"
+		"Refurbished Fusion Cannon"
+		"Quantum Torpedo Launcher" 2
+		"Quantum Torpedo Pod" 4
+		"Quantum Torpedo Rack" 6
+		"Quantum Torpedo Depot"
+		"Quantum Torpedo" 207
+
+		"Apocalypse Core"
+		"TP144q Battery Pack"
+		"Modified S-270 Regenerator"
+		"Modified S-970 Regenerator"
+		"S-KR53 Hull Repair System"
+		"North Wind Helium"
+		"Vacuum Ramscoop"
+		"Quantum Bloodstone"
+		"Quantum Cloaking Device"
+
+		"A510 Atomic Engines"
+		"Quantum Drive (Damaged)"
+	engine 0 198 
+	engine -66 190 
+		zoom .5
+	engine 66 190 
+		zoom .5
+	"reverse engine" -117 152 
+		zoom .5
+	"reverse engine" 117 152 
+		zoom .5
+	"steering engine" -110 170 
+		zoom .5
+		angle 90
+		left
+	"steering engine" 110 170 
+		zoom .5
+		angle 270
+		right
+	"steering engine" -15 -112 
+		zoom .3
+		angle 90
+		right
+	"steering engine" 15 -112 
+		zoom .3
+		angle 270
+		left
+	"steering engine" -11 -132 
+		zoom .3
+		angle 90
+		right
+	"steering engine" 11 -132 
+		zoom .3
+		angle 270
+		left
+	"steering engine" -9 -152 
+		zoom .3
+		angle 90
+		right
+	"steering engine" 9 -152 
+		zoom .3
+		angle 270
+		left
+	gun -0.5 -190 "Quantum Torpedo Pod"
+	gun 0.5 -190 "Quantum Torpedo Pod"
+	gun -1 -190 "Quantum Torpedo Launcher"
+	gun 0 -190 "Refurbished Fusion Cannon"
+	gun 1 -190 "Quantum Torpedo Launcher"
+	gun -0.5 -190 "Quantum Torpedo Pod"
+	gun 0.5 -190 "Quantum Torpedo Pod"
+	turret 0 115
+	turret -72 156 "Electron Ion Turret"
+	turret 72 156 "Electron Ion Turret"
+	turret 0 171 "Heavy Double Anti-Missile"
+	explode "blue tiny explosion" 24
+	explode "blue small explosion" 32
+	explode "blue medium explosion" 60
+	explode "blue large explosion" 120
+	"final explode" "final explosion large"
+	description "Constructed by an unknown manufacturer, the Anachronism is an enigma from the future."
+
+
+outfit "Quantum Drive (Damaged)"
+	category "Systems"
+	cost 1000000
+	thumbnail "outfit/midnight quantum drive"
+	"mass" 30
+	"outfit space" -30
+	"jump drive" 1
+	"jump speed" .6
+	"jump fuel" 200
+	"jump range" 150
+	"jump effect" "quantum drive"
+	"fused circuits" 1
+	"reinstall" -1
+	"unique" 1
+	description "The Quantum Drive allows travel to any point in time and space... When it's working properly. This damaged Quantum Drive still makes it possible to travel over distances beyond what can be achieved with a regular Jump Drive."
+
+effect "quantum drive"
+	sprite "effect/quantum drive"
+		"no repeat"
+		"frame rate" 12
+	"lifetime" 10
+	"random angle" 180
+	"velocity scale" 0.
+
+
+outfit "Quantum Cloaking Device"
+	category "Unique"
+	cost 1200000
+	"mass" 10
+	"outfit space" -10
+	"cloak" .01
+	"cloaking energy" 2
+	"cloaking fuel" .4
+	"cloak phasing" 1
+	"quantum phase adapter" 1
+	"reinstall" -1
+	"unplunderable" 1
+	"unique" 1
+	description "How do you install something when you can't see it or feel it?"
+
+
+outfit "Electron Ion Turret"
+	category "Turrets"
+	cost 1800000
+	thumbnail "outfit/electron ion turret"
+	"mass" 59
+	"outfit space" -59
+	"weapon capacity" -59
+	"turret mounts" -1
+	"required crew" 1
+	"unique" 1
+	weapon
+		sprite "projectile/2x electron ion"
+			"frame rate" 60
+		"hardpoint sprite" "hardpoint/electron ion"
+		"hardpoint offset" 8.
+		sound "electron beam"
+		"hit effect" "electron ion impact"
+		"inaccuracy" .3
+		"turret turn" 1.2
+		"velocity" 450
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 20
+		"firing heat" 36
+		"shield damage" 24
+		"hull damage" 33
+		"ion damage" .05
+		"scrambling damage" .05
+	description "The internal diagnostic program indicates that it is a Tarazed test model prototype. But all of the listed log entries are in the future instead of the past."
+
+effect "electron ion impact"
+	sprite "effect/electron ion impact"
+		"no repeat"
+		"frame rate" 30
+	"lifetime" 5
+	"random angle" 2
+	"random spin" 1
+	"velocity scale" -.003
+
+
+outfit "Heavy Double Anti-Missile"
+	category "Turrets"
+	cost 325000
+	thumbnail "outfit/heavy anti-missile double"
+	"mass" 43
+	"outfit space" -43
+	"weapon capacity" -43
+	"turret mounts" -1
+	weapon
+		"hardpoint sprite" "hardpoint/heavy anti-missile double"
+		"hardpoint offset" 5.
+		"hit effect" "large anti-missile"
+		"anti-missile" 8
+		"velocity" 200
+		"lifetime" 1
+		"reload" 3
+		"firing energy" 10
+		"firing heat" 5
+	description "A few customers have expressed an interest in buying a Heavy Double Anti-Missile Turret in the past. But in market research surveys it has never beaten demand for some form of Particle Turret."
+
+
+outfit "Refurbished Fusion Cannon"
+	category "Secondary Weapons"
+	cost 160000000
+	thumbnail "outfit/refurbished fusion cannon"
+	"mass" 145
+	"outfit space" -144
+	"weapon capacity" -144
+	"gun ports" -1
+	"spinal mount" -1
+	"required crew" 18
+	"unique" 1
+	weapon
+		sprite "projectile/fusion gun bolt"
+			"no repeat"
+			"frame rate" .25
+			"scale" 1.5
+		sound "dragonflame"
+		icon "icon/dragonflame"
+		"fire effect" "fusion cannon fire"
+		"die effect" "fusion cannon cloud" 5
+		"hit effect" "fusion cannon impact" 20
+		"hit effect" "fusion cannonspark" 40
+		"hit effect" "fusion cannon explosion 1" 10
+		"hit effect" "fusion cannon explosion 2" 10
+		"hit effect" "fusion cannon explosion 3" 10
+		"hit effect" "fusion cannon nuke" 1
+		"live effect" "fusion cannon cloud" 10
+		"inaccuracy" 0.2
+		"velocity" 66
+		"lifetime" 30
+		"reload" 60
+		"firing energy" 7500
+		"firing heat" 9000
+		"firing fuel" 150
+		"shield damage" 330
+		"hull damage" 495
+		"piercing" 0.3
+		"disruption damage" 7.5
+		"hit force" 225
+		"missile strength" 15
+	description `There is an old faded piece of paper attached to the targeting control panel:`
+	description `	"We've done our best to restore this old Prototype Fusion Cannon to a functional state. I'm glad I was able to end my career on a high note. Make sure you come back from this mission in one piece. You won't want to miss my retirement party!" - Barmy`
+
+
+outfit "Quantum Torpedo"
+	plural "Quantum Torpedoes"
+	series "Ammunition"
+	index 01052
+	category "Ammunition"
+	cost 2800
+	thumbnail "outfit/quantum torpedo"
+	"mass" .5
+	"quantum torpedo capacity" -1
+	description "Quantum Torpedoes are ammunition for the Quantum Torpedo Launcher. Each Quantum Torpedo Launcher can hold 30 of them. You cannot install torpedoes unless you have also installed a launcher to fire them from."
+
+outfit "Quantum Torpedo Rack"
+	plural "Quantum Torpedo Racks"
+	category "Ammunition"
+	series "Ammunition"
+	index 01053
+	cost 21000
+	thumbnail "outfit/quantum torpedo storage"
+	"mass" 3
+	"outfit space" -9
+	"quantum torpedo capacity" 15
+	ammo "Quantum Torpedo"
+	description "The Quantum Torpedo Storage Rack is used to store extra ammunition for Quantum Torpedo Launchers."
+
+outfit "Quantum Torpedo Depot"
+	plural "Quantum Torpedo Depots"
+	series "Ammunition"
+	index 01054
+	category "Ammunition"
+	cost 63000
+	thumbnail "outfit/quantum torpedo depot"
+	"mass" 9
+	"cargo space" -40
+	"quantum torpedo capacity" 45
+	ammo "Quantum Torpedo"
+	"required crew" 1
+	description "The Quantum Torpedo Storage Depot stages extra ammunition in your cargo bay for weapons that use Quantum Torpedoes. The ammunition is ready to be withdrawn for use. Storing it this way uses more cargo space than if it were packed away in sealed crates. An extra crewmember is required to maintain inventory."
+
+outfit "Quantum Torpedo Launcher"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01110
+	cost 520000
+	thumbnail "outfit/quantum torpedo launcher"
+	"mass" 25
+	"outfit space" -40
+	"weapon capacity" -40
+	"gun ports" -1
+	"quantum torpedo capacity" 30
+	"unique" 1
+	weapon
+		sprite "projectile/quantum torpedo"
+			"frame rate" 2
+			"random start frame"
+		sound "torpedo-ver8"
+		ammo "Quantum Torpedo"
+		icon "icon/quantum torpedo"
+		"fire effect" "emp torpedo fire"
+		"hit effect" "quantum torpedo hit"
+		"die effect" "blue tiny explosion"
+		"inaccuracy" 5
+		"velocity" 6
+		"lifetime" 1600
+		"reload" 120
+		"firing energy" 2
+		"firing heat" 45
+		"acceleration" .15
+		"drag" .015
+		"turn" 1.5
+		"homing"
+			"leading"
+			"throttle control"
+		"optical tracking" .9
+		"shield damage" 880
+		"hull damage" 880
+		"hit force" 450
+		"phasing"
+		"piercing" 1
+	description "Quantum Torpedoes are able to quantum shift though obstacles that block line of sight to the target. This effect also negates anti-missile defenses and penetrates shields. The manufacturer is unknown."
+
+outfit "Quantum Torpedo Pod"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01100
+	cost 200000
+	thumbnail "outfit/quantum torpedo pod"
+	"mass" 6
+	"outfit space" -12
+	"weapon capacity" -12
+	"gun ports" -1
+	"quantum torpedo capacity" 3
+	"unique" 1
+	weapon
+		sprite "projectile/quantum torpedo"
+			"frame rate" 2
+			"random start frame"
+		sound "torpedo-ver8"
+		ammo "Quantum Torpedo"
+		icon "icon/quantum torpedo"
+		"fire effect" "emp torpedo fire"
+		"hit effect" "quantum torpedo hit"
+		"die effect" "blue tiny explosion"
+		"inaccuracy" 5
+		"velocity" 6
+		"lifetime" 1100
+		"reload" 252
+		"burst count" 3
+		"burst reload" 120
+		"firing energy" 2
+		"firing heat" 45
+		"acceleration" .15
+		"drag" .015
+		"turn" 1.5
+		"homing"
+			"leading"
+			"throttle control"
+		"optical tracking" .9
+		"shield damage" 880
+		"hull damage" 880
+		"hit force" 450
+		"phasing"
+		"piercing" 1
+	description "Quantum Torpedoes are able to quantum shift though obstacles that block line of sight to the target. This effect also negates anti-missile defenses and penetrates shields. The manufacturer is unknown." 
+	description "	Pods enable fighters and other light craft to carry small quantities of Torpedoes into battle while retaining enough space for other weapons. Large ships are better off with full-size launchers."
+
+effect "quantum torpedo hit"
+	sprite "effect/explosion/blue/large"
+		"no repeat"
+		"frame rate" 15
+	sound "torpedo hit"
+	"lifetime" 32
+	"random angle" 360
+	"random velocity" .8
+	"random spin" 4
+	"random frame rate" 5
+	"velocity scale" .4
+
+
+outfit "Vacuum Ramscoop"
+	category "Systems"
+	cost 480000
+	thumbnail "outfit/vacuum ramscoop"
+	"mass" 16
+	"outfit space" -16
+	"ramscoop" 10
+	"solar collection" -0.1
+	"solar heat" 1.5
+	"unique" 1
+	description "This Vacuum Ramscoop aggressively collects fuel from the solar wind, but loses power and generates heat while it does so. Though it appears to be a product of Deep Sky, none of their outfitters recognize it."
+
+
+outfit "Modified S-270 Regenerator"
+	category "Systems"
+	cost 260000
+	thumbnail "outfit/small regenerator mod"
+	"mass" 12
+	"outfit space" -12
+	"shield generation" .72
+	"shield energy" .66
+	"shield heat" .6
+	"energy consumption" .33
+	"heat generation" 2.2
+	"unique" 1
+	description "This modified S-270 regenerator restores shields more quickly but drains more energy and runs hotter than the standard version."
+
+outfit "Modified S-970 Regenerator"
+	category "Systems"
+	cost 960000
+	thumbnail "outfit/large regenerator mod"
+	"mass" 37
+	"outfit space" -37
+	"shield generation" 2.76
+	"shield energy" 2.53
+	"shield heat" 2.3
+	"energy consumption" .99
+	"heat generation" 6.6
+	"unique" 1
+	description "This modified S-970 regenerator restores shields more quickly but drains more energy and runs hotter than the standard version."
+
+
+outfit "S-KR53 Hull Repair System"
+	category "Systems"
+	cost 1810000
+	thumbnail "outfit/syndicate hull repair medium"
+	"mass" 53
+	"outfit space" -53
+	"hull repair rate" 0.2
+	"hull energy" 0.2
+	"hull heat" 0.3
+	"delayed hull repair rate" 0.4
+	"delayed hull energy" 0.4
+	"delayed hull heat" 0.6
+	"repair delay" 60
+	"unique" 1
+	description `This hull repair system from Syndicate Systems is more advanced than anything in their catalogue and should be a top seller. Strangely, any Syndicate sales representative who is asked about this product claims it doesn't exist.`
+
+
+outfit "North Wind Helium"
+	category "Systems"
+	cost 180000
+	thumbnail "outfit/north wind helium"
+	"mass" 50
+	"outfit space" -50
+	"cooling" 69
+	"active cooling" 40
+	"cooling energy" 2.9
+	"unique" 1
+	description "While bulkier than the industry standard Liquid Helium Cooler, this new system offers additional emergency cooling if the ship starts to overheat."
+
+
+outfit "Apocalypse Core"
+	category "Power"
+	series "Generators"
+	index 01131
+	cost 9900000
+	thumbnail "outfit/armageddon hai"
+	"mass" 150
+	"outfit space" -150
+	"energy generation" 29.2
+	"heat generation" 65
+	description "This appears to be a collaboration between Lovelace Labs and Turner Inc. However, this product does not appear in either company's catalogue."
+
+
+outfit "A510 Atomic Engines"
+	plural "A510 Atomic Engines"
+	category "Engines"
+	"cost" 1485000
+	thumbnail "outfit/atomic engines large"
+	"mass" 101
+	"outfit space" -101
+	"engine capacity" -101
+	"thrust" 81.9
+	"thrusting energy" 8.3
+	"thrusting heat" 17.4
+	"turn" 2101
+	"turning energy" 4.1
+	"turning heat" 10.5
+	"flare sprite" "effect/atomic flare/large"
+		"frame rate" 11
+	"flare sound" "atomic large"
+	"steering flare sprite" "effect/atomic flare/large"
+		"frame rate" 11
+	"unique" 1
+	"steering flare sound" "atomic large"
+	description "This compact steering and thrusting engine isn't as efficient as separate atomic thruster and steering engines of similar size. But using this can free up a considerable amount of space for other outfits or weapons. It seems like this should be a popular product, but Deep Sky outfitters have never heard of it."
+
+
+effect "blue tiny explosion"
+	sprite "effect/explosion/blue/tiny"
+		"no repeat"
+		"frame rate" 15
+	sound "explosion tiny"
+	"lifetime" 20
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 1
+	"random velocity" .2
+	"velocity scale" .4
+
+effect "blue small explosion"
+	sprite "effect/explosion/blue/small"
+		"no repeat"
+		"frame rate" 15
+	sound "explosion small"
+	"lifetime" 24
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 2
+	"random velocity" .4
+	"velocity scale" .4
+
+effect "blue medium explosion"
+	sprite "effect/explosion/blue/medium"
+		"no repeat"
+		"frame rate" 15
+	sound "explosion medium"
+	"lifetime" 28
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 3
+	"random velocity" .6
+	"velocity scale" .4
+
+effect "blue large explosion"
+	sprite "effect/explosion/blue/large"
+		"no repeat"
+		"frame rate" 15
+	sound "explosion large"
+	"lifetime" 32
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 4
+	"random velocity" .8
+	"velocity scale" .4
+

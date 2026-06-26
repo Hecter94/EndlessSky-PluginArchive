@@ -445,9 +445,11 @@ mission "Midnight Hauler VI Upgrade"
 	job
 	repeat
 	name "Hauler VI Recall"
-	description "Southbound Shipyards has issued a recall for the old model Hauler VI to fix a critical issue. Bring a Hauler VI to <destination> to have the this fixed. Make sure to uninstall any outfits you want to keep before doing so."
+	description "Southbound Shipyards has issued a recall for the old model Hauler VI. Set the old model Hauler VI as your flagship and land on <destination> to have it fixed." (Any outfits still installed will be lost.)"
 	source
-		government "Republic" "Syndicate" "Neutral" "Independent"
+		government "Republic" "Syndicate" "Neutral" "Independent" "Pirate"
+		attributes "spaceport"
+		not attributes "uninhabited"
 	destination
 		government "Free Worlds"
 		attributes "shipyard"
@@ -458,12 +460,13 @@ mission "Midnight Hauler VI Upgrade"
 	on accept
 		conversation
 			scene "thumbnail/hauler vi-thumb"
-			`The old model Hauler VI needs to be fixed by an authorized shipyard. Make sure to uninstall any outfits you want to keep from the Hauler VI before taking it to <destination>.`
+			scene "thumbnail/midnight hauler vi-thumb"
+			`You receive a message: "The old model Hauler VI needs to be fixed by an authorized shipyard. Set the Hauler VI as your flagship and land on <destination> to have it fixed." (Any outfits still installed will be lost.)`
 				accept
 	on visit
-		dialog "You need to bring the older model Hauler VI to the shipyard here to have it fixed. Make sure to uninstall any outfits from it that you want to keep."
+		dialog "You need to set the older model Hauler VI as your flagship to have it fixed. Make sure to uninstall any outfits from it that you want to keep."
 	to complete
-		has "ship model: Hauler VI"
+		has "flagship model: Hauler VI"
 	on complete
 		take ship "Hauler VI"
 		give ship "Midnight Hauler VI"

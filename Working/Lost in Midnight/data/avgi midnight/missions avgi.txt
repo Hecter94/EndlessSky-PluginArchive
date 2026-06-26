@@ -13,11 +13,11 @@
 phrase "midnight avgi blooming orchid fleet"
 	word
 		"Orchi-"
-	word
+	phrase
 		"digit"
-	word
+	phrase
 		"digit"
-	word
+	phrase
 		"digit"
 
 mission "Midnight Avgi Blooming Orchid"
@@ -98,23 +98,23 @@ mission "Midnight Avgi Harvester License"
 	to offer
 		has "Avgi: First Contact: done"
 		or
-			has "outfit (flagship installed): Voidfish"
-			has "outfit (flagship installed): Voidlunker"
-			has "outfit (flagship installed): Integral Wood"
-			has "outfit (flagship installed): Jamfruit"
-			has "outfit (flagship installed): Pollen"
+			has "outfit: Voidfish"
+			has "outfit: Voidlunker"
+			has "outfit: Integral Wood"
+			has "outfit: Jamfruit"
+			has "outfit: Pollen"
 		random < 100 - ( "avgi harvester license deferred" * 90 )
 	on offer
 		clear "avgi harvester license deferred"
 		conversation
 			branch fish
 				or
-					has "outfit (flagship installed): Voidfish"
-					has "outfit (flagship installed): Voidlunker"
+					has "outfit: Voidfish"
+					has "outfit: Voidlunker"
 			branch wood
-				has "outfit (flagship installed): Integral Wood"
+				has "outfit: Integral Wood"
 			branch fruit
-				has "outfit (flagship installed): Jamfruit"
+				has "outfit: Jamfruit"
 			scene "outfit/pollen particle"
 			`After landing, you receive a message from the <origin> spaceport authorities.`
 				goto message
@@ -137,8 +137,8 @@ mission "Midnight Avgi Harvester License"
 					goto personal
 			action
 				set "license: Avgi Harvester"
-				event "add avgi harvester sales"
-				event "link kr-84 murk"
+				event "add avgi harvester sales" 0
+				event "link kr-84 murk" 0
 				set "link kr-84 murk patched"
 				log `Was granted a license to purchase specialized equipment from the Avgi for Void Harvesting. The presence of the Aberrant has made traveling to Gossamer dangerous. Because of this, the resources found there are highly sought after.`
 			scene "outfit/voidfish pendant"
@@ -155,26 +155,16 @@ mission "Midnight Avgi Harvester License"
 event "link kr-84 murk"
 	link Kr-84 Murk
 
-mission "Midnight link kr-84 murk patch"
-	landing
-	invisible
-	non-blocking
-	to offer
-		has "event: link kr-84 murk"
-		not "link kr-84 murk patched"
-	on offer
-		event "link kr-84 murk"
-		fail
-		
 
 mission "Midnight Avgi Tangled Twins"
-	landing
+	transition
 	invisible
 	non-blocking
+	source
+		system Murk
 	destination "Outpost Enka"
 	to offer
 		has "event: link kr-84 murk"
-		has "license: Avgi Harvester"
 	to complete
 		never
 	on enter Murk
@@ -184,7 +174,7 @@ mission "Midnight Avgi Tangled Twins"
 				accept
 	npc
 		government "Avgi (Dissonance)"
-		personality waiting staying forbearing timid unconstrained uninterested surveillance
+		personality waiting staying forbearing timid uninterested surveillance
 		system Murk
 		fleet
 			names "avgi civilian names"
@@ -195,7 +185,7 @@ mission "Midnight Avgi Tangled Twins"
 				"Optikon" 4
 	npc save
 		government "Avgi (Dissonance)"
-		personality waiting staying forbearing timid unconstrained uninterested surveillance
+		personality waiting staying forbearing timid uninterested surveillance
 		system Murk
 		ship "Polipolari" "Tangled Twins"
 		on kill
@@ -236,7 +226,7 @@ mission "Midnight Avgi Tangled Twins Research"
 		to spawn
 			not "tangled twins destroyed"
 		government "Avgi (Dissonance)"
-		personality waiting staying forbearing timid unconstrained uninterested surveillance
+		personality waiting staying forbearing timid uninterested surveillance
 		system Murk
 		fleet
 			names "avgi civilian names"
@@ -249,7 +239,7 @@ mission "Midnight Avgi Tangled Twins Research"
 		to spawn
 			not "tangled twins destroyed"
 		government "Avgi (Dissonance)"
-		personality waiting staying forbearing timid unconstrained uninterested surveillance
+		personality waiting staying forbearing timid uninterested surveillance
 		system Murk
 		ship "Polipolari" "Tangled Twins"
 		on provoke
@@ -391,7 +381,7 @@ mission "Midnight Avgi Voidlunker Auction"
 	invisible
 	source
 		attributes avgi
-		attributes rich
+		attributes rich wealthy
 		not attributes uninhabited
 	to offer
 		or
@@ -439,11 +429,10 @@ mission "Midnight Avgi Voidlunker Job"
 	description "A wealthy Avgi has requested a Voidlunker be delivered to <destination>. Payment is <payment>."
 	source
 		attributes avgi
-		not attributes rich
-		not attributes uninhabited
+		not attributes rich wealthy uninhabited
 	destination
 		attributes avgi
-		attributes rich
+		attributes rich wealthy
 		not attributes uninhabited
 	to offer
 		has "license: Avgi Harvester"
@@ -455,4 +444,21 @@ mission "Midnight Avgi Voidlunker Job"
 		dialog "The wealthy client pays you <payment> after receiving the Voidlunker."
 
 
+#############################
+#
+# deprecated
+#
+#############################
+
+mission "Midnight link kr-84 murk patch"
+	landing
+	non-blocking
+	invisible
+	to offer
+		never
+#		has "event: link kr-84 murk"
+#		not "link kr-84 murk patched"
+	on offer
+		event "link kr-84 murk"
+		fail
 

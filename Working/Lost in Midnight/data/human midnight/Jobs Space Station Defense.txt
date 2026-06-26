@@ -52,8 +52,22 @@
 ################################
 
 
+phrase "station defense job failed"
+	word
+		"[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+
+conversation "station defense job failed"
+	scene "outfit/attention"
+	``
+	`--------------- [MISSION FAILED] ---------------`
+	``
+	`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+		die
+
+
 mission "Midnight Phoenix Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -369,27 +383,17 @@ mission "Midnight Phoenix Station Defense Job"
 		ship "Phoenix Station" "Phoenix"
 	on visit
 		fail
-		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+		dialog phrase "station defense job failed"
 	on abort
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on fail
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on complete
 		event "phoenix station defense job success"
 		conversation
 			scene "outfit/unknown"
+			branch repeat
+				has "outfit (all): CRG-0 Android"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. They have a lot of robots doing most of the labor on this station...`
 			choice
@@ -402,6 +406,8 @@ mission "Midnight Phoenix Station Defense Job"
 			scene "outfit/cargo android"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to let you take one of their older androids.`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			label credits
 			action
 				payment 1000000
@@ -424,7 +430,6 @@ event "phoenix station defense job"
 				distance 257
 				period 12.3538
 	planet "Phoenix Station"
-#		add attributes uninhabited
 		government Uninhabited
 
 event "phoenix station defense job success"
@@ -443,13 +448,12 @@ event "phoenix station defense job success"
 				distance 257
 				period 12.3538
 	planet "Phoenix Station"
-		remove attributes uninhabited
 		government clear
-
 
 
 mission "Midnight Triton Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -760,27 +764,17 @@ mission "Midnight Triton Station Defense Job"
 		ship "Triton Station" "Triton"
 	on visit
 		fail
-		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+		dialog phrase "station defense job failed"
 	on abort
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on fail
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on complete
 		event "triton station defense job success"
 		conversation
 			scene "outfit/unknown"
+			branch repeat
+				has "event: triton station ammo outfitter"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the commander offers you 1,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. This is a military outpost the Navy uses to keep their ships supplied...`
 			choice
@@ -793,6 +787,8 @@ mission "Midnight Triton Station Defense Job"
 			scene "outfit/torpedo storage"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to grant you a security clearance to purchase their ammunition. The next time you visit <planet>, they'll have this setup for you.`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the commander offers you 1,000,000 credits as payment.`
 			label credits
 			action
 				payment 1000000
@@ -815,7 +811,6 @@ event "triton station defense job"
 				distance 261
 				period 11.3132
 	planet "Triton Station"
-#		add attributes uninhabited
 		government Uninhabited
 
 event "triton station defense job success"
@@ -834,7 +829,6 @@ event "triton station defense job success"
 				distance 261
 				period 11.3132
 	planet "Triton Station"
-		remove attributes uninhabited
 		government clear
 
 event "triton station ammo outfitter"
@@ -843,9 +837,9 @@ event "triton station ammo outfitter"
 		add outfitter "Ammo South"
 
 
-
 mission "Midnight Fenrir Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -1156,27 +1150,17 @@ mission "Midnight Fenrir Station Defense Job"
 		ship "Fenrir Station" "Fenrir"
 	on visit
 		fail
-		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+		dialog phrase "station defense job failed"
 	on abort
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on fail
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on complete
 		event "fenrir station defense job success"
 		conversation
 			scene "outfit/unknown"
+			branch repeat
+				has "event: fenrir station advanced fuel outfitter"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. This is a refinery where fuel is processed and stored...`
 			choice
@@ -1189,6 +1173,8 @@ mission "Midnight Fenrir Station Defense Job"
 			scene "outfit/industrial ramscoop"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to let you purchase their surplus fuel processing and storage equipment. The next time you visit <planet>, they'll have this setup for you.`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			label credits
 			action
 				payment 1000000
@@ -1211,7 +1197,6 @@ event "fenrir station defense job"
 				distance 212
 				period 15.2148
 	planet "Fenrir Station"
-#		add attributes uninhabited
 		government Uninhabited
 
 event "fenrir station defense job success"
@@ -1230,7 +1215,6 @@ event "fenrir station defense job success"
 				distance 212
 				period 15.2148
 	planet "Fenrir Station"
-		remove attributes uninhabited
 		government clear
 
 event "fenrir station advanced fuel outfitter"
@@ -1238,9 +1222,9 @@ event "fenrir station advanced fuel outfitter"
 		add outfitter "Advanced Fuel"
 
 
-
 mission "Midnight Typhon Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -1568,27 +1552,17 @@ mission "Midnight Typhon Station Defense Job"
 		ship "Typhon Station" "Typhon"
 	on visit
 		fail
-		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+		dialog phrase "station defense job failed"
 	on abort
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on fail
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on complete
 		event "typhon station defense job success"
 		conversation
 			scene "outfit/unknown"
+			branch repeat
+				has "event: typhon station advanced fuel outfitter"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. This is a refinery where fuel is processed and stored...`
 			choice
@@ -1601,6 +1575,8 @@ mission "Midnight Typhon Station Defense Job"
 			scene "outfit/industrial ramscoop"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to let you purchase their surplus fuel processing and storage equipment. The next time you visit <planet>, they'll have this setup for you.`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			label credits
 			action
 				payment 1000000
@@ -1623,7 +1599,6 @@ event "typhon station defense job"
 				distance 226
 				period 13.7068
 	planet "Typhon Station"
-#		add attributes uninhabited
 		government Uninhabited
 
 event "typhon station defense job success"
@@ -1642,7 +1617,6 @@ event "typhon station defense job success"
 				distance 226
 				period 13.7068
 	planet "Typhon Station"
-		remove attributes uninhabited
 		government clear
 
 event "typhon station advanced fuel outfitter"
@@ -1650,9 +1624,9 @@ event "typhon station advanced fuel outfitter"
 		add outfitter "Advanced Fuel"
 
 
-
 mission "Midnight Oberon Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -1967,27 +1941,17 @@ mission "Midnight Oberon Station Defense Job"
 		ship "Oberon Station" "Oberon"
 	on visit
 		fail
-		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+		dialog phrase "station defense job failed"
 	on abort
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on fail
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on complete
 		event "oberon station defense job success"
 		conversation
 			scene "outfit/unknown"
+			branch repeat
+				has "event: oberon station advanced fuel outfitter"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. This is a refinery where fuel is processed and stored...`
 			choice
@@ -2001,6 +1965,8 @@ mission "Midnight Oberon Station Defense Job"
 			scene "outfit/industrial ramscoop"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to let you purchase their surplus fuel processing and storage equipment. The next time you visit <planet>, they'll have this setup for you.`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			label credits
 			action
 				payment 1000000
@@ -2023,7 +1989,6 @@ event "oberon station defense job"
 				distance 246
 				period 13.6082
 	planet "Oberon Station"
-#		add attributes uninhabited
 		government Uninhabited
 
 event "oberon station defense job success"
@@ -2042,7 +2007,6 @@ event "oberon station defense job success"
 				distance 246
 				period 13.6082
 	planet "Oberon Station"
-		remove attributes uninhabited
 		government clear
 
 event "oberon station advanced fuel outfitter"
@@ -2051,25 +2015,9 @@ event "oberon station advanced fuel outfitter"
 		add outfitter "Syndicate Stock"
 
 
-
-mission "Midnight Oberon Syndicate Stock Patch"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "event: oberon station advanced fuel outfitter"
-		not "oberon syndicate stock patch"
-	on offer
-		event "oberon syndicate stock patch"
-
-event "oberon syndicate stock patch"
-	planet "Oberon Station"
-		add outfitter "Syndicate Stock"
-
-
-
 mission "Midnight Leviathan Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -2380,27 +2328,17 @@ mission "Midnight Leviathan Station Defense Job"
 		ship "Leviathan Station" "Leviathan"
 	on visit
 		fail
-		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+		dialog phrase "station defense job failed"
 	on abort
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on fail
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on complete
 		event "leviathan station defense job success"
 		conversation
 			scene "outfit/unknown"
+				has "event: leviathan station advanced fuel outfitter"
+			branch repeat
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. This is a refinery where fuel is processed and stored...`
 			choice
@@ -2413,6 +2351,8 @@ mission "Midnight Leviathan Station Defense Job"
 			scene "outfit/industrial ramscoop"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to let you purchase their surplus fuel processing and storage equipment. The next time you visit <planet>, they'll have this setup for you.`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			label credits
 			action
 				payment 1000000
@@ -2435,7 +2375,6 @@ event "leviathan station defense job"
 				distance 252
 				period 15.4109
 	planet "Leviathan Station"
-#		add attributes uninhabited
 		government Uninhabited
 
 event "leviathan station defense job success"
@@ -2454,7 +2393,6 @@ event "leviathan station defense job success"
 				distance 252
 				period 15.4109
 	planet "Leviathan Station"
-		remove attributes uninhabited
 		government clear
 
 event "leviathan station advanced fuel outfitter"
@@ -2462,9 +2400,9 @@ event "leviathan station advanced fuel outfitter"
 		add outfitter "Advanced Fuel"
 
 
-
 mission "Midnight Alexandria Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -2776,27 +2714,19 @@ mission "Midnight Alexandria Station Defense Job"
 		ship "Alexandria" "Alexandria"
 	on visit
 		fail
-		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+		dialog phrase "station defense job failed"
 	on abort
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on fail
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on complete
 		event "alexandria station defense job success"
 		conversation
 			scene "outfit/unknown"
+			branch repeat
+				not "alexandria station maretar hold"
+				not "outfit (all): Pug Maretar Thruster"
+				not "outfit (all): Pug Maretar Steering"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. You're certain the station was firing Pug weapons during the battle. This is a knowledge storehouse with all sorts of secrets kept behind locked doors...`
 			choice
@@ -2804,10 +2734,12 @@ mission "Midnight Alexandria Station Defense Job"
 				`	(Just accept the credits.)`
 					goto credits
 			scene "outfit/pug maretar thruster"
-			`	They were expecting your request. In the next room they already prepared something to share with you, likely chosen due to your involvement with the recent Pug incident at Deneb: a set of Pug engines larger than any you've seen before. If you don't have 202 tons of engine outfit or cargo space on your ship, you won't be able to take them off the station...`
+			`	They were expecting your request. In the next room they already prepared something to share with you, likely chosen due to your involvement with the recent Pug incident at Deneb: a set of Pug engines larger than any you've seen before. If you don't have 202 tons of available cargo space on your ship, you won't be able to take them off the station...`
 			choice
 				`	"I'll take them, but where did you get these?"`
-				`	"I'm not sure I can fit these on my ship!"`
+					to display
+						"cargo space free" >= 202
+				`	"I can't fit these in my cargo hold!"`
 					goto hold
 			action
 				outfit "Pug Maretar Thruster"
@@ -2819,10 +2751,13 @@ mission "Midnight Alexandria Station Defense Job"
 			label hold
 			action
 				set "alexandria station maretar hold"
+				clear "Midnight Alexandria Station Maretar Hold: offered"
 				"reputation: Republic" += 100
 			scene "outfit/pug maretar steering"
 			`	"That's understandable. They are rather large. We'll hold onto them until you return with 202 tons of available cargo space."`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			label credits
 			action
 				payment 1000000
@@ -2845,7 +2780,6 @@ event "alexandria station defense job"
 				distance 178.482
 				period 29.3849
 	planet Alexandria
-#		add attributes uninhabited
 		government Uninhabited
 
 
@@ -2865,16 +2799,15 @@ event "alexandria station defense job success"
 				distance 178.482
 				period 29.3849
 	planet Alexandria
-		remove attributes uninhabited
 		government clear
 
 mission "Midnight Alexandria Station Maretar Hold"
 	landing
 	invisible
 	source Alexandria
-	cargo "reserved" 202
 	to offer
 		has "alexandria station maretar hold"
+		"cargo space free" >= 202
 	on offer
 		conversation
 			scene "outfit/pug maretar thruster"
@@ -2898,6 +2831,7 @@ mission "Midnight Alexandria Station Maretar Hold"
 
 mission "Midnight Wyvern Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -3220,27 +3154,17 @@ mission "Midnight Wyvern Station Defense Job"
 		ship "Wyvern Station" "Wyvern"
 	on visit
 		fail
-		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+		dialog phrase "station defense job failed"
 	on abort
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on fail
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on complete
 		event "wyvern station defense job success"
 		conversation
 			scene "outfit/unknown"
+			branch repeat
+				has "event: wyvern station advanced fuel outfitter"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. This is a refinery where fuel is processed and stored...`
 			choice
@@ -3253,6 +3177,8 @@ mission "Midnight Wyvern Station Defense Job"
 			scene "outfit/industrial ramscoop"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to let you purchase their surplus fuel processing and storage equipment. The next time you visit <planet>, they'll have this setup for you.`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			label credits
 			action
 				payment 1000000
@@ -3275,7 +3201,6 @@ event "wyvern station defense job"
 				distance 201
 				period 12.6652
 	planet "Wyvern Station"
-#		add attributes uninhabited
 		government Uninhabited
 
 event "wyvern station defense job success"
@@ -3294,7 +3219,6 @@ event "wyvern station defense job success"
 				distance 201
 				period 12.6652
 	planet "Wyvern Station"
-		remove attributes uninhabited
 		government clear
 
 event "wyvern station advanced fuel outfitter"
@@ -3302,9 +3226,9 @@ event "wyvern station advanced fuel outfitter"
 		add outfitter "Advanced Fuel"
 
 
-
 mission "Midnight Carbuncle Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -3616,27 +3540,17 @@ mission "Midnight Carbuncle Station Defense Job"
 		ship "Carbuncle Station" "Carbuncle"
 	on visit
 		fail
-		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+		dialog phrase "station defense job failed"
 	on abort
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on fail
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on complete
 		event "carbuncle station defense job success"
 		conversation
 			scene "outfit/unknown"
+			branch repeat
+				has "event: carbuncle station lovelace laboratory outfitter"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. <planet> is where Lovelace Labs performs secret research for future products...`
 			choice
@@ -3649,6 +3563,8 @@ mission "Midnight Carbuncle Station Defense Job"
 			scene "outfit/particle burst turret"
 			`	They were expecting your request. Thanks to the reputation you gained after the war, they are willing to grant you early access to some of their products. The next time you visit <planet>, they'll have this setup for you.`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			label credits
 			action
 				payment 1000000
@@ -3671,7 +3587,6 @@ event "carbuncle station defense job"
 				distance 253
 				period 12.546
 	planet "Carbuncle Station"
-#		add attributes uninhabited
 		government Uninhabited
 
 event "carbuncle station defense job success"
@@ -3690,7 +3605,6 @@ event "carbuncle station defense job success"
 				distance 253
 				period 12.546
 	planet "Carbuncle Station"
-		remove attributes uninhabited
 		government clear
 
 event "carbuncle station lovelace laboratory outfitter"
@@ -3698,9 +3612,9 @@ event "carbuncle station lovelace laboratory outfitter"
 		add outfitter "Lovelace Laboratory"
 
 
-
 mission "Midnight Kraken Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -4030,27 +3944,17 @@ mission "Midnight Kraken Station Defense Job"
 		ship "Kraken Station" "Kraken"
 	on visit
 		fail
-		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+		dialog phrase "station defense job failed"
 	on abort
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on fail
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on complete
 		event "kraken station defense job success"
 		conversation
 			scene "outfit/unknown"
+			branch repeat
+				has "event: kraken station advanced fuel outfitter"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. This is a refinery where fuel is processed and stored...`
 			choice
@@ -4064,6 +3968,8 @@ mission "Midnight Kraken Station Defense Job"
 			scene "outfit/industrial ramscoop"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to let you purchase their surplus fuel processing and storage equipment. The next time you visit <planet>, they'll have this setup for you.`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			label credits
 			action
 				payment 1000000
@@ -4086,7 +3992,6 @@ event "kraken station defense job"
 				distance 278
 				period 10.5056
 	planet "Kraken Station"
-#		add attributes uninhabited
 		government Uninhabited
 
 event "kraken station defense job success"
@@ -4105,7 +4010,6 @@ event "kraken station defense job success"
 				distance 278
 				period 10.5056
 	planet "Kraken Station"
-		remove attributes uninhabited
 		government clear
 
 event "kraken station advanced fuel outfitter"
@@ -4113,24 +4017,10 @@ event "kraken station advanced fuel outfitter"
 		add outfitter "Advanced Fuel"
 		add outfitter "Syndicate Stock"
 
-mission "Midnight Kraken Syndicate Stock Patch"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "event: kraken station advanced fuel outfitter"
-		not "kraken syndicate stock patch"
-	on offer
-		event "kraken syndicate stock patch"
-
-event "kraken syndicate stock patch"
-	planet "Kraken Station"
-		add outfitter "Syndicate Stock"
-
-
 
 mission "Midnight Arachne Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -4454,27 +4344,17 @@ mission "Midnight Arachne Station Defense Job"
 		ship "Arachne Station" "Arachne"
 	on visit
 		fail
-		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+		dialog phrase "station defense job failed"
 	on abort
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on fail
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on complete
 		event "arachne station defense job success"
 		conversation
 			scene "outfit/unknown"
+			branch repeat
+				has "event: arachne station tarazed laboratory outfitter"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. <planet> is owned by the Tarazed Corporation, a maker of alien-inspired ships and outfits...`
 			choice
@@ -4487,7 +4367,7 @@ mission "Midnight Arachne Station Defense Job"
 				event "arachne station tarazed laboratory outfitter"
 				set "arachne station tarazed laboratory patched"
 				"reputation: Free Worlds" += 100
-			scene "outfit/proto huge shield t"
+			scene "outfit/isochronal laser"
 			`	They were expecting your request. Thanks to the reputation you gained after the war, they are willing to give you access to some of the outfits they've created. Years of observing Quarg technology has made development of these technologies possible. The next time you visit <planet>, they'll have this setup for you.`
 				accept
 			label checkmate
@@ -4495,9 +4375,11 @@ mission "Midnight Arachne Station Defense Job"
 				event "arachne station tarazed laboratory outfitter"
 				set "arachne station tarazed laboratory patched"
 				"reputation: Republic" += 100
-			scene "outfit/proto huge shield t"
+			scene "outfit/isochronal laser"
 			`	They were expecting your request. Thanks to the reputation you gained after the war, they are willing to give you access to some of the outfits they've created. Years of observing Quarg technology has made development of these technologies possible. The next time you visit <planet>, they'll have this setup for you.`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			label credits
 			branch "checkmate credits"
 				has "free worlds checkmate"
@@ -4511,7 +4393,6 @@ mission "Midnight Arachne Station Defense Job"
 			action
 				payment 1000000
 				"reputation: Republic" += 100
-				"reputation: Free Worlds" += 100
 				clear "Midnight Arachne Station Defense Job: offered"
 			`	1,000,000 credits are deposited into your account.`
 
@@ -4530,7 +4411,6 @@ event "arachne station defense job"
 				distance 228
 				period 16.9693
 	planet "Arachne Station"
-#		add attributes uninhabited
 		government Uninhabited
 
 event "arachne station defense job success"
@@ -4549,7 +4429,6 @@ event "arachne station defense job success"
 				distance 228
 				period 16.9693
 	planet "Arachne Station"
-		remove attributes uninhabited
 		government clear
 
 event "arachne station tarazed laboratory outfitter"
@@ -4557,9 +4436,9 @@ event "arachne station tarazed laboratory outfitter"
 		add outfitter "Tarazed Laboratory"
 
 
-
 mission "Midnight Muninn Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -4887,7 +4766,7 @@ mission "Midnight Muninn Station Defense Job"
 			``
 			`--------------- [MISSION FAILED] ---------------`
 			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
+			`You failed to prevent the destruction of one of the stations, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
 				die
 	on fail
 		conversation
@@ -4902,6 +4781,8 @@ mission "Midnight Muninn Station Defense Job"
 		set "muninn station defense job success patched"
 		conversation
 			scene "outfit/unknown"
+			branch repeat
+				has "event: muninn station ammo outfitter"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack as well as keeping Huginn Station from remaining under pirate control, the commander offers you 2,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. This is a military outpost the Navy uses to keep their ships supplied...`
 			choice
@@ -4914,6 +4795,8 @@ mission "Midnight Muninn Station Defense Job"
 			scene "outfit/torpedo storage"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to grant you a security clearance to purchase their ammunition. The next time you visit <planet>, they'll have this setup for you.`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack as well as keeping Huginn Station from remaining under pirate control, the commander offers you 2,000,000 credits as payment.`
 			label credits
 			action
 				payment 2000000
@@ -4958,11 +4841,9 @@ event "muninn station defense job"
 				distance 272
 				period 12.9498
 	planet "Muninn Station"
-#		add attributes uninhabited
 		government Uninhabited
 	planet "Huginn Station"
-#		add attributes uninhabited
-		government Uninhabited
+		government "Pirate (Rivals)"
 
 event "muninn station defense job success"
 	system Zosma
@@ -4993,10 +4874,8 @@ event "muninn station defense job success"
 				distance 272
 				period 12.9498
 	planet "Muninn Station"
-		remove attributes uninhabited
 		government clear
 	planet "Huginn Station"
-		remove attributes uninhabited
 		government clear
 
 event "muninn station ammo outfitter"
@@ -5018,6 +4897,7 @@ mission "Midnight Muninn Station Defense Sprite Patch"
 # Previously, Huginn Station did not exist as a landable planet during the mission. This caused other missions referencing Huginn Station to crash.
 mission "Midnight Muninn Station Defense Huginn Landing"
 	landing
+	repeat
 	invisible
 	source "Huginn Station"
 	to offer
@@ -5041,9 +4921,9 @@ mission "Midnight Muninn Station Defense Huginn Landing"
 				die
 
 
-
 mission "Midnight Hydra Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -5356,27 +5236,17 @@ mission "Midnight Hydra Station Defense Job"
 		ship "Hydra Station" "Hydra"
 	on visit
 		fail
-		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+		dialog phrase "station defense job failed"
 	on abort
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on fail
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on complete
 		event "hydra station defense job success"
 		conversation
 			scene "outfit/unknown"
+			branch repeat
+				has "event: hydra station advanced fuel outfitter"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. This is a refinery where fuel is processed and stored...`
 			choice
@@ -5389,6 +5259,8 @@ mission "Midnight Hydra Station Defense Job"
 			scene "outfit/industrial ramscoop"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to let you purchase their surplus fuel processing and storage equipment. The next time you visit <planet>, they'll have this setup for you.`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			label credits
 			action
 				payment 1000000
@@ -5411,7 +5283,6 @@ event "hydra station defense job"
 				distance 277
 				period 12.3693
 	planet "Hydra Station"
-#		add attributes uninhabited
 		government Uninhabited
 
 event "hydra station defense job success"
@@ -5430,7 +5301,6 @@ event "hydra station defense job success"
 				distance 277
 				period 12.3693
 	planet "Hydra Station"
-		remove attributes uninhabited
 		government clear
 
 event "hydra station advanced fuel outfitter"
@@ -5438,9 +5308,9 @@ event "hydra station advanced fuel outfitter"
 		add outfitter "Advanced Fuel"
 
 
-
 mission "Midnight Charon Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -5763,27 +5633,17 @@ mission "Midnight Charon Station Defense Job"
 		ship "Charon Station" "Charon"
 	on visit
 		fail
-		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+		dialog phrase "station defense job failed"
 	on abort
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on fail
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on complete
 		event "charon station defense job success"
 		conversation
 			scene "outfit/unknown"
+			branch repeat
+				has "event: charon station advanced fuel outfitter"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. This is a refinery where fuel is processed and stored...`
 			choice
@@ -5796,6 +5656,8 @@ mission "Midnight Charon Station Defense Job"
 			scene "outfit/industrial ramscoop"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to let you purchase their surplus fuel processing and storage equipment. The next time you visit <planet>, they'll have this setup for you.`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			label credits
 			action
 				payment 1000000
@@ -5818,7 +5680,6 @@ event "charon station defense job"
 				distance 211
 				period 13.622
 	planet "Charon Station"
-#		add attributes uninhabited
 		government Uninhabited
 
 event "charon station defense job success"
@@ -5837,7 +5698,6 @@ event "charon station defense job success"
 				distance 211
 				period 13.622
 	planet "Charon Station"
-		remove attributes uninhabited
 		government clear
 
 event "charon station advanced fuel outfitter"
@@ -5845,9 +5705,9 @@ event "charon station advanced fuel outfitter"
 		add outfitter "Advanced Fuel"
 
 
-
 mission "Midnight Smuggler's Den Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -6168,27 +6028,17 @@ mission "Midnight Smuggler's Den Station Defense Job"
 		ship "Smuggler's Den" "Smuggler's Den"
 	on visit
 		fail
-		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+		dialog phrase "station defense job failed"
 	on abort
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on fail
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on complete
 		event "smuggler's den station defense job success"
 		conversation
 			scene "outfit/unknown"
+			branch repeat
+				has "event: smuggler's den station marauder basics shipyard"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the management offers you 1,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. Rumor has it that pilots with the right connections may be able to purchase heavily modified ships here...`
 			choice
@@ -6201,6 +6051,8 @@ mission "Midnight Smuggler's Den Station Defense Job"
 			scene "thumbnail/mfalcons"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to give you access to some heavily modified ships. The next time you visit <planet>, they'll have this setup for you at the shipyard.`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the management offers you 1,000,000 credits as payment.`
 			label credits
 			action
 				payment 1000000
@@ -6223,7 +6075,6 @@ event "smuggler's den station defense job"
 				distance 302
 				period 14.0811
 	planet "Smuggler's Den"
-#		add attributes uninhabited
 		government Uninhabited
 	government "Independent"
 		add "attitude toward"
@@ -6245,7 +6096,6 @@ event "smuggler's den station defense job success"
 				distance 302
 				period 14.0811
 	planet "Smuggler's Den"
-		remove attributes uninhabited
 		government clear
 	government "Independent"
 		remove "attitude toward"
@@ -6256,9 +6106,9 @@ event "smuggler's den station marauder basics shipyard"
 		add shipyard "Marauder Basics"
 
 
-
 mission "Midnight Charybdis Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -6575,27 +6425,17 @@ mission "Midnight Charybdis Station Defense Job"
 		ship "Charybdis Station" "Charybdis"
 	on visit
 		fail
-		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+		dialog phrase "station defense job failed"
 	on abort
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on fail
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on complete
 		event "charybdis station defense job success"
 		conversation
 			scene "outfit/unknown"
+			branch repeat
+				has "event: charybdis station advanced fuel outfitter"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. This is a refinery where fuel is processed and stored...`
 			choice
@@ -6609,6 +6449,8 @@ mission "Midnight Charybdis Station Defense Job"
 			scene "outfit/industrial ramscoop"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to let you purchase their surplus fuel processing and storage equipment. The next time you visit <planet>, they'll have this setup for you.`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			label credits
 			action
 				payment 1000000
@@ -6631,7 +6473,6 @@ event "charybdis station defense job"
 				distance 281
 				period 13.1034
 	planet "Charybdis Station"
-#		add attributes uninhabited
 		government Uninhabited
 
 event "charybdis station defense job success"
@@ -6650,7 +6491,6 @@ event "charybdis station defense job success"
 				distance 281
 				period 13.1034
 	planet "Charybdis Station"
-		remove attributes uninhabited
 		government clear
 
 event "charybdis station advanced fuel outfitter"
@@ -6658,25 +6498,11 @@ event "charybdis station advanced fuel outfitter"
 		add outfitter "Advanced Fuel"
 		add outfitter "Syndicate Stock"
 
-mission "Midnight Charybdis Syndicate Stock Patch"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "event: charybdis station advanced fuel outfitter"
-		not "charybdis syndicate stock patch"
-	on offer
-		event "charybdis syndicate stock patch"
-
-event "charybdis syndicate stock patch"
-	planet "Charybdis Station"
-		add outfitter "Syndicate Stock"
-
-
 
 # Titania Station is added to the Eteron system after some missions
 mission "Midnight Titania Station Defense Job"
 	job
+	repeat
 	autosave
 	clearance `The cloud of smoke and debris does not respond to your hails.`
 	name "Defend <planet>!"
@@ -6987,27 +6813,17 @@ mission "Midnight Titania Station Defense Job"
 		ship "Titania Station" "Titania"
 	on visit
 		fail
-		dialog "[MISSION FAILED]: You seek cover in a cloud of smoke and debris. Through the haze you witness a large explosion that could only be the destruction of <planet>... If this were a game, you could load a save file and have another try at defending the station from the ships that attacked it."
+		dialog phrase "station defense job failed"
 	on abort
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on fail
-		conversation
-			scene "outfit/attention"
-			``
-			`--------------- [MISSION FAILED] ---------------`
-			``
-			`You failed to prevent the destruction of <planet>, which has far reaching consequences for this region of space. As word of your failure spreads you find fewer and fewer people willing to work with you. Eventually you are forced to retire from flying your ship and spend the rest of your life in a less fulfilling profession.`
-				die
+		conversation "station defense job failed"
 	on complete
 		event "titania station defense job success"
 		conversation
 			scene "outfit/unknown"
+			branch repeat
+				has "event: titania station advanced fuel outfitter"
 			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			`	Rather than simply accept the credits, you wonder if they would be willing to offer some other kind of reward. This is a refinery where fuel is processed and stored...`
 			choice
@@ -7020,6 +6836,8 @@ mission "Midnight Titania Station Defense Job"
 			scene "outfit/industrial ramscoop"
 			`	They're surprised by your request. After taking a moment to consider it, they agree to let you purchase their surplus fuel processing and storage equipment. The next time you visit <planet>, they'll have this setup for you.`
 				accept
+			label repeat
+			`	The station's crew are still working on repairing damage from the battle. Grateful for your assistance in defending <planet> from the pirate attack, the manager offers you 1,000,000 credits as payment.`
 			label credits
 			action
 				payment 1000000
@@ -7050,7 +6868,6 @@ event "titania station defense job"
 				distance 366
 				period 28.2485
 	planet "Titania Station"
-#		add attributes uninhabited
 		government Uninhabited
 
 event "titania station defense job success"
@@ -7077,11 +6894,57 @@ event "titania station defense job success"
 				distance 366
 				period 28.2485
 	planet "Titania Station"
-		remove attributes uninhabited
 		government clear
 
 event "titania station advanced fuel outfitter"
 	planet "Titania Station"
 		add outfitter "Advanced Fuel"
 		add outfitter "Syndicate Stock"
+
+
+########################################
+#
+# deprecated
+#
+########################################
+
+
+mission "Midnight Oberon Syndicate Stock Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "event: oberon station advanced fuel outfitter"
+#		not "oberon syndicate stock patch"
+	on offer
+		event "oberon syndicate stock patch" 0
+
+event "oberon syndicate stock patch"
+
+mission "Midnight Kraken Syndicate Stock Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "event: kraken station advanced fuel outfitter"
+#		not "kraken syndicate stock patch"
+	on offer
+		event "kraken syndicate stock patch" 0
+
+event "kraken syndicate stock patch"
+
+mission "Midnight Charybdis Syndicate Stock Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "event: charybdis station advanced fuel outfitter"
+#		not "charybdis syndicate stock patch"
+	on offer
+		event "charybdis syndicate stock patch" 0
+
+event "charybdis syndicate stock patch"
 

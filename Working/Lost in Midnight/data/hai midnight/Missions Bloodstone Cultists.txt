@@ -76,7 +76,7 @@ mission "Midnight Dreams of Blood & Fire 1"
 		log "Minor People" "Nurse Peka" `Dr. Caju's muscular assistant. She isn't very talkative. Perhaps she only speaks Hai.`
 		conversation
 			scene "outfit/bloodstone"
-			`Nurse Peka wheels Charles off you ship while Dr. Caju rummages through her medical bag. "I owe you <payment>. Sorry, it seems I didn't bring enough credits with me. My clinic is nearby. Follow us and I can give you your full payment.`
+			`Nurse Peka wheels Charles off your ship while Dr. Caju rummages through her medical bag. "I owe you <payment>. Sorry, it seems I didn't bring enough credits with me. My clinic is nearby. Follow us and I can give you your full payment.`
 			``
 			`	Caju's office has white walls and white furniture. So the red Quantum Keystone on display in a shelf behind her desk stands in stark contrast to the rest of your surroundings.`
 			`	She reaches into her desk and pulls out your payment. Noticing your gaze at the red Quantum Keystone she says, "Beautiful, is it not? Quantum Bloodstones are a delight to behold."`
@@ -169,7 +169,7 @@ mission "Midnight Dreams of Blood & Fire 3"
 			choice
 				`	(Look behind yourself.)`
 			scene "outfit/attention"
-			`	You are suddenly tackled by a feral creature! It snarls while gnashing it's teeth mere inches from your face, it's fetid breath threatening to induce nausea. Peka pulls the beast off of you and you can see that it's a human woman. But she continues to growl and struggle in Peka's arms like a wild animal. Dr. Caju arrives and sedates your attacker. After the mystery woman falls unconscious, Caju notices you. "Ah, <first>! Are you well?"`
+			`	You are suddenly tackled by a feral creature! It snarls while gnashing it's teeth mere inches from your face, it's fetid breath threatening to induce nausea. Peka pulls the beast off and you can see that it's a human woman. But she continues to growl and struggle in Peka's arms like a wild animal. Dr. Caju arrives and sedates your attacker. After the mystery woman falls unconscious, Caju notices you. "Ah, <first>! Are you well?"`
 			choice
 				`	"That woman attacked me!"`
 				`	"Is that another of your patients?"`
@@ -291,7 +291,8 @@ mission "Midnight Bloodstone Murders 1"
 		not planet Greenwater Darkwaste
 	destination Greenwater
 	to offer
-		has "First Contact: Hai: declined"
+		has "First Contact: Hai: offered"
+		has "First Contact: Unfettered: offered"
 		has "main plot completed"
 		random < 70
 	on offer
@@ -564,7 +565,6 @@ mission "Midnight Bloodstone Theft 1"
 	destination Greenwater
 	to offer
 		has "Midnight Bloodstone Murders 6: done"
-		has "main plot completed"
 		"reputation: Hai" >= 200
 		has "landing access: Hai-home"
 		random < 70
@@ -806,11 +806,11 @@ mission "Midnight Bloodstone Theft 4"
 				random < 50
 			scene "planet/stationh-ancient0"
 			`	You find a viewing portal that gives a clear view of Goldcrawl in the distance.`
-					goto continue
+					goto bladesearch
 			label makerplace
 			scene "planet/desert2"
 			`	You find a viewing portal that gives a clear view of Makerplace in the distance.`
-					goto continue
+					goto bladesearch
 			label button
 			scene "outfit/unknown"
 			`	You find a control panel with a shiny red button in its center. There's something written in Hai above it, but you don't understand what it says.`
@@ -990,6 +990,7 @@ mission "Danger In Darkwaste 1"
 	destination "Darkwaste"
 	passengers 3
 	to offer
+		has "First Contact: Unfettered: offered"
 		month == 10
 		random < 70
 	on offer
@@ -1207,10 +1208,204 @@ mission "Danger In Darkwaste Escape Epilogue"
 			scene "outfit/bloodstone"
 			`You find the spaceport authorities and report your tale of suspected Hai cultists and human hostages.`
 			`	"That is just a conspiracy theory," exclaims one of the officers on duty. "Stop wasting our time or I will have you arrested for interfering with Hai police operations!"`
-			`	You are about to leave when a Hai prisoner being processed yells out to you, "The cultists are real! Look for the Quantum Bloodstones!" The Hai police struggle to keep the prisoner under control, finally stunning him with a Pulse Pistol. They drag his unconscious form off to their detention facility. The officer who shot him comments, "Do not listen that criminal. He would say anything to cause a disruption and escape."`
+			`	You are about to leave when a Hai prisoner being processed yells out to you, "The cultists are real! Look for the Quantum Bloodstones!" The Hai police struggle to keep the prisoner under control, finally stunning him with a Pulse Pistol. They drag his unconscious form off to their detention facility. The officer who shot him comments, "Do not listen to that criminal. He would say anything to cause a disruption and escape."`
 				decline
 	on decline
 		event "add quantum bloodstones"
 		log "The authorities claim the existence of the Hai cultists is nothing more than a conspiracy theory. A Hai criminal claims that the Hai cultists are real and that they are associated with Quantum Bloodstones."
 
 
+###################################
+#
+# Bloodstone Portal
+#
+###################################
+
+
+mission "Midnight Bloodstone Portal 1"
+	minor
+	name "Bloodstone Hermit"
+	description "Seek a hermit on Drywaste to unlock the secret of the Quantum Bloodstones."
+	source
+		attributes "hai ancestral lands"
+	destination Drydust
+	to offer
+		has "event: Nova Firefly Invasion"
+		has "human cultural data"
+		or
+			has "Midnight Dreams of Blood & Fire 3: done"
+			has "Midnight Bloodstone Theft 4B: declined"
+			has "Midnight Bloodstone Theft 5: declined"
+			has "Midnight Bloodstone Theft 5: done"
+			has "Danger In Darkwaste 2: done"
+			has "Danger In Darkwaste Escape Epilogue: declined"
+		"combat rating" > 8000
+		random < 70 - ( 65 * "Midnight Bloodstone Portal 1: deferred" )
+	on offer
+		conversation
+			scene "outfit/bloodstone"
+			branch deferred
+				has "Midnight Bloodstone Portal 1: deferred"
+			`You spot a rare sight. A vendor is trying to sell a Quantum Bloodstone. None of the other Unfettered he propositions appears to be interested.`
+			choice
+				`	(Approach the vendor.)`
+					goto approach
+				`	(Ignore this.)`
+			`	You start to walk away, but...`
+			label approach
+			`	"Monkey King!" The vendor spots you and calls out. Before you can react he has scampered up to you and raises the Bloodstone towards you. "A rare find! Recently uncovered from desert at Drywaste! See it sparkle? I give you deal! Only 4,800,000 credits. A bargain!" He grins expectantly. He might be able to tell you something about the stones...`
+			choice
+				`	"Alright, I'll buy it."`
+					goto purchase
+				`	"Can you tell me what this is?"`
+			`	"Ah, this is Quantum Bloodstone... This is key to ultimate luck! Legend say wise hermit on <planet> knows secret of stone. But no life on surface. Many doubt legend. But I think maybe hermit hiding undergound. You buy stone? Maybe find hermit!" The sunlight glints on its surfaces as he turns if over in his paws.`
+			label decision
+			choice
+				`	"Alright, I'll buy the stone."`
+				`	"Maybe another time."`
+					defer
+				`	"I have no interest in this."`
+					decline
+			label purchase
+			action
+				payment 4800000
+				outfit "Quantum Bloodstone" 1
+			`	"Many thanks! Maybe find legendary hermit on <planet> with lucky Bloodstone!" Perhaps if you take the stone to <destination>, something will happen.`
+				accept
+			label deferred
+			`You run into the vendor who tried to sell you a Quantum Bloodstone before. He is still trying to sell it.`
+				goto decision
+	on defer
+		set "Midnight Bloodstone Portal 1: deferred"
+	on enter "Mah Duum"
+		"reputation: Hai Merchant (Sympathizers)" >?= 0
+		conversation
+			scene "outfit/unknown"
+			`Several Hai ships are searching the surface of Drydust. Perhaps they are also looking for the legendary "hermit" who supposedly knows the secret of the Quantum Bloodstones. If you have some way to scan the atmosphere, you might find something...`
+	npc
+		government "Hai Merchant (Sympathizers)"
+		system "Mah Duum"
+		personality waiting staying timid frugal appeasing
+			confusion 25
+		fleet
+			names "hai"
+			cargo 1
+			commodities "Equipment"
+			variant
+				"Shield Beetle (Bloodstone)"
+				"Lightning Bug (Bloodstone)"
+				"Water Bug (Bloodstone)"
+				"Centipede (Bloodstone)"
+				"Cicada (Bloodstone)"
+				"Scarab (Bloodstone)"
+	to complete
+		has "flagship attribute: atmosphere scan"
+		has "outfit: Quantum Bloodstone"
+	on visit
+		dialog "If you have a Quantum Bloodstone and some way to scan the atmosphere, you might find something..."
+
+mission "Midnight Bloodstone Portal 2"
+	landing
+	name "Bloodstone Portal"
+	description "Explore the unstable wormhole at <system>."
+	source Drydust
+	to offer
+		has "Midnight Bloodstone Portal 1: done"
+		has "outfit: Quantum Bloodstone"
+		has "flagship attribute: atmosphere scan"
+	on offer
+		conversation
+			branch deferred
+				has "Midnight Bloodstone Portal 2: deferred"
+			scene "planet/desert8"
+			`The surface of this planet is a seemingly endless expanse of parched desert. If the air currents were stronger, the planet would be concealed by enormous dust clouds. The signal is faint, but your atmosphere scans detect a very small trace of water at the north pole. There, you find a small cave hidden at the bottom of a ravine. The scanner detects a slight amount of humidity within.`
+			choice
+				`	(Enter the cave.)`
+			scene "outfit/bloodstone"
+			`	The cave delves deep into the dry earth. Eventually, you find a the wreckage of a spaceship buried here. Much of the ship is concealed by tons of hard packed earth, making the specific model unidentifiable. There is a hull breach exposing a section of the interior. Most of the equipment is non-functional, but something reacts when you are near. The slot in the control panel of an unknown device lights up, waiting for something to be inserted. A Quantum Bloodstone would fit...`
+			label insert
+			choice
+				`	(Insert the Quantum Bloodstone.)`
+				`	(Leave it alone for now.)`
+					defer
+			action
+				event "midnight bloodstone portal"
+			scene "outfit/unknown"
+			`	The device starts to hum and the air appears to shimmer. The surrounding temperature drops... Sparks begin to burst from with the device and it shuts down, inert. The air stops shimmering and the temperature begins to rise. It's not immediately obvious what, if anything, that was meant to do. You retrieve your Quantum Bloodstone from the ruined device. There is nothing else here.`
+			`	After leaving the cave, you notice a reddish glow on the distant horizon...`
+				accept
+			label deferred
+			scene "outfit/bloodstone"
+			`Do you want to insert the Quantum Bloodstone into the device you found inside the cave?`
+				goto insert
+	on defer
+		set "Midnight Bloodstone Portal 2: deferred"
+	on enter "Mah Duum"
+		conversation
+			scene "planet/wormhole-flame"
+			`A fiery wound appears to have been violently gouged into the fabric of space at the edge of the system...`
+	on enter "Cthogha"
+		conversation
+			scene "star/darkstar"
+			`Something resembling a black hole dominates the system on the other side of the wormhole. The light from the gathered stellar material is almost blinding. Several Hai ships have already arrived before you. It looks as if they are fighting a star. One notices you and hails.`
+			`	"Welcome to the fire pit monkey! Not everyone can go back through the portal. Maybe it is just as the ancient myths said about only ships with the lucky stones returning from the wormhole war." Before the Unfettered can elaborate, the transmission is cut. One of the their ships explodes. Their battle against the star is going poorly...`
+				accept
+	npc
+		government "Hai (Unfettered)"
+		system Cthogha
+		personality	waiting staying timid harvests
+			confusion 10
+		fleet
+			names "hai"
+			cargo 1
+			variant
+				"Shield Beetle (Unfettered)"
+				"Sea Scorpion" 2
+				"Lightning Bug" 4
+
+event "midnight bloodstone portal"
+	system "Mah Duum"
+		add fleet "Small Hai Merchant (Sympathizers)" 6450
+		add fleet "Small Unfettered" 4800
+		add object "Bloodstone Portal (Mah Duum)"
+			sprite planet/wormhole-flame
+			distance 9000.0
+			period 1776.0
+	planet Horizonwatch
+		description `Fearing a possible return of the Korath raiders, the Hai began construction of this military outpost. However, the post war era saw the rise of the Unfettered. Their strained relationship with the Hai left Horizonwatch unfinished.`
+		description `	Centuries after it was built, this station lies mostly forgotten. A small crew is on standby to protect the system, but the available facilities are inadequate for maintaining a proper garrison or offering services to outsiders. Despite this, visitors wishing to view Bloodstone Portal are becoming increasingly common.`
+
+
+mission "Midnight Message Buoy: Mah Duum"
+	invisible
+	transition
+	non-blocking
+	repeat
+	source
+		system "Mah Duum"
+	destination "Earth"
+	to offer
+		not "entered system by: takeoff"
+		has "event: midnight bloodstone portal"
+		has "language: Hai"
+	on offer
+		message
+			text "Message buoy to all ships: Danger! [Stay away, Keep your distance] from the [anomaly, oddity]."
+		fail
+
+mission "Midnight Message Buoy: Mah Duum (untranslated)"
+	invisible
+	transition
+	non-blocking
+	repeat
+	source
+		system "Mah Duum"
+	destination "Earth"
+	to offer
+		not "entered system by: takeoff"
+		has "event: midnight bloodstone portal"
+		not "language: Hai"
+	on offer
+		message
+			text "Message buoy to all ships: (An alien voice speaks in a language you don't understand.)"
+		fail

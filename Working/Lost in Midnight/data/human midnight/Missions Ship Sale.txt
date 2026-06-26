@@ -4284,6 +4284,114 @@ mission "Ship Sale: Patrolboat (Used)"
 		fleet "Bounty Hunters" 4
 
 
+############################
+#
+# Misc.
+#
+############################
+
+
+mission "Ship Sale: Antique Sunder"
+	invisible
+	minor
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Pirate" "Independent" "Neutral"
+		attributes "mining"
+		not planet "Covert"
+	to offer
+		"credits" > 1511000
+		random < 1
+	on offer
+		conversation
+			scene "thumbnail/antique sunder-thumb"
+			`You notice someone trying to sell a used ship, a Antique Sunder. It looks like it's been heavily modified.`
+			choice
+				`	"Tell me more about this ship."`
+				`	"Not interested in buying a ship right now."`
+					defer
+
+			`	The seller says "Over half the passenger space on this Hogshead has been gutted to make room for more shield emitters and weapon systems to power the two additional gun ports. Thick armored plating has been welded over the passenger viewports and other vulnerable areas of the hull, making the ship heavier, but more durable. The price is 1,511,000."`
+			choice
+				`	"Sounds good. I'll buy it!`
+				`	"That's way too much. I'll pay half that."`
+					goto negotiate
+				`	"I'll pass on this offer for now."`
+					defer
+				`	"I'm not interested in this type of ship."`
+					goto block
+				`	"My gun says I can take this ship for free."`
+					goto shootout
+
+			label "purchase"
+			action
+				clear "Ship Sale: Antique Sunder: offered"
+				"Midnight Market" ++
+				payment -1511000
+				give ship "Antique Sunder"
+			`	"Thank you for your purchase!"`
+				decline
+
+			label negotiate
+			branch "deal"
+				random < "Midnight Market"
+			`	"Sorry, I can't budge on the price."`
+			choice
+				`	"Alright. I'll buy it.`
+					goto purchase
+				`	"That's way too much. I'm not interested."`
+					defer
+				`	"My gun says I can take this ship for free."`
+					goto shootout
+
+			label "deal"
+			`	"How about we meet halfway? 1,133,250 credits."`
+			choice
+				`	"It's a deal. I'll buy it!`
+				`	"That's still too much. I'm not interested."`
+					defer
+				`	"My gun says I can take this ship for free."`
+					goto shootout
+
+			action
+				clear "Ship Sale: Antique Sunder: offered"
+				payment -1133250
+				give ship "Antique Sunder"
+			`	"Thank you for your purchase."`
+				decline
+
+			label shootout
+			branch "victory"
+				random < ( "flagship required crew" - 24 )
+			action
+				clear "Ship Sale: Antique Sunder: offered"
+			`	You try to take the ship by force, but die during the shootout.`
+				die
+
+			label victory
+			action
+				clear "Ship Sale: Antique Sunder: offered"
+				"Midnight Market" -= 3
+				give ship "Antique Sunder"
+			`	You and your crew manage to overpower the owner's crew and steal the ship!`
+				accept
+
+			label block
+			action
+				set "Ship Sale: Antique Sunder: offered"
+			`	You have no interest in this type of ship and leave.`
+				decline
+
+	on enter
+		dialog `Looks like the used ship dealer's friends were waiting to pay you back for stealing that Antique Sunder.`
+	
+	npc kill
+		government "Bounty Hunter"
+		personality waiting staying vindictive coward
+		fleet "Hired Guns"
+		fleet "Bounty Hunters" 4
+
+
+
 # Refreshing offers after changing ship sales to non-repeatable; Buying or Stealing clears offer for non-uniques.
 mission "Midnight Ship Sale Refresh"
 	non-blocking

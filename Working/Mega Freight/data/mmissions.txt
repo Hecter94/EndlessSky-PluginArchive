@@ -2458,7 +2458,7 @@ event "mgf: gx shipyard unlock"
 mission "MGF: Espion co. job ad"
 	job
 	name "Asteroid Miner Wanted"
-	description "Espion Mining co. is looking for aspiring asteroid miner to join the company. No experience required."
+	description "Espion Mining co. is looking for aspiring asteroid miner to join the company. No experience required. Sign up now at <planet>!"
 	destination "New Sahara"
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
@@ -2474,10 +2474,11 @@ mission "MGF: Espion co. job ad"
 mission "MGF: Join Espion co."
 	repeat
 	name "Espion Mining Assessment"
-	description `Mine 15 tons of Titanium in <system> then land back at <destination>.`
+	description `Mine 15 tons of Titanium in <system> then land back at <destination>. You will fail if you leave the system.`
 	source "New Sahara"
 	to offer
 		has "MGF: Espion co. job ad: done"
+		not "MGF: Join Espion co.: active"
 		not "MGF: Join Espion co.: done"
 		not "license: Espion Employee"
 	on offer
@@ -2498,13 +2499,16 @@ mission "MGF: Join Espion co."
 			`	After a while a man enter the room and introduce as the person who will be checking your pilot skill. He tells you to depart and mine 15 Titanium in this system as fast as you can, he'll be observing your performance in orbit. Once that's done it'll be continued back here.`
 				accept
 
-	npc accompany save
+	npc save
 		government "MGF: Espion Mining Co."
 		personality timid staying
 		fleet
 			names "civilian"
 			variant
 				"Armadillo (Weapon)"
+		on kill
+			dialog
+				`The ship observing your performance was some how blown up. Reload the save continue.`
 
 	# Was gonna do an actual timer npc here but lazy.
 
@@ -3225,7 +3229,6 @@ mission "MGF: Trawler Fishing (Gossamer)"
 			label end
 			action
 				"mgf: fishing experience" += 1
-			``
 				fail
 
 
@@ -4543,7 +4546,7 @@ mission "MGF: To Build a Beast 4"
 			`	"Then our only option is the Syndicate." you say.`
 			label syndi
 			`	You circle the area of the map that are under Syndicate control. Tounei looks at the map for a few second then point at Moktar "Here may work." he says.`
-			scene "scene/mgf_tbab_map1.png"
+			scene "scene/mgf_tbab_map1"
 			choice
 				`	"That's right on the pirate route, I don't want to deal with them. Also nobody lives there."`
 				`	"I can deal with the pirates that often pass by but nobody lives there, the location is too remote and might draw suspicion."`
@@ -7117,7 +7120,6 @@ mission "MGF: TBAB Pulse Blaster Developed"
 	on offer
 		event "mgf: tbab: pulse blaster on sale"
 		conversation
-			`Upon landing you're informed that `
 		fail
 
 event "mgf: tbab: pulse blaster on sale"
@@ -7997,7 +7999,17 @@ mission "MGF: TBAB Renegotiation"
 		never
 		has "event: mgf: tbab: helicyne adoption 2" 
 
+	stopover "Ourea Naval Arsenal"
 
+				payment 874000
+				"mgf: n_to_give" -= 2
+				"mgf: tbab 22 thermal repeater required" -= 2
+			branch loop1t
+				"mgf: n_to_give" >= 1
+			label loop1t_break
+
+			label end
+			`	Tounei thanks you and paid you the full price for it.`
 #TODO get more ship design from tounei.
 #develop bigger efficient blaster, hot-running thermal blaster.
 #better reactors, armor upgrade.

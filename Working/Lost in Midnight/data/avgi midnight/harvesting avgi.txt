@@ -21,7 +21,7 @@ minable "jelly water droplet"
 	hull 60
 	"random hull" 60
 	payload "Voidjelly" 1
-		"toughness" 270
+		"toughness" 540
 	explode "droplet burst"
 
 minable "lunker water droplet"
@@ -35,9 +35,9 @@ minable "lunker water droplet"
 	hull 600
 	"random hull" 600
 	payload "Voidjelly" 30
-		"toughness" 900
-	payload "Voidfish" 15
 		"toughness" 1800
+	payload "Voidfish" 15
+		"toughness" 4200
 	payload "Voidlunker" 1
 		"drop rate" 1
 		"toughness" 1377500
@@ -64,34 +64,6 @@ outfit "Voidlunker"
 	description "Occasionally, a voidborne fish grows to a particularly large size. These lunkers are highly prized among a small community of fishing enthusiasts. Such specimens are preserved through a process, similar to taxidermy, for display in private collections."
 	description "	This is a rare catch. You can install it on your ship to keep it from getting mixed in with the regular cargo."
 
-mission "Midnight Add Voidlunker"
-	landing
-	non-blocking
-	invisible
-	on offer
-		set "midnight add voidlunker patched"
-		event "midnight add voidlunker"
-		fail
-
-event "midnight add voidlunker"
-	system Gossamer
-		add minables "jelly water droplet" 30 3.9
-		add minables "lunker water droplet" 1 1.5
-
-mission "Midnight Voidlunker Patch"
-	landing
-	non-blocking
-	invisible
-	to offer
-		has "event: midnight add voidlunker"
-		not "midnight add voidlunker patched"
-	on offer
-		event "midnight add voidlunker patch"
-		fail
-
-event "midnight add voidlunker patch"
-	system Gossamer
-		add minables "jelly water droplet" 30 3.9
 
 minable "tiny murk droplet"
 	"display name" "Tiny"
@@ -116,7 +88,7 @@ minable "jelly murk droplet"
 	hull 60
 	"random hull" 60
 	payload "Voidjelly" 1
-		"toughness" 270
+		"toughness" 540
 	explode "droplet burst"
 
 minable "small murk droplet"
@@ -130,9 +102,9 @@ minable "small murk droplet"
 	hull 180
 	"random hull" 180
 	payload "Rotting Murk Flesh" 2
-		"toughness" 270
-	payload "Murkfish" 1
 		"toughness" 540
+	payload "Murkfish" 1
+		"toughness" 1260
 	explode "droplet burst" 3
 
 minable "medium murk droplet"
@@ -146,9 +118,9 @@ minable "medium murk droplet"
 	hull 600
 	"random hull" 600
 	payload "Rotting Murk Flesh" 7
-		"toughness" 900
-	payload "Murkfish" 8
 		"toughness" 1800
+	payload "Murkfish" 8
+		"toughness" 4200
 	explode "droplet burst" 6
 
 minable "large murk droplet"
@@ -162,9 +134,9 @@ minable "large murk droplet"
 	hull 1800
 	"random hull" 1800
 	payload "Rotting Murk Flesh" 22
-		"toughness" 2200
+		"toughness" 4400
 	payload "Murkfish" 23
-		"toughness" 4500
+		"toughness" 12600
 	explode "droplet burst" 12
 
 minable "huge murk droplet"
@@ -178,9 +150,9 @@ minable "huge murk droplet"
 	hull 3600
 	"random hull" 3600
 	payload "Rotting Murk Flesh" 60
-		"toughness" 5400
-	payload "Murkfish" 60
 		"toughness" 10800
+	payload "Murkfish" 60
+		"toughness" 25200
 	explode "droplet burst" 36
 
 minable "lunker murk droplet"
@@ -194,9 +166,9 @@ minable "lunker murk droplet"
 	hull 3600
 	"random hull" 3600
 	payload "Voidjelly" 120
-		"toughness" 5400
-	payload "Murkfish" 60
 		"toughness" 10800
+	payload "Murkfish" 60
+		"toughness" 25200
 	payload "Voidlunker" 1
 		"drop rate" 1
 		"toughness" 1377500
@@ -320,3 +292,38 @@ outfit "Wither Wood"
 	"minable" 1
 	description "Underneath the tree's rotting exterior, Wither Wood shines with an unearthly glow. The bio-matter has been imbued with high levels of radioactive uranium. Whether natural evolution or artificial bio-engineering caused this is a mystery. Some may find this substance useful as an alternative energy source or weapons development material. But it probably wouldn't be a good idea to sell these at a concerts as glow sticks."
 
+
+
+#################################
+#
+# deprecated
+#
+#################################
+
+
+mission "Midnight Add Voidlunker"
+	landing
+	non-blocking
+	invisible
+	to offer
+		never
+	on offer
+		set "midnight add voidlunker patched"
+		event "midnight add voidlunker"
+		fail
+
+event "midnight add voidlunker"
+
+mission "Midnight Voidlunker Patch"
+	landing
+	non-blocking
+	invisible
+	to offer
+		never
+#		has "event: midnight add voidlunker"
+#		not "midnight add voidlunker patched"
+	on offer
+		event "midnight add voidlunker patch"
+		fail
+
+event "midnight add voidlunker patch"

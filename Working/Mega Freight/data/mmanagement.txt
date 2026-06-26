@@ -1101,28 +1101,28 @@ mission "MGF: TBAB Business Management"
 					goto expand_fleet_tarazed
 			action
 				n_ship_cp = mgf_sm_fleet_to_tarazed_tlielart
-			label loop_fleet_2x_tlielart
-			branch loop_fleet_2x_tlielart_break
+			label loop_fleet_2x_tlielart_tarazed
+			branch loop_fleet_2x_tlielart_tarazed_break
 				n_ship_cp <= 0
 			action
 				n_ship_cp -= 1
 				debt 86333000
 					term 1825
-			branch loop_fleet_2x_tlielart
+			branch loop_fleet_2x_tlielart_tarazed
 				n_ship_cp > 0
-			label loop_fleet_2x_tlielart_break
+			label loop_fleet_2x_tlielart_tarazed_break
 			action
 				n_ship_cp = mgf_sm_fleet_to_tarazed_conveyor
-			label loop_fleet_2x_conveyor
-			branch loop_fleet_2x_conveyor_break
+			label loop_fleet_2x_conveyor_tarazed
+			branch loop_fleet_2x_conveyor_tarazed_break
 				n_ship_cp <= 0
 			action
 				n_ship_cp -= 1
 				debt 58058000
 					term 1825
-			branch loop_fleet_2x_conveyor
+			branch loop_fleet_2x_conveyor_tarazed
 				n_ship_cp > 0
-			label loop_fleet_2x_conveyor_break
+			label loop_fleet_2x_conveyor_tarazed_break
 			action
 				"mgf_sm_fleet_to_tarazed_tlielart" *= 2
 				"mgf_sm_fleet_to_tarazed_conveyor" *= 2
@@ -1236,6 +1236,7 @@ mission "MGF: TBAB Business Management"
 					goto expand_menu
 			label create_security_fleet
 			`Where to?`
+			choice
 				`	[Around the shipyard]`
 					goto expand_menu
 				`	[Along existing route]`
@@ -1434,7 +1435,7 @@ event "mgf: tbab to makerplace fleet earning calc"
 event "mgf: tbab shipyard earning calc"
 	"mgf_sm_traffic" = "mgf_sm_bluestone_traffic" * ( ( "mgf_sm_ad_mult" ) + 1 ) + "mgf_sm_customer_base" / 90000
 	# "mgf_sm_shipyard_prod_cost_base" = 1200000
-	"mgf_sm_shipyard_prod_cost" = "mgf_sm_shipyard_prod_cost_base" * ( ( "mgf_sm_customer_base" / 1000000 ) + 1)
+	"mgf_sm_shipyard_prod_cost" = "mgf_sm_shipyard_prod_cost_base" * ( ( "mgf_sm_customer_base" / 1000000 ) + 1 )
 	# "mgf_sm_shipyard_op_cost" += ( "mgf_sm_traffic" / 30 ) * "mgf_sm_shipyard_prod_cost"
 	"mgf_sm_shipyard_sales" = ( "mgf_sm_traffic" / 30 ) * ( ( "mgf_sm_shipyard_prod_cost" * 120 ) / 100 )
 

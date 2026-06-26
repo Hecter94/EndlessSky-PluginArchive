@@ -13,7 +13,6 @@
 #Contents: Dirtbelt Pirate jobs
 
 
-
 mission "Archipelago Sketchy Cargo"
 	name "Delivery to <planet>"
 	job
@@ -23,7 +22,7 @@ mission "Archipelago Sketchy Cargo"
 	to offer
 		random < 15
 	source
-		attributes "archipelago"
+		attributes "dirt belt pirate"
 	destination
 		attributes "dirt belt"
 		not attributes "station" "uninhabited"
@@ -44,7 +43,7 @@ mission "Archipelago Sketchy Passenger"
 	to offer
 		random < 15
 	source
-		attributes "archipelago"
+		attributes "dirt belt pirate"
 	destination
 		attributes "dirt belt"
 		not attributes "station" "uninhabited"
@@ -55,7 +54,6 @@ mission "Archipelago Sketchy Passenger"
 	on complete
 		payment 2000 160
 		dialog "Your passengers ask that you land away from the busy spaceport center. They hand you <payment> and rush out of your ship and away from the spaceport with considerable speed."
-
 
 
 mission "Cadrelock Rock Maintenance"
@@ -86,6 +84,8 @@ mission "Cadrelock Rock Maintenance"
 		fleet "Large Astero Nautilus"
 	on fail
 		dialog `[MISSION FAILED] You've lost the replacement equipment for <planet>! If life were a game, you could reload a save file and try again.`
+	on visit
+		dialog phrase "generic cargo on visit"
 	on complete
 		"pirate jobs" ++
 		payment 50000
@@ -93,30 +93,108 @@ mission "Cadrelock Rock Maintenance"
 		dialog `You install the replacement equipment and send a video to your client showing it working. The pirates pay you <payment> for helping keep this waystation operational.`
 
 
-
-mission "Vesta Tribute"
-	name "Vesta Tribute to <planet>"
+# Vesta has been renamed to Urd
+mission "Vesta Tribute [small]"
+	name "<stopovers> Tribute to <planet>"
 	job
 	repeat
 	clearance
-	description "Collect a tribute payment of <tons> of ore from <stopovers>, and bring it to the Pirates on <destination>. Your share of the tribute will be <payment>."
+	deadline 7
+	description "Collect a tribute payment of <tons> of ore from <stopovers>, and bring it to the Pirates on <destination> by <date>. Your share of the tribute will be <payment>."
 	to offer
-		"reputation: Pirate" > 0
-		random < 40
-	cargo "ore" 45 2 .05
+		not "Vesta Tribute [small]: active"
+	cargo "ore" 25 2 .05
 	on complete
+		"pirate jobs" ++
+		"reputation: Pirate" ++
 		payment 9000 2000
 		dialog `You drop off the tribute to the pirates, and they pay you <payment>.`
 	source "Janus"
 	stopover "Vesta"
 	on abort
-		"reputation: Pirate" -= 3
+		"reputation: Pirate" -= 1000
+		"reputation: Pirate" <?= -1000
+		dialog `The tribute never made it to the destination and you are suspected of stealing it for yourself.`
+	on fail
+		"reputation: Pirate" -= 1000
+		"reputation: Pirate" <?= -1000
 		dialog `The tribute never made it to the destination and you are suspected of stealing it for yourself.`
 	on visit
 		dialog phrase "generic cargo on visit"
 	on stopover
 		dialog `The miners load the tribute for the pirates onto your ship. A few glare at you, but there is no resistance beyond that.`
 
+mission "Vesta Tribute"
+	name "<stopovers> Tribute to <planet>"
+	job
+	repeat
+	clearance
+	deadline 7
+	description "Collect a tribute payment of <tons> of ore from <stopovers>, and bring it to the Pirates on <destination> by <date>. Your share of the tribute will be <payment>."
+	to offer
+		"reputation: Pirate" >= 0
+		not "Vesta Tribute: active"
+		not "Vesta Tribute: failed"
+		not "Vesta Tribute: aborted"
+		not "Vesta Tribute [large]: failed"
+		not "Vesta Tribute [large]: aborted"
+		random < 70
+	cargo "ore" 45 2 .05
+	on complete
+		"pirate jobs" += 2
+		"reputation: Pirate" ++
+		payment 9000 2000
+		dialog `You drop off the tribute to the pirates, and they pay you <payment>.`
+	source "Janus"
+	stopover "Vesta"
+	on abort
+		"reputation: Pirate" -= 1000
+		"reputation: Pirate" <?= -1000
+		dialog `The tribute never made it to the destination and you are suspected of stealing it for yourself.`
+	on fail
+		"reputation: Pirate" -= 1000
+		"reputation: Pirate" <?= -1000
+		dialog `The tribute never made it to the destination and you are suspected of stealing it for yourself.`
+	on visit
+		dialog phrase "generic cargo on visit"
+	on stopover
+		dialog `The miners load the tribute for the pirates onto your ship. A few glare at you, but there is no resistance beyond that.`
+
+mission "Vesta Tribute [large]"
+	name "<stopovers> Tribute to <planet>"
+	job
+	repeat
+	clearance
+	deadline 7
+	description "Collect a tribute payment of <tons> of ore from <stopovers>, and bring it to the Pirates on <destination> by <date>. Your share of the tribute will be <payment>."
+	to offer
+		"reputation: Pirate" >= 10
+		not "Vesta Tribute [large]: active"
+		not "Vesta Tribute [large]: failed"
+		not "Vesta Tribute [large]: aborted"
+		not "Vesta Tribute: failed"
+		not "Vesta Tribute: aborted"
+		random < 40
+	cargo "ore" 65 2 .05
+	on complete
+		"pirate jobs" += 4
+		"reputation: Pirate" ++
+		payment 9000 2000
+		dialog `You drop off the tribute to the pirates, and they pay you <payment>.`
+	source "Janus"
+	stopover "Vesta"
+	on abort
+		"reputation: Pirate" -= 1000
+		"reputation: Pirate" <?= -1000
+		dialog `The tribute never made it to the destination and you are suspected of stealing it for yourself.`
+	on fail
+		"reputation: Pirate" -= 1000
+		"reputation: Pirate" <?= -1000
+		dialog `The tribute never made it to the destination and you are suspected of stealing it for yourself.`
+	on visit
+		dialog phrase "generic cargo on visit"
+	on stopover
+		dialog `The miners load the tribute for the pirates onto your ship. A few glare at you, but there is no resistance beyond that.`
 
 
 mission "Escort Core Pirate Home"
@@ -145,19 +223,19 @@ mission "Escort Core Pirate Home"
 		system
 			distance 2 3
 		personality waiting heroic vindictive
-		fleet "Bounty Hunter (licensed)"
+		fleet "Bounty Hunters"
 	npc
 		government "Bounty Hunter (licensed)"
 		system
 			distance 3 4
 		personality waiting heroic vindictive
-		fleet "Hired Guns (licensed)"
+		fleet "Hired Guns"
 	npc
 		government "Bounty Hunter (licensed)"
 		system destination
 		personality waiting staying heroic vindictive
-		fleet "Bounty Hunter (licensed)"
-		fleet "Hired Guns (licensed)"
+		fleet "Bounty Hunters"
+		fleet "Hired Guns"
 	npc accompany save
 		government "Bounty (Disguised)"
 		personality target escort timid
@@ -188,7 +266,6 @@ mission "Escort Core Pirate Home"
 		dialog phrase "generic arrived-without-npc dialog"
 
 
-
 mission "Escort Core Pirate to Dirt Belt"
 	color selected "illegal job: selected"
 	color unselected "illegal job: unselected"
@@ -215,18 +292,18 @@ mission "Escort Core Pirate to Dirt Belt"
 		government "Bounty Hunter (licensed)"
 		system destination
 		personality waiting heroic vindictive
-		fleet "Bounty Hunter (licensed)"
+		fleet "Bounty Hunters"
 	npc
 		government "Bounty Hunter (licensed)"
 		system
 			distance 1 2
 		personality waiting heroic vindictive
-		fleet "Hired Guns (licensed)"
+		fleet "Hired Guns"
 	npc
 		government "Bounty Hunter (licensed)"
 		personality waiting heroic vindictive
-		fleet "Bounty Hunter (licensed)"
-		fleet "Hired Guns (licensed)"
+		fleet "Bounty Hunters"
+		fleet "Hired Guns"
 	npc accompany save
 		government "Bounty (Disguised)"
 		personality target escort timid
@@ -282,19 +359,19 @@ mission "Escort North Pirate Home"
 		system
 			distance 2 3
 		personality waiting heroic vindictive
-		fleet "Bounty Hunter (licensed)"
+		fleet "Bounty Hunters"
 	npc
 		government "Bounty Hunter (licensed)"
 		system
 			distance 3 4
 		personality waiting heroic vindictive
-		fleet "Hired Guns (licensed)"
+		fleet "Hired Guns"
 	npc
 		government "Bounty Hunter (licensed)"
 		system destination
 		personality waiting staying heroic vindictive
-		fleet "Bounty Hunter (licensed)"
-		fleet "Hired Guns (licensed)"
+		fleet "Bounty Hunters"
+		fleet "Hired Guns"
 	npc accompany save
 		government "Bounty (Disguised)"
 		personality target escort timid
@@ -347,18 +424,18 @@ mission "Escort North Pirate to Dirt Belt"
 		government "Bounty Hunter (licensed)"
 		system destination
 		personality waiting heroic vindictive
-		fleet "Bounty Hunter (licensed)"
+		fleet "Bounty Hunters"
 	npc
 		government "Bounty Hunter (licensed)"
 		system
 			distance 1 2
 		personality waiting heroic vindictive
-		fleet "Hired Guns (licensed)"
+		fleet "Hired Guns"
 	npc
 		government "Bounty Hunter (licensed)"
 		personality waiting heroic vindictive
-		fleet "Bounty Hunter (licensed)"
-		fleet "Hired Guns (licensed)"
+		fleet "Bounty Hunters"
+		fleet "Hired Guns"
 	npc accompany save
 		government "Bounty (Disguised)"
 		personality target escort timid
@@ -414,19 +491,19 @@ mission "Escort South Pirate Home"
 		system
 			distance 2 3
 		personality waiting heroic vindictive
-		fleet "Bounty Hunter (licensed)"
+		fleet "Bounty Hunters"
 	npc
 		government "Bounty Hunter (licensed)"
 		system
 			distance 3 4
 		personality waiting heroic vindictive
-		fleet "Hired Guns (licensed)"
+		fleet "Hired Guns"
 	npc
 		government "Bounty Hunter (licensed)"
 		system destination
 		personality waiting staying heroic vindictive
-		fleet "Bounty Hunter (licensed)"
-		fleet "Hired Guns (licensed)"
+		fleet "Bounty Hunters"
+		fleet "Hired Guns"
 	npc accompany save
 		government "Bounty (Disguised)"
 		personality target escort timid
@@ -482,18 +559,18 @@ mission "Escort South Pirate to Dirt Belt"
 		government "Bounty Hunter (licensed)"
 		system destination
 		personality waiting heroic vindictive
-		fleet "Bounty Hunter (licensed)"
+		fleet "Bounty Hunters"
 	npc
 		government "Bounty Hunter (licensed)"
 		system
 			distance 1 2
 		personality waiting heroic vindictive
-		fleet "Hired Guns (licensed)"
+		fleet "Hired Guns"
 	npc
 		government "Bounty Hunter (licensed)"
 		personality waiting heroic vindictive
-		fleet "Bounty Hunter (licensed)"
-		fleet "Hired Guns (licensed)"
+		fleet "Bounty Hunters"
+		fleet "Hired Guns"
 
 	npc accompany save
 		government "Bounty (Disguised)"
@@ -524,7 +601,6 @@ mission "Escort South Pirate to Dirt Belt"
 		dialog phrase "generic safe escort completion dialog"
 	on visit
 		dialog phrase "generic arrived-without-npc dialog"
-
 
 
 mission "Hostage Exchange: easy"
@@ -586,17 +662,22 @@ mission "Hostage Exchange: hard"
 		"combat rating" > 300
 	on offer
 		require "Brig"
+		clear "midnight hostage exchange trap"
 	on stopover
+		set "midnight hostage exchange trap"
 		conversation
 			scene "outfit/laser rifle"
-			`It's a trap! You barely make it back to your ship without losing the hostage. Return your hostage to <destination> and maybe your client will give you something for your efforts.`
+			`You've arrived to make the hostage exchange only to find that it's a trap! You barely make it back to your ship without losing the hostage. Return your hostage to <destination> and maybe your client will give you something for your efforts.`
 	npc evade
+		to spawn
+			has "midnight hostage exchange trap"
 		government "Bounty Hunter"
 		personality waiting vindictive unconstrained
 			confusion 10
 		fleet "Bounty Hunters"
 	npc evade
 		to spawn
+			has "midnight hostage exchange trap"
 			"armament deterrence" >= 2
 		government "Bounty Hunter"
 		personality waiting vindictive unconstrained
@@ -604,6 +685,7 @@ mission "Hostage Exchange: hard"
 		fleet "Bounty Hunters"
 	npc evade
 		to spawn
+			has "midnight hostage exchange trap"
 			"armament deterrence" >= 3
 		government "Bounty Hunter"
 		personality waiting vindictive unconstrained
@@ -611,21 +693,26 @@ mission "Hostage Exchange: hard"
 		fleet "Bounty Hunters"
 	npc evade
 		to spawn
+			has "midnight hostage exchange trap"
 			"armament deterrence" >= 4
 		government "Bounty Hunter"
 		personality waiting vindictive unconstrained
 			confusion 10
 		fleet "Hired Guns"
 	on abort
+		clear "midnight hostage exchange trap"
 		"reputation: Pirate" --
 	on fail
+		clear "midnight hostage exchange trap"
 		"reputation: Pirate" --
 	on complete
+		clear "midnight hostage exchange trap"
 		"pirate jobs" ++
+		payment
 		payment 20000
 		conversation
 			scene "outfit/handgun black"
-			"Although the exchange was a failure, your client is grateful you brought their hostage back. As one of their associates pays you <payment>, the hostage is taken through a door to another room. You hear a series of gunshots and muffled screams from the other side of the door as your client continues to congratulate you on a job well done..."
+			"Although the exchange was a failure, your client is grateful you brought their hostage back. As one of their associates hands you <payment>, the hostage is taken through a door to another room. You hear a series of gunshots and muffled screams from the other side of the door as your client continues to congratulate you on a job well done..."
 
 
 mission "Jail Break A"
@@ -710,13 +797,13 @@ mission "Jail Break B"
 		fleet
 			names "pirate"
 			variant
-				"Marauder Falcon (Shields)"
+				"Marauder Falcon"
 			variant
 				"Marauder Falcon (Weapons)"
 			variant
 				"Marauder Falcon (Engines)"
 			variant
-				"Marauder Leviathan (Shields)"
+				"Marauder Leviathan"
 			variant
 				"Marauder Leviathan (Weapons)"
 			variant
@@ -788,8 +875,6 @@ mission "Jail Break C"
 		dialog "You find the captured warlord in the brig and take him back to your ship. Time to deliver him to <planet>."
 	on visit
 		dialog phrase "generic bounty hunting boarding on visit"
-	on complete
-		dialog `The pirates thank you for rescuing their warlord... and promptly shoot him!`
 
 mission "Jail Break Fake"
 	landing
@@ -800,6 +885,8 @@ mission "Jail Break Fake"
 		"reputation: Pirate" -= 10
 		conversation
 			scene "outfit/laser rifle"
+			`The pirates thank you for rescuing their warlord... and promptly shoot him!`
+			``
 			`It turns out a new pirate warlord took over while you were gone. He thanks you for a job well done and orders his crew to shower you with their gratitude. They draw their guns...`
 			branch "confrontation"
 				"reputation: Pirate" < 0
@@ -847,20 +934,20 @@ mission "Jail Break Fake"
 			names "pirate"
 			variant
 				"Falcon"
+				"Clipper (Heavy)"
 				"Sparrow (Limit Break)"
-				"Rancor"
-				"Diamondback (Berserker)"
+				"Rancor (Berserker)"
 				"Hawk (Rocket)"
 				"Fury (Missile)"
-				"Clipper (Heavy)"
 			variant
-				"Vanguard (Particle)"
-				"Quicksilver (Proton)" 3
+				"Vanguard (Plasma Slow)"
+				"Quicksilver (Plasma)"
+				"Stingray (Speedy)"
+				"Wasp (Plasma)" 2
 			variant
 				"Leviathan (Heavy)"
 				"Firebird (Plasma)"
-				"Headhunter (Particle)"
-				"Headhunter (Strike)"
+				"Berserker (Limit Break)"
 	on decline
 		"Jail Break C: offered" --
 		"Jail Break C: done" --
@@ -1616,7 +1703,7 @@ mission "Smuggler Exchange (Dirt Belt, Terminus)"
 	npc
 		government "Bounty (Disguised)"
 		system "Terminus"
-		personality target waiting staying timid
+		personality target waiting staying timid marked
 		fleet "Smugglers"
 	on abort
 		clear "New China Supplies to Diyu: done"
@@ -1677,7 +1764,7 @@ mission "Smuggler Exchange (Dirt Belt, Lolami)"
 	npc
 		government "Bounty (Disguised)"
 		system "Lolami"
-		personality target waiting staying timid
+		personality target waiting staying timid marked
 		fleet "Smugglers"
 	on abort
 		clear "New China Supplies to Diyu: done"
@@ -1738,7 +1825,7 @@ mission "Smuggler Exchange (Dirt Belt, Ipsing)"
 	npc
 		government "Bounty (Disguised)"
 		system "Ipsing"
-		personality target waiting staying timid
+		personality target waiting staying timid marked
 		fleet "Smugglers"
 	on abort
 		clear "New China Supplies to Diyu: done"
@@ -1799,7 +1886,7 @@ mission "Smuggler Exchange (Dirt Belt, Boral)"
 	npc
 		government "Bounty (Disguised)"
 		system "Boral"
-		personality target waiting staying timid
+		personality target waiting staying timid marked
 		fleet "Smugglers"
 	on abort
 		clear "New China Supplies to Diyu: done"
@@ -1860,7 +1947,7 @@ mission "Smuggler Exchange (Dirt Belt, Hintar)"
 	npc
 		government "Bounty (Disguised)"
 		system "Hintar"
-		personality target waiting staying timid
+		personality target waiting staying timid marked
 		fleet "Smugglers"
 	on abort
 		clear "New China Supplies to Diyu: done"
@@ -1921,7 +2008,7 @@ mission "Smuggler Exchange (Dirt Belt, Orvala)"
 	npc
 		government "Bounty (Disguised)"
 		system "Orvala"
-		personality target waiting staying timid
+		personality target waiting staying timid marked
 		fleet "Smugglers"
 	on abort
 		clear "New China Supplies to Diyu: done"
@@ -1982,7 +2069,7 @@ mission "Smuggler Exchange (Dirt Belt, Naper)"
 	npc
 		government "Bounty (Disguised)"
 		system "Naper"
-		personality target waiting staying timid
+		personality target waiting staying timid marked
 		fleet "Smugglers"
 	on abort
 		clear "New China Supplies to Diyu: done"
@@ -2051,6 +2138,7 @@ mission "New China Drug Running"
 		"drug smuggler" ++
 		dialog `Some disreputable-looking locals unload the illegal drugs from your cargo bay, and hand you your payment of <payment>.`
 
+
 mission "Underworld Meeting (easy)"
 	color selected "illegal job: selected"
 	color unselected "illegal job: unselected"
@@ -2108,7 +2196,7 @@ mission "Underworld Meeting (hard)"
 			has "Underworld Meeting goes badly"
 		government "Independent (Killable)"
 		personality launching heroic vindictive
-		fleet "Marauder Independent (Killable)" 5
+		fleet "Marauder Independent" 5
 	on fail
 		clear "Underworld Meeting (hard): offered"
 		clear "Underworld Meeting goes badly"
@@ -2122,7 +2210,6 @@ mission "Underworld Meeting (hard)"
 		clear "Underworld Meeting goes badly"
 		"reputation: Independent (Killable)" >?= 10
 		dialog `Unfortunately, your client died before paying you. Hopefully you salvaged something valuable off of those marauder ships.`
-
 
 
 mission "Wang Xiang Tai Sketchy Cargo [1]"
@@ -2213,13 +2300,12 @@ mission "Wang Xiang Tai Sketchy Cargo [4]"
 		dialog "You drop off the unlabeled cargo in a warehouse not too dissimilar to the one you picked it up in. A man dressed in a cloak hands you <payment> after the last crate is removed from your ship."
 
 
-
 mission "Pirate Traitors"
 	job
 	repeat
 	deadline 7
 	name "Traitor Hunt"
-	description "A crew of pirate traitors have been acting as informants to the Republic Navy. Their ship, the <npc> has been spotted launching from Lares. Find the traitors by <date> and make an example of them. Return to <planet> to collect your reward of <payment>"
+	description "A crew of pirate traitors have been acting as informants to the Republic Navy. Their ship, the <npc> has been spotted launching from Verdandi. Find the traitors by <date> and make an example of them. Return to <planet> to collect your reward of <payment>"
 	source "Janus"
 	to offer
 		"reputation: Pirate" > 0
@@ -2227,13 +2313,13 @@ mission "Pirate Traitors"
 
 	npc kill
 		government "Independent (Killable)"
-		personality entering fleeing uninterested
+		personality entering fleeing uninterested marked tracked
 		fleet
 			names "pirate"
 			variant
 				"Marauder Falcon (Engines)"
 			variant
-				"Marauder Leviathan (Shields)"
+				"Marauder Leviathan"
 			variant
 				"Marauder Leviathan (Engines)"
 			variant
@@ -2319,7 +2405,6 @@ mission "Rum Cellar Sketchy Passenger [2]"
 		dialog "Your passengers ask that you land away from the busy spaceport center. They hand you <payment> and rush out of your ship and away from the spaceport with considerable speed."
 
 
-
 mission "Rum Cellar Throwdown"
 	minor
 	repeat
@@ -2389,7 +2474,7 @@ mission "Rum Cellar Wager"
 		fleet
 			names "bounty hunter"
 			variant 4
-				"Marauder Falcon (Shields)"
+				"Marauder Falcon"
 				"Headhunter" 2
 				"Headhunter (Strike)" 2
 			variant 3
@@ -2401,7 +2486,7 @@ mission "Rum Cellar Wager"
 				"Headhunter" 2
 				"Headhunter (Strike)" 2
 			variant 4
-				"Marauder Leviathan (Shields)"
+				"Marauder Leviathan"
 				"Headhunter" 2
 				"Headhunter (Strike)" 2
 			variant 3
@@ -2446,7 +2531,6 @@ mission "Rum Cellar Wager"
 	on complete
 		payment 2000000
 		dialog `Having survived your fight with the <npc>, the bar pays out your winnings, <payment>.`
-
 
 
 mission "Stealth Cargo Smuggling (Dirt Belt) [0]"
@@ -2891,7 +2975,6 @@ mission "Stealth Smuggling Exchange (Dirt Belt) [1]"
 		dialog "You find the contact outside of the main city. Your cargo of <commodity> is removed from your ship and you collect your payment of <payment>."
 
 
-
 mission "Highly Wanted Passenger (Dirt Belt)"
 	name "Galactic criminal to <planet>"
 	color selected "illegal job: selected"
@@ -2984,7 +3067,6 @@ mission "Highly Wanted Passenger (Dirt Belt)"
 		dialog "You land outside of the main city to avoid any chances of your passenger being seen. They grab their things and make their way off of your ship after paying you <payment>."
 
 
-
 mission "Eliminating Law Enforcement (Dirt Belt, Small)"
 	name "Navy near <system>"
 	color selected "illegal job: selected"
@@ -3000,7 +3082,7 @@ mission "Eliminating Law Enforcement (Dirt Belt, Small)"
 		attributes "dirt belt pirate"
 	npc kill
 		government "Republic"
-		personality heroic staying target
+		personality heroic staying target tracked
 		system
 			distance 1 3
 		fleet "Small Republic" 2
@@ -3027,7 +3109,7 @@ mission "Eliminating Law Enforcement (Dirt Belt, Large)"
 		attributes "dirt belt pirate"
 	npc kill
 		government "Republic"
-		personality heroic staying target
+		personality heroic staying target tracked
 		system
 			distance 1 3
 		fleet "Large Republic"
@@ -3038,7 +3120,6 @@ mission "Eliminating Law Enforcement (Dirt Belt, Large)"
 		payment 400000
 		"reputation: Pirate" += 10
 		dialog "The pirates of <planet> gratefully pay you <payment> for eliminating the Navy fleet."
-
 
 
 mission "Eliminating Competition (Dirt Belt, Small)"
@@ -3057,7 +3138,7 @@ mission "Eliminating Competition (Dirt Belt, Small)"
 		attributes "dirt belt pirate"
 	npc kill
 		government "Pirate (Rival)"
-		personality heroic staying target marked
+		personality heroic staying target marked tracked
 		system
 			distance 1 2
 		fleet "pirate raid" 3
@@ -3083,7 +3164,7 @@ mission "Eliminating Competition (Dirt Belt, Large)"
 		attributes "dirt belt pirate"
 	npc kill
 		government "Pirate (Rival)"
-		personality heroic staying target marked
+		personality heroic staying target marked tracked
 		system
 			distance 1 3
 		fleet "pirate raid" 4
@@ -3107,7 +3188,6 @@ mission "Eliminating Competition (Dirt Belt, Large)"
 		dialog "The pirates of <planet> gratefully pay you <payment> for eliminating the rival gang."
 
 
-
 mission "Cargo Theft (Dirt Belt)"
 	name "Convoy near <system>"
 	color selected "illegal job: selected"
@@ -3124,7 +3204,7 @@ mission "Cargo Theft (Dirt Belt)"
 		attributes "dirt belt pirate"
 	npc
 		government "Merchant"
-		personality staying heroic target
+		personality staying heroic target tracked
 		system
 			not government "Pirate"
 			distance 1 4
@@ -3148,7 +3228,6 @@ mission "Cargo Theft (Dirt Belt)"
 		dialog "The pirates of <planet> take the secret cargo from your cargo hold and pay you <payment>."
 
 
-
 mission "Dirt Belt Assassination [1]"
 	name "Assassinate a political target"
 	description "A Republic politician who is worrying local drug smugglers was spotted in their ship, the <npc>, in a nearby system. Assassinate them in order to send a message to the Republic. Payment is <payment>. Be advised that they may have escorts."
@@ -3166,7 +3245,7 @@ mission "Dirt Belt Assassination [1]"
 		attributes "dirt belt pirate"
 	npc kill
 		government "Republic"
-		personality staying target
+		personality staying target tracked
 		system
 			not government "Pirate"
 			distance 2 5
@@ -3189,7 +3268,6 @@ mission "Dirt Belt Assassination [1]"
 		"reputation: Republic" -= 10
 		"reputation: Pirate" += 3
 
-
 mission "Dirt Belt Assassination [2]"
 	name "Assassinate a political target"
 	description "A Republic politician who is worrying local weapons smugglers was spotted in their ship, the <npc>, in a nearby system. Assassinate them in order to send a message to the Republic. Payment is <payment>. Be advised that they are heavily defended."
@@ -3207,7 +3285,7 @@ mission "Dirt Belt Assassination [2]"
 		attributes "dirt belt pirate"
 	npc kill
 		government "Republic"
-		personality staying target
+		personality staying target tracked
 		system
 			not government "Pirate"
 			distance 3 5
@@ -3228,8 +3306,6 @@ mission "Dirt Belt Assassination [2]"
 		dialog "A band of weapons smugglers thank you for eliminating the politician and pay you <payment>."
 		"reputation: Republic" -= 15
 		"reputation: Pirate" += 5
-
-
 
 mission "Dirt Belt Assassination [3]"
 	name "Assassinate a military target"
@@ -3268,7 +3344,7 @@ mission "Dirt Belt Assassination [3]"
 		fleet "pirate raid" 2
 	npc kill
 		government "Republic"
-		personality staying target
+		personality staying target tracked
 		system
 			not government "Pirate"
 			distance 1 2
@@ -3290,8 +3366,6 @@ mission "Dirt Belt Assassination [3]"
 		dialog "Pirates on <planet> congratulate you for taking out the Navy commander and pay you <payment>."
 		"reputation: Republic" -= 20
 		"reputation: Pirate" += 7
-
-
 
 
 #####################
@@ -3337,7 +3411,7 @@ mission "Smuggler Exchange (Dirt Belt, Regulus)"
 	npc
 		government "Bounty (Disguised)"
 		system "Regulus"
-		personality target waiting staying timid
+		personality target waiting staying timid marked
 		fleet "Smugglers"
 	on abort
 		clear "New China Supplies to Diyu: done"
@@ -3392,7 +3466,7 @@ mission "Smuggler Exchange (Dirt Belt, Fingol)"
 	npc
 		government "Bounty (Disguised)"
 		system "Fingol"
-		personality target waiting staying timid
+		personality target waiting staying timid marked
 		fleet "Smugglers"
 	on abort
 		clear "New China Supplies to Diyu: done"
@@ -3447,7 +3521,7 @@ mission "Smuggler Exchange (Dirt Belt, Nocte)"
 	npc
 		government "Bounty (Disguised)"
 		system "Nocte"
-		personality target waiting staying timid
+		personality target waiting staying timid marked
 		fleet "Smugglers"
 	on abort
 		clear "New China Supplies to Diyu: done"
@@ -3502,7 +3576,7 @@ mission "Smuggler Exchange (Dirt Belt, Umbral)"
 	npc
 		government "Bounty (Disguised)"
 		system "Umbral"
-		personality target waiting staying timid
+		personality target waiting staying timid marked
 		fleet "Smugglers"
 	on abort
 		clear "New China Supplies to Diyu: done"
@@ -3557,7 +3631,7 @@ mission "Smuggler Exchange (Dirt Belt, Sadr)"
 	npc
 		government "Bounty (Disguised)"
 		system "Sadr"
-		personality target waiting staying timid
+		personality target waiting staying timid marked
 		fleet "Smugglers"
 	on abort
 		clear "New China Supplies to Diyu: done"

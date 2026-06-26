@@ -11,6 +11,7 @@
 
 outfit "Nightmare Fuel License"
 	"display name" "Nightmare Fuel"
+	plural "Nightmare Fuel"
 	category "Unique"
 	series "Conditions"
 	index 01000
@@ -77,6 +78,7 @@ ship "Localized Blood Storm" "Localized Blood Storm (Strong)"
 		"hull" 30
 
 outfit "Blood Storm Weapon"
+	plural "Blood Storm Weapons"
 	category "Turrets"
 	thumbnail "outfit/unknown"
 	"turret mounts" -1
@@ -94,6 +96,7 @@ outfit "Blood Storm Weapon"
 		"target effect" "blood" 5
 
 outfit "Blood Storm Weapon Submunition"
+	plural "Blood Storm Weapon Submunitions"
 	weapon
 		"inaccuracy" 180
 		"lifetime" 20
@@ -151,6 +154,7 @@ ship "False Alarm"
 	turret 0 0
 
 outfit "False Alarm Weapon"
+	plural "False Alarm Weapons"
 	category "Turrets"
 	thumbnail "outfit/unknown"
 	"turret mounts" -1
@@ -168,6 +172,7 @@ outfit "False Alarm Weapon"
 		sound "alarm"
 
 outfit "False Alarm Weapon Submunition"
+	plural "False Alarm Weapon Submunitions"
 	weapon
 		"inaccuracy" 180
 		"lifetime" 20
@@ -251,6 +256,7 @@ ship "EMP Poltergeist"
 	turret 100 100
 
 outfit "EMP Poltergeist Weapon"
+	plural "EMP Poltergeist Weapons"
 	category "Turrets"
 	thumbnail "outfit/unknown"
 	"turret mounts" -1
@@ -272,6 +278,7 @@ outfit "EMP Poltergeist Weapon"
 		"submunition" "EMP Poltergeist Weapon Submunition"
 
 outfit "EMP Poltergeist Weapon Submunition"
+	plural "EMP Poltergeist Weapon Submunitions"
 	weapon
 		"inaccuracy" 180
 		"lifetime" 20
@@ -320,6 +327,7 @@ ship "Stray Asteroid Phantom"
 	gun 100 100
 
 outfit "Stray Asteroid Weapon"
+	plural "Stray Asteroid Weapons"
 	category "Secondary Weapons"
 	"gun ports" -1
 	"asteroid capacity" 1
@@ -358,7 +366,7 @@ outfit "Haunted Accommodations"
 	description "	Ever since you had your own strange experience here you haven't set foot in it again. The Haunted Accomodations appears normal, but ship status reports indicate that it no longer occupies as much space as it used to."
 
 mission "Midnight Nightmare Fuel: Haunted Accommodations"
-	entering
+	transition
 	invisible
 	repeat
 	destination Earth
@@ -524,7 +532,11 @@ mission "Midnight Nightmare Fuel: Haunted Accommodations"
 			has "Wanderer Captured Unfettered: active"
 			has "Wanderer Governor Transport: active"
 			has "Wanderers to Kor Efreti: active"
-		random < 10
+		or
+			random < 10
+			and
+				random < 70
+				month == 10
 	on offer
 		conversation
 			scene "outfit/luxury accommodations"
@@ -557,7 +569,6 @@ mission "Midnight Nightmare Fuel: Haunted Accommodations"
 
 mission "Midnight Haunted Accommodations Notable Star Jump"
 	job
-	invisible
 	repeat
 	name "Sightseeing at <waypoints>"
 	description "<fare> wants to visit <waypoints> to see the notable star there. Then return to <destination> afterwards. Payment for this job is <payment>."
@@ -565,30 +576,31 @@ mission "Midnight Haunted Accommodations Notable Star Jump"
 	"apparent payment" 50000
 	to offer
 		has "outfit: Haunted Accommodations"
-		random < 25
+		random < 10
 	waypoint
 		distance 5 10
+		attributes "notable star"
 	on waypoint
 		payment
 		payment 50000
 		set "license: Nightmare Fuel"
 		conversation
-			scene "outfit/luxury accommodations"
+			scene "outfit/haunted accommodations"
 			`The passenger who wanted to visit this system jumps out of the airlock without a space suit! They left behind your payment plus some extra change. This passenger was staying in that room...`
 		fail
 
 mission "Midnight Haunted Accommodations Notable Star Vanish"
 	job
-	invisible
 	repeat
 	name "Sightseeing at <waypoints>"
 	description "<fare> wants to visit <waypoints> to see the notable star there. Then return to <destination> afterwards. Payment for this job is <payment>."
 	passengers 1
 	to offer
 		has "outfit: Haunted Accommodations"
-		random < 25
+		random < 10
 	waypoint
 		distance 5 10
+		attributes "notable star"
 	on waypoint
 		dialog `After hours of taking picures of the star, the passenger who wanted to see it is ready for the trip back to <destination>.`
 	on complete
@@ -596,6 +608,6 @@ mission "Midnight Haunted Accommodations Notable Star Vanish"
 		payment
 		payment 50000
 		conversation
-			scene "outfit/luxury accommodations"
+			scene "outfit/haunted accommodations"
 			`Your passenger who wanted to visit <waypoints> started whispering strangely afterwards. Now that passenger cannot be found. They left <payment> sitting on the desk in that room...`
 

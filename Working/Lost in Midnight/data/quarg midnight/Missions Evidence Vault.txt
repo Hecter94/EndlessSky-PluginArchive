@@ -48,7 +48,7 @@ mission "Vault Weapon Pulse Rifle"
 		government Bounty
 		system
 			distance 1
-		personality target waiting staying timid vindictive
+		personality target waiting staying timid vindictive marked tracked
 			confusion 10
 		ship "Marauder Firebird (Pulse Rifle)" "Seeds of Sin"
 		conversation
@@ -91,7 +91,7 @@ mission "Vault Weapon Ion Pulse Shotgun"
 		government Bounty
 		system
 			distance 1
-		personality target waiting staying timid vindictive
+		personality target waiting staying timid vindictive marked tracked
 			confusion 10
 		ship "Marauder Leviathan (Ion Pulse Shotgun)" "Seeds of Doom"
 		conversation
@@ -141,7 +141,7 @@ mission "Vault Weapon Tuning Rifle"
 		government Bounty
 		system
 			distance 1
-		personality target waiting staying timid vindictive
+		personality target waiting staying timid vindictive marked tracked
 			confusion 10
 		ship "Marauder Raven (Tuning Rifle)" "Grim Shadow"
 		conversation
@@ -181,7 +181,7 @@ mission "Vault Weapon Reverberator Rifle"
 	npc capture
 		government Bounty
 		system Ildaria
-		personality target waiting staying timid vindictive
+		personality target waiting staying timid vindictive marked tracked
 			confusion 10
 		ship "Marauder Falcon (Reverberator Rifle)" "Grim Darkness"
 		conversation
@@ -231,7 +231,7 @@ mission "Vault Weapon Thermal Repeater Rifle"
 		government Bounty
 		system
 			distance 1
-		personality target waiting staying timid vindictive
+		personality target waiting staying timid vindictive marked tracked
 			confusion 10
 		ship "Marauder Splinter (Thermal Repeater Rifle)" "Burning Skull"
 		conversation
@@ -281,7 +281,7 @@ mission "Vault Weapon Lasher Pistol"
 		government Bounty
 		system
 			distance 1
-		personality target waiting staying timid vindictive
+		personality target waiting staying timid vindictive marked tracked
 			confusion 10
 		ship "Marauder Protector (Lasher Pistol)" "Hell Scourge"
 		conversation
@@ -321,7 +321,7 @@ mission "Vault Weapon Meltdown Cannon"
 		government Bounty
 		system
 			distance 1
-		personality target waiting staying timid vindictive
+		personality target waiting staying timid vindictive marked tracked
 			confusion 10
 		ship "Marauder Vanguard (Meltdown Cannon)" "Melting Point"
 		conversation
@@ -371,7 +371,7 @@ mission "Vault Weapon Enforcer Confrontation Gear"
 		government Bounty
 		system
 			distance 1
-		personality target waiting staying timid vindictive
+		personality target waiting staying timid vindictive marked tracked
 			confusion 10
 		ship "Marauder Falcon (Enforcer Confrontation Gear)" "Chaos Weaver"
 		conversation
@@ -419,7 +419,7 @@ mission "Vault Weapon Kinetic Rail Rifle"
 		government Bounty
 		system
 			distance 1
-		personality target waiting staying timid vindictive
+		personality target waiting staying timid vindictive marked tracked
 			confusion 10
 		ship "Marauder Frigate (Kinetic Rail Rifle)" "Dark Depths"
 		conversation
@@ -784,14 +784,14 @@ mission "Vault Weapon Quash 6"
 			`	This is probably the safest course of action. As long as the Quarg don't catch you with them, everything should be fine...`
 				accept
 			label keep
+			action
+				"reputation: Republic" <?= 0
 			scene "outfit/quantum phase pistol"
 			`	You've decided to keep the weapons for yourself. They are powerful, but dangerous. If the Quarg ever catch you with them, things could turn ugly.`
 				decline
-	on decline
-		"reputation: Republic" <?= 0
 	on enter
 		conversation
-			scene "thumbnail/wardragon"
+			scene "thumbnail/quarg wardragon"
 			`	A surprising sight greets you as you enter orbit. A Quarg Wardragon has arrived in Gienah! It broadcasts a hail on all frequencies: "Greetings. We have reason to believe the humans in this system are in possession of stolen Quarg technology. You will be scanned. Do not resist. This is for your own safety as well as the safety of your species."`
 			`	Naturally, the pirates won't submit. Hopefully, they can provide enough of a distraction for you to avoid the Quarg's notice.`
 	npc
@@ -899,6 +899,9 @@ mission "Vault Weapon Insurgent Subjugation Gear"
 	to offer
 		or
 			has "Vault Weapon Quash 6: done"
+			and
+				has "Vault Weapon Quash 6: declined"
+				"reputation: Republic" > 1000
 		random < 25
 	on offer
 		conversation

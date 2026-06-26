@@ -24,8 +24,8 @@ outfit "Pollen?"
 	description "	Achoo!"
 
 outfit "Murkspores?"
-	plural "Spores?"
 	"display name" "Spores?"
+	plural "Spores?"
 	category "Special"
 	series "Sabotage"
 	index 007
@@ -1036,6 +1036,11 @@ mission "Midnight Dust Cloud (Ember Shroud)"
 					not "multimode cloak found"
 			branch graviton
 				has "license: Shadow House"
+				not "event: midnight bloodstone portal"
+				random < 5
+			branch blood
+				has "license: Shadow House"
+				has "event: midnight bloodstone portal"
 				random < 5
 			branch regen
 				has "license: Shadow House"
@@ -1082,6 +1087,12 @@ mission "Midnight Dust Cloud (Ember Shroud)"
 			action
 				outfit "Multimode Armor: Graviton" 1
 			scene "outfit/predecessor armor graviton"
+			`	You find some intact hull armor adrift in the dust cloud. You can take a closer look at it the next time you visit an outfitter.`
+				decline
+			label blood
+			action
+				outfit "Multimode Armor: Blood" 1
+			scene "outfit/predecessor armor bloodstone"
 			`	You find some intact hull armor adrift in the dust cloud. You can take a closer look at it the next time you visit an outfitter.`
 				decline
 			label cloak
@@ -1963,7 +1974,7 @@ mission "Midnight Dust Cloud (Human)"
 		clear "midnight dust scan high"
 	npc
 		government "Bounty (Disguised)"
-		personality target waiting harvests plunders coward
+		personality target waiting harvests plunders coward marked
 			confusion 20
 		fleet "pirate raid"
 

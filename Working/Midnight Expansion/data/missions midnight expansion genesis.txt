@@ -10,50 +10,25 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
+outfitter "Genesis"
+	add "Scattershot Gun"
+	add "Scattershot Rack"
+	add "Scattershot Ammo"
+	add "Scattershot Depot"
 
-mission "Midnight Expansion Genesis Scattershot Gun"
-	non-blocking
-	landing
-	invisible
-	on offer
-		event "midnight expansion genesis scattershot gun"
-		set "scattershot depot patched"
-		fail
-
-event "midnight expansion genesis scattershot gun"
-	outfitter "Genesis"
-		add "Scattershot Gun"
-		add "Scattershot Rack"
-		add "Scattershot Ammo"
-		add "Scattershot Depot"
-	fleet "Genesis Space"
-		add variant 1
-			"Genesis Spacecraft (Scattershot)"
-	fleet "Genesis Transports"
-		add variant 1
-			"Genesis Logistic (Scattershot)"
-		add variant 1
-			"Genesis Transport (Scattershot)"
-
-mission "Midnight Expansion Scattershot Depot Patch"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "event: midnight expansion genesis scattershot gun"
-		not "scattershot depot patched"
-	on offer
-		event "midnight expansion scattershot depot patch"
-		fail
-
-event "midnight expansion scattershot depot patch"
-	outfitter "Genesis"
-		add "Scattershot Depot"
-
+fleet "Genesis Space"
+	add variant 1
+		"Genesis Spacecraft (Scattershot)"
+fleet "Genesis Transports"
+	add variant 1
+		"Genesis Logistic (Scattershot)"
+	add variant 1
+		"Genesis Transport (Scattershot)"
 
 
 outfit "Scattershot Ammo Access Temporary License"
 	"display name" "Scattershot Ammo Tech"
+	plural "Scattershot Ammo Techs"
 	category "Ammunition"
 	series "Ammunition"
 	index 99999
@@ -68,10 +43,11 @@ outfit "Scattershot Ammo Access Temporary License"
 	description "This technical manual details how to manufacture Scattershot Ammo. Having this makes it possible for any outfitter to offer Scattershot Ammo even if it is normally not stocked there."
 	description "	The version available for purchase is written in an alien language you don't understand..."
 	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
-	description "	After this is acquired it can be found in the Licenses area when at the outfitter."
+	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
 	
 outfit "Scattershot Ammo Tech License"
 	"display name" "High Caliber Ammo Tech"
+	plural "High Caliber Ammo Techs"
 	category "Licenses"
 	series "Technology"
 	index 99999
@@ -122,7 +98,7 @@ mission "Midnight Tech: Scattershot Ammo Access Permanent"
 		fail
 
 mission "Midnight Research: Scattershot Ammo Tech"
-	entering
+	transition
 	invisible
 	destination Earth
 	to offer
@@ -142,3 +118,36 @@ mission "Midnight Research: Scattershot Ammo Tech"
 				decline
 
 
+#####################################
+#
+# deprecated
+#
+#####################################
+
+
+mission "Midnight Expansion Genesis Scattershot Gun"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+	on offer
+		event "midnight expansion genesis scattershot gun"
+		set "scattershot depot patched"
+		fail
+
+event "midnight expansion genesis scattershot gun"
+
+mission "Midnight Expansion Scattershot Depot Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "event: midnight expansion genesis scattershot gun"
+#		not "scattershot depot patched"
+	on offer
+		event "midnight expansion scattershot depot patch"
+		fail
+
+event "midnight expansion scattershot depot patch"

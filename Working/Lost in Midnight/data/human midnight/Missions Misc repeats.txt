@@ -549,7 +549,7 @@ mission "Midnight Independent Cargo Salvage (large)"
 
 
 mission "Midnight Research Consolidation"
-	entering
+	transition
 	invisible
 	destination Earth
 	to offer
@@ -677,10 +677,10 @@ mission "Mining: Claim Jumpers"
 		random < 5
 		has "flagship attribute: asteroid scan power"
 	on offer
-		"reputation: Bounty (Disguised)" >?= 0
+		"reputation: Bounty (Disguised)" >?= 1
 	npc
 		government "Bounty (Disguised)"
-		personality launching mining harvests timid
+		personality launching mining harvests timid marked
 		fleet
 			names "pirate"
 			cargo 0
@@ -711,11 +711,11 @@ mission "Mining: Claim Jumpers"
 			variant 1
 				"Star Barge (Miner)"
 		on kill
-			"reputation: Bounty (Disguised)" >?= 0
+			"reputation: Bounty (Disguised)" >?= 1
 	on fail
-		"reputation: Bounty (Disguised)" >?= 0
+		"reputation: Bounty (Disguised)" >?= 1
 	on complete
-		"reputation: Bounty (Disguised)" >?= 0
+		"reputation: Bounty (Disguised)" >?= 1
 
 mission "Mining: Iron Challenge"
 	deadline 7
@@ -839,7 +839,7 @@ mission "Rogue Asteroid (Rich World)"
 	"apparent payment" 10000
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		attributes "paradise" "urban" "rich" "tourist"
+		attributes "paradise" "urban" "rich" "tourist" "wealthy"
 		not attributes "uninhabited"
 	to offer
 		"combat rating" > 100
@@ -970,7 +970,7 @@ mission "Blackwing Scan Request"
 		dialog `They're not happy with the scanner data of the <npc> and only pay half of the reward...`
 
 
-
+# Lares has been renamed to Verdandi
 mission "Lares Camping (Bums)"
 	minor
 	invisible
@@ -1087,16 +1087,11 @@ mission "Lares Camping (Scavenger)"
 
 mission "Lares Exploring"
 	minor
+	invisible
 	repeat
 	source "Lares"
 	to offer
-		or
-			and
-				not "Lares Exploring: failed"
-				random < 15
-			and
-				has "Lares Exploring: failed"
-				random < 10
+		random < 10
 	on offer
 		conversation
 			`It's a beautiful day for a hike...`
@@ -1306,8 +1301,7 @@ mission "Rogue Asteroid (Poor World)"
 	description "A rogue asteroid may collide with <destination>. Destroy it, then land on <planet> to claim the reward (<payment>)."
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
-		not attributes "paradise" "urban" "rich" "tourist"
-		not attributes "uninhabited"
+		not attributes "paradise" "urban" "rich" "tourist" "wealthy" "uninhabited"
 	to offer
 		never
 	on offer

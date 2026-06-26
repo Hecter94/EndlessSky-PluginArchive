@@ -14,8 +14,10 @@ outfit "Remnant Fabricator License"
 	thumbnail "outfit/unknown"
 	description "The underlying secrets of Remnant technology are a closely guarded secret known only to those with the responsibility to produce it. Compartmentalization is key to safeguarding critical information."
 
-outfit "EMP Torpedo Access Temporary License"
+
+outfit "EMP Torpedo Access Temporary"
 	"display name" "EMP Torpedo Tech"
+	plural "EMP Torpedo Techs"
 	category "Ammunition"
 	series "Ammunition"
 	index 03014
@@ -37,6 +39,7 @@ outfit "EMP Torpedo Access Temporary License"
 	
 outfit "EMP Torpedo Tech License"
 	"display name" "EMP Torpedo Tech"
+	plural "EMP Torpedo Techs"
 	category "Licenses"
 	series "Technology"
 	index 03014
@@ -60,11 +63,12 @@ outfitter "EMP Torpedo Access"
 		attributes "outfitter"
 		outfits "EMP Torpedo"
 	stock
-		"EMP Torpedo Access Temporary License"
+		"EMP Torpedo Access Temporary"
 
 outfitter "EMP Torpedo Restock"
 	to sell
 		or
+			has "outfit: EMP Torpedo Access Temporary"
 			has "license: EMP Torpedo Access Temporary"
 			has "license: EMP Torpedo Tech"
 
@@ -73,6 +77,7 @@ outfitter "Midnight EMP Torpedo Restock"
 		has "gamerule: universal ammo restocking"
 		has "outfit: EMP Torpedo Storage Depot"
 		or
+			has "outfit: EMP Torpedo Access Temporary"
 			has "license: EMP Torpedo Access Temporary"
 			has "license: EMP Torpedo Tech"
 	location
@@ -80,21 +85,23 @@ outfitter "Midnight EMP Torpedo Restock"
 	stock
 		"EMP Torpedo"
 
-mission "Midnight Tech: EMP Torpedo Access Permanent"
+mission "Midnight Tech: EMP Torpedo Access Permanent License"
 	entering
 	invisible
+	non-blocking
 	destination Earth
 	to offer
-		has "license: EMP Torpedo Access Temporary"
+		has "outfit: EMP Torpedo Access Temporary"
 		not "license: EMP Torpedo Tech"
 	on offer
-		clear "license: EMP Torpedo Access Temporary"
+		outfit "EMP Torpedo Access Temporary" -1
 		set "license: EMP Torpedo Tech"
 		fail
 
 mission "Midnight Research: EMP Torpedo Tech"
-	entering
+	transition
 	invisible
+	non-blocking
 	destination Earth
 	to offer
 		has "outfit (flagship installed): EMP Torpedo"
@@ -103,6 +110,7 @@ mission "Midnight Research: EMP Torpedo Tech"
 		has "outfit (flagship installed): Research Data (Phys)"
 		has "license: Heavy Rocket Tech"
 		has "license: Torpedo Tech"
+		not "outfit: EMP Torpedo Access Temporary"
 		not "license: EMP Torpedo Access Temporary"
 		not "license: EMP Torpedo Tech"
 		random < 4 + ( "flagship attribute: research bonus" / 10 )
@@ -120,8 +128,9 @@ mission "Midnight Research: EMP Torpedo Tech"
 				decline
 
 
-outfit "Teciimach Canister Access Temporary License"
+outfit "Teciimach Canister Access Temporary"
 	"display name" "Teciimach Canister Tech"
+	plural "Teciimach Canister Techs"
 	category "Ammunition"
 	series "Ammunition"
 	index 03024
@@ -142,6 +151,7 @@ outfit "Teciimach Canister Access Temporary License"
 	
 outfit "Teciimach Canister Tech License"
 	"display name" "Teciimach Canister Tech"
+	plural "Teciimach Canister Techs"
 	category "Licenses"
 	series "Technology"
 	index 03024
@@ -164,11 +174,12 @@ outfitter "Teciimach Canister Access"
 		attributes "outfitter"
 		outfits "Teciimach Canister"
 	stock
-		"Teciimach Canister Access Temporary License"
+		"Teciimach Canister Access Temporary"
 
 outfitter "Teciimach Canister Restock"
 	to sell
 		or
+			has "outfit: Teciimach Canister Access Temporary"
 			has "license: Teciimach Canister Access Temporary"
 			has "license: Teciimach Canister Tech"
 
@@ -177,6 +188,7 @@ outfitter "Midnight Teciimach Canister Restock"
 		has "gamerule: universal ammo restocking"
 		has "outfit: Teciimach Canister Depot"
 		or
+			has "outfit: Teciimach Canister Access Temporary"
 			has "license: Teciimach Canister Access Temporary"
 			has "license: Teciimach Canister Tech"
 	location
@@ -184,21 +196,23 @@ outfitter "Midnight Teciimach Canister Restock"
 	stock
 		"Teciimach Canister"
 
-mission "Midnight Tech: Teciimach Canister Access Permanent"
+mission "Midnight Tech: Teciimach Canister Access Permanent License"
 	entering
 	invisible
+	non-blocking
 	destination Earth
 	to offer
-		has "license: Teciimach Canister Access Temporary"
+		has "outfit: Teciimach Canister Access Temporary"
 		not "license: Teciimach Canister Tech"
 	on offer
-		clear "license: Teciimach Canister Access Temporary"
+		outfit "Teciimach Canister Access Temporary" -1
 		set "license: Teciimach Canister Tech"
 		fail
 
 mission "Midnight Research: Teciimach Canister Tech"
-	entering
+	transition
 	invisible
+	non-blocking
 	destination Earth
 	to offer
 		has "outfit (flagship installed): Teciimach Canister"
@@ -206,6 +220,7 @@ mission "Midnight Research: Teciimach Canister Tech"
 		has "outfit (flagship installed): Research Data"
 		has "outfit (flagship installed): Research Data (Phys)"
 		has "license: EMP Torpedo Tech"
+		not "outfit: Teciimach Canister Access Temporary"
 		not "license: Teciimach Canister Access Temporary"
 		not "license: Teciimach Canister Tech"
 		random < 3 + ( "flagship attribute: research bonus" / 10 )
@@ -221,3 +236,78 @@ mission "Midnight Research: Teciimach Canister Tech"
 			`	(Lost 1 Research Data (Phys))`
 			`	(Gained Teciimach Canister Tech)`
 				decline
+
+
+###############################
+#
+# deprecated
+#
+###############################
+
+
+outfit "EMP Torpedo Access Temporary License"
+	"display name" "EMP Torpedo Tech"
+	plural "EMP Torpedo Techs"
+	category "Ammunition"
+	series "Ammunition"
+	index 03014
+	licenses
+		"Remnant Fabricator"
+	cost 4400000
+	thumbnail "outfit/tech emp torpedo"
+	"base research rate" 0.04
+	"requires Heavy Rocket Tech" 1
+	"requires Torpedo Tech" 1
+	"requires EMP Torpedo" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture EMP Torpedos. Having this makes it possible for any outfitter to offer EMP Torpedos even if it is normally not stocked there."
+	description "	The underlying secrets of Remnant technology are a closely guarded secret known only to those with the responsibility to produce it. Compartmentalization is key to safeguarding critical information."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
+
+mission "Midnight Tech: EMP Torpedo Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: EMP Torpedo Access Temporary"
+		not "license: EMP Torpedo Tech"
+	on offer
+		clear "license: EMP Torpedo Access Temporary"
+		set "license: EMP Torpedo Tech"
+		fail
+
+outfit "Teciimach Canister Access Temporary License"
+	"display name" "Teciimach Canister Tech"
+	plural "Teciimach Canister Techs"
+	category "Ammunition"
+	series "Ammunition"
+	index 03024
+	licenses
+		"Remnant Fabricator"
+	cost 35500000
+	thumbnail "outfit/tech emp torpedo"
+	"base research rate" 0.03
+	"requires EMP Torpedo Tech" 1
+	"requires Teciimach Canister" 1
+	"requires Ammo Basics" 1
+	"requires Research Data" 1
+	"requires Research Data (Phys)" 1
+	description "This technical manual details how to manufacture Teciimach Canisters. Having this makes it possible for any outfitter to offer Teciimach Canisters even if it is normally not stocked there."
+	description "	The underlying secrets of Remnant technology are a closely guarded secret known only to those with the responsibility to produce it. Compartmentalization is key to safeguarding critical information."
+	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
+	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
+
+mission "Midnight Tech: Teciimach Canister Access Permanent"
+	entering
+	invisible
+	destination Earth
+	to offer
+		has "license: Teciimach Canister Access Temporary"
+		not "license: Teciimach Canister Tech"
+	on offer
+		clear "license: Teciimach Canister Access Temporary"
+		set "license: Teciimach Canister Tech"
+		fail
