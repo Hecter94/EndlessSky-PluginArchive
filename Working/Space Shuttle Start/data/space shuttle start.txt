@@ -13,7 +13,7 @@
 start
 	name "Space Shuttle Start"
 	description `You were born on New Boston, but moved to Earth at a young age. You've dreamed of owning a starship ever since your first visit to the spaceport at the age of fifteen. A few years later, your dream came true when you got a bargain on an old Earth relic that was up for auction. After many years working at a textile mill, you've finally saved enough credits to fix the shuttle, but there's still a debt to pay off.`
-	thumbnail "scene/spaceshuttle"
+	thumbnail "scene/space5"
 	date 16 11 3013
 	system "Sol"
 	planet "Earth"
@@ -29,6 +29,7 @@ start
 	set "Space Shuttle Start (Original)"
 	set "Intro [0]: offered"
 	set "Intro [0]: declined"
+	set "human space start"
 
 conversation "space shuttle intro"
 	scene "planet/earth"
@@ -108,6 +109,7 @@ mission "Space Shuttle: First Launch"
 			has "Space Shuttle Start (Original)"
 		not "Space Shuttle Left Earth"
 	on enter
+		set "Space Shuttle Left Earth"
 		conversation
 			scene "scene/earth orbit"
 			`Originally, the space shuttle relied on massive booster rockets to launch into space. Like all modern ships, your space shuttle has repulsors installed instead. The ride into orbit is smooth and soon you feel the subtle shift from Earth's gravity to the weightlessness of space. Most ships have artificial gravity. Unfortunately, <ship> isn't one of them. As <ship> passes a few satellites, you look down on the planet. From up here, it doesn't look so bad.`
@@ -141,6 +143,7 @@ mission "Space Shuttle Left Earth"
 	source
 		not planet "Earth"
 	to offer
+		not "Space Shuttle Left Earth"
 		or
 			has "Space Shuttle Start"
 			has "Space Shuttle Start (Original)"
@@ -150,34 +153,16 @@ mission "Space Shuttle Left Earth"
 		fail
 
 
-
-mission "Space Shuttle: Add I.S.S."
-	landing
-	invisible
-	on offer
-		event "space shuttle add I.S.S."
-		fail
-
-event "space shuttle add I.S.S."
-	system Sol
-		remove object Earth
-			sprite planet/earth
-			distance 965.669
-			period 365.250
-		add object Earth
-			sprite planet/earth
-			distance 965.669
-			period 365.250
-			object Luna
-				sprite planet/luna
-				distance 201.24
-				period 27.3
-			object "I.S.S."
-				sprite planet/station-nasa0
-					scale 0.5
-				distance 201.24
-				period 27.3
-				offset 180
+system Sol
+	add object
+		distance 965.669
+		period 365.250
+		object "I.S.S."
+			sprite planet/station-nasa0
+				scale 0.5
+			distance 201.24
+			period 27.3
+			offset 180
 
 planet "I.S.S."
 	attributes station "near earth" tourism
@@ -185,3 +170,23 @@ planet "I.S.S."
 	music ambient/machinery
 	description `The construction of the original International Space Station was a milestone of humanity's earliest attempts at gaining a foothold into space. Sadly, it was destroyed during the early Turf Wars. This station was created as a monument to the original. While the exterior matches visual records of what the first I.S.S. looked like, the interior layout has replaced the science and research labs with a museum dedicated to the history of human space exploration.`
 	spaceport `Many of the visitors are families or students on school field trips. The gift shop next to the docking ports sells various historically accurate models, science kits, and other knick-knacks meant to appeal to parents and teachers looking for something educational to bring home from their visit.`
+
+
+#############################
+#
+# deprecated
+#
+#############################
+
+mission "Space Shuttle: Add I.S.S."
+	landing
+	non-blocking
+	invisible
+	to offer
+		never
+	on offer
+		event "space shuttle add I.S.S." 0
+		fail
+
+event "space shuttle add I.S.S."
+
