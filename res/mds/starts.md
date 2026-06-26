@@ -435,9 +435,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Space Shuttle Start/icon.png' height='100'></img><br>
 
 
-[Space.Shuttle.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Space.Shuttle.Start.zip) | 2.39 mb | 2024-07-12 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Space%20Shuttle%20Start/) <br>
+[Space.Shuttle.Start.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Space.Shuttle.Start.zip) | 2.7 mb | 2026-06-26 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Space%20Shuttle%20Start/) <br>
 Author: MidnightPlugins | Category: Starts <br>
-[https://github.com/MidnightPlugins/Space-Shuttle-Start](https://github.com/MidnightPlugins/Space-Shuttle-Start) (last commit 2024-07-12) <br>
+[https://github.com/MidnightPlugins/Space-Shuttle-Start](https://github.com/MidnightPlugins/Space-Shuttle-Start) (last commit 2026-06-25) <br>
 
 >Start in the Sol system with an old Earth relic for your ship.
 >
