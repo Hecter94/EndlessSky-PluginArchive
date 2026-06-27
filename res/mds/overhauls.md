@@ -50,9 +50,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/40k Pack/icon.png' height='100'></img><br>
 
 
-[40k.Pack.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/40k.Pack.zip) | 122.31 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/40k%20Pack/) <br>
+[40k.Pack.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/40k.Pack.zip) | 122.43 mb | 2026-06-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/40k%20Pack/) <br>
 Author: 1010Todd | Category: Overhauls <br>
-[https://github.com/1010todd/Endless-Sky-40k](https://github.com/1010todd/Endless-Sky-40k) (last commit 2023-03-29) <br>
+[https://github.com/1010todd/Endless-Sky-40k](https://github.com/1010todd/Endless-Sky-40k) (last commit 2026-06-26) <br>
 
 >Endless Sky 40K plugin adds ships and outfits from Warhammer 40k to Endless Sky!
 >
