@@ -1801,6 +1801,8 @@ ship "Murkcap"
 	bay "Unclassified Minor" 12 -17
 		"launch effect" "basic launch"
 		right
+	leak "glow blood" 15 25
+	explode "glow blood" 50
 	description "This fungal colony lurks within the dark waters of Murk. The danger of the spores it sprays out isn't immediately obvious."
 
 ship "Murkpod"
@@ -2378,8 +2380,8 @@ ship "Plasma Parasite"
 			"hit force" 3000
 	gun 0 0
 	leak "flame" 15 25
-	explode "medium explosion" 5
-	explode "large explosion" 15
+	explode "green medium explosion" 5
+	explode "green large explosion" 15
 	"final explode" "final explosion large"
 	description "While these creatures are neither aggressive nor malicious, the Heliarchs consider them a nuisance. They are attracted to the exhaust emissions of starship engines and will swarm over a ship. Unfortunately 90% of their bodies consist of volatile plasma, causing them to explode violently when exposed to weapons fire."
 
@@ -2399,8 +2401,8 @@ ship "Plasma Parasite" "Plasma Parasite (Large)"
 			"heat damage" 6000
 			"hit force" 6000
 	leak "flame" 15 25
-	explode "large explosion" 15
-	explode "huge explosion" 5
+	explode "green large explosion" 15
+	explode "green huge explosion" 5
 	"final explode" "final explosion large"
 
 ship "Plasma Parasite" "Plasma Parasite (Time Bomb 1)"
@@ -2429,6 +2431,43 @@ ship "Plasma Parasite" "Plasma Parasite (Time Bomb 3)"
 	outfits
 		"Timer Weapon"
 	gun 0 0
+
+effect "green medium explosion"
+	sprite "effect/explosion/green/medium"
+		"no repeat"
+		"frame rate" 15
+	sound "explosion medium"
+	"lifetime" 28
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 3
+	"random velocity" .6
+	"velocity scale" .4
+
+effect "green large explosion"
+	sprite "effect/explosion/green/large"
+		"no repeat"
+		"frame rate" 15
+	sound "explosion large"
+	"lifetime" 32
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 4
+	"random velocity" .8
+	"velocity scale" .4
+
+effect "green huge explosion"
+	sprite "effect/explosion/green/huge"
+		"no repeat"
+		"frame rate" 15
+	sound "explosion huge"
+	"lifetime" 36
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 5
+	"random velocity" 1
+	"velocity scale" .4
+
 
 phrase "plasma parasite"
 	word
@@ -2505,13 +2544,14 @@ fleet "Nesting Plasma Parasites"
 mission "First Contact: Plasma Parasite"
 	landing
 	invisible
+	deadline 2
 	source
 		government "Coalition"
 	on offer
 		event "Plasma Parasites Infest Coalition"
+		set "First Contact: Plasma Parasite Log Patched"
 	on enter
 		log "Factions" "Plasma Parasite" `Plasma Parasites are a scourge plaguing the Coalition. They are attracted to starship engine emissions and will swarm over them. While they are not inherently hostile, they are prone to violently exploding from even minor weapons fire. Appearing only after the Coalition gained their independence, some believe they were unleashed by the Quarg as a form of retribution.`
-		set "First Contact: Plasma Parasite Log Patched"
 		dialog `A strange creature is following your engine trail. Soon after you notice this, more of them appear...`
 	npc kill
 		government "Swarming Lifeform"
