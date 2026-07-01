@@ -5,6 +5,9 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2026-07-01 | Updated plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#lost-in-midnight)<br>
+2026-07-01 | Updated plugin 'Rumskib' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#rumskib)<br>
+2026-07-01 | Updated plugin 'mission.helper' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#missionhelper)<br>
 2026-06-29 | Updated plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#midnight-expansion)<br>
 2026-06-29 | Updated plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#lost-in-midnight)<br>
 2026-06-29 | Updated plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#midnight-scrapyard)<br>
@@ -17,9 +20,6 @@
 2026-06-26 | Updated plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#lost-in-midnight)<br>
 2026-06-26 | Updated plugin '40k Pack' by 1010Todd | [overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md#40k-pack)<br>
 2026-06-26 | Updated plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#midnight-scrapyard)<br>
-2026-06-26 | Updated plugin 'Mega Freight' by 1010todd | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#mega-freight)<br>
-2026-06-26 | Updated plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#lost-in-midnight)<br>
-2026-06-26 | Updated plugin 'Space Shuttle Start' by MidnightPlugins | [starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/starts.md#space-shuttle-start)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
