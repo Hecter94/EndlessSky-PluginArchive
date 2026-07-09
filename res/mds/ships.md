@@ -1324,9 +1324,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Louise.Conglomerate.Shipyards/icon.png' height='100'></img><br>
 
 
-[Louise.Conglomerate.Shipyards.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Louise.Conglomerate.Shipyards.zip) | 6.23 mb | 2026-05-28 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Louise.Conglomerate.Shipyards/) <br>
+[Louise.Conglomerate.Shipyards.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Louise.Conglomerate.Shipyards.zip) | 3.99 mb | 2026-07-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Louise.Conglomerate.Shipyards/) <br>
 Author: Loyse | Category: Ships <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2026-05-27) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2026-07-08) <br>
 
 >The ships manufactured by the Louise Conglomerate, based on Follower, are designed for the harsh pirate-infested frontier areas, thereby showing a remarkable sense for beauty. Requires Fundamental.Outfit.Expansion.
 >
@@ -1342,7 +1342,7 @@ Author: Loyse | Category: Ships <br>
 
 **Thanks** for feedback: Corvettefan, Glorbimus Prime, Kassandra Haruki, Lowry, Loymdayddaud, Redtechgamer236.
 
-**Attention**: Saves made with version 1.x or 2.0 stay valid, but ships acquired under version 3.0 will be larger and have other stats than those acquired under the older versions.
+**Attention**: Saves with ships acquired under version 1.x or 2.0 stay valid till version 3.1.1. Afterwards the old sprites are missing.
 
 An overhaul and re-publication of the [More Ships Plugin](https://github.com/loiseeer/The-more-ships-plugin). This jewel had to be polished regarding the stats, as it was updated last in May 2020. Luckily Loyse gave permission, and the idea to call the shipyard *Louise*.
 
@@ -1354,9 +1354,10 @@ Yeer e Ki Cooperative Shipyards reached out to the Louise Conglomerate, and sign
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-07-08 | 3.1.2 | Fixed sprite warnings because of odd number of pixels. Removed obsolete image versions -- end of compatibility with ships acquired using Louise 1.x and 2.0. | 
 | 2026-05-27 | 3.1.1 | Improved the ship descriptions (thx to Glorbimus Prime and Loymdayddaud). Changed the outfits equipped on the Hai variants of Commercator and Mercator to make the stock sales more affordable. |
 | 2026-04-03 | 3.1.0 | Added the Gradator interceptor (thx to Kitteh), including corresponding variant and fleet definitions. Also added reverse engine definitions, and a license file. |
-| 2026-02-09 | 3.0.0 | Magnified all ship sprites by ca. 31% (thx to Kitteh). Buffed the Senator (thx to Lowry). Nerfed the Lectica (thx to Kassandra) which also became a starter ship on Mainsail for the Paradise worlds start. Buffed the stats of Antecursor and Explorator. Established compatibility so saves made with Louise 1.x and 2.0. |
+| 2026-02-09 | 3.0.0 | Magnified all ship sprites by ca. 31% (thx to Kitteh). Buffed the Senator (thx to Lowry). Nerfed the Lectica (thx to Kassandra) which also became a starter ship on Mainsail for the Paradise worlds start. Buffed the stats of Antecursor and Explorator. Established compatibility to saves made with Louise 1.x and 2.0. |
 | 2026-02-04 | 2.0.0 | Added three new ships (Mercator and Lectica kitbashed by Kitteh, plus Bellator drone derived from Mining Drone), overhauled stats of all before existing ships for the purpose of rebalancing, and the corresponding sales and fleets. Renamed the old ships (Boxer --> Venditor, Bulk Boxer --> Commercator, Pathfinder --> Antecursor, Frontier --> Explorator, Newmaker --> Senator, Harvester --> Messor). All drone carriers now carry drones in the fleets. Adjusted lore. Removed dependency on FOE. |
 | 2025-08-27 | 1.2.1 | Ship variant fix to align with FOE 1.5.0 |
 | 2025-07-19 | 1.2.0 | Added support for Omnis. |
@@ -1366,7 +1367,7 @@ Yeer e Ki Cooperative Shipyards reached out to the Louise Conglomerate, and sign
 | 2025-05-03 | 1.0.2 | Metadata file fixes. |
 | 2025-04-27 | 1.0.1 | Fixes considering stand-alonization. |
 | 2025-04-27 | 1.0.0 | Overhaul and Re-publication as *Louise Conglomerate Shipyards*. |
-| 2020-05-31 | - | Last Update of the *More Ships Plugin*. |
+| 2020-05-31 | -- | Last Update of the *More Ships Plugin*. |
 
 </blockquote>
 </details>

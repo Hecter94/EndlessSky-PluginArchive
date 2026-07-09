@@ -945,9 +945,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/galactic.capital.investment/icon.png' height='100'></img><br>
 
 
-[galactic.capital.investment.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/galactic.capital.investment.zip) | 4.21 mb | 2026-03-08 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/galactic.capital.investment/) <br>
+[galactic.capital.investment.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/galactic.capital.investment.zip) | 4.21 mb | 2026-07-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/galactic.capital.investment/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-03-08) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-07-08) <br>
 
 >Implements a short mission chain that enables repeatable job board investment opportunities which result in small daily income. Available in human, quarg and hai space starting with 2 million credits cash and going up to 100 million credits. See the readme for details.
 >(inspired by a-alhusaini's investment bank plugin)
@@ -977,6 +977,15 @@ Enable and disable the investment jobs/missions<br>
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-07-08<br>
+fixed family trust typo (reported by xSaito)<br>
+increased deposit/withdraw for bank, 10b and 100b<br>
+increased deposit/withdraw for family trust, 10b and 100b<br>
+increased investment selling, 1m and 10m<br>
+increased daily transfer setting, 1m and 10m<br>
+improved and more natural stock values (with some help of Arcangelus)<br>
+stock values stay between 0 and 10k<br>
 <br>
 2026-03-08<br>
 fixed stock buying 10k (reported by CodeMagic)<br>
@@ -2250,9 +2259,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### PirateVariantsHPFix
 
 
-[PirateVariantsHPFix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/PirateVariantsHPFix.zip) | 1.05 kb | 2026-06-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/PirateVariantsHPFix/) <br>
+[PirateVariantsHPFix.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/PirateVariantsHPFix.zip) | 1.05 kb | 2026-07-09 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/PirateVariantsHPFix/) <br>
 Author: Arachi | Category: Gameplay <br>
-[https://github.com/Arachi-Lover/PirateVariantsHPFix](https://github.com/Arachi-Lover/PirateVariantsHPFix) (last commit 2026-04-20) <br>
+[https://github.com/Arachi-Lover/PirateVariantsHPFix](https://github.com/Arachi-Lover/PirateVariantsHPFix) (last commit 2026-07-08) <br>
 
 >Buffs the HP of Pirate variants of ships (Bulwark etc), so that they have the most shield/hull HP values used by either variant (e.g. max of Bulwark and Bastion).
 >
