@@ -99,195 +99,455 @@ mission "gci stock dividends"
 			branch "end"
 				"passed days" == 0
 			action
-				"stock tendency Southbound Shipyards" = "roll: 3" - 1
-				"stock tendency Lionheart Shipyards" = "roll: 3" - 1
-				"stock tendency Megaparsec Shipyards" = "roll: 3" - 1
-				"stock tendency Syndicate Shipyards" = "roll: 3" - 1
-				"stock tendency Kraz Cybernetics" = "roll: 3" - 1
-				"stock tendency Deep Sky" = "roll: 3" - 1
-				"stock tendency Lovelace Labs" = "roll: 3" - 1
-				"stock tendency Delta V" = "roll: 3" - 1
-				"stock tendency Betelgeuse Shipyards" = "roll: 3" - 1
-				"stock tendency Tarazed Corporation" = "roll: 3" - 1
 
 			label "stock loop Southbound Shipyards"
-			branch "notnull Southbound Shipyards"
-				"stock tendency Southbound Shipyards" != 0
+			branch "no streak is running Southbound Shipyards"
+				"stock streak Southbound Shipyards" == 0
+			label "a streak is running Southbound Shipyards"
 			action
-				"stock tendency Southbound Shipyards" = "roll: 3" - 1
-			branch "stock loop Southbound Shipyards"
-			label "notnull Southbound Shipyards"
-			action
+				"stock streak Southbound Shipyards" -= 1
 				"stock change Southbound Shipyards" = "roll: 50" * "stock tendency Southbound Shipyards"
-			branch "positive Southbound Shipyards"
-				"stock value Southbound Shipyards" + "stock change Southbound Shipyards" >= 100
-			action
-				"stock change Southbound Shipyards" *= -1
-			label "positive Southbound Shipyards"
-			action
 				"stock value Southbound Shipyards" += "stock change Southbound Shipyards"
+				"stock value Southbound Shipyards" >?= 100
+			branch "check limits Southbound Shipyards"
+			label "no streak is running Southbound Shipyards"
+			branch "start streak Southbound Shipyards"
+				"roll: 5" == 1
+			label "continue without streak Southbound Shipyards"
+			action
+				"stock tendency Southbound Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Southbound Shipyards" = "roll: 50" * "stock tendency Southbound Shipyards"
+				"stock value Southbound Shipyards" += "stock change Southbound Shipyards"
+				"stock value Southbound Shipyards" >?= 100
+			branch "check limits Southbound Shipyards"
+			label "start streak Southbound Shipyards"
+			action
+				"stock streak Southbound Shipyards" = "roll: 7" + 1
+				"stock tendency Southbound Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Southbound Shipyards" = "roll: 50" * "stock tendency Southbound Shipyards"
+				"stock value Southbound Shipyards" += "stock change Southbound Shipyards"
+				"stock value Southbound Shipyards" >?= 100
+			label "check limits Southbound Shipyards"
+			branch "under 0 Southbound Shipyards"
+				"stock value Southbound Shipyards" <= 0
+			branch "over max Southbound Shipyards"
+				"stock value Southbound Shipyards" >= 10000
+			branch "end Southbound Shipyards"
+			label "under 0 Southbound Shipyards"
+			action
+				"stock streak Southbound Shipyards" = 5
+				"stock tendency Southbound Shipyards" = 1
+			branch "end Southbound Shipyards"
+			label "over max Southbound Shipyards"
+			action
+				"stock streak Southbound Shipyards" = 5
+				"stock tendency Southbound Shipyards" = -1
+			label "end Southbound Shipyards"
 
 
 			label "stock loop Lionheart Shipyards"
-			branch "notnull Lionheart Shipyards"
-				"stock tendency Lionheart Shipyards" != 0
+			branch "no streak is running Lionheart Shipyards"
+				"stock streak Lionheart Shipyards" == 0
+			label "a streak is running Lionheart Shipyards"
 			action
-				"stock tendency Lionheart Shipyards" = "roll: 3" - 1
-			branch "stock loop Lionheart Shipyards"
-			label "notnull Lionheart Shipyards"
-			action
+				"stock streak Lionheart Shipyards" -= 1
 				"stock change Lionheart Shipyards" = "roll: 50" * "stock tendency Lionheart Shipyards"
-			branch "positive Lionheart Shipyards"
-				"stock value Lionheart Shipyards" + "stock change Lionheart Shipyards" >= 100
-			action
-				"stock change Lionheart Shipyards" *= -1
-			label "positive Lionheart Shipyards"
-			action
 				"stock value Lionheart Shipyards" += "stock change Lionheart Shipyards"
+				"stock value Lionheart Shipyards" >?= 100
+			branch "check limits Lionheart Shipyards"
+			label "no streak is running Lionheart Shipyards"
+			branch "start streak Lionheart Shipyards"
+				"roll: 5" == 1
+			label "continue without streak Lionheart Shipyards"
+			action
+				"stock tendency Lionheart Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Lionheart Shipyards" = "roll: 50" * "stock tendency Lionheart Shipyards"
+				"stock value Lionheart Shipyards" += "stock change Lionheart Shipyards"
+				"stock value Lionheart Shipyards" >?= 100
+			branch "check limits Lionheart Shipyards"
+			label "start streak Lionheart Shipyards"
+			action
+				"stock streak Lionheart Shipyards" = "roll: 7" + 1
+				"stock tendency Lionheart Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Lionheart Shipyards" = "roll: 50" * "stock tendency Lionheart Shipyards"
+				"stock value Lionheart Shipyards" += "stock change Lionheart Shipyards"
+				"stock value Lionheart Shipyards" >?= 100
+			label "check limits Lionheart Shipyards"
+			branch "under 0 Lionheart Shipyards"
+				"stock value Lionheart Shipyards" <= 0
+			branch "over max Lionheart Shipyards"
+				"stock value Lionheart Shipyards" >= 10000
+			branch "end Lionheart Shipyards"
+			label "under 0 Lionheart Shipyards"
+			action
+				"stock streak Lionheart Shipyards" = 5
+				"stock tendency Lionheart Shipyards" = 1
+			branch "end Lionheart Shipyards"
+			label "over max Lionheart Shipyards"
+			action
+				"stock streak Lionheart Shipyards" = 5
+				"stock tendency Lionheart Shipyards" = -1
+			label "end Lionheart Shipyards"
 
 
 			label "stock loop Megaparsec Shipyards"
-			branch "notnull Megaparsec Shipyards"
-				"stock tendency Megaparsec Shipyards" != 0
+			branch "no streak is running Megaparsec Shipyards"
+				"stock streak Megaparsec Shipyards" == 0
+			label "a streak is running Megaparsec Shipyards"
 			action
-				"stock tendency Megaparsec Shipyards" = "roll: 3" - 1
-			branch "stock loop Megaparsec Shipyards"
-			label "notnull Megaparsec Shipyards"
-			action
+				"stock streak Megaparsec Shipyards" -= 1
 				"stock change Megaparsec Shipyards" = "roll: 50" * "stock tendency Megaparsec Shipyards"
-			branch "positive Megaparsec Shipyards"
-				"stock value Megaparsec Shipyards" + "stock change Megaparsec Shipyards" >= 100
-			action
-				"stock change Megaparsec Shipyards" *= -1
-			label "positive Megaparsec Shipyards"
-			action
 				"stock value Megaparsec Shipyards" += "stock change Megaparsec Shipyards"
+				"stock value Megaparsec Shipyards" >?= 100
+			branch "check limits Megaparsec Shipyards"
+			label "no streak is running Megaparsec Shipyards"
+			branch "start streak Megaparsec Shipyards"
+				"roll: 5" == 1
+			label "continue without streak Megaparsec Shipyards"
+			action
+				"stock tendency Megaparsec Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Megaparsec Shipyards" = "roll: 50" * "stock tendency Megaparsec Shipyards"
+				"stock value Megaparsec Shipyards" += "stock change Megaparsec Shipyards"
+				"stock value Megaparsec Shipyards" >?= 100
+			branch "check limits Megaparsec Shipyards"
+			label "start streak Megaparsec Shipyards"
+			action
+				"stock streak Megaparsec Shipyards" = "roll: 7" + 1
+				"stock tendency Megaparsec Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Megaparsec Shipyards" = "roll: 50" * "stock tendency Megaparsec Shipyards"
+				"stock value Megaparsec Shipyards" += "stock change Megaparsec Shipyards"
+				"stock value Megaparsec Shipyards" >?= 100
+			label "check limits Megaparsec Shipyards"
+			branch "under 0 Megaparsec Shipyards"
+				"stock value Megaparsec Shipyards" <= 0
+			branch "over max Megaparsec Shipyards"
+				"stock value Megaparsec Shipyards" >= 10000
+			branch "end Megaparsec Shipyards"
+			label "under 0 Megaparsec Shipyards"
+			action
+				"stock streak Megaparsec Shipyards" = 5
+				"stock tendency Megaparsec Shipyards" = 1
+			branch "end Megaparsec Shipyards"
+			label "over max Megaparsec Shipyards"
+			action
+				"stock streak Megaparsec Shipyards" = 5
+				"stock tendency Megaparsec Shipyards" = -1
+			label "end Megaparsec Shipyards"
 
 
 			label "stock loop Syndicate Shipyards"
-			branch "notnull Syndicate Shipyards"
-				"stock tendency Syndicate Shipyards" != 0
+			branch "no streak is running Syndicate Shipyards"
+				"stock streak Syndicate Shipyards" == 0
+			label "a streak is running Syndicate Shipyards"
 			action
-				"stock tendency Syndicate Shipyards" = "roll: 3" - 1
-			branch "stock loop Syndicate Shipyards"
-			label "notnull Syndicate Shipyards"
-			action
+				"stock streak Syndicate Shipyards" -= 1
 				"stock change Syndicate Shipyards" = "roll: 50" * "stock tendency Syndicate Shipyards"
-			branch "positive Syndicate Shipyards"
-				"stock value Syndicate Shipyards" + "stock change Syndicate Shipyards" >= 100
-			action
-				"stock change Syndicate Shipyards" *= -1
-			label "positive Syndicate Shipyards"
-			action
 				"stock value Syndicate Shipyards" += "stock change Syndicate Shipyards"
+				"stock value Syndicate Shipyards" >?= 100
+			branch "check limits Syndicate Shipyards"
+			label "no streak is running Syndicate Shipyards"
+			branch "start streak Syndicate Shipyards"
+				"roll: 5" == 1
+			label "continue without streak Syndicate Shipyards"
+			action
+				"stock tendency Syndicate Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Syndicate Shipyards" = "roll: 50" * "stock tendency Syndicate Shipyards"
+				"stock value Syndicate Shipyards" += "stock change Syndicate Shipyards"
+				"stock value Syndicate Shipyards" >?= 100
+			branch "check limits Syndicate Shipyards"
+			label "start streak Syndicate Shipyards"
+			action
+				"stock streak Syndicate Shipyards" = "roll: 7" + 1
+				"stock tendency Syndicate Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Syndicate Shipyards" = "roll: 50" * "stock tendency Syndicate Shipyards"
+				"stock value Syndicate Shipyards" += "stock change Syndicate Shipyards"
+				"stock value Syndicate Shipyards" >?= 100
+			label "check limits Syndicate Shipyards"
+			branch "under 0 Syndicate Shipyards"
+				"stock value Syndicate Shipyards" <= 0
+			branch "over max Syndicate Shipyards"
+				"stock value Syndicate Shipyards" >= 10000
+			branch "end Syndicate Shipyards"
+			label "under 0 Syndicate Shipyards"
+			action
+				"stock streak Syndicate Shipyards" = 5
+				"stock tendency Syndicate Shipyards" = 1
+			branch "end Syndicate Shipyards"
+			label "over max Syndicate Shipyards"
+			action
+				"stock streak Syndicate Shipyards" = 5
+				"stock tendency Syndicate Shipyards" = -1
+			label "end Syndicate Shipyards"
 
 
 			label "stock loop Kraz Cybernetics"
-			branch "notnull Kraz Cybernetics"
-				"stock tendency Kraz Cybernetics" != 0
+			branch "no streak is running Kraz Cybernetics"
+				"stock streak Kraz Cybernetics" == 0
+			label "a streak is running Kraz Cybernetics"
 			action
-				"stock tendency Kraz Cybernetics" = "roll: 3" - 1
-			branch "stock loop Kraz Cybernetics"
-			label "notnull Kraz Cybernetics"
-			action
+				"stock streak Kraz Cybernetics" -= 1
 				"stock change Kraz Cybernetics" = "roll: 50" * "stock tendency Kraz Cybernetics"
-			branch "positive Kraz Cybernetics"
-				"stock value Kraz Cybernetics" + "stock change Kraz Cybernetics" >= 100
-			action
-				"stock change Kraz Cybernetics" *= -1
-			label "positive Kraz Cybernetics"
-			action
 				"stock value Kraz Cybernetics" += "stock change Kraz Cybernetics"
+				"stock value Kraz Cybernetics" >?= 100
+			branch "check limits Kraz Cybernetics"
+			label "no streak is running Kraz Cybernetics"
+			branch "start streak Kraz Cybernetics"
+				"roll: 5" == 1
+			label "continue without streak Kraz Cybernetics"
+			action
+				"stock tendency Kraz Cybernetics" = 1 - 2 * "roll: 2"
+				"stock change Kraz Cybernetics" = "roll: 50" * "stock tendency Kraz Cybernetics"
+				"stock value Kraz Cybernetics" += "stock change Kraz Cybernetics"
+				"stock value Kraz Cybernetics" >?= 100
+			branch "check limits Kraz Cybernetics"
+			label "start streak Kraz Cybernetics"
+			action
+				"stock streak Kraz Cybernetics" = "roll: 7" + 1
+				"stock tendency Kraz Cybernetics" = 1 - 2 * "roll: 2"
+				"stock change Kraz Cybernetics" = "roll: 50" * "stock tendency Kraz Cybernetics"
+				"stock value Kraz Cybernetics" += "stock change Kraz Cybernetics"
+				"stock value Kraz Cybernetics" >?= 100
+			label "check limits Kraz Cybernetics"
+			branch "under 0 Kraz Cybernetics"
+				"stock value Kraz Cybernetics" <= 0
+			branch "over max Kraz Cybernetics"
+				"stock value Kraz Cybernetics" >= 10000
+			branch "end Kraz Cybernetics"
+			label "under 0 Kraz Cybernetics"
+			action
+				"stock streak Kraz Cybernetics" = 5
+				"stock tendency Kraz Cybernetics" = 1
+			branch "end Kraz Cybernetics"
+			label "over max Kraz Cybernetics"
+			action
+				"stock streak Kraz Cybernetics" = 5
+				"stock tendency Kraz Cybernetics" = -1
+			label "end Kraz Cybernetics"
 
 
 			label "stock loop Deep Sky"
-			branch "notnull Deep Sky"
-				"stock tendency Deep Sky" != 0
+			branch "no streak is running Deep Sky"
+				"stock streak Deep Sky" == 0
+			label "a streak is running Deep Sky"
 			action
-				"stock tendency Deep Sky" = "roll: 3" - 1
-			branch "stock loop Deep Sky"
-			label "notnull Deep Sky"
-			action
+				"stock streak Deep Sky" -= 1
 				"stock change Deep Sky" = "roll: 50" * "stock tendency Deep Sky"
-			branch "positive Deep Sky"
-				"stock value Deep Sky" + "stock change Deep Sky" >= 100
-			action
-				"stock change Deep Sky" *= -1
-			label "positive Deep Sky"
-			action
 				"stock value Deep Sky" += "stock change Deep Sky"
+				"stock value Deep Sky" >?= 100
+			branch "check limits Deep Sky"
+			label "no streak is running Deep Sky"
+			branch "start streak Deep Sky"
+				"roll: 5" == 1
+			label "continue without streak Deep Sky"
+			action
+				"stock tendency Deep Sky" = 1 - 2 * "roll: 2"
+				"stock change Deep Sky" = "roll: 50" * "stock tendency Deep Sky"
+				"stock value Deep Sky" += "stock change Deep Sky"
+				"stock value Deep Sky" >?= 100
+			branch "check limits Deep Sky"
+			label "start streak Deep Sky"
+			action
+				"stock streak Deep Sky" = "roll: 7" + 1
+				"stock tendency Deep Sky" = 1 - 2 * "roll: 2"
+				"stock change Deep Sky" = "roll: 50" * "stock tendency Deep Sky"
+				"stock value Deep Sky" += "stock change Deep Sky"
+				"stock value Deep Sky" >?= 100
+			label "check limits Deep Sky"
+			branch "under 0 Deep Sky"
+				"stock value Deep Sky" <= 0
+			branch "over max Deep Sky"
+				"stock value Deep Sky" >= 10000
+			branch "end Deep Sky"
+			label "under 0 Deep Sky"
+			action
+				"stock streak Deep Sky" = 5
+				"stock tendency Deep Sky" = 1
+			branch "end Deep Sky"
+			label "over max Deep Sky"
+			action
+				"stock streak Deep Sky" = 5
+				"stock tendency Deep Sky" = -1
+			label "end Deep Sky"
 
 
 			label "stock loop Lovelace Labs"
-			branch "notnull Lovelace Labs"
-				"stock tendency Lovelace Labs" != 0
+			branch "no streak is running Lovelace Labs"
+				"stock streak Lovelace Labs" == 0
+			label "a streak is running Lovelace Labs"
 			action
-				"stock tendency Lovelace Labs" = "roll: 3" - 1
-			branch "stock loop Lovelace Labs"
-			label "notnull Lovelace Labs"
-			action
+				"stock streak Lovelace Labs" -= 1
 				"stock change Lovelace Labs" = "roll: 50" * "stock tendency Lovelace Labs"
-			branch "positive Lovelace Labs"
-				"stock value Lovelace Labs" + "stock change Lovelace Labs" >= 100
-			action
-				"stock change Lovelace Labs" *= -1
-			label "positive Lovelace Labs"
-			action
 				"stock value Lovelace Labs" += "stock change Lovelace Labs"
+				"stock value Lovelace Labs" >?= 100
+			branch "check limits Lovelace Labs"
+			label "no streak is running Lovelace Labs"
+			branch "start streak Lovelace Labs"
+				"roll: 5" == 1
+			label "continue without streak Lovelace Labs"
+			action
+				"stock tendency Lovelace Labs" = 1 - 2 * "roll: 2"
+				"stock change Lovelace Labs" = "roll: 50" * "stock tendency Lovelace Labs"
+				"stock value Lovelace Labs" += "stock change Lovelace Labs"
+				"stock value Lovelace Labs" >?= 100
+			branch "check limits Lovelace Labs"
+			label "start streak Lovelace Labs"
+			action
+				"stock streak Lovelace Labs" = "roll: 7" + 1
+				"stock tendency Lovelace Labs" = 1 - 2 * "roll: 2"
+				"stock change Lovelace Labs" = "roll: 50" * "stock tendency Lovelace Labs"
+				"stock value Lovelace Labs" += "stock change Lovelace Labs"
+				"stock value Lovelace Labs" >?= 100
+			label "check limits Lovelace Labs"
+			branch "under 0 Lovelace Labs"
+				"stock value Lovelace Labs" <= 0
+			branch "over max Lovelace Labs"
+				"stock value Lovelace Labs" >= 10000
+			branch "end Lovelace Labs"
+			label "under 0 Lovelace Labs"
+			action
+				"stock streak Lovelace Labs" = 5
+				"stock tendency Lovelace Labs" = 1
+			branch "end Lovelace Labs"
+			label "over max Lovelace Labs"
+			action
+				"stock streak Lovelace Labs" = 5
+				"stock tendency Lovelace Labs" = -1
+			label "end Lovelace Labs"
 
 
 			label "stock loop Delta V"
-			branch "notnull Delta V"
-				"stock tendency Delta V" != 0
+			branch "no streak is running Delta V"
+				"stock streak Delta V" == 0
+			label "a streak is running Delta V"
 			action
-				"stock tendency Delta V" = "roll: 3" - 1
-			branch "stock loop Delta V"
-			label "notnull Delta V"
-			action
+				"stock streak Delta V" -= 1
 				"stock change Delta V" = "roll: 50" * "stock tendency Delta V"
-			branch "positive Delta V"
-				"stock value Delta V" + "stock change Delta V" >= 100
-			action
-				"stock change Delta V" *= -1
-			label "positive Delta V"
-			action
 				"stock value Delta V" += "stock change Delta V"
+				"stock value Delta V" >?= 100
+			branch "check limits Delta V"
+			label "no streak is running Delta V"
+			branch "start streak Delta V"
+				"roll: 5" == 1
+			label "continue without streak Delta V"
+			action
+				"stock tendency Delta V" = 1 - 2 * "roll: 2"
+				"stock change Delta V" = "roll: 50" * "stock tendency Delta V"
+				"stock value Delta V" += "stock change Delta V"
+				"stock value Delta V" >?= 100
+			branch "check limits Delta V"
+			label "start streak Delta V"
+			action
+				"stock streak Delta V" = "roll: 7" + 1
+				"stock tendency Delta V" = 1 - 2 * "roll: 2"
+				"stock change Delta V" = "roll: 50" * "stock tendency Delta V"
+				"stock value Delta V" += "stock change Delta V"
+				"stock value Delta V" >?= 100
+			label "check limits Delta V"
+			branch "under 0 Delta V"
+				"stock value Delta V" <= 0
+			branch "over max Delta V"
+				"stock value Delta V" >= 10000
+			branch "end Delta V"
+			label "under 0 Delta V"
+			action
+				"stock streak Delta V" = 5
+				"stock tendency Delta V" = 1
+			branch "end Delta V"
+			label "over max Delta V"
+			action
+				"stock streak Delta V" = 5
+				"stock tendency Delta V" = -1
+			label "end Delta V"
 
 
 			label "stock loop Betelgeuse Shipyards"
-			branch "notnull Betelgeuse Shipyards"
-				"stock tendency Betelgeuse Shipyards" != 0
+			branch "no streak is running Betelgeuse Shipyards"
+				"stock streak Betelgeuse Shipyards" == 0
+			label "a streak is running Betelgeuse Shipyards"
 			action
-				"stock tendency Betelgeuse Shipyards" = "roll: 3" - 1
-			branch "stock loop Betelgeuse Shipyards"
-			label "notnull Betelgeuse Shipyards"
-			action
+				"stock streak Betelgeuse Shipyards" -= 1
 				"stock change Betelgeuse Shipyards" = "roll: 50" * "stock tendency Betelgeuse Shipyards"
-			branch "positive Betelgeuse Shipyards"
-				"stock value Betelgeuse Shipyards" + "stock change Betelgeuse Shipyards" >= 100
-			action
-				"stock change Betelgeuse Shipyards" *= -1
-			label "positive Betelgeuse Shipyards"
-			action
 				"stock value Betelgeuse Shipyards" += "stock change Betelgeuse Shipyards"
+				"stock value Betelgeuse Shipyards" >?= 100
+			branch "check limits Betelgeuse Shipyards"
+			label "no streak is running Betelgeuse Shipyards"
+			branch "start streak Betelgeuse Shipyards"
+				"roll: 5" == 1
+			label "continue without streak Betelgeuse Shipyards"
+			action
+				"stock tendency Betelgeuse Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Betelgeuse Shipyards" = "roll: 50" * "stock tendency Betelgeuse Shipyards"
+				"stock value Betelgeuse Shipyards" += "stock change Betelgeuse Shipyards"
+				"stock value Betelgeuse Shipyards" >?= 100
+			branch "check limits Betelgeuse Shipyards"
+			label "start streak Betelgeuse Shipyards"
+			action
+				"stock streak Betelgeuse Shipyards" = "roll: 7" + 1
+				"stock tendency Betelgeuse Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Betelgeuse Shipyards" = "roll: 50" * "stock tendency Betelgeuse Shipyards"
+				"stock value Betelgeuse Shipyards" += "stock change Betelgeuse Shipyards"
+				"stock value Betelgeuse Shipyards" >?= 100
+			label "check limits Betelgeuse Shipyards"
+			branch "under 0 Betelgeuse Shipyards"
+				"stock value Betelgeuse Shipyards" <= 0
+			branch "over max Betelgeuse Shipyards"
+				"stock value Betelgeuse Shipyards" >= 10000
+			branch "end Betelgeuse Shipyards"
+			label "under 0 Betelgeuse Shipyards"
+			action
+				"stock streak Betelgeuse Shipyards" = 5
+				"stock tendency Betelgeuse Shipyards" = 1
+			branch "end Betelgeuse Shipyards"
+			label "over max Betelgeuse Shipyards"
+			action
+				"stock streak Betelgeuse Shipyards" = 5
+				"stock tendency Betelgeuse Shipyards" = -1
+			label "end Betelgeuse Shipyards"
 
 
 			label "stock loop Tarazed Corporation"
-			branch "notnull Tarazed Corporation"
-				"stock tendency Tarazed Corporation" != 0
+			branch "no streak is running Tarazed Corporation"
+				"stock streak Tarazed Corporation" == 0
+			label "a streak is running Tarazed Corporation"
 			action
-				"stock tendency Tarazed Corporation" = "roll: 3" - 1
-			branch "stock loop Tarazed Corporation"
-			label "notnull Tarazed Corporation"
-			action
+				"stock streak Tarazed Corporation" -= 1
 				"stock change Tarazed Corporation" = "roll: 50" * "stock tendency Tarazed Corporation"
-			branch "positive Tarazed Corporation"
-				"stock value Tarazed Corporation" + "stock change Tarazed Corporation" >= 100
-			action
-				"stock change Tarazed Corporation" *= -1
-			label "positive Tarazed Corporation"
-			action
 				"stock value Tarazed Corporation" += "stock change Tarazed Corporation"
+				"stock value Tarazed Corporation" >?= 100
+			branch "check limits Tarazed Corporation"
+			label "no streak is running Tarazed Corporation"
+			branch "start streak Tarazed Corporation"
+				"roll: 5" == 1
+			label "continue without streak Tarazed Corporation"
+			action
+				"stock tendency Tarazed Corporation" = 1 - 2 * "roll: 2"
+				"stock change Tarazed Corporation" = "roll: 50" * "stock tendency Tarazed Corporation"
+				"stock value Tarazed Corporation" += "stock change Tarazed Corporation"
+				"stock value Tarazed Corporation" >?= 100
+			branch "check limits Tarazed Corporation"
+			label "start streak Tarazed Corporation"
+			action
+				"stock streak Tarazed Corporation" = "roll: 7" + 1
+				"stock tendency Tarazed Corporation" = 1 - 2 * "roll: 2"
+				"stock change Tarazed Corporation" = "roll: 50" * "stock tendency Tarazed Corporation"
+				"stock value Tarazed Corporation" += "stock change Tarazed Corporation"
+				"stock value Tarazed Corporation" >?= 100
+			label "check limits Tarazed Corporation"
+			branch "under 0 Tarazed Corporation"
+				"stock value Tarazed Corporation" <= 0
+			branch "over max Tarazed Corporation"
+				"stock value Tarazed Corporation" >= 10000
+			branch "end Tarazed Corporation"
+			label "under 0 Tarazed Corporation"
+			action
+				"stock streak Tarazed Corporation" = 5
+				"stock tendency Tarazed Corporation" = 1
+			branch "end Tarazed Corporation"
+			label "over max Tarazed Corporation"
+			action
+				"stock streak Tarazed Corporation" = 5
+				"stock tendency Tarazed Corporation" = -1
+			label "end Tarazed Corporation"
 
 			action
 				"passed days" -= 1
@@ -415,195 +675,455 @@ mission "gci banking terminal"
 			branch "calculations end"
 				"passed days" == 0
 			action
-				"stock tendency Southbound Shipyards" = "roll: 3" - 1
-				"stock tendency Lionheart Shipyards" = "roll: 3" - 1
-				"stock tendency Megaparsec Shipyards" = "roll: 3" - 1
-				"stock tendency Syndicate Shipyards" = "roll: 3" - 1
-				"stock tendency Kraz Cybernetics" = "roll: 3" - 1
-				"stock tendency Deep Sky" = "roll: 3" - 1
-				"stock tendency Lovelace Labs" = "roll: 3" - 1
-				"stock tendency Delta V" = "roll: 3" - 1
-				"stock tendency Betelgeuse Shipyards" = "roll: 3" - 1
-				"stock tendency Tarazed Corporation" = "roll: 3" - 1
 
 			label "stock loop Southbound Shipyards"
-			branch "notnull Southbound Shipyards"
-				"stock tendency Southbound Shipyards" != 0
+			branch "no streak is running Southbound Shipyards"
+				"stock streak Southbound Shipyards" == 0
+			label "a streak is running Southbound Shipyards"
 			action
-				"stock tendency Southbound Shipyards" = "roll: 3" - 1
-			branch "stock loop Southbound Shipyards"
-			label "notnull Southbound Shipyards"
-			action
+				"stock streak Southbound Shipyards" -= 1
 				"stock change Southbound Shipyards" = "roll: 50" * "stock tendency Southbound Shipyards"
-			branch "positive Southbound Shipyards"
-				"stock value Southbound Shipyards" + "stock change Southbound Shipyards" >= 100
-			action
-				"stock change Southbound Shipyards" *= -1
-			label "positive Southbound Shipyards"
-			action
 				"stock value Southbound Shipyards" += "stock change Southbound Shipyards"
+				"stock value Southbound Shipyards" >?= 100
+			branch "check limits Southbound Shipyards"
+			label "no streak is running Southbound Shipyards"
+			branch "start streak Southbound Shipyards"
+				"roll: 5" == 1
+			label "continue without streak Southbound Shipyards"
+			action
+				"stock tendency Southbound Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Southbound Shipyards" = "roll: 50" * "stock tendency Southbound Shipyards"
+				"stock value Southbound Shipyards" += "stock change Southbound Shipyards"
+				"stock value Southbound Shipyards" >?= 100
+			branch "check limits Southbound Shipyards"
+			label "start streak Southbound Shipyards"
+			action
+				"stock streak Southbound Shipyards" = "roll: 7" + 1
+				"stock tendency Southbound Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Southbound Shipyards" = "roll: 50" * "stock tendency Southbound Shipyards"
+				"stock value Southbound Shipyards" += "stock change Southbound Shipyards"
+				"stock value Southbound Shipyards" >?= 100
+			label "check limits Southbound Shipyards"
+			branch "under 0 Southbound Shipyards"
+				"stock value Southbound Shipyards" <= 0
+			branch "over max Southbound Shipyards"
+				"stock value Southbound Shipyards" >= 10000
+			branch "end Southbound Shipyards"
+			label "under 0 Southbound Shipyards"
+			action
+				"stock streak Southbound Shipyards" = 5
+				"stock tendency Southbound Shipyards" = 1
+			branch "end Southbound Shipyards"
+			label "over max Southbound Shipyards"
+			action
+				"stock streak Southbound Shipyards" = 5
+				"stock tendency Southbound Shipyards" = -1
+			label "end Southbound Shipyards"
 
 
 			label "stock loop Lionheart Shipyards"
-			branch "notnull Lionheart Shipyards"
-				"stock tendency Lionheart Shipyards" != 0
+			branch "no streak is running Lionheart Shipyards"
+				"stock streak Lionheart Shipyards" == 0
+			label "a streak is running Lionheart Shipyards"
 			action
-				"stock tendency Lionheart Shipyards" = "roll: 3" - 1
-			branch "stock loop Lionheart Shipyards"
-			label "notnull Lionheart Shipyards"
-			action
+				"stock streak Lionheart Shipyards" -= 1
 				"stock change Lionheart Shipyards" = "roll: 50" * "stock tendency Lionheart Shipyards"
-			branch "positive Lionheart Shipyards"
-				"stock value Lionheart Shipyards" + "stock change Lionheart Shipyards" >= 100
-			action
-				"stock change Lionheart Shipyards" *= -1
-			label "positive Lionheart Shipyards"
-			action
 				"stock value Lionheart Shipyards" += "stock change Lionheart Shipyards"
+				"stock value Lionheart Shipyards" >?= 100
+			branch "check limits Lionheart Shipyards"
+			label "no streak is running Lionheart Shipyards"
+			branch "start streak Lionheart Shipyards"
+				"roll: 5" == 1
+			label "continue without streak Lionheart Shipyards"
+			action
+				"stock tendency Lionheart Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Lionheart Shipyards" = "roll: 50" * "stock tendency Lionheart Shipyards"
+				"stock value Lionheart Shipyards" += "stock change Lionheart Shipyards"
+				"stock value Lionheart Shipyards" >?= 100
+			branch "check limits Lionheart Shipyards"
+			label "start streak Lionheart Shipyards"
+			action
+				"stock streak Lionheart Shipyards" = "roll: 7" + 1
+				"stock tendency Lionheart Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Lionheart Shipyards" = "roll: 50" * "stock tendency Lionheart Shipyards"
+				"stock value Lionheart Shipyards" += "stock change Lionheart Shipyards"
+				"stock value Lionheart Shipyards" >?= 100
+			label "check limits Lionheart Shipyards"
+			branch "under 0 Lionheart Shipyards"
+				"stock value Lionheart Shipyards" <= 0
+			branch "over max Lionheart Shipyards"
+				"stock value Lionheart Shipyards" >= 10000
+			branch "end Lionheart Shipyards"
+			label "under 0 Lionheart Shipyards"
+			action
+				"stock streak Lionheart Shipyards" = 5
+				"stock tendency Lionheart Shipyards" = 1
+			branch "end Lionheart Shipyards"
+			label "over max Lionheart Shipyards"
+			action
+				"stock streak Lionheart Shipyards" = 5
+				"stock tendency Lionheart Shipyards" = -1
+			label "end Lionheart Shipyards"
 
 
 			label "stock loop Megaparsec Shipyards"
-			branch "notnull Megaparsec Shipyards"
-				"stock tendency Megaparsec Shipyards" != 0
+			branch "no streak is running Megaparsec Shipyards"
+				"stock streak Megaparsec Shipyards" == 0
+			label "a streak is running Megaparsec Shipyards"
 			action
-				"stock tendency Megaparsec Shipyards" = "roll: 3" - 1
-			branch "stock loop Megaparsec Shipyards"
-			label "notnull Megaparsec Shipyards"
-			action
+				"stock streak Megaparsec Shipyards" -= 1
 				"stock change Megaparsec Shipyards" = "roll: 50" * "stock tendency Megaparsec Shipyards"
-			branch "positive Megaparsec Shipyards"
-				"stock value Megaparsec Shipyards" + "stock change Megaparsec Shipyards" >= 100
-			action
-				"stock change Megaparsec Shipyards" *= -1
-			label "positive Megaparsec Shipyards"
-			action
 				"stock value Megaparsec Shipyards" += "stock change Megaparsec Shipyards"
+				"stock value Megaparsec Shipyards" >?= 100
+			branch "check limits Megaparsec Shipyards"
+			label "no streak is running Megaparsec Shipyards"
+			branch "start streak Megaparsec Shipyards"
+				"roll: 5" == 1
+			label "continue without streak Megaparsec Shipyards"
+			action
+				"stock tendency Megaparsec Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Megaparsec Shipyards" = "roll: 50" * "stock tendency Megaparsec Shipyards"
+				"stock value Megaparsec Shipyards" += "stock change Megaparsec Shipyards"
+				"stock value Megaparsec Shipyards" >?= 100
+			branch "check limits Megaparsec Shipyards"
+			label "start streak Megaparsec Shipyards"
+			action
+				"stock streak Megaparsec Shipyards" = "roll: 7" + 1
+				"stock tendency Megaparsec Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Megaparsec Shipyards" = "roll: 50" * "stock tendency Megaparsec Shipyards"
+				"stock value Megaparsec Shipyards" += "stock change Megaparsec Shipyards"
+				"stock value Megaparsec Shipyards" >?= 100
+			label "check limits Megaparsec Shipyards"
+			branch "under 0 Megaparsec Shipyards"
+				"stock value Megaparsec Shipyards" <= 0
+			branch "over max Megaparsec Shipyards"
+				"stock value Megaparsec Shipyards" >= 10000
+			branch "end Megaparsec Shipyards"
+			label "under 0 Megaparsec Shipyards"
+			action
+				"stock streak Megaparsec Shipyards" = 5
+				"stock tendency Megaparsec Shipyards" = 1
+			branch "end Megaparsec Shipyards"
+			label "over max Megaparsec Shipyards"
+			action
+				"stock streak Megaparsec Shipyards" = 5
+				"stock tendency Megaparsec Shipyards" = -1
+			label "end Megaparsec Shipyards"
 
 
 			label "stock loop Syndicate Shipyards"
-			branch "notnull Syndicate Shipyards"
-				"stock tendency Syndicate Shipyards" != 0
+			branch "no streak is running Syndicate Shipyards"
+				"stock streak Syndicate Shipyards" == 0
+			label "a streak is running Syndicate Shipyards"
 			action
-				"stock tendency Syndicate Shipyards" = "roll: 3" - 1
-			branch "stock loop Syndicate Shipyards"
-			label "notnull Syndicate Shipyards"
-			action
+				"stock streak Syndicate Shipyards" -= 1
 				"stock change Syndicate Shipyards" = "roll: 50" * "stock tendency Syndicate Shipyards"
-			branch "positive Syndicate Shipyards"
-				"stock value Syndicate Shipyards" + "stock change Syndicate Shipyards" >= 100
-			action
-				"stock change Syndicate Shipyards" *= -1
-			label "positive Syndicate Shipyards"
-			action
 				"stock value Syndicate Shipyards" += "stock change Syndicate Shipyards"
+				"stock value Syndicate Shipyards" >?= 100
+			branch "check limits Syndicate Shipyards"
+			label "no streak is running Syndicate Shipyards"
+			branch "start streak Syndicate Shipyards"
+				"roll: 5" == 1
+			label "continue without streak Syndicate Shipyards"
+			action
+				"stock tendency Syndicate Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Syndicate Shipyards" = "roll: 50" * "stock tendency Syndicate Shipyards"
+				"stock value Syndicate Shipyards" += "stock change Syndicate Shipyards"
+				"stock value Syndicate Shipyards" >?= 100
+			branch "check limits Syndicate Shipyards"
+			label "start streak Syndicate Shipyards"
+			action
+				"stock streak Syndicate Shipyards" = "roll: 7" + 1
+				"stock tendency Syndicate Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Syndicate Shipyards" = "roll: 50" * "stock tendency Syndicate Shipyards"
+				"stock value Syndicate Shipyards" += "stock change Syndicate Shipyards"
+				"stock value Syndicate Shipyards" >?= 100
+			label "check limits Syndicate Shipyards"
+			branch "under 0 Syndicate Shipyards"
+				"stock value Syndicate Shipyards" <= 0
+			branch "over max Syndicate Shipyards"
+				"stock value Syndicate Shipyards" >= 10000
+			branch "end Syndicate Shipyards"
+			label "under 0 Syndicate Shipyards"
+			action
+				"stock streak Syndicate Shipyards" = 5
+				"stock tendency Syndicate Shipyards" = 1
+			branch "end Syndicate Shipyards"
+			label "over max Syndicate Shipyards"
+			action
+				"stock streak Syndicate Shipyards" = 5
+				"stock tendency Syndicate Shipyards" = -1
+			label "end Syndicate Shipyards"
 
 
 			label "stock loop Kraz Cybernetics"
-			branch "notnull Kraz Cybernetics"
-				"stock tendency Kraz Cybernetics" != 0
+			branch "no streak is running Kraz Cybernetics"
+				"stock streak Kraz Cybernetics" == 0
+			label "a streak is running Kraz Cybernetics"
 			action
-				"stock tendency Kraz Cybernetics" = "roll: 3" - 1
-			branch "stock loop Kraz Cybernetics"
-			label "notnull Kraz Cybernetics"
-			action
+				"stock streak Kraz Cybernetics" -= 1
 				"stock change Kraz Cybernetics" = "roll: 50" * "stock tendency Kraz Cybernetics"
-			branch "positive Kraz Cybernetics"
-				"stock value Kraz Cybernetics" + "stock change Kraz Cybernetics" >= 100
-			action
-				"stock change Kraz Cybernetics" *= -1
-			label "positive Kraz Cybernetics"
-			action
 				"stock value Kraz Cybernetics" += "stock change Kraz Cybernetics"
+				"stock value Kraz Cybernetics" >?= 100
+			branch "check limits Kraz Cybernetics"
+			label "no streak is running Kraz Cybernetics"
+			branch "start streak Kraz Cybernetics"
+				"roll: 5" == 1
+			label "continue without streak Kraz Cybernetics"
+			action
+				"stock tendency Kraz Cybernetics" = 1 - 2 * "roll: 2"
+				"stock change Kraz Cybernetics" = "roll: 50" * "stock tendency Kraz Cybernetics"
+				"stock value Kraz Cybernetics" += "stock change Kraz Cybernetics"
+				"stock value Kraz Cybernetics" >?= 100
+			branch "check limits Kraz Cybernetics"
+			label "start streak Kraz Cybernetics"
+			action
+				"stock streak Kraz Cybernetics" = "roll: 7" + 1
+				"stock tendency Kraz Cybernetics" = 1 - 2 * "roll: 2"
+				"stock change Kraz Cybernetics" = "roll: 50" * "stock tendency Kraz Cybernetics"
+				"stock value Kraz Cybernetics" += "stock change Kraz Cybernetics"
+				"stock value Kraz Cybernetics" >?= 100
+			label "check limits Kraz Cybernetics"
+			branch "under 0 Kraz Cybernetics"
+				"stock value Kraz Cybernetics" <= 0
+			branch "over max Kraz Cybernetics"
+				"stock value Kraz Cybernetics" >= 10000
+			branch "end Kraz Cybernetics"
+			label "under 0 Kraz Cybernetics"
+			action
+				"stock streak Kraz Cybernetics" = 5
+				"stock tendency Kraz Cybernetics" = 1
+			branch "end Kraz Cybernetics"
+			label "over max Kraz Cybernetics"
+			action
+				"stock streak Kraz Cybernetics" = 5
+				"stock tendency Kraz Cybernetics" = -1
+			label "end Kraz Cybernetics"
 
 
 			label "stock loop Deep Sky"
-			branch "notnull Deep Sky"
-				"stock tendency Deep Sky" != 0
+			branch "no streak is running Deep Sky"
+				"stock streak Deep Sky" == 0
+			label "a streak is running Deep Sky"
 			action
-				"stock tendency Deep Sky" = "roll: 3" - 1
-			branch "stock loop Deep Sky"
-			label "notnull Deep Sky"
-			action
+				"stock streak Deep Sky" -= 1
 				"stock change Deep Sky" = "roll: 50" * "stock tendency Deep Sky"
-			branch "positive Deep Sky"
-				"stock value Deep Sky" + "stock change Deep Sky" >= 100
-			action
-				"stock change Deep Sky" *= -1
-			label "positive Deep Sky"
-			action
 				"stock value Deep Sky" += "stock change Deep Sky"
+				"stock value Deep Sky" >?= 100
+			branch "check limits Deep Sky"
+			label "no streak is running Deep Sky"
+			branch "start streak Deep Sky"
+				"roll: 5" == 1
+			label "continue without streak Deep Sky"
+			action
+				"stock tendency Deep Sky" = 1 - 2 * "roll: 2"
+				"stock change Deep Sky" = "roll: 50" * "stock tendency Deep Sky"
+				"stock value Deep Sky" += "stock change Deep Sky"
+				"stock value Deep Sky" >?= 100
+			branch "check limits Deep Sky"
+			label "start streak Deep Sky"
+			action
+				"stock streak Deep Sky" = "roll: 7" + 1
+				"stock tendency Deep Sky" = 1 - 2 * "roll: 2"
+				"stock change Deep Sky" = "roll: 50" * "stock tendency Deep Sky"
+				"stock value Deep Sky" += "stock change Deep Sky"
+				"stock value Deep Sky" >?= 100
+			label "check limits Deep Sky"
+			branch "under 0 Deep Sky"
+				"stock value Deep Sky" <= 0
+			branch "over max Deep Sky"
+				"stock value Deep Sky" >= 10000
+			branch "end Deep Sky"
+			label "under 0 Deep Sky"
+			action
+				"stock streak Deep Sky" = 5
+				"stock tendency Deep Sky" = 1
+			branch "end Deep Sky"
+			label "over max Deep Sky"
+			action
+				"stock streak Deep Sky" = 5
+				"stock tendency Deep Sky" = -1
+			label "end Deep Sky"
 
 
 			label "stock loop Lovelace Labs"
-			branch "notnull Lovelace Labs"
-				"stock tendency Lovelace Labs" != 0
+			branch "no streak is running Lovelace Labs"
+				"stock streak Lovelace Labs" == 0
+			label "a streak is running Lovelace Labs"
 			action
-				"stock tendency Lovelace Labs" = "roll: 3" - 1
-			branch "stock loop Lovelace Labs"
-			label "notnull Lovelace Labs"
-			action
+				"stock streak Lovelace Labs" -= 1
 				"stock change Lovelace Labs" = "roll: 50" * "stock tendency Lovelace Labs"
-			branch "positive Lovelace Labs"
-				"stock value Lovelace Labs" + "stock change Lovelace Labs" >= 100
-			action
-				"stock change Lovelace Labs" *= -1
-			label "positive Lovelace Labs"
-			action
 				"stock value Lovelace Labs" += "stock change Lovelace Labs"
+				"stock value Lovelace Labs" >?= 100
+			branch "check limits Lovelace Labs"
+			label "no streak is running Lovelace Labs"
+			branch "start streak Lovelace Labs"
+				"roll: 5" == 1
+			label "continue without streak Lovelace Labs"
+			action
+				"stock tendency Lovelace Labs" = 1 - 2 * "roll: 2"
+				"stock change Lovelace Labs" = "roll: 50" * "stock tendency Lovelace Labs"
+				"stock value Lovelace Labs" += "stock change Lovelace Labs"
+				"stock value Lovelace Labs" >?= 100
+			branch "check limits Lovelace Labs"
+			label "start streak Lovelace Labs"
+			action
+				"stock streak Lovelace Labs" = "roll: 7" + 1
+				"stock tendency Lovelace Labs" = 1 - 2 * "roll: 2"
+				"stock change Lovelace Labs" = "roll: 50" * "stock tendency Lovelace Labs"
+				"stock value Lovelace Labs" += "stock change Lovelace Labs"
+				"stock value Lovelace Labs" >?= 100
+			label "check limits Lovelace Labs"
+			branch "under 0 Lovelace Labs"
+				"stock value Lovelace Labs" <= 0
+			branch "over max Lovelace Labs"
+				"stock value Lovelace Labs" >= 10000
+			branch "end Lovelace Labs"
+			label "under 0 Lovelace Labs"
+			action
+				"stock streak Lovelace Labs" = 5
+				"stock tendency Lovelace Labs" = 1
+			branch "end Lovelace Labs"
+			label "over max Lovelace Labs"
+			action
+				"stock streak Lovelace Labs" = 5
+				"stock tendency Lovelace Labs" = -1
+			label "end Lovelace Labs"
 
 
 			label "stock loop Delta V"
-			branch "notnull Delta V"
-				"stock tendency Delta V" != 0
+			branch "no streak is running Delta V"
+				"stock streak Delta V" == 0
+			label "a streak is running Delta V"
 			action
-				"stock tendency Delta V" = "roll: 3" - 1
-			branch "stock loop Delta V"
-			label "notnull Delta V"
-			action
+				"stock streak Delta V" -= 1
 				"stock change Delta V" = "roll: 50" * "stock tendency Delta V"
-			branch "positive Delta V"
-				"stock value Delta V" + "stock change Delta V" >= 100
-			action
-				"stock change Delta V" *= -1
-			label "positive Delta V"
-			action
 				"stock value Delta V" += "stock change Delta V"
+				"stock value Delta V" >?= 100
+			branch "check limits Delta V"
+			label "no streak is running Delta V"
+			branch "start streak Delta V"
+				"roll: 5" == 1
+			label "continue without streak Delta V"
+			action
+				"stock tendency Delta V" = 1 - 2 * "roll: 2"
+				"stock change Delta V" = "roll: 50" * "stock tendency Delta V"
+				"stock value Delta V" += "stock change Delta V"
+				"stock value Delta V" >?= 100
+			branch "check limits Delta V"
+			label "start streak Delta V"
+			action
+				"stock streak Delta V" = "roll: 7" + 1
+				"stock tendency Delta V" = 1 - 2 * "roll: 2"
+				"stock change Delta V" = "roll: 50" * "stock tendency Delta V"
+				"stock value Delta V" += "stock change Delta V"
+				"stock value Delta V" >?= 100
+			label "check limits Delta V"
+			branch "under 0 Delta V"
+				"stock value Delta V" <= 0
+			branch "over max Delta V"
+				"stock value Delta V" >= 10000
+			branch "end Delta V"
+			label "under 0 Delta V"
+			action
+				"stock streak Delta V" = 5
+				"stock tendency Delta V" = 1
+			branch "end Delta V"
+			label "over max Delta V"
+			action
+				"stock streak Delta V" = 5
+				"stock tendency Delta V" = -1
+			label "end Delta V"
 
 
 			label "stock loop Betelgeuse Shipyards"
-			branch "notnull Betelgeuse Shipyards"
-				"stock tendency Betelgeuse Shipyards" != 0
+			branch "no streak is running Betelgeuse Shipyards"
+				"stock streak Betelgeuse Shipyards" == 0
+			label "a streak is running Betelgeuse Shipyards"
 			action
-				"stock tendency Betelgeuse Shipyards" = "roll: 3" - 1
-			branch "stock loop Betelgeuse Shipyards"
-			label "notnull Betelgeuse Shipyards"
-			action
+				"stock streak Betelgeuse Shipyards" -= 1
 				"stock change Betelgeuse Shipyards" = "roll: 50" * "stock tendency Betelgeuse Shipyards"
-			branch "positive Betelgeuse Shipyards"
-				"stock value Betelgeuse Shipyards" + "stock change Betelgeuse Shipyards" >= 100
-			action
-				"stock change Betelgeuse Shipyards" *= -1
-			label "positive Betelgeuse Shipyards"
-			action
 				"stock value Betelgeuse Shipyards" += "stock change Betelgeuse Shipyards"
+				"stock value Betelgeuse Shipyards" >?= 100
+			branch "check limits Betelgeuse Shipyards"
+			label "no streak is running Betelgeuse Shipyards"
+			branch "start streak Betelgeuse Shipyards"
+				"roll: 5" == 1
+			label "continue without streak Betelgeuse Shipyards"
+			action
+				"stock tendency Betelgeuse Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Betelgeuse Shipyards" = "roll: 50" * "stock tendency Betelgeuse Shipyards"
+				"stock value Betelgeuse Shipyards" += "stock change Betelgeuse Shipyards"
+				"stock value Betelgeuse Shipyards" >?= 100
+			branch "check limits Betelgeuse Shipyards"
+			label "start streak Betelgeuse Shipyards"
+			action
+				"stock streak Betelgeuse Shipyards" = "roll: 7" + 1
+				"stock tendency Betelgeuse Shipyards" = 1 - 2 * "roll: 2"
+				"stock change Betelgeuse Shipyards" = "roll: 50" * "stock tendency Betelgeuse Shipyards"
+				"stock value Betelgeuse Shipyards" += "stock change Betelgeuse Shipyards"
+				"stock value Betelgeuse Shipyards" >?= 100
+			label "check limits Betelgeuse Shipyards"
+			branch "under 0 Betelgeuse Shipyards"
+				"stock value Betelgeuse Shipyards" <= 0
+			branch "over max Betelgeuse Shipyards"
+				"stock value Betelgeuse Shipyards" >= 10000
+			branch "end Betelgeuse Shipyards"
+			label "under 0 Betelgeuse Shipyards"
+			action
+				"stock streak Betelgeuse Shipyards" = 5
+				"stock tendency Betelgeuse Shipyards" = 1
+			branch "end Betelgeuse Shipyards"
+			label "over max Betelgeuse Shipyards"
+			action
+				"stock streak Betelgeuse Shipyards" = 5
+				"stock tendency Betelgeuse Shipyards" = -1
+			label "end Betelgeuse Shipyards"
 
 
 			label "stock loop Tarazed Corporation"
-			branch "notnull Tarazed Corporation"
-				"stock tendency Tarazed Corporation" != 0
+			branch "no streak is running Tarazed Corporation"
+				"stock streak Tarazed Corporation" == 0
+			label "a streak is running Tarazed Corporation"
 			action
-				"stock tendency Tarazed Corporation" = "roll: 3" - 1
-			branch "stock loop Tarazed Corporation"
-			label "notnull Tarazed Corporation"
-			action
+				"stock streak Tarazed Corporation" -= 1
 				"stock change Tarazed Corporation" = "roll: 50" * "stock tendency Tarazed Corporation"
-			branch "positive Tarazed Corporation"
-				"stock value Tarazed Corporation" + "stock change Tarazed Corporation" >= 100
-			action
-				"stock change Tarazed Corporation" *= -1
-			label "positive Tarazed Corporation"
-			action
 				"stock value Tarazed Corporation" += "stock change Tarazed Corporation"
+				"stock value Tarazed Corporation" >?= 100
+			branch "check limits Tarazed Corporation"
+			label "no streak is running Tarazed Corporation"
+			branch "start streak Tarazed Corporation"
+				"roll: 5" == 1
+			label "continue without streak Tarazed Corporation"
+			action
+				"stock tendency Tarazed Corporation" = 1 - 2 * "roll: 2"
+				"stock change Tarazed Corporation" = "roll: 50" * "stock tendency Tarazed Corporation"
+				"stock value Tarazed Corporation" += "stock change Tarazed Corporation"
+				"stock value Tarazed Corporation" >?= 100
+			branch "check limits Tarazed Corporation"
+			label "start streak Tarazed Corporation"
+			action
+				"stock streak Tarazed Corporation" = "roll: 7" + 1
+				"stock tendency Tarazed Corporation" = 1 - 2 * "roll: 2"
+				"stock change Tarazed Corporation" = "roll: 50" * "stock tendency Tarazed Corporation"
+				"stock value Tarazed Corporation" += "stock change Tarazed Corporation"
+				"stock value Tarazed Corporation" >?= 100
+			label "check limits Tarazed Corporation"
+			branch "under 0 Tarazed Corporation"
+				"stock value Tarazed Corporation" <= 0
+			branch "over max Tarazed Corporation"
+				"stock value Tarazed Corporation" >= 10000
+			branch "end Tarazed Corporation"
+			label "under 0 Tarazed Corporation"
+			action
+				"stock streak Tarazed Corporation" = 5
+				"stock tendency Tarazed Corporation" = 1
+			branch "end Tarazed Corporation"
+			label "over max Tarazed Corporation"
+			action
+				"stock streak Tarazed Corporation" = 5
+				"stock tendency Tarazed Corporation" = -1
+			label "end Tarazed Corporation"
 
 			action
 				"passed days" -= 1
@@ -699,15 +1219,23 @@ mission "gci banking terminal"
 			``
 			``
 			choice
-				`	[deposit 1,000,000,000 credits, daily interest +109589 credits]`
+				`	[deposit 100,000,000,000 credits, daily interest +10,958,904 credits]`
+					to display
+						"credits" >= 100000000000
+					goto d100,000,000,000
+				`	[deposit 10,000,000,000 credits, daily interest +1,095,890 credits]`
+					to display
+						"credits" >= 10000000000
+					goto d10,000,000,000
+				`	[deposit 1,000,000,000 credits, daily interest +109,589 credits]`
 					to display
 						"credits" >= 1000000000
 					goto d1,000,000,000
-				`	[deposit 100,000,000 credits, daily interest +10958 credits]`
+				`	[deposit 100,000,000 credits, daily interest +10,958 credits]`
 					to display
 						"credits" >= 100000000
 					goto d100,000,000
-				`	[deposit 10,000,000 credits, daily interest +1095 credits]`
+				`	[deposit 10,000,000 credits, daily interest +1,095 credits]`
 					to display
 						"credits" >= 10000000
 					goto d10,000,000
@@ -767,6 +1295,20 @@ mission "gci banking terminal"
 				dailyincome = deposit * 4 / 100 / 365 - "salary: Galactic Capital Transfer"
 			``
 				goto bankaccountD
+			label d10,000,000,000
+			action
+				payment -10000000000
+				deposit += 10000000000
+				dailyincome = deposit * 4 / 100 / 365 - "salary: Galactic Capital Transfer"
+			``
+				goto bankaccountD
+			label d100,000,000,000
+			action
+				payment -100000000000
+				deposit += 100000000000
+				dailyincome = deposit * 4 / 100 / 365 - "salary: Galactic Capital Transfer"
+			``
+				goto bankaccountD
 			label linebankaccountW
 			``
 			label bankaccountW
@@ -785,17 +1327,27 @@ mission "gci banking terminal"
 			`	(to withdraw more credits, reduce your daily cash transfer)`
 			``
 			choice
-				`	[withdraw 1,000,000,000 credits, daily interest -10958 credits]`
+				`	[withdraw 100,000,000,000 credits, daily interest -10,958,904 credits]`
+					to display
+						deposit >= 100000000000
+						dailyincome >= 10958904
+					goto w100,000,000,000
+				`	[withdraw 10,000,000,000 credits, daily interest -1,095,890 credits]`
+					to display
+						deposit >= 10000000000
+						dailyincome >= 1095890
+					goto w10,000,000,000
+				`	[withdraw 1,000,000,000 credits, daily interest -109,589 credits]`
 					to display
 						deposit >= 1000000000
 						dailyincome >= 109589
 					goto w1,000,000,000
-				`	[withdraw 100,000,000 credits, daily interest -10958 credits]`
+				`	[withdraw 100,000,000 credits, daily interest -10,958 credits]`
 					to display
 						deposit >= 100000000
 						dailyincome >= 10958
 					goto w100,000,000
-				`	[withdraw 10,000,000 credits, daily interest -1095 credits]`
+				`	[withdraw 10,000,000 credits, daily interest -1,095 credits]`
 					to display
 						deposit >= 10000000
 						dailyincome >= 1095
@@ -817,7 +1369,6 @@ mission "gci banking terminal"
 					goto w10,000
 				`	[back]`
 					goto linebankaccount
-
 			label w10,000
 			action
 				payment 10000
@@ -860,6 +1411,20 @@ mission "gci banking terminal"
 				dailyincome = deposit * 4 / 100 / 365 - "salary: Galactic Capital Transfer"
 			``
 				goto bankaccountW
+			label w10,000,000,000
+			action
+				payment 10000000000
+				deposit -= 10000000000
+				dailyincome = deposit * 4 / 100 / 365 - "salary: Galactic Capital Transfer"
+			``
+				goto bankaccountW
+			label w100,000,000,000
+			action
+				payment 100000000000
+				deposit -= 100000000000
+				dailyincome = deposit * 4 / 100 / 365 - "salary: Galactic Capital Transfer"
+			``
+				goto bankaccountW
 # deposit/withdraw of family trust
 			label linefamilytrust
 			``
@@ -892,7 +1457,15 @@ mission "gci banking terminal"
 			`	&[global: familytrust] credits`
 			``
 			choice
-				`	[deposit 1,00,000,000 credits]`
+				`	[deposit 100,000,000,000 credits]`
+					to display
+						"credits" >= 100000000000
+					goto td100,000,000,000
+				`	[deposit 10,000,000,000 credits]`
+					to display
+						"credits" >= 10000000000
+					goto td10,000,000,000
+				`	[deposit 1,000,000,000 credits]`
 					to display
 						"credits" >= 1000000000
 					goto td1,000,000,000
@@ -954,7 +1527,18 @@ mission "gci banking terminal"
 				"global: familytrust" += 1000000000
 			``
 				goto familytrustD
-
+			label td10,000,000,000
+			action
+				payment -10000000000
+				"global: familytrust" += 10000000000
+			``
+				goto familytrustD
+			label td100,000,000,000
+			action
+				payment -100000000000
+				"global: familytrust" += 100000000000
+			``
+				goto familytrustD
 			label linefamilytrustW
 			``
 			label familytrustW
@@ -967,6 +1551,14 @@ mission "gci banking terminal"
 			`	&[global: familytrust] credits`
 			``
 			choice
+				`	[withdraw 100,000,000,000 credits]`
+					to display
+						"global: familytrust" >= 100000000000
+					goto tw100,000,000,000
+				`	[withdraw 10,000,000,000 credits]`
+					to display
+						"global: familytrust" >= 10000000000
+					goto tw10,000,000,000
 				`	[withdraw 1,000,000,000 credits]`
 					to display
 						"global: familytrust" >= 1000000000
@@ -993,7 +1585,6 @@ mission "gci banking terminal"
 					goto tw10,000
 				`	[back]`
 					goto linefamilytrust
-
 			label tw10,000
 			action
 				payment 10000
@@ -1028,6 +1619,18 @@ mission "gci banking terminal"
 			action
 				payment 1000000000
 				"global: familytrust" -= 1000000000
+			``
+				goto familytrustW
+			label tw10,000,000,000
+			action
+				payment 10000000000
+				"global: familytrust" -= 10000000000
+			``
+				goto familytrustW
+			label tw100,000,000,000
+			action
+				payment 100000000000
+				"global: familytrust" -= 100000000000
 			``
 				goto familytrustW
 # stock exchange
@@ -4123,6 +4726,14 @@ mission "gci banking terminal"
 			`	&[salary: Galactic Capital]`
 			``
 			choice
+				`	[sell investment of 10,000,000 daily credits for 22,000,000,000 credits]`
+					to display
+						"salary: Galactic Capital" >= 10000000
+					goto si10,000,000
+				`	[sell investment of 1,000,000 daily credits for 2,200,000,000 credits]`
+					to display
+						"salary: Galactic Capital" >= 1000000
+					goto si1,000,000
 				`	[sell investment of 100,000 daily credits for 220,000,000 credits]`
 					to display
 						"salary: Galactic Capital" >= 100000
@@ -4185,6 +4796,18 @@ mission "gci banking terminal"
 				"salary: Galactic Capital" -= 100000
 			``
 				goto sellinvestment
+			label si1,000,000
+			action
+				payment 220000000
+				"salary: Galactic Capital" -= 1000000
+			``
+				goto sellinvestment
+			label si10,000,000
+			action
+				payment 2200000000
+				"salary: Galactic Capital" -= 10000000
+			``
+				goto sellinvestment
 # cash transfer
 			label linecashtransfer
 			``
@@ -4230,6 +4853,14 @@ mission "gci banking terminal"
 			`	&[dailyincome] credits daily interest (4% p.a.)  + &[salary: Galactic Capital Transfer] credits daily cash transfer`
 			``
 			choice
+				`	[transfer 10,000,000 credits of your daily interest]`
+					to display
+						"dailyincome" >= 10000000
+					goto t10,000,000
+				`	[transfer 1,000,000 credits of your daily interest]`
+					to display
+						"dailyincome" >= 1000000
+					goto t1,000,000
 				`	[transfer 100,000 credits of your daily interest]`
 					to display
 						"dailyincome" >= 100000
@@ -4265,6 +4896,14 @@ mission "gci banking terminal"
 			`	&[dailyincome] credits daily interest (4% p.a.)  + &[salary: Galactic Capital Transfer] credits daily cash transfer`
 			``
 			choice
+				`	[transfer 10,000,000 credits back to your daily interest]`
+					to display
+						"salary: Galactic Capital Transfer" >= 10000000
+					goto b10,000,000
+				`	[transfer 1,000,000 credits back to your daily interest]`
+					to display
+						"salary: Galactic Capital Transfer" >= 1000000
+					goto b1,000,000
 				`	[transfer 100,000 credits back to your daily interest]`
 					to display
 						"salary: Galactic Capital Transfer" >= 100000
@@ -4307,6 +4946,18 @@ mission "gci banking terminal"
 				dailyincome = deposit * 4 / 100 / 365 - "salary: Galactic Capital Transfer"
 			``
 				goto transfert
+			label t1,000,000
+			action
+				"salary: Galactic Capital Transfer" += 1000000
+				dailyincome = deposit * 4 / 100 / 365 - "salary: Galactic Capital Transfer"
+			``
+				goto transfert
+			label t10,000,000
+			action
+				"salary: Galactic Capital Transfer" += 10000000
+				dailyincome = deposit * 4 / 100 / 365 - "salary: Galactic Capital Transfer"
+			``
+				goto transfert
 			label b100
 			action
 				"salary: Galactic Capital Transfer" -= 100
@@ -4328,6 +4979,18 @@ mission "gci banking terminal"
 			label b100,000
 			action
 				"salary: Galactic Capital Transfer" -= 100000
+				dailyincome = deposit * 4 / 100 / 365 - "salary: Galactic Capital Transfer"
+			``
+				goto transferb
+			label b1,000,000
+			action
+				"salary: Galactic Capital Transfer" -= 1000000
+				dailyincome = deposit * 4 / 100 / 365 - "salary: Galactic Capital Transfer"
+			``
+				goto transferb
+			label b10,000,000
+			action
+				"salary: Galactic Capital Transfer" -= 10000000
 				dailyincome = deposit * 4 / 100 / 365 - "salary: Galactic Capital Transfer"
 			``
 				goto transferb

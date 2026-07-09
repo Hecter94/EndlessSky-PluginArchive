@@ -22,6 +22,15 @@ Enable and disable the investment jobs/missions<br>
 <br>
 Changelog:<br>
 <br>
+2026-07-08<br>
+fixed family trust typo (reported by xSaito)<br>
+increased deposit/withdraw for bank, 10b and 100b<br>
+increased deposit/withdraw for family trust, 10b and 100b<br>
+increased investment selling, 1m and 10m<br>
+increased daily transfer setting, 1m and 10m<br>
+improved and more natural stock values (with some help of Arcangelus)<br>
+stock values stay between 0 and 10k<br>
+<br>
 2026-03-08<br>
 fixed stock buying 10k (reported by CodeMagic)<br>
 <br>
