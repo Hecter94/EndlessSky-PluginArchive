@@ -25,11 +25,15 @@ Disables all spaceport repeatable missions. These missions annoy me. Removes the
 <li> "Republic Navy Advisory System [volcanic]" </li>
 <li> "Republic Navy Advisory System [wildfire cargo]" </li>
 <li> "Republic Navy Advisory System [wildfire firefighters]" </li>
-<li> "Small Scale Delivery" (Kor Efret)<li>
+<li> "Small Scale Delivery" (Kor Efret) </li>
+<li> "Avgi: Aberrant Blockade" </li>
 </ul>
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-07-11<br>
+disabled avgi on landing defense mission<br>
 <br>
 2025-08-29<br>
 license, README, icon@2x, plugintxt changes<br>
