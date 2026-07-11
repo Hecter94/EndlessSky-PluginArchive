@@ -662,9 +662,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/disable.spaceport.repeatables/icon.png' height='100'></img><br>
 
 
-[disable.spaceport.repeatables.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/disable.spaceport.repeatables.zip) | 107.77 kb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/disable.spaceport.repeatables/) <br>
+[disable.spaceport.repeatables.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/disable.spaceport.repeatables.zip) | 107.85 kb | 2026-07-10 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/disable.spaceport.repeatables/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-07-10) <br>
 
 >Disables all repeatable spaceport missions. I.e. shady passenger transport, drug smuggling, time critical transport or defend planet. See the README for details.
 >
@@ -698,11 +698,15 @@ Disables all spaceport repeatable missions. These missions annoy me. Removes the
 <li> "Republic Navy Advisory System [volcanic]" </li>
 <li> "Republic Navy Advisory System [wildfire cargo]" </li>
 <li> "Republic Navy Advisory System [wildfire firefighters]" </li>
-<li> "Small Scale Delivery" (Kor Efret)<li>
+<li> "Small Scale Delivery" (Kor Efret) </li>
+<li> "Avgi: Aberrant Blockade" </li>
 </ul>
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-07-11<br>
+disabled avgi on landing defense mission<br>
 <br>
 2025-08-29<br>
 license, README, icon@2x, plugintxt changes<br>
