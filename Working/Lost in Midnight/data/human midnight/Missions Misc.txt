@@ -1324,30 +1324,26 @@ mission "Midnight Heart of Iron"
 	description "A wanted criminal is traveling on an infamous smuggler ship named the <npc>. It will be passing through this system soon. Board the ship and detain the criminal in a brig, then bring him to <destination> by <date>. Reward for capture: <payment>."
 	passengers 1
 	to offer
+		or
+			not "chosen sides"
+			has "main plot completed"
 		not "midnight heart of iron killed"
 		has "outfit (installed): Brig"
+		has "Bounty Hunting (Small, Boarding, Entering): done"
 		has "Bounty Hunting (Medium, Boarding, Entering): done"
 		"combat rating" > 168
 		random < 70 - ( "midnight heart of iron deferred" * 55 )
 	source
-		government "Republic" "Free Worlds" "Syndicate"
-		attributes "frontier"
+		government "Republic"
+		attributes "north" "paradise"
 	destination
-		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
-		not attributes "frontier"
+		government "Republic"
 		not attributes "uninhabited"
 		distance 2 6
-	substitutions
-		"<local government>" "Republic"
-			has "flagship planet government: Republic"
-		"<local government>" "Free Worlds"
-			has "flagship planet government: Free Worlds"
-		"<local government>" "Syndicate"
-			has "flagship planet government: Syndicate"
 	on offer
 		conversation
 			scene "outfit/unknown"
-			`A <local government> officer approaches you. "Captain <last>! I've heard you have experience capturing criminals and bringing them to trial for justice. Would you be willing to lend us your skills to catch a notorious criminal?"`
+			`A Republic officer approaches you. "Captain <last>! I've heard you have experience capturing criminals and bringing them to trial for justice. Would you be willing to lend us your skills to catch a notorious criminal?"`
 			choice
 				`	"Give me the details."`
 				`	"I'm too busy to help you."`
@@ -2304,7 +2300,7 @@ mission "Midnight Swarm Lord"
 	minor
 	landing
 	name "Swarm Lord"
-	description "A small pirate ship named Swarm Lord has been capturing Militia ships near <system>. Find and eliminate it and it's fleet. Then report to <planet>."
+	description "A small pirate ship named Swarm Lord has been capturing Militia ships near <system>. Find and eliminate it and its fleet. Then report to <planet>."
 	source
 		government "Free Worlds"
 		attributes "frontier"
@@ -2505,6 +2501,10 @@ mission "Midnight Striker"
 					goto javelin
 				`	"The Meteors are good for artillery support."`
 					goto meteor
+				`	"Why aren't you using Plasma Missiles?"`
+					goto plasma
+					to display
+						not "striker plasma"
 				`	"Couldn't they be armed with something else?"`
 					to display
 						not "striker non-missiles"
@@ -2522,8 +2522,18 @@ mission "Midnight Striker"
 			scene "outfit/kludge blaster"
 			`	Barmy frowns. "There's enough space to accommodate one. But despite having a more powerful projectile than regular Energy Blasters, their long recharge time means Kludge Blasters work best when used in multiples. We need to muster more firepower from the Striker's lone gun mount than a single Kludge Blaster can deliver." These drones must be for military use rather than mining. Barmy continues, "So that brings us back to Javelins versus Meteors..."`
 				goto final
+			label plasma
+			action
+				set "striker plasma"
+			scene "outfit/plasma missile"
+			`	Barmy sighs. "That would be the best option. But have you noticed that stock ships in shipyards are still armed with Meteor Missiles? The reason is that Kraz is still recouping the R&D costs. Southbound is unwilling to pay the premium. And the Free Worlds is unwilling to cover the difference. So customers who want to upgrade will have to visit the outfitter and pay for it themselves."`
+			choice
+				`	"Business is complicated."`
+			`	Barmy nods, "So that brings us back to Javelins versus Meteors..."`
+				goto final
 			label javelin
 			action
+				clear "striker plasma"
 				clear "striker non-missiles"
 				event "add striker drones javelin" 30
 			scene "outfit/javelin"
@@ -2531,6 +2541,7 @@ mission "Midnight Striker"
 				decline
 			label meteor
 			action
+				clear "striker plasma"
 				clear "striker non-missiles"
 				event "add striker drones meteor" 30
 			scene "outfit/meteor"
@@ -2538,6 +2549,7 @@ mission "Midnight Striker"
 				decline
 			label kludge
 			action
+				clear "striker plasma"
 				clear "striker non-missiles"
 				event "add striker drones kludge" 30
 			scene "outfit/kludge blaster"

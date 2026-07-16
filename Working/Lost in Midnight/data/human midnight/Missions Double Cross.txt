@@ -802,6 +802,221 @@ mission "Kudgel's Cudgel"
 		dialog "You report the incident with Kudgel's Cudgel to the <planet> government and are rewarded with a bounty of <payment>."
 
 
+mission "Midnight Smugglers False Hope 1"
+	minor
+	clearance
+	name "Escort to Freedom"
+	description `Escort the <npc> and the escaped slaves it is transporting to <destination>, far away from their pirate oppressor. The captain promises to give you <payment>.`
+	source "Deadman's Cove"
+	destination "Shroud"
+	to offer
+		has "Pirate Blockade: done"
+		has "license: militia"
+		random < 70
+	on offer
+		conversation
+			`When you return to the <ship> a man is waiting at the landing pad. As you approach he asks,"Are you the owner of this ship?"`
+			choice
+				`	"Yes. What do you want?"`
+					goto what
+				`	"It's not for sale."`
+			`	He smirks. "It's looks like a good ship, but that's not what I'm after."`
+			label what
+			`	The man gives you a piercing stare. "I need help. Well, my passengers need help." He scratches his head, appearing flustered. "It's complicated. I wasn't planning to take on this job, but I was asked to help free some slaves by transporting them to <planet>." You remember taking on a similar job in the past.`
+			choice
+				`	"So what's the problem?"`
+			`	He winces. "I'm afraid this could technically be seen as human smuggling. Illegal immigration. I see you're with the Free Worlds, so I was hoping you could escort me. Maybe keep the Navy distracted if they get too close. I can pay <payment>." That seems like a reasonable escort fee.`
+			choice
+				`	"Alright, I'll do it."`
+					goto agree
+				`	"Aren't they going to scan you at <planet>?"`
+				`	"Find someone else. I'm not interested."`
+					goto refuse
+			`	He relaxes. "The person who made the request gave me a contact who will let me slip past security. So, how about it?"`
+			choice
+				`	"Alright, I'll do it."`
+					goto agree
+				`	"Find someone else. I'm not interested."`
+			label refuse
+			`	He looks disappointed. "Well, it was worth a shot. Maybe I should reconsider doing this job..." He shakes his head as he walks off.`
+			choice
+				`	"Wait. I'll do it."`
+					goto agree
+				`	(Let him go.)`
+			action
+				set "denied freeing slaves"
+			``
+				decline
+			label agree
+			`	His face lights up. "Thank you!" He reaches out to shake your hand. "The name's Slipstein. Captain of the <npc>.`
+			choice
+				`	"Captain <last>."`
+					accept
+	on accept
+		"reputation Bounty (Disguised)" >?= 1
+	npc accompany save
+		government "Bounty (Disguised)"
+		personality target escort launching timid coward secretive quiet marked
+			confusion 20
+		"cargo settings"
+			cargo 1
+			outfitters "Contraband"
+		ship "Marauder Falcon (Atrocity)" "Saint James"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+	on complete
+		payment 120000
+		dialog phrase "generic safe escort completion dialog"
+
+mission "Midnight Smugglers False Hope 2"
+	landing
+	name "Prisoner to <planet>"
+	description "Transport Captain Slipstein and the <bunks> freed slaves to <destination> where he will stand trial."
+	source "Shroud"
+	destination "Bourne"
+	to offer
+		has "Midnight Smugglers False Hope 1: done"
+	on offer
+		conversation
+			`You watch as Slipstein loads the slaves onto a transport truck. They still have their chains on...`
+			choice
+				`	"Why haven't you removed their chains?"`
+			`	He slams the truck's door shut. Turning to you, Slipstein smiles and says "Removing their chains would be dangerous. They've only known life on a pirate world. The locals will reeducate them so that they can assimilate to life here."`
+			choice
+				`	"Alright, that makes sense."`
+				`	"It looks like you're keeping them as slaves."`
+					goto slaves
+				`	"Let them out of the truck."`
+					goto slaves
+			`	Slipstein smirks. "I'm glad you understand Captain <last>. I can tell you are concerned about them, but trust me, they'll be in good hands. You can leave the rest to me."`
+			choice
+				`	"I'll trust you. Goodbye Slipstein."`
+				`	"I don't believe you."`
+					goto slaves
+			action
+				set "trusted slipstein"
+				log `I met another captain who agreed to lead slaves to freedom from pirate oppression. After escorting them to Shroud, the slaves were still in chains. Captain Slipstein assured me that this was a safety measure to protect them and others until the former slaves have been reeducated for assimilation into Shroud's society.`
+			`	One of Slipstein's crew drives the truck away. Whatever fate await its passengers is out of your hands...`
+				decline
+			label slaves
+			`	He scowls. "Looks like you won't let this go. How about another 80,000 credits? Just forget about them and go on with your life." He glances at the rest of his crew...`
+			choice
+				`	(Take the bribe.)`
+				`	(Your crew can easily beat them...)`
+					goto fight
+					to display
+						"flagship required crew" >= 160
+				`	(Your crew might survive a fight...)`
+					goto fight
+					to display
+						"flagship required crew" < 160
+			action
+				payment 80000
+				set "bribed by slipstein"
+				set "license: Nightmare Fuel"
+				log "Minor People" "Captain Slipstein" `A human smuggler who transported slaves to Shroud under the pretense of "liberating" them.`
+				log `I met another captain who agreed to lead slaves to freedom from pirate oppression. After escorting them to Shroud, the slaves were still in chains. I... I probably shouldn't record this. But the credit log shows the deposit into my account. This... It was a bribe. Slipstein paid me to ignore what he was doing and abandon those people. If anyone reads this, just know that I was only a security escort and did not actively participate in capturing his passengers or whatever happened to them after we parted ways. I... I am not involved.`
+			`	Slipstein grins. "I'm glad you're willing to be reasonable." He transfers 80,000 credits to your account. "Have a pleasant day Captain <last>." One of Slipstein's crew drives the truck away. Whatever fate await its passengers is out of your hands...`
+				decline
+			label fight
+			branch "victory"
+				random < ( "flagship required crew" - 60 )
+			`	Your crew fights bravely, but you die during the chaos of battle.`
+				die
+			label victory
+			`	After a vicious battle, Slipstein surrenders. Even as you free the slaves he remains indignant. "I was hoping we could avoid this pointless and messy hassle. But fine. Go ahead, hand me over to the authorities. There isn't a court in the Republic that will convict me."`
+			choice
+				`	"I work for the Free Worlds."`
+			action
+				log "Minor People" "Captain Slipstein" `A human smuggler who transported slaves to Shroud under the pretense of "liberating" them.`
+				log `I met another captain who agreed to lead slaves to freedom from pirate oppression. After escorting them to Shroud, the slaves were still in chains. After a violent confrontation, I arrested Slipstein for human trafficking under my authority as a Militia captain. I'll let the judiciary on Bourne sort out the legal details.`
+			scene "thumbnail/vicious falcon-thumb"
+			`	Slipstein's smug arrogance melts at those words. Some of the freed slaves agree to travel with you to <planet> so that they can testify in court. Fortunately, the evidence can serve as transportation. It even has a brig to hold Slipstein in.`
+			``
+			`	(The replacement crew for the <npc> will cost 6,000 credits per day.)`
+				accept
+	on daily
+		payment -6000
+	npc accompany save
+		government "Merchant"
+		personality target escort launching timid coward marked
+			confusion 30
+		"cargo settings"
+			cargo 0
+		ship "Marauder Falcon (Atrocity)" "Saint James"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+	on complete
+		give ship "Marauder Falcon (Atrocity)" "Saint James"
+		log "Minor People" "Captain Slipstein" `Died in custody during transport to Bourne for his involvement in slavery and human trafficking. The crew claims that he killed himself, but the circumstances surrounding his death seem suspicious to some and when word gets out about this it became a sensational news story.`
+		log `Before leaving Shroud I hired a replacement crew for Slipstein's ship. The trip to Bourne was long. After we arrived we found Slipstein's corpse in the Brig of the Saint James. The crew claims he killed himself. The autopsy indicates he died from strangulation. But the video feed in his cell was deleted...`
+		conversation
+			scene "thumbnail/vicious falcon-thumb"
+			`After a long journey, you've finally brought Slipstein to justice. At least, that's what you thought when you arrived. When you try to retrieve him from the brig you find his dead body. The crew piloting his former ship insist he must have killed himself. But the circumstances surrounding his death seem suspicious to some and when word gets out about this it becomes a sensational news story.`
+			`	At least the former slaves who traveled with you testify that he was indeed a slave trafficker. The Free Worlds grants them asylum. As for his ship, they allow you to keep it. A Vicious Falcon is an extremely rare Marauder variant. You should thoroughly inspect it in the outfitter to make sure he didn't leave any nasty surprises hidden inside.`
+
+mission "Midnight Smugglers False Hope 3"
+	minor
+	repeat
+	clearance
+	name "Escort to <planet>"
+	description `Escort the <npc> to <destination>. Captain Slipstein promises to give you <payment> for your assistance and continued silence...`
+	source "Deadman's Cove"
+	destination "Shroud"
+	to offer
+		has "bribed by slipstein"
+		not "destroyed slipstein"
+		not "license: Nightmare Fuel"
+		random < 50
+	on offer
+		conversation
+			`You find Captain Slipstein at your landing pad. "Good to see you again Captain <last>. Come now. I've decided you'll be escorting my fleet to <destination>. You'll receive <payment>, just like before." He starts walking away without waiting for you to respond.`
+			choice
+				`	"..."`
+					accept
+				`	"No I'm not."`
+			`	He turns back in anger. "Oh yes you are you worm! You accepted my bonus payment. The credit log links us now. I own you. Now be an obedient worm and do as you're told." Again, he walks off without waiting for your response. There may be only one way to get out of this...`
+				accept
+	npc
+		government "Bounty (Disguised)"
+		personality target escort launching timid coward secretive quiet marked
+			confusion 20
+		fleet
+			names "bounty hunter"
+			cargo 1
+			outfitters "Contraband"
+			variant 1
+				"Sliver (Smuggler)"
+				"Shard (Smuggler)" 3
+	npc
+		government "Bounty (Disguised)"
+		personality target escort launching timid coward secretive quiet marked
+			confusion 20
+		fleet
+			names "bounty hunter"
+			cargo 1
+			outfitters "Contraband"
+			variant 1
+				"Modified Sliver (Smuggler)"
+				"Modified Shard (Smuggler)" 3
+	npc accompany save
+		government "Bounty (Disguised)"
+		personality target escort launching timid coward secretive quiet marked
+			confusion 20
+		"cargo settings"
+			cargo 1
+			outfitters "Contraband"
+		ship "Marauder Falcon (Atrocity)" "Saint James"
+		on kill
+			set "destroyed slipstein"
+			dialog "With Slipstein gone, you may finally be free of the invisible leash the credit log placed on you."
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+	on complete
+		payment 200000
+		set "license: Nightmare Fuel"
+		dialog "Slipstein pays you <payment>, buying your silence as his cargo is lead away in chains to an unknown fate."
+
 
 outfitter "Syndicate Research"
 	"Ionic Afterburner"

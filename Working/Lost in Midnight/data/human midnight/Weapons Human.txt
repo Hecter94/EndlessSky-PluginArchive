@@ -636,22 +636,33 @@ outfit "Plasma Charge Cannon"
 		sprite "projectile/plasma cluster"
 			"frame rate" 3
 		sound "plasma"
-		"hit effect" "plasma cluster explosion"
+		"hit effect" "plasma charge explosion"
 		"inaccuracy" 1
-		"velocity" 12
-		"lifetime" 45
+		"velocity" 24
+		"lifetime" 20
+		"random lifetime" 2.5
+		"range override" 540
 		"reload" 36
 		"firing energy" 60
 		"firing heat" 360
-		"hit force" 90
-		"shield damage" 126
-		"hull damage" 50
-		"heat damage" 680
+		"submunition" "Plasma Charge Burnout" 4
 		"cluster"
-	description `The Plasma Charge Cannon has been modified to take advantage of concentrated firing mounts. The power and range of each shot has increased at the expense of increasing the weapon's charge up time.`
+	description `The Plasma Charge Cannon has been modified to take advantage of concentrated firing mounts. The power and range of each shot has increased at the expense of increasing the weapon's charge up time and the projectile destabilizing at extreme distances.`
 	description `	This weapon is set to fire in "cluster" mode, synchronizing its rate of fire when multiple copies are installed together.`
 
-effect "plasma cluster explosion"
+outfit "Plasma Charge Burnout"
+	weapon
+		sprite "projectile/plasma burnout"
+			"frame rate" 3
+		"hit effect" "plasma explosion"
+		"inaccuracy" 5
+		"random lifetime" 2.5
+		"hit force" 7.5
+		"shield damage" 31.5
+		"hull damage" 12.5
+		"heat damage" 170
+
+effect "plasma charge explosion"
 	sprite "effect/plasma explosion"
 		scale 2
 		"no repeat"
@@ -1434,7 +1445,7 @@ outfit "Plasma Missile Launcher"
 		icon "icon/plasma missile"
 		"fire effect" "meteor fire"
 		"die effect" "missile death"
-		"hit effect" "plasma cluster explosion"
+		"hit effect" "plasma charge explosion"
 		"inaccuracy" 5
 		"velocity" 11
 		"lifetime" 350
@@ -1474,7 +1485,7 @@ outfit "Plasma Missile Pod"
 		icon "icon/plasma missile"
 		"fire effect" "meteor fire"
 		"die effect" "missile death"
-		"hit effect" "plasma cluster explosion"
+		"hit effect" "plasma charge explosion"
 		"inaccuracy" 5
 		"velocity" 11
 		"lifetime" 350
@@ -1542,7 +1553,7 @@ outfit "Plunder Catapult"
 			"random start frame"
 		ammo "Plunder Mine"
 		icon "icon/plunder catapult"
-		"hit effect" "large explosion"
+		"hit effect" "plunder mine explosion" 8
 		"die effect" "flotsam death"
 		"submunition" "plunder mine submunition" 8
 		"inaccuracy" 10
@@ -1554,16 +1565,18 @@ outfit "Plunder Catapult"
 		"acceleration" .16
 		"drag" .04
 		"missile strength" 17
+		"shield damage" 1120
 		"blast radius" 40
-	description "Favored by smugglers, this weapon jettisons crates loaded with explosives to lure unwary pursuers into approaching a deadly trap."
-	description "	These mines can be dangerous to the ship deploying them if they detonate before they've had a chance to disperse."
+		"piercing" -1
+	description "Favored by smugglers, this weapon jettisons crates loaded with explosives to lure unwary pursuers into a deadly trap."
+	description "	These mines bypass shields by detonating as enemy ships try to load them into their cargo bays. They can be dangerous to the ship deploying them if they detonate before they've had a chance to disperse."
 
 outfit "plunder mine submunition"
 	weapon
 		sprite "projectile/plunder"
 			"frame rate" 18
 			"random start frame"
-		"hit effect" "medium explosion"
+		"hit effect" "plunder mine explosion"
 		"die effect" "flotsam death"
 		"inaccuracy" 360
 		"velocity" 0
@@ -1572,10 +1585,21 @@ outfit "plunder mine submunition"
 		"random lifetime" 60
 		"acceleration" .001
 		"drag" .01
-		"shield damage" 175
-		"hull damage" 140
+		"hull damage" 175
 		"hit force" 150
 		"missile strength" 11
+		"piercing" 1
+
+effect "plunder mine explosion"
+	sprite "effect/piercer explosion"
+		"no repeat"
+		"frame rate" 20
+	sound "explosion medium"
+	"lifetime" 28
+	"random angle" 360
+	"random spin" 60
+	"random velocity" .1
+	"velocity scale" .08
 
 
 outfit "Stinger Missile"
@@ -2146,7 +2170,7 @@ outfit "Plasma Cluster Cannon"
 		sprite "projectile/plasma cluster"
 			"frame rate" 3
 		sound "plasma"
-		"hit effect" "plasma cluster explosion"
+		"hit effect" "plasma charge explosion"
 		"inaccuracy" 1
 		"velocity" 12
 		"lifetime" 45

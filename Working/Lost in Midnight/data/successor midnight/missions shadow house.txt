@@ -10,13 +10,6 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
-fleet "People's Houses Raiders"
-	add variant 1
-		"Kvelqde-Sosrue"
-	add variant 1
-		"Kvelqde-Sosrue"
-		"Kvelqde-Khora"
-
 
 mission "Midnight Successor Shadow House 0"
 	landing
@@ -87,12 +80,16 @@ mission "Midnight Successor Shadow House 1"
 			label refuse
 			`	The shopkeeper shoos you away with their tentacles "Then hast thou no affaire with me. Get thee hence from my sight!"`
 				decline
+	on stopover
+		dialog `You've placed the listening devices at both locations. Return to <destination> to learn about the Multimode Armor.`
 	on complete
 		event "midnight successor shadow house"
 		
 event "midnight successor shadow house"
 	system Maspa-Sado
 		government "Shadow House"
+		add fleet "People's Houses Raiders" 9000
+		add fleet "People's Shadow" 6000
 	planet Vade-Kella-Kaska
 		attributes "shadow house" crime station midnight
 		port "Space_port"
@@ -104,7 +101,23 @@ event "midnight successor shadow house"
 			description `The spaceport here is cavernous but empty. Yet all of the equipment needed to service ships is intact and in working order, suggesting that this place may not be entirely unused.`
 		add outfitter "Shadow House"
 		"required reputation" 1
-
+	system Kella-Uoasa
+		add fleet "People's Shadow" 9000
+	system Maspa-Raaqa
+		add fleet "People's Shadow" 9000
+	system Luue-Saqru
+		add fleet "People's Shadow" 9000
+	system Osolaa-Uuoru
+		add fleet "People's Shadow" 9000
+	system Maspa-Mavra
+		add fleet "People's Shadow" 9000
+	system Myruet-Kvelq
+		add fleet "People's Shadow" 9000
+	system Khosa-Kaska
+		add fleet "People's Shadow" 9000
+	fleet "People's Houses"
+		add variant 1
+			"Kvelqde-Sosrue"
 
 
 mission "Midnight Successor Shadow House 1 (Kasii-Cavasaa-Oa)"
@@ -146,8 +159,6 @@ mission "Midnight Successor Shadow House 2"
 			scene "outfit/map"
 			`	The datasphere contains a map leading to <destination>. This might be your reward for placing the two eavesdropping sculptures. Or it could be a trap.`
 				accept
-	on complete
-		set "license: Shadow House"
 
 mission "Midnight Successor Shadow Cloak"
 	landing
@@ -157,6 +168,7 @@ mission "Midnight Successor Shadow Cloak"
 	to offer
 		has "Midnight Successor Shadow House 2: done"
 	on offer
+		set "license: Shadow House"
 		conversation
 			`As you walk through the station, the equipment hums to life. A successor in black clothing appears at the entrance to the shipyard. "Hark, alien! The graven images do work as 'twas aforethought. As I did avow, I shall tell thee of the Predecessor's harness."`
 			label questions
@@ -234,8 +246,8 @@ mission "Midnight Successor House in Shadow"
 		personality waiting staying secretive uninterested timid coward quiet
 			confusion 10
 		ship "Ojde-Sado" "Deathless Myiara"
-		ship "Kvelqde-Kiitaa (OC)" "Raaja-myiara"
-		ship "Kvelqde-Kiitaa (OC)" "Sera-myiara"
+		ship "Kvelqde-Kiitaa (Coilgun Turret)" "Raaja-myiara"
+		ship "Kvelqde-Kiitaa (Coilgun Turret)" "Sera-myiara"
 
 event "midnight add shadow house shipyard"
 	planet Vade-Kella-Kaska
@@ -277,7 +289,7 @@ mission "Midnight Add Myiara Fire Spout"
 		event "midnight add myiara fire spout"
 		conversation
 			scene "outfit/successor fire spout"
-			`A Shadow House agent emerges from the shadows. "Thou hast served us well. As a token of our good will, we shall soon grant thee access to our weapons, to aid thee in performing more tasks for us. It is our hope to continue in this our mutuall good accord." The agent slithers into the shadows.`
+			`A Shadow House agent emerges from the shadows. "Thou hast served us well. As a token of our good will, we shall soon grant thee access to one of our weapons, to aid thee in performing more tasks for us. It is our hope to continue in this our mutuall good accord." The agent slithers into the shadows.`
 				decline
 
 event "midnight add myiara fire spout"
@@ -348,7 +360,9 @@ mission "Midnight Successor Stolsaqra-Sosrue"
 	npc
 		government "Shadow House"
 		personality waiting staying heroic vindictive
-		ship "Stolsaqra-Sosrue (Plate)" "Myiara Airi"
+		ship "Stolsaqra-Sosrue (Plate)" "Airi-myiara"
+		on kill
+			set "Airi-myiara destroyed"
 	npc kill
 		government "Phenomenon (dangerous)"
 		personality waiting lingering heroic harvests plunders mute
@@ -374,12 +388,96 @@ mission "Midnight Successor Stolsaqra-Sosrue"
 event "midnight add stolsaqra-sosrue"
 	shipyard "Shadow House"
 		add "Stolsaqra-Sosrue"
+	fleet "People's Houses"
+		add variant 1
+			"Stolsaqra-Sosrue"
+	fleet "People's Houses Raiders"
+		add variant 1
+			"Stolsaqra-Sosrue"
 	fleet "People's Shadow"
 		add variant 1
 			"Stolsaqra-Sosrue (Stealth)"
-	system Maspa-Sado
-		add fleet "People's Houses Raiders" 9000
-		add fleet "People's Shadow" 6000
+		add variant 1
+			"Stolsaqra-Sosrue (Plate)"
+
+mission "Midnight Airi-myiara Sentry"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "Midnight Successor Stolsaqra-Sosrue: done"
+		not "Airi-myiara destroyed"
+	npc kill
+		government "Shadow House"
+		system Maspa-Sado
+		personality waiting staying heroic vindictive
+		ship "Stolsaqra-Sosrue (Plate)" "Airi-myiara"
+		
+
+mission "Midnight Successor Myaede-Sosrue"
+	minor
+	name "Shadow Material to <planet>"
+	description "Another Shadow House agent was late for an urgent shipment. Deliver <tons> of material to <destination> by <date>. You will be fined if you are caught with these materials."
+	illegal 1000000 "The authorities have confiscated your shipment of unregistered weapon parts. A fine has been levied against you to discourage this behavior."
+	cargo "weapon parts" 100
+	source
+		attributes "successor"
+		attributes "manufacturing"
+		not attributes "uninhabited" "crime"
+		distance 3 20
+	destination Vade-Osolaa-Kaska
+	to offer
+		"reputation: Shadow House" >= 15
+		has "license: Shadow House"
+		has "midnight delivered shadow house cloak"
+		random < 70
+	on offer
+		conversation
+			`A Successor dressed in black beckons to you from the shadows of a side corridor. "Thou art the stranger of whom I have heard. Our messenger tarrieth, and we must needs have an hundred tons of weapon matter conveyed unto <destination> by <date>. Thou must not suffer the authorities to find this cargo! Wilt thou undertake this task in his stead?"`
+			choice
+				`	"I can do that."`
+				`	"I can't help now."`
+					goto later
+			`	"Gramercy! House Sado shall be in your debt." The Shadow House agent delivers the cargo to the <ship>.`
+				accept
+			label later
+			`	"Thy reluctance to succour us in this matter shall not be forgotten." The Shadow House agent slithers into the shadows.`
+				defer
+	on complete
+		event "midnight add myaede-sosrue"
+		conversation
+			scene "thumbnail/myaede-sosrue-thumb"
+			`You deliver the weapon parts to your contact. "The House of Shadows rendereth thanks for thy assistance herein. A special freighter shall be made available to aid thee in these requests hereafter."`
+
+event "midnight add myaede-sosrue"
+	shipyard "Shadow House"
+		add "Myaede-Sosrue"
+	fleet "People's Houses"
+		add variant 1
+			"Myaede-Sosrue"
+			"Kvelqde-Khora" 2
+	fleet "People's Houses Raiders"
+		add variant 1
+			"Myaede-Sosrue"
+			"Kvelqde-Khora" 2
+	fleet "People's Shadow"
+		add variant 1
+			"Myaede-Sosrue (Pristine)"
+			"Kvelqde-Khora (Nefa Coilguns)" 2
+
+mission "Midnight Jorv-myiara Sentry"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "Midnight Successor Myaede-Sosrue: done"
+	npc kill
+		government "Shadow House"
+		system Maspa-Sado
+		personality waiting staying heroic vindictive
+		ship "Myaede-Sosrue (Pristine)" "Jorv-myiara"
+		ship "Kvelqde-Sosrue (Ojet Turret)" "Rej-myiara"
+		ship "Kvelqde-Sosrue (Ojet Turret)" "Ruuv-myiara"
 
 
 mission "Midnight Successor Shadow House Hostile"
@@ -407,11 +505,14 @@ event "midnight shadow house hostile"
 	unvisit planet Vade-Kella-Kaska
 	system Maspa-Sado
 		government Uninhabited
+		add fleet "People's Houses Raiders" 6000
+		add fleet "People's Shadow" 9000
 	planet Vade-Kella-Kaska
 		attributes uninhabited crime station successor midnight
 		remove port "Space_port"
-		remove outfitter "Shadow House"
+		outfitter clear
 		remove "required reputation"
+
 
 mission "Midnight Successor Shadow House Hostile Shipyard"
 	landing
@@ -430,7 +531,7 @@ mission "Midnight Successor Shadow House Hostile Shipyard"
 
 event "midnight shadow house hostile shipyard"
 	planet Vade-Kella-Kaska
-		remove shipyard "Shadow House"
+		shipyard clear
 
 
 mission "Midnight Blood Armor Activation (Flight)"
@@ -451,14 +552,13 @@ mission "Midnight Blood Armor Activation (Flight)"
 				decline
 
 mission "Midnight Blood Armor Activation (Outfitter)"
-	transition
+	landing
 	invisible
 	non-blocking
 	repeat
 	source
 		attributes "outfitter"
 		attributes "spaceport"
-	destination Earth
 	to offer
 		has "event: midnight bloodstone portal"
 		has "outfit: Multimode Armor: Graviton"

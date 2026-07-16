@@ -600,8 +600,11 @@ event "add echo-galleon to kor efret scrapyard"
 
 
 mission "Scrapyard Derelict World Ship"
-	landing
-	invisible
+	transition
+	name "Crippled World Ship"
+	description "Rescue the crippled world ship and escort it to <destination>."
+	source
+		system "Celeborim"
 	destination "Laki Nemparu"
 	to offer
 		"Scrapyard Threat Level" >= 25
@@ -610,7 +613,7 @@ mission "Scrapyard Derelict World Ship"
 		"Scrapyard Threat Level" ++
 		conversation
 			scene "scene/scene-derelictworldship"
-			`You stumble upon tragic scene. An old Kor Efret World-Ship named the <npc> is surrounded by blight shadows. The disabled ship hails you, and though you don't speak their language, it's obviously a distress call. Damage to the <npc> is severe and it will be a miracle if you can safely escort it back to <destination>.`
+			`You stumble upon a tragic scene. An old Kor Efret World-Ship named the <npc> is surrounded by blight shadows. The disabled ship hails you, and though you don't speak their language, it's obviously a distress call.`
 				accept
 
 	npc
@@ -676,18 +679,17 @@ mission "Scrapyard Derelict World Ship"
 			commodities "Metal" "Heavy Metals"
 			outfitters "Scrap Metal"
 		ship "Scrapyard World-Ship (Crippled)" "Lekfarosk"
-
-	on enter "Kaliptari"
-		dialog `Take the crippled world ship to the outfitter on Laki Nemparu in the Kashikt system.`
+		on assist
+			dialog `Damage to the Lekfarosk is severe and it will be a miracle if you can safely escort it back to <destination>.`
 
 	on enter "Kashikt"
-		dialog `You've finally reached Kashikt. Escort the world ship to Laki Nemparu.` 
+		dialog `You've finally reached Kashikt. Escort the <npc> to <planet>.` 
 
 	on complete
 		give ship "Scrapyard World-Ship (Crippled)" "Lekfarosk"
 		conversation
 			scene "thumbnail/world-ship scrapyard-thumb"
-			`The Kor Efret are grateful to you for saving them from certain death. They seem to want to give you a tour of their ship. It's an old antique, a genuine World-Ship. As the tour progresses, it becomes apparent that they are offering the ship to you as a gesture of thanks. While this seems like a generous reward, you can't help but notice that damage to the ships key systems hasn't been repaired...`
+			`The Kor Efret are grateful to you for saving them from certain death. They seem to want to give you a tour of their ship. It's an old antique, one of their genuine World-Ships. As the tour progresses, it becomes apparent that they are offering the ship to you as a gesture of thanks. While this seems like a generous reward, you can't help but notice that damage to the ship's key systems hasn't been repaired...`
 
 ship "Korath World-Ship" "Scrapyard World-Ship (Crippled)"
 	sprite "ship/world-ship scrapyard"
