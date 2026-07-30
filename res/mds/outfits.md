@@ -1320,9 +1320,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/SmolEngines/icon.png' height='100'></img><br>
 
 
-[SmolEngines.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/SmolEngines.zip) | 256.9 kb | 2026-06-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/SmolEngines/) <br>
+[SmolEngines.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/SmolEngines.zip) | 256.9 kb | 2026-07-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/SmolEngines/) <br>
 Author: Arachi | Category: Outfits <br>
-[https://github.com/Arachi-Lover/SmolEngines](https://github.com/Arachi-Lover/SmolEngines) (last commit 2026-04-20) <br>
+[https://github.com/Arachi-Lover/SmolEngines](https://github.com/Arachi-Lover/SmolEngines) (last commit 2026-07-29) <br>
 
 >Adds plasma and atomic engines, complementing the ion one.
 >

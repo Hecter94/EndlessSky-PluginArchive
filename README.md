@@ -5,6 +5,13 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2026-07-29 | Updated plugin 'LowerDamage' by Arachi | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#lowerdamage)<br>
+2026-07-29 | Updated plugin 'PirateVariantsHPFix' by Arachi | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#piratevariantshpfix)<br>
+2026-07-29 | Updated plugin 'LinearHPScaling' by Arachi | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#linearhpscaling)<br>
+2026-07-29 | Updated plugin 'Glory to the CCOR' by Arachi | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#glory-to-the-ccor)<br>
+2026-07-29 | Updated plugin 'EvenLowerDamage' by Arachi | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#evenlowerdamage)<br>
+2026-07-29 | Updated plugin 'SmolEngines' by Arachi | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#smolengines)<br>
+2026-07-29 | Updated plugin 'RacingFlivverModifications' by Arachi | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#racingflivvermodifications)<br>
 2026-07-22 | Updated plugin 'Rumskib' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#rumskib)<br>
 2026-07-17 | Updated plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#lost-in-midnight)<br>
 2026-07-16 | Updated plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#midnight-scrapyard)<br>
@@ -13,13 +20,6 @@
 2026-07-11 | Updated plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#-omnis)<br>
 2026-07-10 | Updated plugin 'disable.spaceport.repeatables' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#disablespaceportrepeatables)<br>
 2026-07-09 | Updated plugin 'galactic.capital.investment' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#galacticcapitalinvestment)<br>
-2026-07-09 | Updated plugin 'PirateVariantsHPFix' by Arachi | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#piratevariantshpfix)<br>
-2026-07-09 | Updated plugin 'Louise.Conglomerate.Shipyards' by Loyse | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#louiseconglomerateshipyards)<br>
-2026-07-01 | Updated plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#lost-in-midnight)<br>
-2026-07-01 | Updated plugin 'Rumskib' by TheGiraffe3 | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#rumskib)<br>
-2026-07-01 | Updated plugin 'mission.helper' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#missionhelper)<br>
-2026-06-29 | Updated plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#midnight-expansion)<br>
-2026-06-29 | Updated plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#lost-in-midnight)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>

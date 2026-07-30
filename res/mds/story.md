@@ -1226,9 +1226,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Glory to the CCOR/icon.png' height='100'></img><br>
 
 
-[Glory.to.the.CCOR.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Glory.to.the.CCOR.zip) | 42.16 kb | 2026-06-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Glory%20to%20the%20CCOR/) <br>
+[Glory.to.the.CCOR.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Glory.to.the.CCOR.zip) | 42.16 kb | 2026-07-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Glory%20to%20the%20CCOR/) <br>
 Author: Arachi | Category: Story <br>
-[https://github.com/Arachi-Lover/Glory-to-the-CCOR](https://github.com/Arachi-Lover/Glory-to-the-CCOR) (last commit 2026-06-09) <br>
+[https://github.com/Arachi-Lover/Glory-to-the-CCOR](https://github.com/Arachi-Lover/Glory-to-the-CCOR) (last commit 2026-07-29) <br>
 
 >Help the Politburo reconquer their lost territory, and establish the glorious CCOR as a sovereign power once again.
 >
@@ -2479,9 +2479,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### RacingFlivverModifications
 
 
-[RacingFlivverModifications.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/RacingFlivverModifications.zip) | 7.01 kb | 2026-06-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/RacingFlivverModifications/) <br>
+[RacingFlivverModifications.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/RacingFlivverModifications.zip) | 7.01 kb | 2026-07-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/RacingFlivverModifications/) <br>
 Author: Arachi | Category: Story <br>
-[https://github.com/Arachi-Lover/RacingFlivverModifications](https://github.com/Arachi-Lover/RacingFlivverModifications) (last commit 2026-04-20) <br>
+[https://github.com/Arachi-Lover/RacingFlivverModifications](https://github.com/Arachi-Lover/RacingFlivverModifications) (last commit 2026-07-29) <br>
 
 >Short expansion to the story of Artemis Renard, the Flivver racer from Glory that the player rescues.
 >
