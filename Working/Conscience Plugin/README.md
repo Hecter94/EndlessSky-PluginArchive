@@ -8,7 +8,7 @@ If you take the Quarg ships anywhere other than the assigned planets and systems
 
 ## Installing
 
-1. Download the plugin here: [https://github.com/mathwhiz1212/A-Coalition-At-War/releases](https://github.com/mathwhiz1212/A-Coalition-At-War/releases)
+1. Download the plugin here: [https://github.com/mathwhiz1212/ES-conscience-plugin/releases)](https://github.com/mathwhiz1212/ES-conscience-plugin/releases)
 
 2. Put the zip file in your plugins folder:
 
