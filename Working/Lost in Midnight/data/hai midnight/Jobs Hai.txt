@@ -11,41 +11,6 @@
 
 
 
-mission "Unfettered Raiders (Hai)"
-	job
-	repeat
-	deadline 14
-	name "Unfettered Raiders"
-	description "An Unfettered warship named the <npc> has fought several Hai patrols near <system>. Locate and disable it. Then report to <destination> by <date> for payment [<payment>]."
-	source
-		government "Hai"
-		neighbor system "Wah Ki" "Zuba Zub" "Bore Fah" "Bote Asu"
-		not planet "Darkwaste"
-	to offer
-		"combat rating" > 8000
-		or
-			and
-				not "event: wanderers: unfettered invasion starts"
-				random < 20
-			and
-				has "event: wanderers: unfettered invasion starts"
-				random < 10
-	npc disable
-		government "Hai (Unfettered)"
-		system
-			distance 1 2
-		personality target waiting staying heroic vindictive marked
-		fleet "Unfettered Armor Beetle"
-		dialog `You've disabled the <npc>. Return to <destination> to collect your reward.`
-		on kill
-			dialog `The Hai cancel the reward when they learn that the <npc> was destroyed instead of disabled.`
-			fail
-	on complete
-		payment 600000
-		"reputation: Hai" += 5
-		dialog phrase "generic bounty hunting payment dialog"
-
-
 mission "Cloudfire Escort (medium)"
 	job
 	repeat
@@ -219,3 +184,41 @@ mission "Unfettered Raiders (Hai Disguised)"
 		payment 600000
 		"reputation: Hai" += 5
 		dialog phrase "generic bounty hunting payment dialog"
+
+# Deprecated due to changes in Hai attitudes toward Unfettered
+mission "Unfettered Raiders (Hai)"
+	job
+	repeat
+	deadline 14
+	name "Unfettered Raiders"
+	description "An Unfettered warship named the <npc> has fought several Hai patrols near <system>. Locate and disable it. Then report to <destination> by <date> for payment [<payment>]."
+	source
+		government "Hai"
+		neighbor system "Wah Ki" "Zuba Zub" "Bore Fah" "Bote Asu"
+		not planet "Darkwaste"
+	to offer
+		never
+#		"combat rating" > 8000
+#		or
+#			and
+#				not "event: wanderers: unfettered invasion starts"
+#				random < 20
+#			and
+#				has "event: wanderers: unfettered invasion starts"
+#				random < 10
+	npc disable
+		government "Hai (Unfettered)"
+		system
+			distance 1 2
+		personality target waiting staying heroic vindictive marked
+		fleet "Unfettered Armor Beetle"
+		dialog `You've disabled the <npc>. Return to <destination> to collect your reward.`
+		on kill
+			dialog `The Hai cancel the reward when they learn that the <npc> was destroyed instead of disabled.`
+			fail
+	on complete
+		payment 600000
+		"reputation: Hai" += 5
+		dialog phrase "generic bounty hunting payment dialog"
+
+

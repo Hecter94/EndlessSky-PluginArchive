@@ -220,7 +220,7 @@ mission "Storm Seeker Raid: Free Worlds"
 		personality waiting plunders harvests coward
 		fleet "Marauder fleet X"
 		fleet "Coalition Pirate"
-	npc disable
+	npc kill
 		government "Pirate"
 		personality target waiting staying plunders harvests
 		fleet "Storm Seeker Raid"
@@ -279,7 +279,7 @@ mission "Storm Seeker Raid: Syndicate"
 				"Splinter (Korath)"
 				"Modified Argosy (Korath)"
 				"Quicksilver (Korath)"
-	npc disable
+	npc kill
 		government "Pirate"
 		personality target waiting staying plunders harvests
 		fleet "Storm Seeker Raid"
@@ -331,7 +331,7 @@ mission "Storm Seeker Raid: Deep"
 				"Shadow Osprey" 4
 				"Shadow Raven" 6
 				"Shadow Hawk" 8
-	npc disable
+	npc kill
 		government "Pirate"
 		personality target waiting staying plunders harvests
 		fleet "Storm Seeker Raid"
@@ -383,7 +383,7 @@ mission "Storm Seeker Raid: Paradise"
 		government "Pirate"
 		personality waiting plunders harvests coward
 		fleet "Grudge Parade"
-	npc disable
+	npc kill
 		government "Pirate"
 		personality target waiting staying plunders harvests
 		fleet "Storm Seeker Raid"
@@ -446,7 +446,7 @@ mission "Storm Seeker Raid: North"
 				"Corvette (Hai)"
 				"Headhunter (Hai)"
 				"Dagger" 3
-	npc disable
+	npc kill
 		government "Pirate"
 		personality target waiting staying plunders harvests
 		fleet "Storm Seeker Raid"
@@ -465,14 +465,25 @@ mission "Storm Seeker Counter Attack 1"
 	source
 		government "Republic" "Syndicate" "Free Worlds" "Neutral" "Independent"
 		not attributes "uninhabited"
+		not planet "Luna"
 	destination "Luna"
 	to offer
 		has "free worlds plot completed"
-		has "Storm Seeker Raid: North: done"
-		has "Storm Seeker Raid: Paradise: done"
-		has "Storm Seeker Raid: Deep: done"
-		has "Storm Seeker Raid: Syndicate: done"
-		has "Storm Seeker Raid: Free Worlds: done"
+		or
+			has "Storm Seeker Raid: North: done"
+			has "Storm Seeker Raid: North: failed"
+		or
+			has "Storm Seeker Raid: Paradise: done"
+			has "Storm Seeker Raid: Paradise: failed"
+		or
+			has "Storm Seeker Raid: Deep: done"
+			has "Storm Seeker Raid: Deep: failed"
+		or
+			has "Storm Seeker Raid: Syndicate: done"
+			has "Storm Seeker Raid: Syndicate: failed"
+		or
+			has "Storm Seeker Raid: Free Worlds: done"
+			has "Storm Seeker Raid: Free Worlds: failed"
 	on offer
 		dialog `You receive an invitation from Admiral Danforth to join a strategy meeting on <destination> regarding recent Alpha attacks happening across the galaxy.`
 
@@ -650,7 +661,7 @@ mission "Storm Seeker Counter Attack 3"
 			not "Underworld Meeting (easy): active"
 			not "Underworld Meeting (hard): active"
 	on accept
-		dialog `Your passenger is young hot shot named Kenny. "This meeting is a pretty big deal for me. You were highly recommended. I hope you live up to your reputation. Also, don't be alarmed, but the people we're meeting are a bit unusual...`
+		dialog `Your passenger is a young hot shot named Kenny. "This meeting is a pretty big deal for me. You were highly recommended. I hope you live up to your reputation. Also, don't be alarmed, but the people we're meeting are a bit unusual...`
 	on fail
 		dialog `[MISSION FAILED] Without your passenger to guide you, you fail to find the meeting location for the Alpha ship, Rolling Thunder. If life were a game, you could load a save file and try again.`
 	on complete
@@ -665,7 +676,6 @@ mission "Storm Seeker Counter Attack 4"
 	description "Take <fare> to a clandestine meeting in <origin>'s underworld. Then return them to <destination>. Payment is 50,000 credits."
 	source "Naihe Qiao"
 	destination "Wang Xiang Tai"
-	passengers 1
 	to offer
 		has "Storm Seeker Counter Attack 3: done"
 	on offer
