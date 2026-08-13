@@ -509,9 +509,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/human.labels/icon.png' height='100'></img><br>
 
 
-[human.labels.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/human.labels.zip) | 1.99 mb | 2025-06-21 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/human.labels/) <br>
+[human.labels.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/human.labels.zip) | 2.31 mb | 2026-08-13 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/human.labels/) <br>
 Author: zuckung | Category: Graphics <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-06-21) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-08-13) <br>
 
 >Reworks the Human area labels and adds area borders. See the README for details.
 >
@@ -526,8 +526,18 @@ Reworks the map labels and adds area borders. See the readme for details.<br>
 The area labels are now smaller and better to see. Also there is a border drawn around each human area.<br>
 On Earth's job board you can find a mission to change the color of the labels (light blue, light gray, yellow, dark red, green, dark gray, orange, purple).<br>
 <br>
+In case you want to add a new set of labels, with its own color and font, feel free to send it to me. Doing that you have to keep the filenames and resolution of the 48 images.<br>
+<br>
 <br>
 Changelog:<br>
+<br>
+2026-08-13<br>
+added 3 new label styles<br>
+undiscovered labels stay hidden now<br>
+activate/deactivate the human area borders<br>
+better revert back to vanilla labels<br>
+instant labelchange while inside the job conversation<br>
+using a python script now, to easily add new style sets<br>
 <br>
 2025-06-21<br>
 added control.station support<br>
