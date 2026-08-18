@@ -173,7 +173,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 [Ace.Combat.Endless.Skies.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Ace.Combat.Endless.Skies.zip) | 158.93 kb | 2024-11-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Ace%20Combat%20Endless%20Skies/) <br>
 Author: Spectre907 | Category: Overhauls <br>
-[https://github.com/Spectre907YT/AC-ES](https://github.com/Spectre907YT/AC-ES) (last commit 2024-10-21) <br>
+[https://github.com/Spectre907YT/AC-ES](https://github.com/Spectre907YT/AC-ES)  <br>
 
 >Ace Combat Endless Skies is a total conversation made to bring some of that ace combat experience.
 >
