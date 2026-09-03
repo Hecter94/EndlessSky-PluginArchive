@@ -446,10 +446,20 @@ mission "Midnight Expansion: Garbage Escort (Double Cross)"
 			cargo 0
 			variant
 				"Modified Argosy (Stinger)"
-	npc accompany save
+	npc kill
 		government "Bounty (Disguised)"
 		personality target escort waiting plunders harvests marked
 		ship "Garbage Scow (Heavy)" "Venomous Manticore"
+		on kill
+			"reputation: Bounty (Disguised)" >?= 1
+			dialog "You survived the trecherous attack by Venomous Manticore. Check with the authorities on <destination> for any outstanding bounties on Captain Geryon's crew."
+	on abort
+		"reputation: Bounty (Disguised)" >?= 1
+	on fail
+		"reputation: Bounty (Disguised)" >?= 1
+	on complete
+		payment 200000
+		dialog "You report the incident with Venomous Manticore to the <planet> government and are rewarded with a bounty of <payment>."
 
 
 mission "Midnight Expansion: FW Prisoner Parole Add On"
