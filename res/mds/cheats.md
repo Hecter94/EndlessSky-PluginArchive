@@ -563,9 +563,9 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/coalition.shopping/icon.png' height='100'></img><br>
 
 
-[coalition.shopping.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/coalition.shopping.zip) | 451.32 kb | 2025-08-29 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/coalition.shopping/) <br>
+[coalition.shopping.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/coalition.shopping.zip) | 451.37 kb | 2026-09-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/coalition.shopping/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2025-08-29) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-09-05) <br>
 
 >Adds all Coalition/Heliarch/Lunarium outfits and ships to 'Far Home' in 'Homeward' system. See the readme for details.
 >
@@ -582,6 +582,9 @@ To start the mission to enable these outfitters and shipyards, you have to join 
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-09-05<br>
+added ship heliarch persuer (by RedTechGamer236)<br>
 <br>
 2025-08-29<br>
 typo fixes by snoggles<br>
