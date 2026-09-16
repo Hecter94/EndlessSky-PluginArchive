@@ -195,7 +195,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### Alphean Boolean's Expansion
 
 
-[Alphean.Boolean.s.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Alphean.Boolean.s.Expansion.zip) | 11.69 mb | 2023-07-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Alphean%20Boolean's%20Expansion/) <br>
+[Alphean.Boolean.s.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Alphean.Boolean.s.Expansion.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Alphean%20Boolean's%20Expansion/) <br>
 Author: Amazinite | Category: Overhauls <br>
 [https://github.com/Amazinite/alphean-expansion](https://github.com/Amazinite/alphean-expansion) (last commit 2016-08-25) <br>
 
