@@ -2563,7 +2563,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 <img src='../../Working/Rymeilema Skylark II/icon.png' height='100'></img><br>
 
 
-[Rymeilema.Skylark.II.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rymeilema.Skylark.II.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rymeilema%20Skylark%20II/) <br>
+[Rymeilema.Skylark.II.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Rymeilema.Skylark.II.zip) | 11.54 mb | 2023-07-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Rymeilema%20Skylark%20II/) <br>
 Author: Rymeilema | Category: Ships <br>
 [https://github.com/rymeilema/rymeilema-skylark-ii](https://github.com/rymeilema/rymeilema-skylark-ii) (last commit 2020-02-17) <br>
 
@@ -2572,7 +2572,7 @@ Author: Rymeilema | Category: Ships <br>
 
 
 Status: N/A <br>
-Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---

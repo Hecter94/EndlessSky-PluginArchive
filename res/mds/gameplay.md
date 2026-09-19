@@ -2418,9 +2418,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/show.reputation/icon.png' height='100'></img><br>
 
 
-[show.reputation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/show.reputation.zip) | 158.8 kb | 2026-02-01 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/show.reputation/) <br>
+[show.reputation.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/show.reputation.zip) | 139.62 kb | 2026-09-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/show.reputation/) <br>
 Author: zuckung | Category: Gameplay <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-02-01) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-09-18) <br>
 
 >Enables a job on every planet's job board, that shows the reputation values. See the README for details.
 >
@@ -2436,6 +2436,10 @@ Accept the job and the reputations conversation pops up. Then you can choose bet
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-09-18<br>
+added missing reputations<br>
+improved format<br>
 <br>
 2026-02-01<br>
 updated to 0.11.0<br>
