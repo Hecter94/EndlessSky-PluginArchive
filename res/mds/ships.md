@@ -1,16 +1,16 @@
 
-All Plugins (623)
+All Plugins (624)
 
 [Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (42) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (61) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (55)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
-[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (144) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (83) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (43)<br>
+[Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (145) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (83) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (43)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (26)<br>
 
 ---
 
 ## Ships
 
-<p>144 plugins in this category.<p>
+<p>145 plugins in this category.<p>
 
 
  
@@ -1897,6 +1897,25 @@ initial release<br>
 </details>
 
 Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### MoreAbsurdlyHugeKIV349
+<img src='../../Working/MoreAbsurdlyHugeKIV349/icon.png' height='100'></img><br>
+
+
+[MoreAbsurdlyHugeKIV349.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/MoreAbsurdlyHugeKIV349.zip) | 480.8 kb | 2026-09-25 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/MoreAbsurdlyHugeKIV349/) <br>
+Author: Alkallid | Category: Ships <br>
+[https://github.com/kittenkatten67/MoreAbsurdlyHugeKIV349](https://github.com/kittenkatten67/MoreAbsurdlyHugeKIV349) (last commit 2026-09-24) <br>
+
+>Restores an old version of the Kar Ik Vot 349 sprite, hardpoints, and ship stats, increasing the sprite size by 33%, adding two gun and turret hardpoints each, increasing outfit and weapon capacity by 100 each, and adjusting the outfits on default and variants of the ship to make use of the new space.
+>
+
+
+
+Status: Built from Endless Sky v0.11.2 Stable Release <br>
 Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
