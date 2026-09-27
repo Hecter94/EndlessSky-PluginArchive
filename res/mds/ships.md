@@ -2685,9 +2685,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/ship.merging/icon.png' height='100'></img><br>
 
 
-[ship.merging.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ship.merging.zip) | 2.45 mb | 2026-04-28 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ship.merging/) <br>
+[ship.merging.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/ship.merging.zip) | 2.49 mb | 2026-09-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/ship.merging/) <br>
 Author: zuckung | Category: Ships <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-04-28) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-09-26) <br>
 
 >This plugin allows you to merge several ships of the same type into one with improved attributes. This can be done several times, up to a T10 ship. See the README for details.
 
@@ -2704,6 +2704,9 @@ Reduce performance issues by reducing ship amounts or just make single ships mor
 <br>
 <br>
 Changelog:<br>
+<br>
+2026-09-27<br>
+update to 0.11.3<br>
 <br>
 2026-04-28<br>
 update to 0.11.1<br>

@@ -1,3 +1,6 @@
+2026-09-27 | Updated plugin 'ship.merging' by zuckung | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#shipmerging)<br>
+2026-09-27 | Updated plugin 'mission.helper' by zuckung | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#missionhelper)<br>
+2026-09-27 | Updated plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#high-dpi)<br>
 2026-09-26 | Updated plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#midnight-scrapyard)<br>
 2026-09-26 | Updated plugin 'additional.command.buttons.radial' by zuckung | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#additionalcommandbuttonsradial)<br>
 2026-09-25 | Updated plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#midnight-scrapyard)<br>
