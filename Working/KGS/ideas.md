@@ -15,3 +15,4 @@
 - Barmy nukes
 - fat ships
 - more Thoraxes
+- Stolsaqra partitioned interceptor

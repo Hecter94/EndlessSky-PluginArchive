@@ -1,6 +1,6 @@
 ### Miscellaneous event additions
 #   mission "KGS: Navy Mark II Upgrade"
-#   mission "KGS: Finch Upgrade"
+#   mission "KGS: Free Worlds Carriers"
 ### Fallcoon mission chain
 #   mission "KGS: Fallcoon Development"
 #   mission "KGS: Fallcoon Developed"
@@ -14,6 +14,23 @@
 #   mission "KGS: Plasma Assault Repeater Developed"
 ### Raindrop mission chain
 #   mission "KGS: Raindrop Developed"
+### Rampart hunter mission chain
+#   mission "KGS: Ryk's Revenge"
+### Supercarrier mission chain
+#   mission "KGS: Supercarrier 1"
+#   mission "KGS: Supercarrier 2"
+#   mission "KGS: Supercarrier 3"
+#   mission "KGS: Supercarrier 4"
+#   mission "KGS: Supercarrier 5"
+### Twin Flamethrower mission chain
+#   mission "KGS: Twin Flamethrower Development"
+#   mission "KGS: Twin Flamethrower Developed"
+### Flamethrower Turret mission chain
+#   mission "KGS: Flamethrower Turret Development"
+#   mission "KGS: Flamethrower Turret Developed"
+### Triple Plasma Turret mission chain
+#   mission "KGS: Triple Plasma Turret Development"
+#   mission "KGS: Triple Plasma Turret Developed"
 ### Yestrel mission chain
 #   mission "KGS: Yestrel Development"
 #   mission "KGS: Yestrel Developed"
@@ -22,7 +39,7 @@
 
 ### Miscellaneous event additions
 #   mission "KGS: Navy Mark II Upgrade"
-#   mission "KGS: Finch Upgrade"
+#   mission "KGS: Free Worlds Carriers"
 
 mission "KGS: Navy Mark II Upgrade"
 	landing
@@ -31,19 +48,19 @@ mission "KGS: Navy Mark II Upgrade"
 	to offer
 		has "event: navy using mark ii ships"
 	on offer
-		event "kgs: navy mark ii upgrade"
+		event "kgs: navy mark ii upgrade" 0
 		fail
 
 
 
-mission "KGS: Finch Upgrade"
+mission "KGS: Free Worlds Carriers"
 	landing
 	invisible
 	non-blocking
 	to offer
 		has "event: southern carriers 3"
 	on offer
-		event "kgs: finch upgrade"
+		event "kgs: free worlds carriers" 0
 		fail
 
 
@@ -95,7 +112,6 @@ mission "KGS: Twin Gatling Development"
 	non-blocking
 	to offer
 		has "event: plasma repeater advanced"
-		has "main plot completed"
 	on offer
 		event "kgs: pirates develop twin gatlings" 100 200
 		fail
@@ -193,7 +209,6 @@ mission "KGS: Plasma Assault Repeater Development"
 	non-blocking
 	to offer
 		has "event: plasma repeater advanced"
-		has "main plot completed"
 	on offer
 		event "kgs: plasma assault repeater developed" 450 600
 		fail
@@ -231,6 +246,448 @@ mission "KGS: Raindrop Developed"
 	on offer
 		event "kgs: raindrop developed" 0
 		fail
+
+
+
+### Rampart hunter mission chain
+#   mission "KGS: Ryk's Revenge Ready"
+#   mission "KGS: Ryk's Revenge"
+
+mission "KGS: Ryk's Revenge Ready"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "FW Albatross 2A: done"
+	on offer
+		event "kgs: ryk's revenge" 3456
+		fail
+
+mission "KGS: Ryk's Revenge"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: kgs: ryk's revenge"
+		"total ships" == 1
+	npc kill
+		government "Pirate"
+		personality heroic mute waiting nemesis vindictive unconstrained
+		system
+			distance 1 1
+		ship "KGS Rampart (Ryk's Revenge)" "Ryk's Revenge"
+
+
+
+### Supercarrier mission chain
+#   mission "KGS: Supercarrier 1" # Triggers timer upon Sestor invasion
+#   mission "KGS: Supercarrier 2" # Invitation from the Navy, accept => 3, decline => event that triggers sale
+#   mission "KGS: Supercarrier 3" # Triggers on Farpoint. Description of Supercarrier. Talk with engineers. Pirate fleet appears. Fight pirate fleet. Supercarrier must remain intact. Land. More talk with engineers. Ask Danforth to get you a Supercarrier. Event set.
+#   mission "KGS: Supercarrier 4" # Danforth informs you that you are getting the next Supercarrier
+#   mission "KGS: Supercarrier 5" # You are summoned to Geminus to claim your FREE Supercarrier and a full complement
+
+mission "KGS: Supercarrier 1"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "Wanderers: Sestor: Farpoint Attack 1: done"
+	on offer
+		event "kgs: supercarrier developed" 3
+		fail
+
+mission "KGS: Supercarrier 2"
+	landing
+	name "Navy Ship Testing"
+	description "The Republic Navy Yard's ship development branch has invited you to test a new prototype on <planet>."
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination "Farpoint"
+	to offer
+		has "event: kgs: supercarrier developed"
+	on offer
+		conversation
+			`You have barely just requested your ship refuelled when a heavily encrypted message pops up on your dashboard. After it finishes decrypting, you notice it is signed with the official Navy key.`
+			`			Captain <last>,`
+			``
+			`			After the Kor Sestor invasion at Alnitak, the Republic had a new ship designed by the secret branch on Geminus, Project C-2. The first prototype has just been built on Farpoint, and as an instrumental force in the defense, we would like to invite you to test it at a secret base on Farpoint. If you are interested, please reply to this message using the same encryptions. Additional instructions will be dispatched on Farpoint.`
+			``
+			`			Ship Development Branch of the Republic Navy`
+			`	Would you like to accept?`
+			choice
+				`	(Yes.)`
+				`	(No.)`
+					goto no
+
+			`	You reply to the message with the same heavy encryption you received it with. Time to head to Farpoint.`
+				accept
+
+			label no
+			action
+				event "kgs: supercarrier deployed" 400 500
+			`	Sigh... you really don't have the time to test every single new ship in the galaxy.`
+				decline
+
+mission "KGS: Supercarrier 3"
+	landing
+	name "Defend Farpoint"
+	description "Farpoint is being attacked by a pirate fleet. Fend them off, then return to the planet."
+	source "Farpoint"
+	to offer
+		has "KGS: Supercarrier 2: done"
+	on offer
+		conversation
+			`As you enter orbit around Farpoint, local traffic control directs you to an unmapped spaceport. You land, and after a very lengthy security process, you are met by Admiral Danforth. "How do you do, Captain <last>?" he asks. "It's been some time since the Sestor invasion. As I recall, you helped greatly in the defense.`
+			choice
+				`	"Indeed."`
+					goto next
+				`	"I did?"`
+			`	"Of course," Danforth says. "You were the one who first alerted us."`
+
+			label next
+			`	"Anyway," he continues, "after that, the top brass panicked, and had a new ship put into development. Project C-2, they call it. I've seen it already, but I'll not spoil the surprise. Come with me." He leads you to a corridor.`
+			choice
+				`	(Follow.)`
+			`	The ride takes quite a long time, and you get the feeling that you are going underground. Finally, you arrive at... several more layers of security.`
+			choice
+				`	(Sigh.)`
+				`	(Go through it stoically.)`
+			`	"The security here is ludicrous," says Danforth, "but I guess this is really top secret stuff."`
+			`	You and Danforth enter a hangar. Within is an incredibly huge ship - longer and wider than a Carrier, and more than twice as thick, lined with fighter and drone bays. Two gigantic turrets, armed with what appear to be Particle Howitzers, are mounted on it, along with a large array of smaller turrets.`
+			scene "thumbnail/kgs_supercarrier"
+			`	"The Supercarrier. Quite impressive, eh?" asks Danforth.`
+			choice
+				`	"Gosh."`
+					goto next2
+				`	"I've seen bigger."` # for mega freight enthusiasts
+			`	"Really?" says Danforth. "Well, I'm sure you have come across mega ships in your travels."`
+			label next2
+			`	An engineer comes up to you, and introduces himself as Kai, the lead engineer of Project C-2. "You're a legend," he says. "Helped fight the battle that led to me getting to design this beauty. Nice to meet you." His definition of "beauty" is certainly interesting.`
+			choice
+				`	"I'm <first>. Nice to meet you too."`
+				`	(Shake hands.)`
+			`	Without further ado, he takes you on a tour around the ship. "It's essentially derived from two stacked Carriers," he says, "with the bridge extended and a adapted Cruiser weapon section fitted, along with a couple of missile bays added to the sides."`
+
+			label ask
+			choice
+				`	"What's the armament?"`
+					goto weapons
+				`	"What self-support capabilities does it have?"`
+					goto regen
+				`	"How many ships can it carry?"`
+					goto bays
+				`	"It's a massive ship. How does it move?"`
+					goto engines
+				`	"Is it equipped for hand-to-hand combat?"`
+					goto h2h
+				`	(Complete the tour.)`
+					goto next3
+
+			label weapons
+			`	"In terms of weaponry, the Supercarrier has ten forward guns, ten side-facing missile bays, and fourteen turrets. The front-facing guns are designed for four Typhoon-class torpedo launchers and six Sidewinder missile launchers, and the missile bays can support a single Meteor missile launcher each. The Supercarrier's main weaponry lies in its turrets, utilizing several new turret designs. The main battery of two newly developed 120-ton Particle Howitzer Turrets provides heavy long-range firepower, bolstered at the close range by a triplet of Particle Turrets and at the far range by a quadruplet of Particle Mortar Turrets. Close-in anti-fighter defense is provided by three Particle Carronade Turrets, and missile defense is a pair of massive 52-ton Palisade AM systems."`
+			goto ask
+
+			label regen
+			`	"The Supercarrier is designed for a remote battlestation role, which means that it must be able to support itself. To this end, we have equipped it with no fewer than four D94-YV shield generators, and several repair teams that can repair hull damage when the ship is not under attack."`
+			goto ask
+
+			label bays
+			`	"It can carry and support thirty-two fighters and thirty-six drones. This unprecedented carrying capacity was made by extending the main carrier arms, and mounting another arm underneath the main weapon section. In addition, several drone bays were fitted to the sides of the main fuselage. Unfortunately, some of the bays are harder to launch from and dock into, but this is circumvented by disciplined assigning of bays, placing fresh craft in the easy-access front bays and moving damaged or regenerating craft to the large rear arms. Regeneration and repair of damaged craft are handled by the Supercarrier's shield generators and repair crews."`
+			`	"The Supercarrier also makes use of the latest fighter and drone builds, with a fighter fleet comprised of twelve close-range Particle Carronade-armed Lances and twenty long-range Particle Mortar-armed Lances, and a drone fleet comprised of a main force of twenty-four Particle Mortar-armed Combat Drones and a support force of twelve Sidewinder-armed Raindrop-class missile drones."`
+			goto ask
+
+			label engines
+			`	"This massive hulk is pushed around by the largest set of atomics that Deep Sky offers, but even so, it is still not fast, so we have equipped it with a Caldera Afterburner. In-system maneuvering is boosted by three sets of AR120 reverse thrusters."`
+			goto ask
+
+			label h2h
+			`	"In the unlikely scenario that the ship is disabled and at risk of capture, it is equipped with six security stations scattered throughout the ship, and a full set of hand-to-hand weaponry for each and every crew member."`
+			goto ask
+
+			label next3
+			`	The three of you walk around the ship, while Kai points out interesting features. Finally, you arrive back where you started. It was a large ship indeed.`
+			`	"By the way, <first>," says Danforth, his tone dark, "it's been suspected that news of a fancy new Navy ship has reached unsavory channels. Some rich pirates may be interested in getting their hands on this prototype. Intelligence is still investigating, but it's almost certain that someone has sold the information on this ship to a pirate warlord."`
+			`	As if on cue, an alarm siren starts to ring. "Crap," says Danforth. He listens to a communicator. "There's a huge pirate fleet coming in from Mintaka. They've got modified heavy warships... and carriers carrying... Sestor fighters? Whaaat?" He turns to you. "Well, <first>," he says, "seems like it is time to defend Farpoint again. Will you help?"`
+			`	"Of course," you say.`
+				launch
+	on visit
+		dialog `There are still pirate warships above Farpoint. You should take off and help fight.`
+	on complete
+		payment 2000000
+		conversation
+			`You come in for a landing alongside the remaining Navy ships. You notice that quite a few of them are gone...`
+			`	In the spaceport you meet up with Admiral Danforth, who looks shocked at the losses his fleet just sustained. His expression reminds you of the last time you defended Farpoint with him. "That was a gigantic fleet," he says. "My fleet sustained some losses. And all for just a single prototype... How's the <ship> holding up?"`
+			choice
+				`	"She's all right."`
+				`	"She took a beating."`
+			branch destroyed
+				has "kgs: supercarrier destroyed"
+
+			`	He nods. "Well, what do you think about the Supercarrier?"`
+			goto choice
+
+			label destroyed
+			`	He nods. "Well, what do you think about the Supercarrier? It's a pity the prototype was destroyed."`
+
+			label choice
+			choice
+				`	"It performed amazingly."`
+				`	"I guess it's still not the best against a big fleet."`
+			`	"Perhaps. I've arranged for a reward of <payment> for your help. Thank you for defending Farpoint again. We'll probably be deploying the Supercarrier in a year or two - Kai says he still needs to iron out some issues."`
+			choice
+				`	(Ask him if you can have one.)`
+				`	(Say your goodbyes and leave.)`
+					goto end
+			action
+				event "kgs: news of free supercarrier" 20 30
+			`	He looks a bit surprised. "I'll see what I can do," he says. "If I get the command to agree, I'll let you know."`
+			label end
+				`	With that, you two bid each other farewell, and go your separate ways.`
+	npc disable
+		government "Pirate"
+		personality heroic
+		system "Mintaka"
+		fleet
+			names "pirate"
+			variant
+				"Marauder Leviathan" 2
+				"Marauder Leviathan (Engines)"
+				"Marauder Leviathan (Weapons)"
+				"Marauder Firebird" 4
+				"Marauder Firebird (Engines)" 3
+				"Marauder Firebird (Weapons)" 3
+				"Marauder Raven" 3
+				"Marauder Raven (Engines)" 3
+				"Marauder Raven (Weapons)" 3
+				"Valkyrie" 4
+				"Aerie" 6
+				"KGS Dragonfly" 2
+				"Lance" 6
+				"Lance (KGS Particle Mortar)" 3
+				"Lance (KGS Particle Carronade)" 4
+				"Dagger" 12
+				"Dagger (KGS Particle Mortar)" 8
+				"Far Osk 27" 15
+				"Met Par Tek 53"
+		dialog `The pirate fleet has been neutralized. Time to land and talk with Danforth.`
+	npc
+		government "Navy (Oathkeeper)"
+		personality heroic
+		fleet
+			names "republic capital"
+			variant
+				"KGS Supercarrier"
+		on kill
+			set "kgs: supercarrier destroyed"
+	npc
+		government "Navy (Oathkeeper)"
+		personality heroic
+		fleet
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Lance (KGS Particle Carronade)" 12
+				"Lance (KGS Particle Mortar)" 20
+				"Combat Drone (KGS Particle Mortar)" 24
+				"KGS Raindrop (Mark II)" 12
+				"Carrier" 2
+				"Cruiser" 4
+				"Lance" 16
+				"Combat Drone" 28
+				"Frigate" 4
+				"Gunboat" 5
+				"Rainmaker" 3
+
+mission "KGS: Supercarrier 4"
+	landing
+	invisible
+	non-blocking
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	to offer
+		has "event: kgs: news of free supercarrier"
+	on offer
+		event "kgs: free supercarrier" 300 400
+		conversation
+			`Your communicator beeps with a new message from Admiral Danforth. "I've managed to get permission for you to get the first production Supercarrier," he says. "It'll take about a year to build."`
+				decline
+
+mission "KGS: Supercarrier 5"
+	landing
+	name "Collect Supercarrier"
+	description "Go to <planet> to receive the Supercarrier built for you."
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination "Geminus"
+	to offer
+		has "event: kgs: free supercarrier"
+	on offer
+		conversation
+			`A new message pops up on your console from Admiral Danforth. "The first official Supercarrier has been built. Please come collect it on <destination>."`
+				accept
+	on complete
+		give ship "KGS Supercarrier" "Peacemaker II"
+		give ship "Lance (KGS Particle Carronade)" "Peace"
+		give ship "Lance (KGS Particle Carronade)" "Peace II"
+		give ship "Lance (KGS Particle Carronade)" "Peace III"
+		give ship "Lance (KGS Particle Carronade)" "Peace IV"
+		give ship "Lance (KGS Particle Carronade)" "Peace V"
+		give ship "Lance (KGS Particle Carronade)" "Peace VI"
+		give ship "Lance (KGS Particle Carronade)" "Peace VII"
+		give ship "Lance (KGS Particle Carronade)" "Peace VIII"
+		give ship "Lance (KGS Particle Carronade)" "Peace IX"
+		give ship "Lance (KGS Particle Carronade)" "Peace X"
+		give ship "Lance (KGS Particle Carronade)" "Peace XI"
+		give ship "Lance (KGS Particle Carronade)" "Peace XII"
+		give ship "Lance (KGS Particle Mortar)" "Peace XIII"
+		give ship "Lance (KGS Particle Mortar)" "Peace XIV"
+		give ship "Lance (KGS Particle Mortar)" "Peace XV"
+		give ship "Lance (KGS Particle Mortar)" "Peace XVI"
+		give ship "Lance (KGS Particle Mortar)" "Peace XVII"
+		give ship "Lance (KGS Particle Mortar)" "Peace XVIII"
+		give ship "Lance (KGS Particle Mortar)" "Peace XIX"
+		give ship "Lance (KGS Particle Mortar)" "Peace XX"
+		give ship "Lance (KGS Particle Mortar)" "Peace XXI"
+		give ship "Lance (KGS Particle Mortar)" "Peace XXII"
+		give ship "Lance (KGS Particle Mortar)" "Peace XXIII"
+		give ship "Lance (KGS Particle Mortar)" "Peace XXIV"
+		give ship "Lance (KGS Particle Mortar)" "Peace XXV"
+		give ship "Lance (KGS Particle Mortar)" "Peace XXVI"
+		give ship "Lance (KGS Particle Mortar)" "Peace XXVII"
+		give ship "Lance (KGS Particle Mortar)" "Peace XXVIII"
+		give ship "Lance (KGS Particle Mortar)" "Peace XXIX"
+		give ship "Lance (KGS Particle Mortar)" "Peace XXX"
+		give ship "Lance (KGS Particle Mortar)" "Peace XXXI"
+		give ship "Lance (KGS Particle Mortar)" "Peace XXXII"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker II"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker III"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker IV"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker V"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker VI"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker VII"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker VIII"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker IX"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker X"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker XI"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker XII"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker XIII"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker XIV"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker XV"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker XVI"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker XVII"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker XVIII"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker XIX"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker XX"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker XXI"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker XXII"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker XXIII"
+		give ship "Combat Drone (KGS Particle Mortar)" "Maker XXIV"
+		give ship "KGS Raindrop (Mark II)" "Maker XXV"
+		give ship "KGS Raindrop (Mark II)" "Maker XXVI"
+		give ship "KGS Raindrop (Mark II)" "Maker XXVII"
+		give ship "KGS Raindrop (Mark II)" "Maker XXVIII"
+		give ship "KGS Raindrop (Mark II)" "Maker XXIX"
+		give ship "KGS Raindrop (Mark II)" "Maker XXX"
+		give ship "KGS Raindrop (Mark II)" "Maker XXXI"
+		give ship "KGS Raindrop (Mark II)" "Maker XXXII"
+		give ship "KGS Raindrop (Mark II)" "Maker XXXIII"
+		give ship "KGS Raindrop (Mark II)" "Maker XXXIV"
+		give ship "KGS Raindrop (Mark II)" "Maker XXXV"
+		give ship "KGS Raindrop (Mark II)" "Maker XXXVI"
+		conversation
+			scene "scene/kgs_supercarrier_poster"
+			`As you land on Geminus, you are directed to a landing bay next to the first production Supercarrier, gifted to you in appreciation of your actions during the First and Second Battles of Farpoint. After some ceremony and paperwork, it is yours!`
+
+
+
+### Twin Flamethrower mission chain
+#   mission "KGS: Twin Flamethrower Development"
+#   mission "KGS: Twin Flamethrower Developed"
+
+mission "KGS: Twin Flamethrower Development"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: flamethrower available"
+	on offer
+		event "kgs: twin flamethrower developed" 60 90
+		fail
+
+mission "KGS: Twin Flamethrower Developed"
+	invisible
+	non-blocking
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	to offer
+		has "event: kgs: twin flamethrower developed"
+	on offer
+		conversation
+			`As you saunter around in the spaceport, a massive screen displays a commercial.`
+			scene "outfit/kgs_twin_flamethrower"
+			`	One Flamethrower not enough? Get the Twin Flamethrower at a Kraz-certified supplier TODAY!!!`
+				decline
+
+
+
+### Flamethrower Turret mission chain
+#   mission "KGS: Flamethrower Turret Development"
+#   mission "KGS: Flamethrower Turret Developed"
+
+mission "KGS: Flamethrower Turret Development"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: kgs: twin flamethrower developed"
+	on offer
+		event "kgs: flamethrower turret developed" 60 90
+		fail
+
+mission "KGS: Flamethrower Turret Developed"
+	invisible
+	non-blocking
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	to offer
+		has "event: kgs: flamethrower turret developed"
+	on offer
+		conversation
+			`As you go about your business in the spaceport, a holographic screen plays an ad.`
+			scene "outfit/kgs_flamethrower_turret"
+			`	Get the flaming hot new Flamethrower Turret from Kraz Cybernetics! Burn! Burn! Burn!`
+				decline
+
+
+
+### Triple Plasma Turret mission chain
+#   mission "KGS: Triple Plasma Turret Development"
+#   mission "KGS: Triple Plasma Turret Developed"
+
+mission "KGS: Triple Plasma Turret Development"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: dreadnoughts for sale"
+	on offer
+		event "kgs: triple plasma turret developed" 60
+		fail
+
+mission "KGS: Triple Plasma Turret Developed"
+	invisible
+	non-blocking
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	to offer
+		has "event: kgs: triple plasma turret developed"
+	on offer
+		conversation
+			scene "outfit/kgs_triple_plasma_turret"
+			`	If two is good, three is better! Schedule a test firing of the Triple Plasma Turret at a Kraz outlet near you!`
+				decline
 
 
 
