@@ -6,6 +6,7 @@ mission "Neutrality 1"
     source
         government "Republic" "Syndicate" "Free Worlds"
     to offer
+        has "main plot plus: enabled main plot skip"
         "year" >= 3017
         not "chosen sides"
         or
@@ -48,9 +49,6 @@ mission "Neutrality 1"
                 goto "end"
 
             label "republic"
-            # Unlocks a mission to get the navy license after the main plot since there's no navy campaign yet
-            action
-                set "guided start: navy"
             `"You support order and stability, eh? So do I, so do I."`
                 goto "end"
 
@@ -355,13 +353,17 @@ mission "Neutrality 3"
             label "pug"
             `"The Pug attacked Silver, claiming that they were there to end the war and bring peace. They cut the hyperspace links from the other planets and connected them to this system instead. A few tried to resist, but not even the Free Worlds, with their nuclear weapons, were successful. At least, not at first. <last> <first>, a brave captain from <planet>, who was a member of the Free Worlds council, stole a jump drive from them, like those that the Quarg use, that let them bypass hyperlanes. With this, they roused the Navy, reconnected the hyperspace lanes, and helped chase the Pug fleet back to this system! But when they got here, the Pug were gone, with that wormhole you came from in its place. Now the Free Worlds and the Republic are no longer at war, with the Free Worlds an autonomous part of the Republic, like the Syndicate. At least, that is what I have been told. Maybe that's what the Pug meant by 'peace.'"`
                 to display
-                    not "hai space start"
-                    not "Syndicate Start"
+                    or
+                        has "rumskib: lampyrid start"
+                        has "Time Skip start" # Lost in Midnight
+                        has "main plot plus: fast forward"
+                        has "start: default"
             `"The Pug attacked Silver, claiming that they were there to end the war and bring peace. They cut the hyperspace links from the other planets and connected them to this system instead. A few tried to resist, but not even the Free Worlds, with their nuclear weapons, were successful. At least, not at first. <last> <first>, a brave captain from New Boston, who was a member of the Free Worlds council, stole a jump drive from them, like those that the Quarg use, that let them bypass hyperlanes. With this, they roused the Navy, reconnected the hyperspace lanes, and helped chase the Pug fleet back to this system! But when they got here, the Pug were gone, with that wormhole you came from in its place. Now the Free Worlds and the Republic are no longer at war, with the Free Worlds an autonomous part of the Republic, like the Syndicate. At least, that is what I have been told. Maybe that's what the Pug meant by 'peace.'"`
                 to display
-                    or
-                        has "hai space start"
-                        has "Syndicate Start"
+                    not "rumskib: lampyrid start"
+                    not "Time Skip start" # Lost in Midnight
+                    not "main plot plus: fast forward"
+                    not "start: default"
             branch "end"
                 not "neutrality: told receptionist about abduction"
             action
@@ -373,13 +375,15 @@ mission "Neutrality 3"
             label "humans"
             `"You don't know? An alien race called the Pug attacked Silver, claiming that they were there to end the war and bring peace. They cut the hyperspace links from the other planets and connected them to this system instead. A few tried to resist, but not even the Free Worlds, with their nuclear weapons, were successful. At least, not at first. A brave captain from <planet> who was a member of the free worlds council stole a jump drive from them, like those that the Quarg use, that let them bypass hyperlanes. With this, they roused the Navy, reconnected the hyperspace lanes, and helped chase the Pug fleet back to this system. But when they got here, the Pug were gone, with only a strange wormhole in its place. Now the Free Worlds and the Republic are no longer at war, with the Free Worlds an autonomous part of the Republic, like the Syndicate. At least, that is what I have been told. Maybe that's what the Pug meant by 'peace.'"`
                 to display
-                    not "hai space start"
-                    not "Syndicate Start"
+                    or
+                        has "rumskib: lampyrid start"
+                        has "Time Skip start" # Lost in Midnight
+                        has "start: default"
             `"The Pug attacked Silver, claiming that they were there to end the war and bring peace. They cut the hyperspace links from the other planets and connected them to this system instead. A few tried to resist, but not even the Free Worlds, with their nuclear weapons, were successful. At least, not at first. <last> <first>, a brave captain from New Boston, who was a member of the Free Worlds council, stole a jump drive from them, like those that the Quarg use, that let them bypass hyperlanes. With this, they roused the Navy, reconnected the hyperspace lanes, and helped chase the Pug fleet back to this system! But when they got here, the Pug were gone, with that wormhole you came from in its place. Now the Free Worlds and the Republic are no longer at war, with the Free Worlds an autonomous part of the Republic, like the Syndicate. At least, that is what I have been told. Maybe that's what the Pug meant by 'peace.'"`
                 to display
-                    or
-                        has "hai space start"
-                        has "Syndicate Start"
+                    not "rumskib: lampyrid start"
+                    not "Time Skip start" # Lost in Midnight
+                    not "start: default"
 
             label "end"
             `"By the way, considering you didn't know about the Pug invasion, you might also not know about the new technology humanity has developed during the war. If so, you should probably speak to officials at the main outposts of Deep Sky Technology, Kraz Cybernetics, and Syndicated Systems for more information. They can be found on the planets Asgard in the Naos system, Rust in the Kraz system, and Hephaestus in the Markab system, respectively."`

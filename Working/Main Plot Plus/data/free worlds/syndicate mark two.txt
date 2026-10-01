@@ -5,10 +5,10 @@ government "Syndicate (Automata)"
     "player reputation" 2
     "attitude toward"
         "Syndicate" 1
+        "Bounty" -.4
+        "Bounty (Disguised)" -.4
         "Merchant" .3
         "Pirate" -.4
-        "Pirate (Devil-Run Gang)" -.4
-        "Smuggler (Hai Trafficker)" .3
         "Korath" -.5
     # You can't bribe automata
     bribe 0
@@ -53,31 +53,34 @@ fleet "Syndicate Automata"
 
 mission "Syndicate Using Nukes (Pre-War)"
     invisible
-    landing
     non-blocking
+    transition
     to offer
         "year" < 3014
+    destination Geminus
     on offer
         event "syndicate using nukes (pre-war)"
         fail
 
 mission "Syndicate Cease Using Nukes"
     invisible
-    landing
     non-blocking
+    transition
     to offer
         "year" >= 3014
         has "event: syndicate using nukes (pre-war)"
+    destination Geminus
     on offer
         event "syndicate cease using nukes"
         fail
 
 mission "Syndicate Mark II"
     invisible
-    landing
     non-blocking
+    transition
     to offer
         has "main plot completed"
+    destination Geminus
     on offer
         "reputation: Syndicate (Automata)" = "reputation: Syndicate"
         event "syndicate using mark II ships"
@@ -85,12 +88,53 @@ mission "Syndicate Mark II"
 
 mission "Syndicate Mark II (Nuclear)"
     invisible
-    landing
     non-blocking
+    landing
+    repeat
     to offer
         has "free worlds checkmate"
+        not "installed plugin: LowerDamage"
+        not "installed plugin: EvenLowerDamage"
+        not "syndicate nukes have normal damage"
     on offer
         event "syndicate using augmented nukes"
+        clear "syndicate nukes have lower damage"
+        clear "syndicate nukes have even lower damage"
+        set "syndicate nukes have normal damage"
+        fail
+
+mission "Syndicate Mark II (Nuclear LowerDamage)"
+    invisible
+    non-blocking
+    landing
+    repeat
+    to offer
+        has "free worlds checkmate"
+        has "installed plugin: LowerDamage"
+        not "installed plugin: EvenLowerDamage"
+        not "syndicate nukes have lower damage"
+    on offer
+        event "syndicate using augmented nukes with lowerdamage"
+        clear "syndicate nukes have normal damage"
+        clear "syndicate nukes have even lower damage"
+        set "syndicate nukes have lower damage"
+        fail
+
+mission "Syndicate Mark II (Nuclear EvenLowerDamage)"
+    invisible
+    non-blocking
+    landing
+    repeat
+    to offer
+        has "free worlds checkmate"
+        not "installed plugin: LowerDamage"
+        has "installed plugin: EvenLowerDamage"
+        not "syndicate nukes have even lower damage"
+    on offer
+        event "syndicate using augmented nukes with evenlowerdamage"
+        clear "syndicate nukes have normal damage"
+        clear "syndicate nukes have lower damage"
+        set "syndicate nukes have even lower damage"
         fail
 
 event "syndicate using nukes (pre-war)"
@@ -220,6 +264,34 @@ event "syndicate using augmented nukes"
     fleet "Syndicate Nuclear"
         variant 1
             "Manta (Nuclear Mark II)" 2
+
+    system "Alpha Hydri"
+        add fleet "Syndicate Nuclear" 10000
+
+    system Polaris
+        add fleet "Syndicate Nuclear" 12500
+
+    system Sheratan
+        add fleet "Syndicate Nuclear" 10000
+
+event "syndicate using augmented nukes with lowerdamage"
+    fleet "Syndicate Nuclear"
+        variant 1
+            "Manta (Nuclear Mark II LD)" 2
+
+    system "Alpha Hydri"
+        add fleet "Syndicate Nuclear" 10000
+
+    system Polaris
+        add fleet "Syndicate Nuclear" 12500
+
+    system Sheratan
+        add fleet "Syndicate Nuclear" 10000
+
+event "syndicate using augmented nukes with evenlowerdamage"
+    fleet "Syndicate Nuclear"
+        variant 1
+            "Manta (Nuclear Mark II ELD)" 2
 
     system "Alpha Hydri"
         add fleet "Syndicate Nuclear" 10000
@@ -400,6 +472,42 @@ ship "Manta" "Manta (Nuclear Mark II)"
     gun "Sidewinder Missile Launcher"
     gun "Nuclear Launch Bay"
     gun "Nuclear Launch Bay"
+
+ship "Manta" "Manta (Nuclear Mark II LD)"
+    outfits
+        "Nuclear Launch Bay (LowerDamage)" 2
+        "Nuclear Missile (Augmented)" 4
+        "Sidewinder Missile Launcher" 2
+        "Sidewinder Missile" 90
+        "Fission Reactor"
+        "LP144a Battery Pack"
+        "S-970 Regenerator"
+        "Water Coolant System"
+        "A370 Atomic Thruster"
+        "A375 Atomic Steering"
+        "Hyperdrive"
+    gun "Sidewinder Missile Launcher"
+    gun "Sidewinder Missile Launcher"
+    gun "Nuclear Launch Bay (LowerDamage)"
+    gun "Nuclear Launch Bay (LowerDamage)"
+
+ship "Manta" "Manta (Nuclear Mark II ELD)"
+    outfits
+        "Nuclear Launch Bay (EvenLowerDamage)" 2
+        "Nuclear Missile (Augmented)" 4
+        "Sidewinder Missile Launcher" 2
+        "Sidewinder Missile" 90
+        "Fission Reactor"
+        "LP144a Battery Pack"
+        "S-970 Regenerator"
+        "Water Coolant System"
+        "A370 Atomic Thruster"
+        "A375 Atomic Steering"
+        "Hyperdrive"
+    gun "Sidewinder Missile Launcher"
+    gun "Sidewinder Missile Launcher"
+    gun "Nuclear Launch Bay (EvenLowerDamage)"
+    gun "Nuclear Launch Bay (EvenLowerDamage)"
 
 ship "Protector" "Protector (Mark II)"
     outfits

@@ -1,17 +1,17 @@
 mission "Main Plot Plus Check"
     invisible
-    landing
     non-blocking
+    landing
     to offer
         has "chosen sides"
-        not "enabled guided start"
+        not "main plot plus: enabled guided start"
     on offer
         set "global: main plot plus: does not need guided start"
         fail
 mission "Main Plot Plus Prompts"
     invisible
-    landing
     non-blocking
+    landing
     on offer
         conversation
             `Welcome to Main Plot Plus! I am JamesGPT. As an AI language model, it is my job to help you configure Main Plot Plus the way you want. To assist you in this effort, I have compiled several presets for you. Which one would you like to use?`
@@ -23,6 +23,8 @@ mission "Main Plot Plus Prompts"
                             has "global: main plot plus: enabled security analysis jobs"
                             has "global: main plot plus: enabled paint trim jobs"
                             has "global: main plot plus: enabled main plot soft block"
+                            has "global: main plot plus: enabled main plot skip"
+                            has "global: main plot plus: enabled navy license mission"
                     goto default
                 `(Enable recommended features)`
                     goto recommended
@@ -42,7 +44,7 @@ mission "Main Plot Plus Prompts"
                 `(Disable guided start)`
                     goto noguide
             action
-                set "enabled guided start"
+                set "main plot plus: enabled guided start"
             `Alright, I have enabled guided start.`
                 goto security
             label noguide
@@ -54,7 +56,7 @@ mission "Main Plot Plus Prompts"
                 `(Disable security analysis jobs)`
                     goto noanalysis
             action
-                set "enabled security analysis jobs"
+                set "main plot plus: enabled security analysis jobs"
             `Alright, I have enabled security analysis jobs.`
                 goto paint
             label noanalysis
@@ -66,7 +68,7 @@ mission "Main Plot Plus Prompts"
                 `(Disable paint trim jobs)`
                     goto nopaint
             action
-                set "enabled paint trim jobs"
+                set "main plot plus: enabled paint trim jobs"
             `Alright, I have enabled paint trim jobs.`
                 goto sethidden
             label nopaint
@@ -80,13 +82,45 @@ mission "Main Plot Plus Prompts"
                     goto nohidden
 
             action
-                set "enabled main plot soft block"
+                set "main plot plus: enabled main plot soft block"
 
             `Alright, I have marked all systems as hidden. The systems I have marked as hidden will be unhidden when the main plot is completed.`
-                goto setpreset
+                goto setskip
 
             label nohidden
             `Alright, I have not marked additional systems as hidden.`
+
+            label setskip
+            `Would you like to enable a short mission chain that allows you to skip the main plot? There are a few missions that try to make sense lore wise, but for the most part, this basically only skips the main plot, and is mainly intended for quick debugging of changes caused by completing the main plot.`
+            choice
+                `(Let me skip the main plot)`
+                `(Do not let me skip the main plot)`
+                    goto noskip
+            action
+                set "main plot plus: enabled main plot skip"
+            `Alright, I have enabled the short mission chain that lets you skip the main plot.`
+                goto setnavy
+
+            label noskip
+            `Alright, I have disabled the short mission chain that lets you skip the main plot.`
+
+            label setnavy
+            `Would you like to enable a short mission chain that grants you the navy license after you complete the main plot?`
+            `Since you have Lost in Midnight installed, you can already get the navy license, so you probably don't need this.`
+                to display
+                    has "installed plugin: Lost-in-Midnight"
+            choice
+                `(Let me get the navy license)`
+                `(Do not let me get the navy license)`
+                    goto nonavy
+
+            action
+                set "main plot plus: enabled navy license mission"
+            `Alright, I have enabled the short mission chain that grants you the navy license. You can do it once you complete the main plot.`
+                goto setpreset
+
+            label nonavy
+            `Alright, I have disabled the short mission chain that grants you the navy license.`
 
             # Save default features
             label setpreset
@@ -96,7 +130,7 @@ mission "Main Plot Plus Prompts"
                 `(No)`
                     goto nopreset
             branch guidepreset
-                has "enabled guided start"
+                has "main plot plus: enabled guided start"
             action
                 clear "global: main plot plus: enabled guided start"
             branch noguidepreset
@@ -105,7 +139,7 @@ mission "Main Plot Plus Prompts"
                 set "global: main plot plus: enabled guided start"
             label noguidepreset
             branch securitypreset
-                has "enabled security analysis jobs"
+                has "main plot plus: enabled security analysis jobs"
             action
                 clear "global: main plot plus: enabled security analysis jobs"
             branch nosecuritypreset
@@ -114,7 +148,7 @@ mission "Main Plot Plus Prompts"
                 set "global: main plot plus: enabled security analysis jobs"
             label nosecuritypreset
             branch paintpreset
-                has "enabled paint trim jobs"
+                has "main plot plus: enabled paint trim jobs"
             action
                 clear "global: main plot plus: enabled paint trim jobs"
             branch nopaintpreset
@@ -123,7 +157,7 @@ mission "Main Plot Plus Prompts"
                 set "global: main plot plus: enabled paint trim jobs"
             label nopaintpreset
             branch hiddenpreset
-                has "enabled main plot soft block"
+                has "main plot plus: enabled main plot soft block"
             action
                 clear "global: main plot plus: enabled main plot soft block"
             branch nohiddenpreset
@@ -131,6 +165,24 @@ mission "Main Plot Plus Prompts"
             action
                 set "global: main plot plus: enabled main plot soft block"
             label nohiddenpreset
+            branch skippreset
+                has "main plot plus: enabled main plot skip"
+            action
+                clear "global: main plot plus: enabled main plot skip"
+            branch noskippreset
+            label skippreset
+            action
+                set "global: main plot plus: enabled main plot skip"
+            label noskippreset
+            branch navypreset
+                has "main plot plus: enabled navy license mission"
+            action
+                clear "global: main plot plus: enabled navy license mission"
+            branch nonavypreset
+            label navypreset
+            action
+                set "global: main plot plus: enabled navy license mission"
+            label nonavypreset
             `Got it. I have made your chosen settings the default preset.`
                 to display
                     or
@@ -138,6 +190,8 @@ mission "Main Plot Plus Prompts"
                         has "global: main plot plus: enabled security analysis jobs"
                         has "global: main plot plus: enabled paint trim jobs"
                         has "global: main plot plus: enabled main plot soft block"
+                        has "global: main plot plus: enabled main plot skip"
+                        has "global: main plot plus: enabled navy license mission"
                 goto end
             `Got it. Since you disabled all features, I have cleared the default preset.`
                 to display
@@ -145,6 +199,8 @@ mission "Main Plot Plus Prompts"
                     not "global: main plot plus: enabled security analysis jobs"
                     not "global: main plot plus: enabled paint trim jobs"
                     not "global: main plot plus: enabled main plot soft block"
+                    not "global: main plot plus: enabled main plot skip"
+                    not "global: main plot plus: enabled navy license mission"
                 goto end
             label nopreset
             `Got it. I have not updated the default preset.`
@@ -154,6 +210,8 @@ mission "Main Plot Plus Prompts"
                         has "global: main plot plus: enabled security analysis jobs"
                         has "global: main plot plus: enabled paint trim jobs"
                         has "global: main plot plus: enabled main plot soft block"
+                        has "global: main plot plus: enabled main plot skip"
+                        has "global: main plot plus: enabled navy license mission"
                 goto end
             `Got it. I have not set the default preset.`
                 to display
@@ -161,6 +219,8 @@ mission "Main Plot Plus Prompts"
                     not "global: main plot plus: enabled security analysis jobs"
                     not "global: main plot plus: enabled paint trim jobs"
                     not "global: main plot plus: enabled main plot soft block"
+                    not "global: main plot plus: enabled main plot skip"
+                    not "global: main plot plus: enabled navy license mission"
                 goto end
 
             # Use default features
@@ -168,30 +228,42 @@ mission "Main Plot Plus Prompts"
             branch nodefaultguide
                 not "global: main plot plus: enabled guided start"
             action
-                set "enabled guided start"
+                set "main plot plus: enabled guided start"
             label nodefaultguide
             branch nodefaultsecurity
                 not "global: main plot plus: enabled security analysis jobs"
             action
-                set "enabled security analysis jobs"
+                set "main plot plus: enabled security analysis jobs"
             label nodefaultsecurity
             branch nodefaultpaint
                 not "global: main plot plus: enabled paint trim jobs"
             action
-                set "enabled paint trim jobs"
+                set "main plot plus: enabled paint trim jobs"
             label nodefaultpaint
             branch nodefaulthidden
                 not "global: main plot plus: enabled main plot soft block"
             action
-                set "enabled main plot soft block"
+                set "main plot plus: enabled main plot soft block"
             label nodefaulthidden
+            branch nodefaultskip
+                not "global: main plot plus: enabled main plot skip"
+            action
+                set "main plot plus: enabled main plot skip"
+            label nodefaultskip
+            branch nodefaultnavy
+                not "global: main plot plus: enabled navy license mission"
+            action
+                set "main plot plus: enabled navy license mission"
+            label nodefaultnavy
             `Got it. I have enabled the default features.`
                 goto end
 
             # Use recommended features
             label recommended
+            branch smart
+                "days since start" > 0
             action
-                set "enabled main plot soft block"
+                set "main plot plus: enabled main plot soft block"
             `Got it. I have enabled the recommended features.`
                 goto smart
 
@@ -199,22 +271,29 @@ mission "Main Plot Plus Prompts"
             label vanillaplus
             `Got it. I have enabled the vanilla+ features.`
             label smart
-            branch norecommendedguide
-                or
-                    "days since start" > 0
-                    has "global: main plot plus: does not need guided start"
+            branch recommendeddone
+                "days since start" > 0
+            branch midnight
+                has "installed plugin: Lost-in-Midnight"
             action
-                set "enabled guided start"
-            label norecommendedguide
+                set "main plot plus: enabled navy license mission"
+            label midnight
+            branch recommendeddone
+                has "global: main plot plus: does not need guided start"
+            action
+                set "main plot plus: enabled guided start"
+            label recommendeddone
             branch end
 
             # Use all features
             label all
             action
-                set "enabled guided start"
-                set "enabled security analysis jobs"
-                set "enabled paint trim jobs"
-                set "enabled main plot soft block"
+                set "main plot plus: enabled guided start"
+                set "main plot plus: enabled security analysis jobs"
+                set "main plot plus: enabled paint trim jobs"
+                set "main plot plus: enabled main plot soft block"
+                set "main plot plus: enabled main plot skip"
+                set "main plot plus: enabled navy license mission"
             `Got it. I have enabled all features.`
                 goto end
 

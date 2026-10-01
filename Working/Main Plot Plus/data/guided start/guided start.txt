@@ -1,7 +1,7 @@
 mission "Guided Start"
     deadline 90
     invisible
-    priority
+    non-blocking
     landing
     repeat
     to offer
@@ -12,7 +12,7 @@ mission "Guided Start"
                 "month" >= 7
         not "chosen sides"
         not "Guided Start: active"
-        has "enabled guided start"
+        has "main plot plus: enabled guided start"
         "guided start: unsure" <= 3
         "days since epoch" - "guided start defer date" > 30
     to complete
@@ -55,13 +55,14 @@ mission "Guided Start"
                         not "navy campaign when"
                 `(Actually, don't choose a side)`
                     goto "not chosen sides"
+                    to display
+                        not "no skip"
                 `(Remind me in 30 days)`
                     goto "abstain"
 
             action
                 set "navy campaign when"
-                set "guided start: navy"
-            `Sorry, the Navy campaign isn't implemented yet. However, I have unlocked a side mission chain for you that can get you their license, once you finish the main plot. Which side do you want to join instead?`
+            `Sorry, the Navy campaign isn't implemented yet. Which side do you want to join instead?`
                 goto "choose remaining sides"
 
             label "free worlds"
@@ -74,6 +75,7 @@ mission "Guided Start"
             action
                 clear "navy campaign when"
                 clear "no scs"
+                clear "no skip"
             branch "fw in progress"
                 has "FW Commitment: active"
             branch "at bourne"
@@ -113,6 +115,7 @@ mission "Guided Start"
                 clear "ScS Catch a Fly 1: offered"
                 clear "no scs"
                 clear "navy campaign when"
+                clear "no skip"
             branch "at crossroads"
                 has "flagship planet: Crossroads"
             `Conditions set. Head to the planet 'Crossroads' and enter the spaceport to side with the Syndicate. If you aren't sure where this is or need clearance, head over to this planet's spaceport to ping the destination on your map and receive clearance.`
@@ -125,13 +128,17 @@ mission "Guided Start"
             label "no scs"
             action
                 set "no scs"
-            `Sorry, the Syndicate campaign isn't implemented yet. However, there is a plugin called 'Crisis in Management' that adds an alternative start where you can join the Syndicate.`
+            `Sorry, the Syndicate campaign isn't implemented yet. However, there is a plugin called 'Crisis in Management' that adds an alternative start where you can join the Syndicate. Which side do you want to join instead?`
                 goto "choose remaining sides"
 
             label "not chosen sides"
+            branch "no skip"
+                not "main plot plus: enabled main plot skip"
+            label "yes skip"
             action
                 clear "no scs"
                 clear "navy campaign when"
+                clear "no skip"
                 clear "Neutrality 2: offered"
                 set "guided start: neutral"
             branch "neutral repeat"
@@ -146,12 +153,22 @@ mission "Guided Start"
             label "last attempt"
             `Conditions set. This is your last attempt to choose neutrality. If you reject neutrality and don't find a way to choose a side the standard way, the war will never be finished. To choose neutrality, head to one of the near Earth planets where a system that cannot be navigated to by hyperdrive is included inside the circle that appears on your map around the system you are in. If you need clearance or aren't sure where these are or what this means, head over to this planet's spaceport to ping a suitable destination on your map and receive clearance.`
                 accept
+            label "no skip"
+            `Sorry, the merchant campaign isn't implemented yet. However, Main Plot Plus has a short mission chain which skips the main plot. Does this work for you?`
+            choice
+                `(Yes)`
+                    goto "yes skip"
+                `(No)`
+            action
+                set "no skip"
+            `Which side do you want to join instead?`
+                goto "choose remaining sides"
+
             label "abstain"
             action
                 "guided start defer date" = "days since epoch"
             `Got it. You will be reminded again in 30 days.`
                 decline
-    on enter
     on enter
         set "neutral spaceport deadline"
 

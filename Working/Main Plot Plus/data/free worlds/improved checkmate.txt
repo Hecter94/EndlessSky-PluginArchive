@@ -23,9 +23,9 @@ outfitter "human plugin"
 
 mission "Main Plot Plus Augmented Nukes (Normal Damage)"
     invisible
+    non-blocking
     landing
     repeat
-    non-blocking
     to offer
         not "installed plugin: LowerDamage"
         not "installed plugin: EvenLowerDamage"
@@ -39,9 +39,9 @@ mission "Main Plot Plus Augmented Nukes (Normal Damage)"
 
 mission "Main Plot Plus Augmented Nukes (LowerDamage)"
     invisible
+    non-blocking
     landing
     repeat
-    non-blocking
     to offer
         has "installed plugin: LowerDamage"
         not "installed plugin: EvenLowerDamage"
@@ -55,9 +55,9 @@ mission "Main Plot Plus Augmented Nukes (LowerDamage)"
 
 mission "Main Plot Plus Augmented Nukes (EvenLowerDamage)"
     invisible
+    non-blocking
     landing
     repeat
-    non-blocking
     to offer
         has "installed plugin: EvenLowerDamage"
         not "augmented nukes have even lower damage"
@@ -104,6 +104,8 @@ outfitter "Augmented Nuke Restock"
         has "gamerule: universal ammo restocking"
         or
             has "outfit: Nuclear Launch Bay"
+            has "outfit: Nuclear Launch Bay (LowerDamage)"
+            has "outfit: Nuclear Launch Bay (EvenLowerDamage)"
             has "outfit: Nuclear Installation Chip"
     location
         attributes "outfitter"
@@ -263,8 +265,7 @@ outfit "Nuclear Launch Bay"
         "optical tracking" 1
         "shield damage" -23700
         "hull damage" -15800
-        "ion damage" -9480
-        "scrambling damage" -6320
+        "ion damage" -148
         "hit force" -5700
     description "It has been centuries since the last nuclear war was fought, and until very recently, most people in the galaxy assumed that that era of chaos and destruction was forever behind us..."
     description "    Ammunition for this weapon can be restocked at any outfitter."
@@ -314,8 +315,7 @@ outfit "Nuclear Launch Bay (LowerDamage)"
         "optical tracking" 1
         "shield damage" -16590
         "hull damage" -11060
-        "ion damage" -9480
-        "scrambling damage" -6320
+        "ion damage" -148
         "hit force" -5700
     description "It has been centuries since the last nuclear war was fought, and until very recently, most people in the galaxy assumed that that era of chaos and destruction was forever behind us..."
     description "    Ammunition for this weapon can be restocked at any outfitter."
@@ -365,8 +365,7 @@ outfit "Nuclear Launch Bay (EvenLowerDamage)"
         "optical tracking" 1
         "shield damage" -8295
         "hull damage" -5530
-        "ion damage" -9480
-        "scrambling damage" -6320
+        "ion damage" -148
         "hit force" -5700
     description "It has been centuries since the last nuclear war was fought, and until very recently, most people in the galaxy assumed that that era of chaos and destruction was forever behind us..."
     description "    Ammunition for this weapon can be restocked at any outfitter."
@@ -395,8 +394,7 @@ outfit "Active Nuclear Missile"
         "blast radius" 300
         "shield damage" 24000
         "hull damage" 16000
-        "ion damage" 9600
-        "scrambling damage" 6400
+        "ion damage" 150
         "hit force" 6000
         "missile strength" 200
 
@@ -422,8 +420,7 @@ outfit "Active Nuclear Missile (LowerDamage)"
         "blast radius" 300
         "shield damage" 16800
         "hull damage" 11200
-        "ion damage" 9600
-        "scrambling damage" 6400
+        "ion damage" 150
         "hit force" 6000
         "missile strength" 200
 
@@ -449,8 +446,7 @@ outfit "Active Nuclear Missile (EvenLowerDamage)"
         "blast radius" 300
         "shield damage" 8400
         "hull damage" 5600
-        "ion damage" 9600
-        "scrambling damage" 6400
+        "ion damage" 150
         "hit force" 6000
         "missile strength" 200
 
@@ -710,6 +706,8 @@ mission "FW Liberate Delta Sagittarii (patched)"
             not "FW Defend New Tibet: offered"
             has "fw did not rescue defector"
         not "FW Liberate Delta Sagittarii: offered"
+    to accept
+        has "fw did not rescue defector"
     source
             planet "New Tibet" "Wayfarer"
     destination "New Portland"
@@ -794,12 +792,6 @@ mission "FW Liberate Delta Sagittarii (patched)"
     on offer
         set "FW Liberate Delta Sagittarii: offered"
         event "fwc southern battle"
-        conversation
-            branch surrender
-                has "fw did not rescue defector"
-            `A few of the Free Worlds crew members are still milling around the spaceport in confusion. You help to gather them together and explain that you are headed out on a very important mission to New Tibet.`
-                decline
-
             label surrender
             action
                 event "syndicate tech available"
@@ -894,12 +886,12 @@ mission "FWC Scouting 1 (patched)"
     on fail
         clear "FWC Scouting 1: active"
         set "FWC Scouting 1: failed"
-        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+        dialog phrase "free worlds failed"
     on abort
         clear "FWC Scouting 1: active"
         set "FWC Scouting 1: aborted"
         set "FWC Scouting 1: failed"
-        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+        dialog phrase "free worlds failed"
 
 mission "FWC Attack Kaus Borealis (patched)"
     name "Attack Kaus Borealis"
@@ -1022,12 +1014,12 @@ mission "FWC Attack Kaus Borealis (patched)"
     on fail
         clear "FWC Attack Kaus Borealis: active"
         set "FWC Attack Kaus Borealis: failed"
-        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+        dialog phrase "free worlds failed"
     on abort
         clear "FWC Attack Kaus Borealis: active"
         set "FWC Attack Kaus Borealis: aborted"
         set "FWC Attack Kaus Borealis: failed"
-        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+        dialog phrase "free worlds failed"
     on visit
         dialog `You've landed on <planet>, but there are still Navy ships circling overhead. You should take off and help finish them off.`
 
@@ -1080,12 +1072,12 @@ mission "FWC Nuke Supply 1 (patched)"
     on fail
         clear "FWC Nuke Supply 1: active"
         set "FWC Nuke Supply 1: failed"
-        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+        dialog phrase "free worlds failed"
     on abort
         clear "FWC Nuke Supply 1: active"
         set "FWC Nuke Supply 1: aborted"
         set "FWC Nuke Supply 1: failed"
-        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+        dialog phrase "free worlds failed"
 
 mission "FWC Checkmate 1C (patched)"
     name "Capture <planet>"
@@ -1132,12 +1124,12 @@ mission "FWC Checkmate 1C (patched)"
     on fail
         clear "FWC Checkmate 1C: active"
         set "FWC Checkmate 1C: failed"
-        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+        dialog phrase "free worlds failed"
     on abort
         clear "FWC Checkmate 1C: active"
         set "FWC Checkmate 1C: aborted"
         set "FWC Checkmate 1C: failed"
-        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+        dialog phrase "free worlds failed"
     on visit
         dialog `You land on <planet>, but you realize that Katya is on one of your escorts that hasn't entered the system yet. Better depart and wait for it to arrive.`
 
@@ -1166,7 +1158,7 @@ mission "FWC Terrorists 1"
             `    "Oh, yes. I've contacted New Austria and told them that Councilor Reynolds is free to leave," he says. "I'd say go meet with her, but there's still work to be done."`
                 accept
     on fail
-        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+        dialog phrase "free worlds failed"
 
 
 mission "FWC Terrorists 1A"
@@ -1211,7 +1203,7 @@ mission "FWC Terrorists 1A"
             `    Korban tells you that the second autonomous fleet for you to lead is on Hephaestus. "The terrorists are holed up on Stormhold," says Korban, "an old pirate world. Also, if you haven’t already done so, I would highly recommend installing some of our new technology, developed during the war. We're planning on incorporating it on most of the ships in our fleet, and they are installed on the autonomous ships I've given you. It may prove helpful to you during this final battle. Good luck, Captain."`
                 accept
     on fail
-        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+        dialog phrase "free worlds failed"
 
 mission "FWC Terrorists 1B"
     name "Final Battle"
@@ -1323,7 +1315,7 @@ mission "FWC Terrorists 1B"
             `    Meanwhile, you contact Danforth and tell him that you're ready for the assault. You should head directly for the <system> system, so that you arrive there far enough in advance of the Oathkeeper fleet.`
                 accept
     on fail
-        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+        dialog phrase "free worlds failed"
     on visit
         dialog `You've landed on <planet>, but there are still terrorist ships circling overhead. You should take off and help finish them off.`
 
@@ -1367,31 +1359,12 @@ mission "FWC Terrorists 1C"
         event "deep sky tech available"
         event "stack core for sale"
         event "fwc kaus borealis ceded back"
+        event "fwc solace has augmented nukes"
         "salary: Free Worlds" = 8900
         set "main plot completed"
         set "free worlds plot completed"
         set "free worlds checkmate"
         conversation
-            branch "evenlowerdamage"
-                has "installed plugin: EvenLowerDamage"
-
-            branch "lowerdamage"
-                has "installed plugin: LowerDamage"
-
-            action
-                event "fwc solace has augmented nukes"
-            branch conversation
-
-            label "lowerdamage"
-            action
-                event "fwc solace has augmented nukes (lowerdamage)"
-            branch conversation
-
-            label "evenlowerdamage"
-            action
-                event "fwc solace has augmented nukes (evenlowerdamage)"
-
-            label "conversation"
             `You arrive in the Parliament building just as Alondo, Katya, and Tomek have finished meeting with them. "Good news," says Katya. "We're all officially pardoned. And you, Captain <last>, have become something of a hero."`
             `    "Better yet," says Alondo, "the war with the Republic is over. We agreed to limiting our territory to its current size, and to a very minor tax to cover the cost of Navy protection if aliens attack again or some other major catastrophe strikes. In return, the Free Worlds have been granted autonomy from the Republic. Additionally, the CEO of the Syndicate, Alastair Korban, is resigning."`
             `    "Also," says Tomek, "I've received word from the Wolf Pack that the Syndicate have dropped off a gift. They didn't specify what it was, or why they left it, but it may be worth heading to Solace to see what it is."`
@@ -1406,12 +1379,12 @@ mission "FWC Terrorists 1C"
     on fail
         clear "FWC End: active"
         set "FWC End: failed"
-        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+        dialog phrase "free worlds failed"
     on abort
         clear "FWC End: active"
         set "FWC End: aborted"
         set "FWC End: failed"
-        dialog `You have failed an essential Free Worlds mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+        dialog phrase "free worlds failed"
 
 mission "FW Epilogue: Danforth (patched)"
     landing
@@ -1474,10 +1447,7 @@ mission "FWC Epilogue: Wolf Pack"
     minor
     landing
     to offer
-        or
-            has "event: fwc solace has augmented nukes"
-            has "event: fwc solace has augmented nukes (lowerdamage)"
-            has "event: fwc solace has augmented nukes (evenlowerdamage)"
+        has "event: fwc solace has augmented nukes"
         has "event: joined the free worlds"
     source "Solace"
     on offer
@@ -1488,7 +1458,7 @@ mission "FWC Epilogue: Wolf Pack"
                 `    "I wouldn't call myself a hero, but if you insist. What did the Syndicate bring?"`
             scene "nuke-launcher"
             `    Odie brings you to a warehouse full of crates. Two of the crates are open, revealing weapons inside. Odie gestures to the first crate. "Remember how we didn't have a feed system for our nuclear missiles, so we could only fire one per gun port before needing to reload? Well someone at the Syndicate was kind enough to solve that problem for us."`
-            `    Odie then gestures to the second crate. "The Syndicate also provided plans for improved nuclear missiles, designed to go along with the feed system. They do slightly more effective damage, but more importantly, they have a much wider blast radius allowing them to damage more ships at once, and they are very good at disrupting enemy systems. Additionally, as a safety feature, they only detonate if they will actually hit their target. Don't worry about an asteroid vaporizing your whole fleet."`
+            `    Odie then gestures to the second crate. "The Syndicate also provided plans for improved nuclear missiles, designed to go along with the feed system. They do slightly more effective damage, but more importantly, they have a much wider blast radius allowing them to damage more ships at once, and they can drain enemy batteries. Additionally, as a safety feature, they only detonate if they will actually hit their target. Don't worry about an asteroid vaporizing your whole fleet."`
             choice
                 `    "Now that sounds like an exciting weapon to use."`
                     goto exciting

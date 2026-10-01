@@ -2,9 +2,9 @@ mission "FW Pug 2B (patched)"
     invisible
     landing
     non-blocking
-    to offer
-        has "enabled main plot soft block"
-    on offer
+    to accept
+        has "main plot plus: enabled main plot soft block"
+    on accept
         set "FW Pug 2C: Jump Drive: offered"
         set "FW Pug 2C: Hyperdrive: offered"
         set "FW Pug 2C: Scram Drive: offered"
@@ -20,7 +20,7 @@ mission "FW Pug 2C: Hyperdrive (patched)"
     clearance
     to offer
         has "FW Pug 2B: done"
-        has "enabled main plot soft block"
+        has "main plot plus: enabled main plot soft block"
         not "fw given jump drive"
         not "outfit (flagship installed): Jump Drive"
     passengers 1
@@ -31,7 +31,7 @@ mission "FW Pug 2C: Hyperdrive (patched)"
         outfit "Hyperdrive" -1
         conversation
             `You are directed to land in a hangar some distance away from the spaceport, in a cluster of buildings owned by Syndicated Systems. A team of engineers meets you and quickly and efficiently removes your hyperdrive and replaces it with a strange, alien-looking device that you assume must be a jump drive. "Now, be careful with your fuel gauge," one of them tells you. "This thing guzzles twice as much fuel per jump as an ordinary hyperdrive, and you don't want to become stranded while outside human space."`
-            `"There is another wrinkle. Your ship's computer is only designed for travel along hyperlanes. To compensate for this, we have manually overridden your ship's map to include the last known location of the Pug homeworld system, Deneb, and the closest system, Delta Capricorni. With any luck, the systems will still be there. Now, make haste."`
+            `"There is another wrinkle. Your ship's computer is only designed for travel along hyperlanes. To compensate for this, we have manually overridden your ship's map to include the last known location of the closest system, Delta Capricorni. With any luck, the system will still be there. Now, make haste."`
                 accept
 
     on enter "Delta Capricorni"
@@ -53,7 +53,7 @@ mission "FW Pug 2C: Scram Drive (patched)"
     mark "Delta Capricorni"
     clearance
     to offer
-        has "enabled main plot soft block"
+        has "main plot plus: enabled main plot soft block"
         has "FW Pug 2B: done"
         not "fw given jump drive"
         not "outfit (flagship installed): Jump Drive"
@@ -65,7 +65,7 @@ mission "FW Pug 2C: Scram Drive (patched)"
         outfit "Scram Drive" -1
         conversation
             `You are directed to land in a hangar some distance away from the spaceport, in a cluster of buildings owned by Syndicated Systems. A team of engineers meets you and quickly and efficiently removes your scram drive and replaces it with a strange, alien-looking device that you assume must be a jump drive. "Now, be careful with your fuel gauge," one of them tells you. "This thing guzzles twice as much fuel per jump as an ordinary hyperdrive, and you don't want to become stranded while outside human space."`
-            `"There is another wrinkle. Your ship's computer is only designed for travel along hyperlanes. To compensate for this, we have manually overridden your ship's map to include the last known location of the Pug homeworld system, Deneb, and the closest system, Delta Capricorni. With any luck, the systems will still be there. Now, make haste."`
+            `"There is another wrinkle. Your ship's computer is only designed for travel along hyperlanes. To compensate for this, we have manually overridden your ship's map to include the last known location of the closest system, Delta Capricorni. With any luck, the system will still be there. Now, make haste."`
                 accept
 
     on enter "Delta Capricorni"
@@ -87,7 +87,7 @@ mission "FW Pug 2C: Jump Drive (patched)"
     mark "Delta Capricorni"
     clearance
     to offer
-        has "enabled main plot soft block"
+        has "main plot plus: enabled main plot soft block"
         has "FW Pug 2B: done"
         not "fw given jump drive"
         has "outfit (flagship installed): Jump Drive"
@@ -97,7 +97,8 @@ mission "FW Pug 2C: Jump Drive (patched)"
 
     on offer
         conversation
-            `You are directed to land in a hangar some distance away from the spaceport, in a cluster of buildings owned by Syndicated Systems. A team of engineers meets you and asks if they can look over your ship; a few minutes later, one of them says in surprise, "You've already got a jump drive! How did you manage that? Well, we've added Deneb and Delta Capricorni to your map anyways, just in case you haven't learned how to update your ship's computer." Since you don't need their equipment, they urge you to head directly for Pug space and continue your mission.`
+            `You are directed to land in a hangar some distance away from the spaceport, in a cluster of buildings owned by Syndicated Systems. A team of engineers meets you and asks if they can look over your ship; a few minutes later, one of them says in surprise, "You've already got a jump drive! How did you manage that?"`
+            `Another engineer shrugs and says, "However you managed doesn't matter, as there is another wrinkle. Your ship's computer is only designed for travel along hyperlanes. To compensate for this, we have manually overridden your ship's map to include the last known location of the closest system, Delta Capricorni. With any luck, the system will still be there." With the map updated, the engineers urge you to head directly for Pug space and continue your mission.`
                 accept
     on enter "Delta Capricorni"
         unmark "Delta Capricorni"
@@ -125,7 +126,11 @@ mission "Remnant: Lost in Ember Waste (patched)"
         not "ship attribute: quantum keystone"
         not "license: Remnant"
         has "remnant: blood test pure"
-        has "ship attribute: jump drive"
+        or
+            has "outfit: Jump Drive"
+            has "outfit (parked): Jump Drive"
+        has "main plot plus: enabled main plot soft block"
+        not "main plot completed"
         or
             and
                 not "visited system: Gerenus"
@@ -141,9 +146,9 @@ mission "Remnant: Lost in Ember Waste (patched)"
                 not "visited system: Tarazed"
                 not "visited system: Algenib"
                 not "visited system: Gienah"
-        on offer
-            log `Became stuck in the Ember Waste, but was given a map by an old woman who claims to have once been stuck in Republic space.`
-            conversation
+    on offer
+        log `Became stuck in the Ember Waste, but was given a map by an old woman who claims to have once been stuck in Republic space.`
+        conversation
             `You wander the <origin> spaceport feeling very lost in this strange region of space. Having flown around for a few weeks with no idea of how to get out, you wonder if you'll be stuck here forever.`
             `   You sit down on a bench and think about how you're going to get out of this situation. While you think, an old woman approaches you and signs something.`
             choice
@@ -162,7 +167,7 @@ mission "Remnant: Lost in Ember Waste (patched)"
             label map
             `    The woman reaches into a bag that she has with her and hands you a data chip. "Just plug this into your ship's computer and you can be on your way out of here."`
             choice
-                `    "You're just giving this to me?"`
+                `    "You have a data chip just for lost travellers?"`
                     goto thanks
                 `    "What's the catch?"`
             `    She chuckles again. "No catch."`

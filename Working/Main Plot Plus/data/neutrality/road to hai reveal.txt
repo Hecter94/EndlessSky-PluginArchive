@@ -1,7 +1,28 @@
+# Road to Hai Reveal is temporarily disabled due to Hai Reveal being removed from the game. I might re implement some version of Hai Reveal at some point in time.
+# The War Reactions patches stay, as War Reactions are still in the game.
+# The first part of Road to Hai Reveal (with Danforth) also stays, as this is necessary to unlock the Wanderer campaign
+
 disable mission "War Reactions: Asteroid Miners"
 disable mission "War Reactions: Navy and Free Worlds Captains"
 disable mission "War Reactions: Syndicate Orphan"
 
+ship "Aerie" "Aerie (Drone Hai)"
+    outfits
+        "Hai Tracker Pod" 2
+        "Tracker Storage Pod" 2
+        "Hai Tracker" 168
+        "Pulse Turret" 2
+        "Chameleon Anti-Missile"
+
+        "Boulder Reactor"
+        "Supercapacitor"
+        "Liquid Nitrogen Cooler"
+        "Hai Corundum Regenerator"
+        "Large Radar Jammer"
+        "Pulse Rifle" 3
+
+        `"Biroo" Atomic Steering`
+        `"Biroo" Atomic Thruster`
 government "Bounty Hunter (friendly)"
     "display name" "Bounty Hunter"
     swizzle 5
@@ -418,8 +439,8 @@ mission "War Reactions: Syndicate Orphan (patched)"
 
 mission "Road to Hai Reveal: Prep"
     invisible
-    landing
     non-blocking
+    transition
     to offer
         has "skipped main plot"
         # Required if hai wormhole warning was blocked
@@ -431,6 +452,7 @@ mission "Road to Hai Reveal: Prep"
         or
             has "War Reactions: Navy and Free Worlds Captains: declined"
             has "War Reactions: Navy and Free Worlds Captains (patched): declined"
+    destination Hai-home
     on offer
         event "road to hai reveal: almaaz pirates" 95
         fail
@@ -536,25 +558,24 @@ mission "Road to Hai Reveal: Danforth"
                 "Leviathan (Hai Engines)"
             variant 6
                 "Leviathan (Hai Weapons)"
-            # Continuing the tradition of previewing later unlocks
             variant 6
-                "Aerie (Drones)"
-                "Flea" 4
+                "Aerie (Drone Hai)"
+                "Combat Drone" 4
                 "Corvette (Hai)"
             variant 2
-                "Aerie (Drones)"
-                "Flea" 4
+                "Aerie (Drone Hai)"
+                "Combat Drone" 4
                 "Marauder Bounder (Hai)"
             variant 4
-                "Aerie (Drones)" 2
-                "Flea" 8
+                "Aerie (Drone Hai)" 2
+                "Combat Drone" 8
             variant 2
-                "Aerie (Drones)" 2
-                "Flea" 8
+                "Aerie (Drone Hai)" 2
+                "Combat Drone" 8
                 "Firebird (Hai Shields)"
             variant 2
-                "Aerie (Drones)" 2
-                "Flea" 8
+                "Aerie (Drone Hai)" 2
+                "Combat Drone" 8
                 "Firebird (Hai Weapons)"
             variant 1
                 "Firebird (Hai Shields)"
@@ -593,7 +614,7 @@ mission "Road to Hai Reveal: Danforth"
             `   Rain laughs. "I heard that the secret would have gotten out, but the Hai secret leaks were blocked by someone from Amazon. An Amazonite, if you will."`
             `   Fiona sighs.`
             `   "I didn't order that."`
-            `   "Oh, sorry, wrong table," says a waiter holding a glass of wine, before heading to a neighboring table.`
+            `   "Oh, sorry, wrong table," says a waiter holding a glass of wine.`
             `   As the waiter leaves, you notice someone who appears to be Admiral Danforth approaching you.`
                 goto "danforth"
             label "relief"
@@ -604,7 +625,7 @@ mission "Road to Hai Reveal: Danforth"
             `   Upon noticing you, Danforth stops, checks something on a tablet, then turns, faces Fiona, and leans in so only you, Rain, and Fiona can hear.`
             `   "Excuse me. I assume you've been given the usual speech on keeping the existence of the Hai a secret."`
             `   "You know about the Hai?" Rain asks.`
-            `   "Yeah, I know about the Hai. Listen, Fiona, as you entered the spaceport, I noticed somebody exiting your ship and running anxiously towards a nearby shuttle, holding something. It could be nothing, but with heightened tensions after the Pug invasion, I'm worried."`
+            `   "Yeah, I know about the Hai. Listen, Fiona, as you entered the spaceport, I noticed somebody exiting your ship and running anxiously towards a nearby shuttle, holding something. They ran face first into some kind of horse, and they dropped whatever it is they were holding, shattering it. They looked pretty derpy, if you ask me. This could be nothing, but with heightened tensions after the Pug invasion, I'm worried."`
             `   "It's probably fine," Fiona says quickly.`
             `   "If the existence of the Hai gets leaked, it could mean war. This is not something to be taken lightly."`
             `   Danforth straightens back up and says "<first> <last>, would you please follow me?"`
@@ -647,7 +668,7 @@ mission "Road to Hai Reveal: Danforth"
         "reputation: Navy (Oathkeeper)" += 70
         clear "Wanderers: Truce Check: offered"
         clear "Wanderers: Jump Drive Source: offered"
-        event "hr: secret leaks" 90
+        # event "hr: secret leaks" 90
         conversation
             `   When you land on <destination>, you are approached by a Navy officer.`
             `   "We are grateful for your service to the Navy. I will be sure to tell Danforth of your accomplishment."`
@@ -655,13 +676,26 @@ mission "Road to Hai Reveal: Danforth"
     on accept
         event "road to hai reveal: almaaz empty"
     on fail
-        dialog `You have failed an essential Hai Reveal mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+        dialog `You have failed an essential Hai Concealed mission. If you want to complete the story line, revert to the autosave or another earlier snapshot of the game.`
+
+mission "Road to Hai Reveal: Hai Concealed"
+    invisible
+    landing
+    non-blocking
+    to offer
+        has "Road to Hai Reveal: Hai Secret Leaks: offered"
+        not "Road to Hai Reveal: Xilin: offered"
+    on offer
+        conversation
+            `When you updated the plugin, you were in the middle of Road to Hai Reveal. Hai Reveal has since been removed from the latest version of vanilla and Road to Hai Reveal has now gone with it. You will receive no further missions for this storyline.`
+                decline
 
 mission "Road to Hai Reveal: Hai Secret Leaks"
     invisible
     landing
     non-blocking
     to offer
+        never
         or
             has "skipped main plot"
             has "Delay Hai Reveal: offered"
@@ -678,6 +712,7 @@ mission "Road to Hai Reveal: Hai Learn of Leaks"
     landing
     non-blocking
     to offer
+        never
         or
             has "skipped main plot"
             has "Delay Hai Reveal: offered"
@@ -686,12 +721,16 @@ mission "Road to Hai Reveal: Hai Learn of Leaks"
         clear "Hai Reveal: Secret Leaks: Hai: offered"
         fail
 
+# Deprecated variant
+ship "Dreadnought" "Dreadnought (Plasma Jump)"
+
 # Based almost entirely on "Hai Reveal: Early Arrival: Alondo" from "hai reveal 0 prologue.txt"
 mission "Road to Hai Reveal: Rain and Fiona (early)"
     name "Somewhat Likely Encounter"
     description "Head to <destination> with Rain and Fiona to learn more about the fallout of the existence of the Hai being revealed to billions in human space."
     clearance
     to offer
+        never
         not "hr: met rain and fiona"
         has "hr: heard the news"
         has "event: hr: friend arrives"
@@ -723,6 +762,7 @@ mission "Road to Hai Reveal: Rain and Fiona (late trigger)"
     landing
     clearance
     to offer
+        never
         has "event: road to hai reveal: join later"
     source
         government "Hai"
@@ -743,6 +783,7 @@ mission "Road to Hai Reveal: Rain and Fiona (late)"
     landing
     clearance
     to offer
+        never
         not "hr: met rain and fiona"
         has "hr: heard the news"
         has "event: hr: friend settled in"
@@ -771,6 +812,7 @@ mission "Road to Hai Reveal: Alondo and Sayari"
     invisible
     landing
     to offer
+        never
         has "hr: meet the team"
         has "event: road to hai reveal: almaaz normal"
     source "Hai-home"
@@ -893,6 +935,7 @@ mission "Road to Hai Reveal: Xilin"
     blocked "You will need <capacity> in order to take this mission."
     passengers 2
     to offer
+        never
         has "hr: meet the team"
         has "hr: just met alondo"
     source "Hai-home"
