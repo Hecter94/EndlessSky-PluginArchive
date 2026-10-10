@@ -912,7 +912,7 @@ Daily update check: <img src='../img/cross.png' width='15' ></img><br>
 ### HONK
 
 
-[HONK.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/HONK.zip) | N/A | N/A | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/HONK/) <br>
+[HONK.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/HONK.zip) | 2.28 mb | 2022-10-06 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/HONK/) <br>
 Author: Hurtz | Category: Ships <br>
 [https://github.com/Killerhurtz/ES-HONK](https://github.com/Killerhurtz/ES-HONK) (last commit 2017-09-14) <br>
 
@@ -922,7 +922,7 @@ Author: Hurtz | Category: Ships <br>
 
 
 Status: N/A <br>
-Daily update check: <img src='../img/cross.png' width='15' ></img><br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
 
 
 ---
