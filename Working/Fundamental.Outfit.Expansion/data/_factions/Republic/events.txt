@@ -1,40 +1,69 @@
-﻿mission "FOE: Lovelace Tech Available"
+﻿mission "FOE: New Republican Tech"
 	landing
 	invisible
+	non-blocking
 	source
 		government "Free Worlds" "Syndicate" "Republic" "Independent" "Pirate"
 	to offer
-		has "main plot completed"
+		has "event: initial deployment 3"
 	on offer
-		event "foe: lovelace tech available"
 		conversation
-			scene "outfit/tactical military outfit"
-			scene "outfit/large navy shield"
-			scene "outfit/particle turret dual"
+			`Rumors say that the Navy ships get modernized with dual particle turrets and a new generation of shields. Some even know people whose friends have relatives who heard rumors about an unusual particle turret design mounted on Navy Cruisers and Carriers, but no one can tell you how exactly that unusualness looks like.`
 			scene "outfit/particle turret heavy"
-			"Now, that the war is over, Lovelace starts to sell their surplus production of military grade equipment to common merchants in the hope to compensate for the reduction of orders from the navy."
+			scene "outfit/large navy shield"
+			scene "outfit/unknown"
 				decline
 
 
-mission "FOE: Navy Advanced Fleet Deployment"
+
+mission "FOE: Navy Mark II Edit"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: navy using mark ii ships"
+	on offer
+		event "foe: navy mark ii edit" 2
+		fail
+
+
+
+mission "FOE: Navy Logistics Edit"
 	landing
 	invisible
 	non-blocking
 	to offer
 		has "event: catalytic ramscoop available"
-		has "event: navy using mark ii ships"
 	on offer
-		event "foe: navy advanced fleet deployment"
+		event "foe: navy logistics edit" 2
 		fail
 
 
-mission "FOE: Quickstart Republic"
+
+mission "FOE: Lovelace Tech Available Timer"
 	landing
 	invisible
-	non-blocking
-	source
-		government "Republic"
 	to offer
-		has "event: quickstart free worlds shop changes"
+		has "main plot completed"
+	on offer
+		event "foe: lovelace tech time" 30
+		fail
+
+event "foe: lovelace tech time"
+
+mission "FOE: Lovelace Tech Available"
+	landing
+	invisible
+	source
+		government "Free Worlds" "Syndicate" "Republic" "Independent" "Pirate" "Commonwealth" "Free State"
+	to offer
+		has "event: foe: lovelace tech time"
 	on offer
 		event "foe: lovelace tech available"
+		conversation
+			"Now that the war is over, Lovelace starts to sell their surplus production of military grade equipment to common merchants in the hope to compensate for the reduction of orders from the Navy."
+			scene "outfit/particle turret dual"
+			scene "outfit/particle turret heavy"
+			scene "outfit/large navy shield"
+			scene "outfit/tactical marine"
+				decline

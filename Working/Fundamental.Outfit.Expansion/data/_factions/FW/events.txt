@@ -5,68 +5,77 @@
 	source
 		government "Free Worlds"
 	to offer
-		not "event: ranger gear" # backward compatibility
 		has "event: war begins"
 	on offer
 		event "foe: ranger gear"
 		conversation
-			scene "outfit/flag free worlds"
-			scene "outfit/tactical ranger outfit"
-			`We want YOU for the F.W. Rangers!`
-			`Fight for FREEDOM!`
-			`Come to the nearest recruiting station and enlist NOW!`
+			scene "outfit/tactical ranger"
+			`Prove to yourself that YOU have the strength and the courage to be FREE!`
+			`Join the RANGERS!`
 				decline
 
 
-mission "FOE: FW Startup Tech Available"
+
+mission "FOE: New FW Tech"
 	landing
 	invisible
 	non-blocking
 	source
-		government "Free Worlds" "Syndicate" "Republic" "Independent" "Pirate"
+		government "Free Worlds" "Syndicate" "Republic" "Independent" "Pirate" "Neutral"
 	to offer
-		not "event: fw startup tech available" # backward compatibility
-		has "event: initial deployment 2"
+		has "event: initial deployment 4"
 	on offer
-		event "foe: fw startup tech available"
+		event "foe: new fw tech"
 		conversation
-			scene "outfit/plasma howitzer"
-			scene "outfit/compressed fuel pod"
-			`Beat hotter with the Plasma Howitzer! You say it burns fuel to achieve this incredible performance? Don't worry! The Compressed Fuel Pod will help you out! KRAZ - Engineering for your freedom!`
-				decline
-
-
-mission "FOE: Fuel Shield Generators Available"
-	landing
-	invisible
-	non-blocking
-	source
-		government "Free Worlds" "Syndicate" "Republic" "Independent" "Pirate"
-	to offer
-		not "event: fuel shield generators available"  # backward compatibility
-		has "event: initial deployment 3"
-	on offer
-		event "foe: fuel shield generators available"
-		conversation
+			`The Free Worlds' Council hurried to distribute resources to the leading colleges and companies to keep up in the unfolding arms race. While Delta V focused on mass production, Kraz Cybernetics got creative, as you can deduce from the incoming advertisement hologram messages.`
+			scene "outfit/fuel pod compressed"
+			`You want to cross hostile areas without costly stopovers? You feel the urge to carry out deep strikes into the oppressor's hinterland? The Compressed Fuel Pod will help you out! KRAZ - Engineering for your freedom!`
 			scene "outfit/fuel shield large"
-			`The Free Worlds raise the stakes by introducing a new type of shield. Per hyper-fuel injection the shield generation output has been doubled. Hot! Innovative! KRAZ!`
-				decline
-
-
-mission "FOE: Mortar Blaster Available"
-	landing
-	invisible
-	non-blocking
-	source
-		government "Free Worlds" "Syndicate" "Republic" "Independent" "Pirate"
-	to offer
-		has "event: southern carriers 1"
-	on offer
-		event "foe: mortar blaster available"
-		conversation
+			`Fuel Shields! Doubled deflection power, fueled by hyperfuel! Shields against tyranny, hyping freedom! Hot! Innovative! KRAZ!`
 			scene "outfit/blaster mortar"
 			`We will not let our freedom be torpedoed! Send gorram Parliament a clear message in the only language it understands! Let the Mortar Blaster advocate your just case! Let the Mortar Blaster hold the final speech to the members of the jury! Let the Mortar Blaster blast the blasters of our freedom! KRAZ -- arming liberty!`
 				decline
+
+
+
+mission "FOE: FW Carriers Deployment"
+	landing
+	invisible
+	non-blocking
+	source
+		government "Free Worlds" "Syndicate" "Republic" "Independent" "Pirate" "Neutral"
+	to offer
+		has "southern carriers 3"
+	on offer
+		event "foe: fw carriers deployment" 2
+		fail
+
+
+
+mission "FOE: FW Plasma Deployment"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: foe: fw advanced fleet deployment"
+		has "event: plasma turret available"
+	on offer
+		event "foe: fw plasma deployment" 2
+		fail
+
+
+
+mission "FOE: FW Dreadnought Deployment"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: foe: fw advanced fleet deployment"
+		has "event: dreadnought deployment"
+	on offer
+		event "foe: fw dreadnought deployment" 2
+		fail
+
 
 
 mission "FOE: Plasma Repeater Turret Availability Timer"
@@ -75,69 +84,35 @@ mission "FOE: Plasma Repeater Turret Availability Timer"
 	to offer
 		has "event: plasma repeater advanced"
 	on offer
-		event "foe: plasma repeater turret available" 30
+		event "foe: plasma repeater turret time" 15
+		fail
 		
-event "foe: plasma repeater turret available"
+event "foe: plasma repeater turret time"
 	
 mission "FOE: Plasma Repeater Turret Available"
 	landing
 	invisible
 	non-blocking
 	source
-		government "Free Worlds" "Syndicate" "Republic" "Independent" "Pirate"
+		government "Free Worlds" "Syndicate" "Republic" "Independent" "Pirate" "Neutral" "Commonwealth" "Free State"
 	to offer
-		has "event: foe: plasma repeater turret available"
+		has "event: foe: plasma repeater turret time"
 	on offer
-		event "foe: plasma repeater turret"
+		event "foe: plasma repeater turret available"
 		conversation
 			scene "outfit/plasma repeater turret"
-			"Burn, burn, burn! Nothing burns hotter for liberty than hot stuff from KRAZ!"
+			"Burn, burn, burn! Nothing burns hotter for liberty than rings of fire from KRAZ!"
 				decline
 
 
-mission "FOE: FW Advanced Fleet Deployment"
+
+mission "FOE: FW Stack Plasma Deployment"
 	landing
 	invisible
 	non-blocking
 	to offer
-		has "event: foe: fuel shield generators available"
+		has "event: foe: plasma repeater turret available"
+		has "event: stack core for sale"
 	on offer
-		event "foe: fw advanced fleet deployment"
+		event "foe: fw stack plasma deployment"
 		fail
-
-
-mission "FOE: FW Plasma Deployment"
-	landing
-	invisible
-	non-blocking
-	to offer
-		has "event: plasma turret available"
-	on offer
-		event "foe: fw plasma deployment"
-		fail
-
-
-mission "FOE: FW Dreadnought Deployment"
-	landing
-	invisible
-	non-blocking
-	to offer
-		has "event: dreadnought deployment"
-	on offer
-		event "foe: fw dreadnought deployment"
-		fail
-
-
-mission "FOE: Quickstart FW"
-	landing
-	invisible
-	non-blocking
-	source
-		government "Free Worlds" "Syndicate" "Republic" "Independent" "Pirate"
-	to offer
-		has "event: quickstart free worlds shop changes"
-	on offer
-		event "foe: ranger gear"
-		event "foe: fw startup tech available"
-		event "foe: fuel shield generators available"
-		event "foe: plasma repeater turret"

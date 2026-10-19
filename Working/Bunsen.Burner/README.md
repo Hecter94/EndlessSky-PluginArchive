@@ -15,14 +15,12 @@ Also Darcy Manoel's H2H flamethrower, which is based on the same design, was add
 
 Needs that 60 days have lapsed since the Flamethrower became available, that the Free Worlds got the Catalytic Ramscoop, and that the Dreadnought has been deployed.
 
-**Balance Note**
-
-Since the changes of ES 0.10.7, which also affected heat dissipation of many ships, the vanilla Flamethrower became largely useless. Tests showed that this is valid for the Bunsen Burner, too. Hence, both have been stepwise buffed in the versions 1.4.x of the plugin, see below for details.
-
 **Changelog**
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-10-18 | 1.4.7 | Metadata fix. | 
+| 2026-10-18 | 1.4.6 | Removed Flamethrower-related content after PR #12491 has been merged. |
 | 2026-06-09 | 1.4.5 | Reworked ship and fleet variants employing the Bunsen Burner. |
 | 2026-06-05 | 1.4.4 | Aligned with [PR #12491](https://github.com/endless-sky/endless-sky/pull/12491). |
 | 2026-06-03 | 1.4.3 | Reduced fuel consumption of Flamethrower and Bunsen Burner by 75%. Reduced damage dropoff for the Flamethrower. Added ship and fleet variants which do actually use the Flamethrower, filling a gap in vanilla. Fixed a warning. |
@@ -37,4 +35,4 @@ Since the changes of ES 0.10.7, which also affected heat dissipation of many shi
 | 2025-05-03 | 1.0.2 | Metadata files fixes. |
 | 2025-04-28 | 1.0.1 | Readme and copyright fixes. |
 | 2025-04-28 | 1.0.0 | Overhaul and Re-publication as *Bunsen Burner*. |
-| 2021-01-26 | - | Last Update of the *Flamethrower Turret* plugin. |
+| 2021-01-26 | -- | Last Update of the *Flamethrower Turret* plugin. |

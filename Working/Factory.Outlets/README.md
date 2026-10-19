@@ -3,7 +3,7 @@
 
 **Authors: [Lifeyouristhis](https://github.com/lifeyouristhis), [Timeout](https://github.com/LixiChronikouOriou)**
 
-**Thanks**: Chemtrailoperator, Zuckung
+**Thanks:** Chemtrailoperator, Zuckung
 
 Ship price = hull + outfit prices. This simple equation has the consequence that ships can be overprized when one intends to replace most of the outfits anyway, and one would basically need only the hull.
 
@@ -36,6 +36,7 @@ As of now human-only. Someday perhaps support for aliens will be added.
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-10-18 | 1.3.5 | Metadata fix. |
 | 2026-09-12 | 1.3.4 | Added for each outlet ship variant a [Variant Map Name](https://github.com/endless-sky/endless-sky/wiki/CreatingShips#data) to be displayed in the map's shipyard panel to differentiate them properly from other sold variants of the same ship model (thx to Chemtrailoperator). Verified that the plugin-support is up to date. |
 | 2026-06-02 | 1.3.3 | Updated Louise and Pickerberry support. Verified that the support for Blended Ships, DAIS, LiM and Rumskib is up to date. |
 | 2026-03-29 | 1.3.2 | Added license file. |
@@ -45,4 +46,4 @@ As of now human-only. Someday perhaps support for aliens will be added.
 | 2025-11-09 | 1.1.1 | Added landing images for the 8 human outlet stations. |
 | 2025-09-07 | 1.1.0 | Added support for [DAIS](https://github.com/Daeridanii1/DAIS). Adjusted icon. |
 | 2025-08-13 | 1.0.0 | Complete re-implementation. Ships come with minimal outfits, sold in factory outlet stations around the shipyards' HQ planets. Plugins [RW Ships](https://www.moddb.com/mods/rw-ships) and [Louise Conglomerate Shipyards](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards) supported. |
-| 2017-09-14 | - | Last update of the *Bare Ships* plugin by Lifeyouristhis. |
+| 2017-09-14 | -- | Last update of the *Bare Ships* plugin by Lifeyouristhis. |

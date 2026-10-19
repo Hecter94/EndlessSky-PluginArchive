@@ -1,5 +1,3 @@
-disable mission "Plasma Repeater Turret Available" # here until I find a better place to put this
-
 mission "FOE: ZOE installed"
 	landing
 	invisible
@@ -13,9 +11,7 @@ mission "FOE: ZOE installed"
 
 event "foe: zoe installed"
 	outfitter "Kraz Advanced"
-		remove "Plasma Howitzer"
 		remove "Compressed Fuel Pod"
-		remove "Plasma Repeater Turret"
 	outfitter "Lovelace Basics"
 		remove "R0152 Naval Shield"
 		remove "R0238 Naval Shield"
@@ -32,3 +28,20 @@ event "foe: zoe installed"
 		remove "PDP016 Battery Pack"
 		remove "PDP032 Battery Pack"
 		remove "PDP064 Battery Pack"
+
+
+mission "FOE: ZOE Plasma Repeater Turret"
+	landing
+	invisible
+	non-blocking
+	repeat
+	to offer
+		has "installed plugin: Zoura's Outfits Expanded"
+		has "event: plasma repeater turret"
+	on offer
+		event "foe: remove zoe plasma repeater turret" 1
+		fail
+
+event "foe: remove zoe plasma repeater turret"
+	outfitter "Kraz Advanced"
+		remove "Plasma Repeater Turret"
