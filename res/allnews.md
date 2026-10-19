@@ -1,3 +1,6 @@
+2026-10-19 | Updated plugin 'Fundamental.Outfit.Expansion' by (many authors) | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#fundamentaloutfitexpansion)<br>
+2026-10-19 | Updated plugin 'Bunsen.Burner' by ItsNickBarry | [weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md#bunsenburner)<br>
+2026-10-19 | Updated plugin 'Factory.Outlets' by Lifeyouristhis & Timeout | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#factoryoutlets)<br>
 2026-10-16 | Updated plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#-omnis)<br>
 2026-10-13 | Updated plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#high-dpi)<br>
 2026-10-10 | Updated plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#-omnis)<br>
