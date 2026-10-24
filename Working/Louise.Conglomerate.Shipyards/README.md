@@ -19,6 +19,7 @@ Yeer e Ki Cooperative Shipyards reached out to the Louise Conglomerate, and sign
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-10-23 | 3.1.3 | Added administrative costs. Small maintenance stuff. |
 | 2026-07-08 | 3.1.2 | Fixed sprite warnings because of odd number of pixels. Removed obsolete image versions -- end of compatibility with ships acquired using Louise 1.x and 2.0. | 
 | 2026-05-27 | 3.1.1 | Improved the ship descriptions (thx to Glorbimus Prime and Loymdayddaud). Changed the outfits equipped on the Hai variants of Commercator and Mercator to make the stock sales more affordable. |
 | 2026-04-03 | 3.1.0 | Added the Gradator interceptor (thx to Kitteh), including corresponding variant and fleet definitions. Also added reverse engine definitions, and a license file. |
