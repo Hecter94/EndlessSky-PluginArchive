@@ -576,9 +576,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Fundamental.Outfit.Expansion/icon.png' height='100'></img><br>
 
 
-[Fundamental.Outfit.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fundamental.Outfit.Expansion.zip) | 6.72 mb | 2026-10-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fundamental.Outfit.Expansion/) <br>
+[Fundamental.Outfit.Expansion.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fundamental.Outfit.Expansion.zip) | 6.72 mb | 2026-10-27 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fundamental.Outfit.Expansion/) <br>
 Author: (many authors) | Category: Outfits <br>
-[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion) (last commit 2026-10-23) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#fundamentaloutfitexpansion) (last commit 2026-10-26) <br>
 
 >A collection of essential outfits from various plugins of various authors which should be vanilla, but incomprehensibly aren't.
 >
@@ -594,21 +594,21 @@ Author: (many authors) | Category: Outfits <br>
 
 **Editors:** Timeout (Research, Compilation and Statistics), Kitteh (Design, Art and Tests)
 
-**Thanks** for feedback, discussions and improvements: AvianGeneticist, Cend, Haniyasushiff, Kassandra Haruki, Keilaph, Questenberg, Ragno, Redtechgamer236, Unknown_Rawrs
+**Thanks** for feedback, discussions and improvements: AvianGeneticist, Cend, Haniyasushiff, Kassandra Haruki, Keilaph, Questenberg, Ragno, Redtechgamer236, Sachiho Vanihalla, Unknown_Rawrs
 
-**ES Version Support**
-FOE is tested only on stable releases of ES, the last being 0.11.2. Using FOE with unstable versions might wipe the cat gif collection on your data crystal.
+**ES Version Support:** FOE is tested only on stable releases of ES, the last being 0.11.2. Using FOE with unstable versions might wipe the cat gif collection on your data crystal.
 
 **Attention**
 - FOE 2.x is not downwards compatible to FOE 1.x.
-- Don't use together with Omnis' Free Worlds storyline skipping.
-- Tributing human space becomes significantly harder.
+- Not recommended to use together with Omnis' Free Worlds storyline skipping.
+- Tributing human space becomes harder.
 
 **Notes**
 - Other fundamental content can be found in the plugin recommendation list, especially see [Rumskib](https://github.com/TheGiraffe3/rumskib) for Plasma Turrets (Single, Quad) and Gatling Turrets (Single, Triple, Quad).
 - Overwrites the vanilla Heavy Blaster. Justified, as the vanilla HB's lore is imho heretic to the original by 1010todd.
 - Contains the ES-wide only human adaptive reactor -- Synatom's Sentinel Reactor. *Edit*: Turns out that AvianGeneticist had that idea before, but [for the Unfettered Hai](https://github.com/AvianGeneticist/Zoura-s-Outfits-Expanded/blob/main/data/hai/unfettered%20outfits.txt).
 - The original concept for FOE's Shipwright Gear was introduced by Darcy Manoel and  [Hurleveur](https://github.com/Hurleveur) with the Shipwright Gear in [Fluff](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#fluff) resp. the Repair Team in [Unfettered Innovations](https://github.com/Hurleveur/unfettered-innovations). The stats are a mix-up inspired from those. The concept was extended by toolset-slots and evolved into the Hesperian Toolbox.
+- Sets Meteor Missiles' infrared tracking to 80%.
 
 **Content**
 | Author | Outfit | Origin |
@@ -630,6 +630,7 @@ FOE is tested only on stable releases of ES, the last being 0.11.2. Using FOE wi
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-10-26 | 2.0.2 | Fixed lack of power generation at a Manta variant (thx to Redtechgamer236). Set infrared tracking for meteor missile launchers (Heavy, Turret, vanilla Launcher & Pod) to 80% according to experiments carried out by Sachiho Vanihalla.|
 | 2026-10-23 | 2.0.1 | Fixed faulty sales of Stun Gun/Turret and Sizeable Maps (thx Haniyasushiff), as well as a warning considering a blurry image. Nerfed the OP fire pattern of Meteor Launchers and Sidewinder VLS, otherwise anti-missile turrets would overload too easily. |
 | 2026-10-18 | 2.0.0 | **Added:** Tiny Outfit Expansion, KP-6PT Parabol Turret. Various missing @2x images. New image for Compressed Fuel Pod. QoL sales for Avgi and Successors. Lore for Small and Large Interference Emitters (now named ShMEL-IZ6 and ShMEL-IZ14 Interference Emitters) and Active Radar Jammer (now ShMEL-AR11 Radar Jammer). Person ship for Pilcrow, a dedicated FOE miner. **Rebalanced:** Small Outfit Expansion, Living Space Removal, Naval Shields, Trooper/Ranger/Marine Gear, Bastet Autocannon Turret, Duct-Tape, HTS tools, Shipwright Gear, Heavy Meteor Launcher, Meteor Turret, Sidewinder VLS, Interference Emitters. The vanilla radar jammers now consume energy (realism!), the "active" radar jammer became a medium one with new stats. **Moved:** Laser Sight to [an own plugin](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LaserSight), and Wanderer Radiant Engines to [FOE: Alien](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#FundamentalOutfitExpansionAlien) **Removed:** [Engineering Room](https://github.com/MidnightPlugins/Lost-in-Midnight), [Plasma Howitzer](https://github.com/AvianGeneticist/Zoura-s-Outfits-Expanded), [Afterburner Steering](https://www.moddb.com/mods/rw-extras/downloads/afterburner-steering1), [Nuke Turret](https://github.com/endless-sky/endless-sky/discussions/7928), and the deprecated Flak Cannon (replaced by Bastet AC Turret) and [Single Plasma Turret](https://github.com/TheGiraffe3/rumskib). **Temporarily removed:** Sekhmet Dual Autocannon **Further:** Updated restocking, various text changes (thx Redtechgamer236), rework of FW, Republic, Syndicate, Deep Security and Human Miner variants and fleets. **Todo:** Merchant and Pirate fleets. FW flamethrower fleets. Complete overhaul and integrate Fluharty's contribution Red Rock Armories (Phobos missile launcher and Deimos railgun turret). |
 | 2026-05-30 | 1.9.0 | Added to Omnis for experimental purposes Evan Fluharty's outfits Barrage Launcher and Broadsider. Updated Engineering Room. On author's request removed [Beehive Rockets](https://www.moddb.com/mods/rw-extras/downloads/beehive-rockets), [Gun Port Missiles](https://www.moddb.com/mods/rw-extras/downloads/gun-port-missiles) and [Turret Scanners](https://www.moddb.com/mods/rw-extras/downloads/turret-scanners). Some fixes. |

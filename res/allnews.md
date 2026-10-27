@@ -1,3 +1,4 @@
+2026-10-27 | Updated plugin 'Fundamental.Outfit.Expansion' by (many authors) | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#fundamentaloutfitexpansion)<br>
 2026-10-24 | Updated plugin 'Louise.Conglomerate.Shipyards' by Loyse | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#louiseconglomerateshipyards)<br>
 2026-10-24 | Updated plugin 'Fundamental.Outfit.Expansion' by (many authors) | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#fundamentaloutfitexpansion)<br>
 2026-10-21 | Updated plugin 'World Forge' by Amazinite | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#world-forge)<br>
