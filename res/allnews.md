@@ -1,3 +1,10 @@
+2026-10-28 | Updated plugin 'LowerDamage' by Arachi | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#lowerdamage)<br>
+2026-10-28 | Updated plugin 'Glory to the CCOR' by Arachi | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#glory-to-the-ccor)<br>
+2026-10-28 | Updated plugin 'PirateVariantsHPFix' by Arachi | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#piratevariantshpfix)<br>
+2026-10-28 | Updated plugin 'EvenLowerDamage' by Arachi | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#evenlowerdamage)<br>
+2026-10-28 | Updated plugin 'RacingFlivverModifications' by Arachi | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#racingflivvermodifications)<br>
+2026-10-28 | Updated plugin 'LinearHPScaling' by Arachi | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#linearhpscaling)<br>
+2026-10-28 | Updated plugin 'SmolEngines' by Arachi | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#smolengines)<br>
 2026-10-27 | Updated plugin 'Fundamental.Outfit.Expansion' by (many authors) | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#fundamentaloutfitexpansion)<br>
 2026-10-24 | Updated plugin 'Louise.Conglomerate.Shipyards' by Loyse | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#louiseconglomerateshipyards)<br>
 2026-10-24 | Updated plugin 'Fundamental.Outfit.Expansion' by (many authors) | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#fundamentaloutfitexpansion)<br>
