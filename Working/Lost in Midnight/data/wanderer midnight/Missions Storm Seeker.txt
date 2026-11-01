@@ -47,7 +47,7 @@ mission "Storm Seeker Raider Reminder"
 
 mission "Storm Seeker Raider 2"
 	name "Salvage: Raider"
-	description "Bring 145 crew and a Jump Drive to <destination>. (The outfit will automatically be removed if you bring one.)"
+	description "Bring 145 crew and a Jump Drive in cargo to <destination>. (The outfit will automatically be removed if you bring one.)"
 	source
 		not planet "Season's End"
 		not attributes "uninhabited"
@@ -91,7 +91,7 @@ mission "Storm Seeker Raider 2"
 mission "Storm Seeker Shallow Pond"
 	minor
 	name "Salvage: Shallow Pond"
-	description "Bring 1 new crewmember and a spare Jump Drive to <destination>. (The outfit will automatically be removed if you bring one.)"
+	description "Bring 1 new crewmember and a Jump Drive in cargo to <destination>. (The outfit will automatically be removed if you bring one.)"
 	repeat
 	source "Season's End"
 	to offer
@@ -219,6 +219,18 @@ mission "Storm Seeker Raid: Free Worlds"
 		government "Pirate"
 		personality waiting plunders harvests coward
 		fleet "Marauder fleet X"
+	npc
+		to spawn
+			has "Storm Seeker Raid: Syndicate: done"
+		government "Pirate"
+		personality waiting plunders harvests coward
+		fleet "L. Advanced Independent"
+		fleet "S. Advanced Independent" 2
+	npc
+		to spawn
+			not "Storm Seeker Raid: Free Worlds: done"
+		government "Pirate"
+		personality waiting plunders harvests coward
 		fleet "Coalition Pirate"
 	npc kill
 		government "Pirate"
@@ -262,6 +274,16 @@ mission "Storm Seeker Raid: Syndicate"
 		fleet "Large Syndicate"
 		fleet "Small Syndicate"
 	npc
+		to spawn
+			has "Storm Seeker Raid: Syndicate: done"
+		government "Pirate"
+		personality waiting plunders harvests coward
+		fleet "Marauder fleet X"
+		fleet "L. Advanced Independent"
+		fleet "S. Advanced Independent" 2
+	npc
+		to spawn
+			not "Storm Seeker Raid: Syndicate: done"
 		government "Pirate"
 		personality waiting plunders harvests coward
 		fleet
@@ -322,6 +344,16 @@ mission "Storm Seeker Raid: Deep"
 		fleet "Large Deep Security"
 		fleet "Small Deep Security"
 	npc
+		to spawn
+			has "Storm Seeker Raid: Deep: done"
+		government "Pirate"
+		personality waiting plunders harvests coward
+		fleet "Marauder fleet X"
+		fleet "L. Advanced Independent"
+		fleet "S. Advanced Independent" 2
+	npc
+		to spawn
+			has "Storm Seeker Raid: Deep: done"
 		government "Pirate"
 		personality waiting plunders harvests coward		
 		fleet
@@ -374,12 +406,23 @@ mission "Storm Seeker Raid: Paradise"
 		fleet "Large Republic"
 		fleet "Small Republic"
 	npc
+		to spawn
+			has "Storm Seeker Raid: Paradise: done"
+		government "Pirate"
+		personality waiting plunders harvests coward
+		fleet "Marauder fleet X"
+		fleet "L. Advanced Independent" 2
+		fleet "S. Advanced Independent" 4
+	npc
+		to spawn
+			not "Storm Seeker Raid: Paradise: done"
 		government "Pirate"
 		personality waiting plunders harvests coward
 		fleet "Marauder Parade"
 	npc
 		to spawn
 			has "event: Grudge Legacy"
+			not "Storm Seeker Raid: Paradise: done"
 		government "Pirate"
 		personality waiting plunders harvests coward
 		fleet "Grudge Parade"
@@ -426,6 +469,16 @@ mission "Storm Seeker Raid: North"
 		fleet "Large Oathkeeper"
 		fleet "Small Oathkeeper"
 	npc
+		to spawn
+			has "Storm Seeker Raid: North: done"
+		government "Pirate"
+		personality waiting plunders harvests coward
+		fleet "Marauder fleet X"
+		fleet "L. Advanced Independent"
+		fleet "S. Advanced Independent" 2
+	npc
+		to spawn
+			not "Storm Seeker Raid: North: done"
 		government "Pirate"
 		personality waiting plunders harvests coward
 		fleet
@@ -664,11 +717,6 @@ mission "Storm Seeker Counter Attack 3"
 		dialog `Your passenger is a young hot shot named Kenny. "This meeting is a pretty big deal for me. You were highly recommended. I hope you live up to your reputation. Also, don't be alarmed, but the people we're meeting are a bit unusual...`
 	on fail
 		dialog `[MISSION FAILED] Without your passenger to guide you, you fail to find the meeting location for the Alpha ship, Rolling Thunder. If life were a game, you could load a save file and try again.`
-	on complete
-		conversation
-			scene "thumbnail/storm seeker-thumb"
-			`Your passenger, Kenny, directs you through a network of underground caverns to reach the designated meeting spot. After a moment the Rolling Thunder appears. It hails you. "Captain <first> <last>, I'd heard you were part of some elite squad Danforth put together to hunt me down. Kenny, you're not getting out of this alive."`
-			`Kenny curses his luck as you maneuver the <ship> to take evasive action. It doesn't take long for the battle to abandon the cramped Underworld tunnels of Naihe Qiao for open space.`
 
 mission "Storm Seeker Counter Attack 4"
 	landing
@@ -689,6 +737,12 @@ mission "Storm Seeker Counter Attack 4"
 		fail "Storm Seeker Raid: Deep"
 		fail "Storm Seeker Raid: Syndicate"
 		fail "Storm Seeker Raid: Free Worlds"
+	on offer
+		conversation
+			scene "thumbnail/storm seeker-thumb"
+			`Your passenger, Kenny, directs you through a network of underground caverns to reach the designated meeting spot. After a moment the Rolling Thunder appears. It hails you. "Captain <first> <last>, I'd heard you were part of some elite squad Danforth put together to hunt me down. Kenny, you're not getting out of this alive."`
+			`Kenny curses his luck as you maneuver the <ship> to take evasive action. It doesn't take long for the battle to abandon the cramped Underworld tunnels of Naihe Qiao for open space.`
+				launch
 	on enter
 		conversation
 			scene "scene/scene-badcompany"
@@ -778,7 +832,7 @@ mission "Storm Seeker Reward Expires"
 mission "Storm Seeker Epilogue: Spring Leaf"
 	minor
 	name "Salvage: Spring Leaf"
-	description "Bring 4 new crewmembers and a spare Jump Drive to <destination>. (The outfit will automatically be removed if you bring one.)"
+	description "Bring 4 new crewmembers and a Jump Drive in cargo to <destination>. (The outfit will automatically be removed if you bring one.)"
 	source "Season's End"
 	repeat
 	to offer
@@ -845,7 +899,7 @@ mission "Storm Seeker Epilogue: Spring Leaf Crew"
 mission "Storm Seeker Epilogue: Winter Leaf"
 	minor
 	name "Salvage: Winter Leaf"
-	description "Bring 12 new crewmembers and a spare Jump Drive to <destination>. (The outfit will automatically be removed if you bring one.)"
+	description "Bring 12 new crewmembers and a Jump Drive in cargo to <destination>. (The outfit will automatically be removed if you bring one.)"
 	source "Season's End"
 	to offer
 		has "Storm Seeker Epilogue: Spring Leaf: done"
@@ -896,7 +950,7 @@ mission "Storm Seeker Epilogue: Winter Leaf Crew"
 mission "Storm Seeker Epilogue: Storm Seeker"
 	minor
 	name "Salvage: Storm Seeker"
-	description "Bring 18 new crewmembers and a spare Jump Drive to <destination>. (The outfit will automatically be removed if you bring one.)"
+	description "Bring 18 new crewmembers and a Jump Drive in cargo to <destination>. (The outfit will automatically be removed if you bring one.)"
 	source "Season's End"
 	to offer
 		has "Storm Seeker Epilogue: Winter Leaf: done"
@@ -948,7 +1002,7 @@ mission "Storm Seeker Epilogue: Storm Seeker Crew"
 mission "Storm Seeker Epilogue: Tornado"
 	minor
 	name "Salvage: Tornado"
-	description "Bring 41 new crewmembers and a spare Jump Drive to <destination>. (The outfit will automatically be removed if you bring one.)"
+	description "Bring 41 new crewmembers and a Jump Drive in cargo to <destination>. (The outfit will automatically be removed if you bring one.)"
 	source "Season's End"
 	to offer
 		has "Storm Seeker Epilogue: Storm Seeker: done"
@@ -999,7 +1053,7 @@ mission "Storm Seeker Epilogue: Tornado Crew"
 mission "Storm Seeker Epilogue: Tsunami"
 	minor
 	name "Salvage: Tsunami"
-	description "Bring 152 new crewmembers and a spare Jump Drive to <destination>. (The outfit will automatically be removed if you bring one.)"
+	description "Bring 152 new crewmembers and a Jump Drive in cargo to <destination>. (The outfit will automatically be removed if you bring one.)"
 	source "Season's End"
 	to offer
 		has "Storm Seeker Epilogue: Tornado: done"
@@ -1127,7 +1181,7 @@ fleet "Storm Seeker Raid"
 	government "Pirate"
 	names "pirate"
 	personality harvests plunders
-		confusion 20
+		#confusion 20
 	variant
 		"Deep River Rapids"
 		"Deep River Pirate 2"
@@ -1224,7 +1278,7 @@ fleet "Coalition Pirate"
 	names "pirate"
 	cargo 1
 	personality plunders
-		confusion 20
+		#confusion 20
 	variant 1
 		"Arach Hulk (pirate)"
 		"Arach Freighter (pirate)" 2

@@ -51,7 +51,7 @@ class CSVFile:
 			data = GetFileData(file_name)
 		assert(data != None)
 		self.lines = list(data.rstrip('\n').split("\n"))
-		self.lines = [line.split(",") for line in self.lines]
+		self.lines = [line.split("|") for line in self.lines]
 		# columns
 		if len(self.lines) >= 2 and len(self.lines[1]) == 1 and (self.lines[1][0] == "") or (self.lines[1][0] == "---"):
 			self.column_names = self.lines.pop(0)

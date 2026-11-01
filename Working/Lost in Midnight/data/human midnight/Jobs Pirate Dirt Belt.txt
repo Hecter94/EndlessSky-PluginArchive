@@ -141,7 +141,7 @@ mission "Vesta Tribute"
 		random < 70
 	cargo "ore" 45 2 .05
 	on complete
-		"pirate jobs" += 2
+		"pirate jobs" ++
 		"reputation: Pirate" ++
 		payment 9000 2000
 		dialog `You drop off the tribute to the pirates, and they pay you <payment>.`
@@ -177,7 +177,7 @@ mission "Vesta Tribute [large]"
 		random < 40
 	cargo "ore" 65 2 .05
 	on complete
-		"pirate jobs" += 4
+		"pirate jobs" ++
 		"reputation: Pirate" ++
 		payment 9000 2000
 		dialog `You drop off the tribute to the pirates, and they pay you <payment>.`
@@ -673,31 +673,31 @@ mission "Hostage Exchange: hard"
 			has "midnight hostage exchange trap"
 		government "Bounty Hunter"
 		personality waiting vindictive unconstrained
-			confusion 10
+			#confusion 10
 		fleet "Bounty Hunters"
 	npc evade
 		to spawn
 			has "midnight hostage exchange trap"
-			"armament deterrence" >= 2
+			"armament deterrence" >= 0.6
 		government "Bounty Hunter"
 		personality waiting vindictive unconstrained
-			confusion 10
+			#confusion 10
 		fleet "Bounty Hunters"
 	npc evade
 		to spawn
 			has "midnight hostage exchange trap"
-			"armament deterrence" >= 3
+			"armament deterrence" >= 1.0
 		government "Bounty Hunter"
 		personality waiting vindictive unconstrained
-			confusion 10
+			#confusion 10
 		fleet "Bounty Hunters"
 	npc evade
 		to spawn
 			has "midnight hostage exchange trap"
-			"armament deterrence" >= 4
+			"armament deterrence" >= 1.4
 		government "Bounty Hunter"
 		personality waiting vindictive unconstrained
-			confusion 10
+			#confusion 10
 		fleet "Hired Guns"
 	on abort
 		clear "midnight hostage exchange trap"
@@ -2422,20 +2422,32 @@ mission "Rum Cellar Throwdown"
 		fleet "pirate raid"
 	npc kill
 		to spawn
-			"ships: Heavy Warship" + "ships: Utility" + "ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Superheavy" > 7
+			"armament deterrence" >= 1.6
 		government "Pirate"
 		personality waiting staying vindictive
-		fleet "pirate raid" 2
-	npc kill
-		government "Pirate (Rivals)"
-		personality waiting staying vindictive
-		fleet "pirate raid (rivals)" 3
+		fleet "pirate raid"
 	npc kill
 		to spawn
-			"ships: Heavy Warship" + "ships: Utility" + "ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Superheavy" > 7
+			"armament deterrence" >= 2.4
+		government "Pirate"
+		personality waiting staying vindictive
+		fleet "pirate raid"
+	npc kill
 		government "Pirate (Rivals)"
 		personality waiting staying vindictive
-		fleet "pirate raid (rivals)" 3
+		fleet "pirate raid (rivals)" 2
+	npc kill
+		to spawn
+			"armament deterrence" >= 1.6
+		government "Pirate (Rivals)"
+		personality waiting staying vindictive
+		fleet "pirate raid (rivals)" 2
+	npc kill
+		to spawn
+			"armament deterrence" >= 2.4
+		government "Pirate (Rivals)"
+		personality waiting staying vindictive
+		fleet "pirate raid (rivals)" 2
 
 mission "Rum Cellar Wager"
 	minor

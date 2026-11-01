@@ -47,7 +47,7 @@ mission "Biohazard 1: Star Explorer"
 		government "Bounty"
 		system "Gorvi"
 		personality waiting staying
-			confusion 20
+			#confusion 20
 		ship "Scout (Bounty Hunter)" "Jekyll"
 		ship "Scout (Bounty Hunter)" "Hyde"
 		ship "Shuttle Pod (Pirate)" "Igor"
@@ -56,7 +56,7 @@ mission "Biohazard 1: Star Explorer"
 		government "Bounty"
 		system "Gorvi"
 		personality target waiting staying mute
-			confusion 10
+			#confusion 10
 		ship "Star Explorer (Biohazard)" "Biohazard-031"
 		conversation
 			action
@@ -144,7 +144,7 @@ mission "Biohazard 2: Bulk Freighter"
 		government "Bounty"
 		system Atik
 		personality target waiting staying
-			confusion 20
+			#confusion 20
 		fleet
 			names "bounty hunter"
 			cargo 0
@@ -156,7 +156,7 @@ mission "Biohazard 2: Bulk Freighter"
 		government "Bounty"
 		system Atik
 		personality target waiting staying
-			confusion 20
+			#confusion 20
 		fleet
 			names "slave drones"
 			cargo 0
@@ -166,7 +166,7 @@ mission "Biohazard 2: Bulk Freighter"
 		government "Bounty"
 		system Atik
 		personality target waiting staying mute
-			confusion 10
+			#confusion 10
 		ship "Bulk Freighter (Biohazard)" "Biohazard-013"
 		conversation
 			action
@@ -342,7 +342,7 @@ mission "Bounty Hunting: Angry Chicken"
 		system
 			distance 1 2
 		personality target waiting staying disables harvests tracked
-			confusion 20
+			#confusion 20
 		ship "Modified Firebird (Modified Hyperdrive)" "Angry Chicken"
 		dialog `Rocky hails you: "That wasn't so tough. Let's head back to <planet> and split the reward."`
 	on fail
@@ -356,6 +356,7 @@ mission "Drunk Pilot"
 	minor
 	name "Drunk Pilot"
 	description "The captain, and possibly the crew, of the <npc> is drunk. There's a small bounty of <payment> to disable their ship."
+	"apparent payment" 10000
 	source
 		government "Republic" "Syndicate" "Free Worlds"
 		attributes spaceport
@@ -398,7 +399,7 @@ mission "Drunk Pilot"
 	npc disable save
 		government "Bounty"
 		personality target waiting uninterested forbearing coward appeasing mute
-			confusion 120
+			#confusion 120
 		ship "Modified Firebird (Smuggler)" "Wild Turkey"
 		on disable
 			payment 10000
@@ -416,38 +417,62 @@ mission "Executive Guard: Syndicate Extremists"
 	to offer
 		has "FW Syndicate Extremists 1A: done"
 		not "FW Syndicate Extremists 1B: done"
-		"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" > 7
+		"armament deterrence" >= 14
+	npc
+		to spawn
+			"armament deterrence" >= 2.1
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality waiting staying heroic
+		fleet
+			names "syndicate capital"
+			variant
+				"Protector (Proton)"
+	npc
+		to spawn
+			"armament deterrence" >= 2.8
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality waiting staying heroic
+		fleet
+			names "syndicate capital"
+			variant
+				"Vanguard"
+	npc
+		to spawn
+			"armament deterrence" >= 3.5
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality waiting staying heroic
+		fleet
+			names "syndicate capital"
+			variant
+				"Protector (Proton)"
+	npc
+		to spawn
+			"armament deterrence" >= 4.2
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality waiting staying heroic
+		fleet
+			names "syndicate capital"
+			variant
+				"Vanguard"
 	npc
 		government "Syndicate (Extremist)"
 		system Algenib
 		personality waiting staying heroic
-		ship "Executive Guard" "S.S. Longinus"
 		ship "Barb (Proton)" "F-001" 
 		ship "Barb (Proton)" "F-002"
 		ship "Barb (Proton)" "F-003"
 		ship "Barb (Proton)" "F-004"
 		ship "Barb (Proton)" "F-005"
 		ship "Barb (Proton)" "F-006"
-	npc evade
-		to spawn
-			"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" > 9
+	npc kill
 		government "Syndicate (Extremist)"
 		system Algenib
 		personality waiting staying heroic
-		fleet
-			names "syndicate capital"
-			variant
-				"Protector (Proton)" 2
-	npc evade
-		to spawn
-			"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" > 11
-		government "Syndicate (Extremist)"
-		system Algenib
-		personality waiting staying heroic
-		fleet
-			names "syndicate capital"
-			variant
-				"Vanguard" 2
+		ship "Executive Guard" "S.S. Longinus"
 	on complete
 		"reputation: Pirate" += 10
 		log "Defeated the S.S. Longinus, an Executive Guard, a heavy warship the Syndicate reserves for use by their corporate VIPs."
@@ -462,7 +487,7 @@ mission "Executive Guard: Syndicate Extremist Post War"
 	to offer
 		has "free worlds reconciliation"
 		not "Executive Guard: Syndicate Extremists: offered"
-		"ships: Heavy Freighter" + "ships: Medium Warship" + "ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" > 7
+		"armament deterrence" >= 21
 		random < 70
 	on offer
 		conversation
@@ -486,16 +511,42 @@ mission "Executive Guard: Syndicate Extremist Post War"
 			scene "ship/executive guard/executive guard"
 			`You find the S.S. Longinus leading a large fleet of Marauder ships! They waste no time turning their weapons towards you!`
 	npc
+		to spawn
+			"armament deterrence" >= 2.8
 		government "Syndicate (Extremist)"
 		system Algenib
 		personality waiting staying heroic
-		ship "Barb (Proton)" "F-001" 
-		ship "Barb (Proton)" "F-002"
-		ship "Barb (Proton)" "F-003"
-		ship "Barb (Proton)" "F-004"
-		ship "Barb (Proton)" "F-005"
-		ship "Barb (Proton)" "F-006"
+		fleet
+			names "syndicate capital"
+			variant
+				"Marauder Manta"
+				"Marauder Manta (Weapons)"
+				"Marauder Manta (Engines)"
 	npc
+		to spawn
+			"armament deterrence" >= 3.5
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality waiting staying heroic
+		fleet
+			names "syndicate capital"
+			variant
+				"Marauder Splinter"
+				"Marauder Splinter (Weapons)"
+				"Marauder Splinter (Engines)"
+	npc
+		to spawn
+			"armament deterrence" >= 4.2
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality waiting staying heroic
+		fleet
+			names "syndicate capital"
+			variant
+				"Marauder Protector"
+	npc
+		to spawn
+			"armament deterrence" >= 4.9
 		government "Syndicate (Extremist)"
 		system Algenib
 		personality waiting staying heroic
@@ -503,13 +554,6 @@ mission "Executive Guard: Syndicate Extremist Post War"
 			names "syndicate capital"
 			variant
 				"Marauder Vanguard"
-				"Marauder Protector"
-				"Marauder Manta"
-				"Marauder Manta (Weapons)"
-				"Marauder Manta (Engines)"
-				"Marauder Splinter"
-				"Marauder Splinter (Weapons)"
-				"Marauder Splinter (Engines)"
 	npc
 		government "Syndicate (Extremist)"
 		system Algenib
@@ -524,6 +568,16 @@ mission "Executive Guard: Syndicate Extremist Post War"
 				"Marauder Wasp (Blaster)"
 				"Marauder Wasp (Afterburner)"
 				"Marauder Wasp (Nuke)" 3
+	npc
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality waiting staying heroic
+		ship "Barb (Proton)" "F-001" 
+		ship "Barb (Proton)" "F-002"
+		ship "Barb (Proton)" "F-003"
+		ship "Barb (Proton)" "F-004"
+		ship "Barb (Proton)" "F-005"
+		ship "Barb (Proton)" "F-006"
 	npc kill
 		government "Syndicate (Extremist)"
 		system Algenib
@@ -566,25 +620,25 @@ mission "Gremlin Protoype Escort"
 			`	"Great! My name's Henrietta, and this is the Gremlin," she says while patting the hull of her ship.`
 				accept
 	npc
-		to spawn
-			"combat rating" > 100
-		government "Pirate"
-		personality entering plunders harvests
-			confusion 20
-		fleet "pirate raid"
-	npc
 		government "Pirate"
 		system destination
 		personality plunders harvests
-			confusion 20
+			#confusion 20
 		fleet "pirate raid"
 	npc
 		to spawn
-			"combat rating" > 200
+			"armament deterrence" >= 1.4
+		government "Pirate"
+		personality entering plunders harvests
+			#confusion 20
+		fleet "pirate raid"
+	npc
+		to spawn
+			"armament deterrence" >= 2.1
 		government "Pirate"
 		system destination
 		personality staying plunders harvests
-			confusion 20
+			#confusion 20
 		fleet "pirate raid"
 	npc accompany save
 		government "Merchant"
@@ -1032,7 +1086,7 @@ mission "Limit Breaker Syndicate Patrol"
 	npc accompany save
 		government "Syndicate"
 		personality heroic unconstrained
-			confusion 20
+			#confusion 20
 		ship "Wasp (Limit Break)" "S-13X9"
 	on fail
 		event "limit breaker syndicate patrols"
@@ -1082,13 +1136,13 @@ mission "Midnight FW Epilogue: JJ and Brother Greg"
 	npc
 		government "Pirate"
 		personality waiting staying harvests plunders
-			confusion 10
+			#confusion 10
 		ship "Marauder Leviathan" "Golden Serpent"
 	npc
 		government "Pirate"
 		system Girtab
 		personality waiting staying harvests plunders
-			confusion 10
+			#confusion 10
 		ship "Marauder Falcon" "Golden Talons"
 	on complete
 		payment 1000000
@@ -1546,7 +1600,7 @@ mission "Midnight Paradise Fortune 1"
 	npc evade
 		government "Pirate"
 		personality entering plunders unconstrained
-			confusion 20
+			#confusion 20
 		fleet "Small Southern Pirates" 3
 	on fail
 		dialog `[MISSION FAILED] You failed to bring Diana Howl to <planet>. If life were a game, you could load a save file and try again.`
@@ -2325,7 +2379,7 @@ mission "Midnight Swarm Lord"
 		system
 			distance 2 3
 		personality target waiting staying plunders
-			confusion 20
+			#confusion 20
 		ship "Starbus (Troops)" "Swarm Lord"
 		fleet
 			names "militia small"
@@ -2387,7 +2441,7 @@ mission "Midnight Wanderlust"
 	npc kill
 		government "Bounty Hunter"
 		personality target entering heroic vindictive nemesis
-			confusion 10
+			#confusion 10
 		ship "Modified Hogshead (Modified Hyperdrive)" "Wanderlust"
 		on kill
 			set "Midnight Wanderlust: done"
@@ -2464,7 +2518,7 @@ mission "Midnight Striker"
 		government "Test Dummy"
 		system Kraz
 		personality target waiting staying disables
-			confusion 10
+			#confusion 10
 		fleet
 			fighters
 				names "free worlds fighters"
@@ -3006,7 +3060,7 @@ mission "Pirate FW invite 1"
 	npc
 		government "Pirate"
 		personality plunders harvests coward
-			confusion 20
+			#confusion 20
 		fleet
 			names "pirate"
 			cargo 0
@@ -3250,7 +3304,7 @@ mission "Stranded Dirtbelt Merchant"
 	npc evade
 		government "Pirate"
 		personality plunders harvests
-			confusion 20
+			#confusion 20
 		fleet "Large Dirt Belt Pirates"
 	on complete
 		payment 50000
@@ -3396,7 +3450,7 @@ mission "Testing: Proton Gun-CF8"
 	npc save disable "scan outfits"
 		government "Test Dummy"
 		personality disables staying heroic target
-			confusion 120
+			#confusion 120
 		system destination
 		ship "Vanguard Test-PGCF8" "Syndicate Test Vessel"
 		conversation
@@ -3484,7 +3538,7 @@ mission "Testing: Proton Turret-ATS"
 	npc save disable "scan outfits"
 		government "Test Dummy"
 		personality disables staying heroic target
-			confusion 120
+			#confusion 120
 		system destination
 		ship "Protector Test-PTATS" "Syndicate Test Vessel"
 		conversation

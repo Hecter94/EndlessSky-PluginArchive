@@ -432,6 +432,14 @@ mission `Ruin-the-Fun Escort Fleets`
 					to display
 						has `Ruin-the-Fun Escort Fleets: Incipias Standard Trade`
 					goto `disable Incipias Standard Trade`
+				`	[  ] Kaatrij Expeditionary`
+					to display
+						not `Ruin-the-Fun Escort Fleets: Kaatrij Expeditionary`
+					goto `enable Kaatrij Expeditionary`
+				`	[x] Kaatrij Expeditionary`
+					to display
+						has `Ruin-the-Fun Escort Fleets: Kaatrij Expeditionary`
+					goto `disable Kaatrij Expeditionary`
 				`	[  ] Kaatrij Home`
 					to display
 						not `Ruin-the-Fun Escort Fleets: Kaatrij Home`
@@ -1862,6 +1870,7 @@ mission `Ruin-the-Fun Escort Fleets`
 				clear `Ruin-the-Fun Escort Fleets: Iije (Uninterested)`
 				clear `Ruin-the-Fun Escort Fleets: Incipias Standard Mining`
 				clear `Ruin-the-Fun Escort Fleets: Incipias Standard Trade`
+				clear `Ruin-the-Fun Escort Fleets: Kaatrij Expeditionary`
 				clear `Ruin-the-Fun Escort Fleets: Kaatrij Home`
 				clear `Ruin-the-Fun Escort Fleets: Ka'het`
 				clear `Ruin-the-Fun Escort Fleets: Ka'het Aggressive`
@@ -2648,6 +2657,18 @@ mission `Ruin-the-Fun Escort Fleets`
 				clear `Ruin-the-Fun Escort Fleets: Incipias Standard Trade`
 				`Ruin-the-Fun Escort Fleets count` -= 1
 			`	The Incipias Standard Trade will no longer spawn.`
+				goto begin
+			label `enable Kaatrij Expeditionary`
+			action
+				set `Ruin-the-Fun Escort Fleets: Kaatrij Expeditionary`
+				`Ruin-the-Fun Escort Fleets count` += 1
+			`	The Kaatrij Expeditionary will spawn.`
+				goto begin
+			label `disable Kaatrij Expeditionary`
+			action
+				clear `Ruin-the-Fun Escort Fleets: Kaatrij Expeditionary`
+				`Ruin-the-Fun Escort Fleets count` -= 1
+			`	The Kaatrij Expeditionary will no longer spawn.`
 				goto begin
 			label `enable Kaatrij Home`
 			action
@@ -5067,6 +5088,13 @@ mission `Ruin-the-Fun Escort Fleets`
 			has `Ruin-the-Fun Escort Fleets: Incipias Standard Trade`
 		to despawn
 			not `Ruin-the-Fun Escort Fleets: Incipias Standard Trade`
+	npc disable
+		fleet `Kaatrij Expeditionary`
+		personality heroic disables
+		to spawn
+			has `Ruin-the-Fun Escort Fleets: Kaatrij Expeditionary`
+		to despawn
+			not `Ruin-the-Fun Escort Fleets: Kaatrij Expeditionary`
 	npc disable
 		fleet `Kaatrij Home`
 		personality heroic disables

@@ -94,6 +94,9 @@ mission "Midnight Anachronism 1"
 		or
 			has "SB-Labs Vindicator 4: done"
 			has "Oathbreaker Liberator 4: done"
+		or
+			"reputation: Wanderer" > 0
+			"tribute: Vara K'chrai" > 0
 	on offer
 		event "midnight paradox wormhole forms" 0
 
@@ -193,13 +196,13 @@ mission "Midnight Anachronism 5"
 			choice
 				`	(Get ready.)`
 			scene "thumbnail/vyuira"
-			`	A familiar voice penetrates your consciousness. The voice of Quash. It says, "Captain <first> <last>, you hound me even here!?! Hmm... you seem much younger than when I saw you last. Ah, I see now. You must be from the local quantum ley line. Excellent! I shall take great pleasure in killing you. In doing so, I shall kill countless versions of you that populate multiple alternate future time paths!" Quash's presence leaves your consciousness.`
+			`	A familiar voice penetrates your consciousness. The voice of Quash. It says, "Captain <first> <last>, you hound me even here!?! Hmm... you seem much younger than when I saw you last. Ah, I understand now. You must be from the local quantum ley line. Excellent! I shall take great pleasure in killing you. In doing so, I shall kill countless versions of you that populate multiple alternate future time paths!" Quash's presence leaves your consciousness.`
 				accept
 	npc kill
 		government "Nemesis"
 		system "World's End"
 		personality target waiting staying vindictive mute
-			confusion 10
+			#confusion 10
 		ship "vyu-Ira (wounded)" "Sanctity"
 		on disable
 			dialog `The alien ship has stopped moving...`
@@ -284,7 +287,7 @@ outfit "Quantum Torpedo Access Temporary"
 	"requires Research Data (Bio)" 1
 	"requires Research Data (Chem)" 1
 	"requires Research Data (Phys)" 1
-	description "This technical manual details how to manufacture Quantum Torpedoes. Having this makes it possible for any outfitter to offer Star Tail Cells even if it is normally not stocked there."
+	description "This technical manual details how to manufacture Quantum Torpedoes. Having this makes it possible for any outfitter to offer Quantum Torpedoes even if it is normally not stocked there."
 	description "	This is beyond your technical understanding. You'll have to reverse engineer this tech using your own foundational knowledge as a guide."
 	description "	This tech can be researched instead of purchased. (Hover/Tap the attributes below for more details.)"
 	description "	After this is acquired it can be found in the Licenses area in future visits to the outfitter."
@@ -305,7 +308,7 @@ outfit "Quantum Torpedo Tech License"
 	"requires Research Data (Bio)" 1
 	"requires Research Data (Chem)" 1
 	"requires Research Data (Phys)" 1
-	description "This technical manual details how to manufacture Quantum Torpedoes. Having this makes it possible for any outfitter to offer Star Tail Cells even if it is normally not stocked there."
+	description "This technical manual details how to manufacture Quantum Torpedoes. Having this makes it possible for any outfitter to offer Quantum Torpedoes even if it is normally not stocked there."
 
 outfitter "Quantum Torpedo Access"
 	to sell
@@ -341,7 +344,7 @@ mission "Midnight Tech: Quantum Torpedo Access Permanent License"
 	non-blocking
 	destination Earth
 	to offer
-		has "outfit: Quantum Torpedo Access Temporary"
+		has "outfit (removable): Quantum Torpedo Access Temporary"
 		not "license: Quantum Torpedo Tech"
 	on offer
 		outfit "Quantum Torpedo Access Temporary" -1
@@ -392,6 +395,7 @@ mission "Midnight Research: Quantum Torpedo Tech"
 ship "Anachronism"
 	sprite "ship/AESmisc caster"
 	thumbnail "thumbnail/AESmisc caster"
+	"administrative cost" 10
 	attributes
 		category "Heavy Warship"
 		"cost" 3000000

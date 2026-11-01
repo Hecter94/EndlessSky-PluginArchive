@@ -435,36 +435,6 @@ mission "Midnight Successors: Shadow Transport 3"
 		"reputation: Shadow House" ++
 
 
-mission "Midnight Successors: Void Jelly Intro"
-	minor
-	invisible
-	source Vade-Kella-Kaska
-	to offer
-		or
-			has "outfit (flagship installed): Voidjelly"
-			has "outfit (flagship installed): Voidfish"
-			has "outfit (flagship installed): Voidlunker"
-			has "outfit (flagship installed): Integral Wood"
-			has "outfit (flagship installed): Jamfruit"
-			has "outfit (flagship installed): Pollen"
-	on offer
-		conversation
-			scene "outfit/voidjelly"
-			`A Shadow House agent slithers out of the shadows. "Our scans shows signs that thou hast visited places where the Voidjellies dwell. Occasionally we hast use for those foul creatures. We shall add it to our requests from time to time."`
-			choice
-				`	"I'll look out for them."`
-					goto understand
-				`	"What do you use them for?"`
-			`	The agent answers in a subdued tone "Throughout our exploration of the stars, we found no better source for poison that suits our purposes."`
-			choice
-				`	"Because of how quickly it kills?"`
-			`	The Shadow House agent shudders, flashing shades of yellow while making a noise that seems like laughter. "No. Perpetual death from this poison comes slowly and painfully. 'twere a perfect tool for sending a message."`
-			choice
-				`	"I see."`
-			label understand
-			`	The agent slithers away...`
-				decline
-
 mission "Midnight Successors: Shadow Void Jelly"
 	job
 	name "Shadow Void Jelly"
@@ -533,7 +503,7 @@ mission "Midnight Shadow House Espionage (Old Houses)"
 		system
 			near Uuoru-Kella 0 1
 		personality target waiting staying timid secretive uninterested
-			confusion 10
+			#confusion 10
 		fleet
 			names "high houses"
 			cargo 0
@@ -589,7 +559,7 @@ mission "Midnight Shadow House Espionage (New Houses)"
 		system
 			near Myiara-Nnesa 0 1
 		personality target waiting staying timid secretive uninterested
-			confusion 10
+			#confusion 10
 		fleet
 			names "high houses"
 			cargo 0
@@ -647,7 +617,7 @@ mission "Midnight Shadow House Rogue (Old)"
 		system
 			near Uuoru-Kella 0 1
 		personality target waiting surveillance secretive timid unconstrained uninterested restricted
-			confusion 10
+			#confusion 10
 		fleet "People's Shadow"
 		on kill
 			"reputation: Shadow House" ++
@@ -674,7 +644,7 @@ mission "Midnight Shadow House Rogue (New)"
 		system
 			near Myiara-Nnesa 0 1
 		personality target waiting surveillance secretive timid unconstrained uninterested restricted
-			confusion 10
+			#confusion 10
 		fleet "People's Shadow"
 		on kill
 			"reputation: Shadow House" ++
@@ -685,3 +655,104 @@ mission "Midnight Shadow House Rogue (New)"
 		"reputation: Shadow House" --
 
 
+mission "Midnight Shadow House Quarg Bounty"
+	job
+	repeat
+	name "Sado Quarg Bounty"
+	description "Return to <destination> with 88 Phalanx Systems. Payment is <payment>."
+	source Vade-Kella-Kaska
+	to offer
+		has "sado quarg bounty"
+		"reputation: Shadow House" >= 1
+		has "license: Shadow House"
+		not "Midnight Shadow House Quarg Rebel: active"
+	to complete
+		"outfit (removable): Phalanx System" >= 88
+	on abort
+		"reputation: Shadow House" --
+	on complete
+		"reputation: Shadow House" ++
+		payment 1000000
+		outfit "Phalanx System" -88
+		conversation
+			scene "outfit/quarg countermeasures"
+			`You deliver 180 Phalanx Systems, proof of Quarg killed. Shadow House rewards you with <payment>.`
+
+mission "Midnight Shadow House Quarg Espionage 1"
+	job
+	repeat
+	name "Sado Quarg Espionage"
+	description "Smuggle a Sado Espionage Device onto <destination>. Then return to <origin> to collect your reward. Payment is <payment>."
+	"apparent payment" 1000000
+	source Vade-Kella-Kaska
+	destination
+		government "Quarg" "Quarg (Gegno)" "Quarg (Hai)" "Quarg (Incipias)" "Quarg (Kor Efret)"
+		attributes station
+	to offer
+		has "sado quarg espionage"
+		"reputation: Shadow House" >= 1
+		has "license: Shadow House"
+		not "Midnight Shadow House Quarg Espionage 1: active"
+	on accept
+		outfit "Sado Espionage Device" 1
+		conversation
+			scene "outfit/sado-orb"
+			`A Sado Espionage Device is provided for you to smuggle onto <destination>.`
+				accept
+	to complete
+		has "outfit (removable): Sado Espionage Device"
+	to fail
+		not "outfit (all): Sado Espionage Device"
+	on fail
+		"reputation: Shadow House" --
+	on abort
+		"reputation: Shadow House" --
+	on complete
+		outfit "Sado Espionage Device" -1
+
+mission "Midnight Shadow House Quarg Espionage 2"
+	landing
+	repeat
+	name "Sado Quarg Espionage"
+	description "You smuggled the Sado Orb onto <origin>. Return to <destination> to collect your reward. Payment is <payment>."
+	destination Vade-Kella-Kaska
+	to offer
+		has "Midnight Shadow House Quarg Espionage 1: done"
+		not "Midnight Shadow House Quarg Espionage 2: active"
+	on offer
+		clear "Midnight Shadow House Quarg Espionage 1: done"
+		conversation
+			scene "outfit/sado-orb"
+			`You smuggled the Sado Orb onto <origin>. Return to <destination> to collect your reward.`
+				accept
+	on abort
+		"reputation: Shadow House" --
+	on complete
+		"reputation: Shadow House" ++
+		payment 1000000
+		conversation
+			scene "outfit/sado-orb"
+			`The Sado Orb is functional. Shadow House rewards you with <payment>.`
+
+mission "Midnight Shadow House Quarg Jump"
+	job
+	repeat
+	name "Sado Jump Drive"
+	description "Return to <destination> with a spare Jump Drive. Payment is <payment>."
+	source Vade-Kella-Kaska
+	to offer
+		has "sado quarg jump"
+		"reputation: Shadow House" >= 1
+		has "license: Shadow House"
+		not "Midnight Shadow House Quarg Jump: active"
+	on abort
+		"reputation: Shadow House" --
+	to complete
+		"outfit (removable): Jump Drive" > 1
+	on complete
+		"reputation: Shadow House" ++
+		outfit "Jump Drive" -1
+		payment 1000000
+		conversation
+			scene "outfit/jump drive"
+			`You deliver the spare Jump Drive. Shadow House rewards you with <payment>.`

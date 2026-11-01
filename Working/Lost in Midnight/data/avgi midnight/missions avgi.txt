@@ -20,6 +20,20 @@ phrase "midnight avgi blooming orchid fleet"
 	phrase
 		"digit"
 
+
+mission "Midnight Avgi: I AM DAMSELFLYMAN"
+	landing
+	invisible
+	non-blocking
+	repeat
+	to offer
+		has "damselflyman"
+		not "license: Damselflyman"
+	on offer
+		set "license: Damselflyman"
+		fail
+
+
 mission "Midnight Avgi Blooming Orchid"
 	invisible
 	landing
@@ -387,7 +401,7 @@ mission "Midnight Avgi Voidlunker Auction"
 		or
 			has "outfit: Voidfish"
 			has "outfit: Murkfish"
-		has "outfit: Voidlunker"
+		has "outfit (removable): Voidlunker"
 		random < 70
 	on offer
 		conversation
@@ -414,6 +428,7 @@ mission "Midnight Avgi Voidlunker Auction"
 					goto reject
 			action
 				payment 24000
+				outfit "Voidlunker" -1
 			scene "outfit/voidfishlarge"
 			`	Other Avgi congratulate the winning bidder. You receive 24,000 credits in exchange for the Voidlunker. The crowd gazes with what may be awe or envy as the winner struggles to haul this legendary prize away. Future generations of Avgi will tell the tale of the day a human named <first> <last> delivered the legendary Voidlunker to <planet>.`
 				decline
@@ -436,7 +451,7 @@ mission "Midnight Avgi Voidlunker Job"
 		not attributes uninhabited
 	to offer
 		has "license: Avgi Harvester"
-		has "outfit: Voidlunker"
+		has "outfit (removable): Voidlunker"
 		random < 70
 	on complete
 		outfit "Voidlunker" -1

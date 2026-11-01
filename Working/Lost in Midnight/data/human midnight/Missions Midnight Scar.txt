@@ -52,44 +52,11 @@ event "midnight scar's hideout (non-Hai)"
 fleet "Pirate Asteroid Defense"
 	government "Pirate"
 	personality vindictive
-		confusion 120
+		#confusion 120
 	cargo 0	
 	variant
 		"Asteroid Defense"
 		"Phantom Drone Launcher"
-
-mission "Midnight Scar (non-Hai) Patch"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "event: midnight scar's hideout (non-Hai)"
-		not "midnight scar's hideout (non-Hai) patched"
-	on offer
-		event "midnight scar's hideout (non-Hai) patch" 0
-		fail
-
-event "midnight scar's hideout (non-Hai) patch"
-	planet "Scar's Hideout"
-		attributes pirate station "north pirate"
-		landscape land/loc1
-		description "Scar's Hideout is a hollowed-out asteroid used by Scar's Legion as their main base of operations. From here they harass anyone making the journey through the uninhabited systems of the Far North. Recently the gang has discovered the wormhole to Hai space, leading them to start causing trouble for more than just unlucky merchants."
-		spaceport "The spaceport of Scar's Hideout is a massive hangar dug into the core of the asteroid, accessible only by a single blast door on the ceiling. Judging by the size of the hangar, you'd guess that about a third of the entire asteroid was hollowed out for the spaceport alone."
-		security 0
-		government "Pirate"
-		remove outfitter "Basic Outfits"
-		remove outfitter "Pirate Outfits"
-		outfitter "Ammo North"
-		outfitter "Ammo South"
-		outfitter "Basic Expansions"
-		outfitter "Stinger Missile"
-		"required reputation" 0
-		tribute 100
-			threshold 625
-			fleet "Large Northern Pirates" 1
-			fleet "Small Northern Pirates" 8
-			fleet "Pirate Asteroid Defense" 8
-
 
 mission "Midnight Scar (Hai)"
 	non-blocking
@@ -127,60 +94,9 @@ event "midnight scar's hideout (Hai)"
 		add fleet "Small Scar's Legion" 5000
 		add fleet "Large Scar's Legion" 15000
 		add fleet "Scar's Asteroid Defense" 10000
-	planet "Scar's Hideout"
-		attributes pirate station
-		landscape land/loc1
-		description "Scar's Hideout is a hollowed-out asteroid used by Scar's Legion as their main base of operations. From here they harass anyone making the journey through the uninhabited systems of the Far North. Recently the gang has discovered the wormhole to Hai space, leading them to start causing trouble for more than just unlucky merchants."
-		spaceport "The spaceport of Scar's Hideout is a massive hangar dug into the core of the asteroid, accessible only by a single blast door on the ceiling. Judging by the size of the hangar, you'd guess that about a third of the entire asteroid was hollowed out for the spaceport alone."
-		security 0
-		government "Scar's Legion"
-		outfitter "Ammo North"
-		outfitter "Ammo South"
-		outfitter "Basic Expansions"
-		outfitter "Stinger Missile"
-		"required reputation" 0
-		tribute 100
-			threshold 625
-			fleet "Large Scar's Legion" 2
-			fleet "Small Scar's Legion" 8
-			fleet "Scar's Asteroid Defense" 8
-
-
-mission "Midnight Scar (Hai) patch 2"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "event: midnight scar's hideout (Hai)"
-		not "midnight scar's hideout (Hai) patched"
-	on offer
-		event "midnight scar's hideout (Hai) patch 2"
-		fail
-
-event "midnight scar's hideout (Hai) patch 2"
-	system Danoa
-		add fleet "Small Scar's Legion" 5000
-		add fleet "Large Scar's Legion" 15000
-		add fleet "Scar's Asteroid Defense" 10000
 		add fleet "Small Ionic Leech" 40000
-		add fleet "Small Northern Merchants" 15000
-		add fleet "Small Northern Pirates" 5000
-		add fleet "Large Northern Pirates" 16000
-		add fleet "Large Republic" 30000
-		add fleet "Human Miners" 1600
-
-mission "Midnight Scar (Hai) Patch 3"
-	non-blocking
-	landing
-	invisible
-	to offer
-		has "event: midnight scar's hideout (Hai)"
-		not "midnight scar's hideout (Hai) patched 3"
-	on offer
-		event "midnight scar's hideout (Hai) patch 3" 0
-		fail
-
-event "midnight scar's hideout (Hai) patch 3"
+		add fleet "Science Drone" 4000
+		add fleet "Smugglers" 10000
 	planet "Scar's Hideout"
 		attributes pirate station
 		landscape land/loc1
@@ -188,8 +104,6 @@ event "midnight scar's hideout (Hai) patch 3"
 		spaceport "The spaceport of Scar's Hideout is a massive hangar dug into the core of the asteroid, accessible only by a single blast door on the ceiling. Judging by the size of the hangar, you'd guess that about a third of the entire asteroid was hollowed out for the spaceport alone."
 		security 0
 		government "Scar's Legion"
-		remove outfitter "Basic Outfits"
-		remove outfitter "Pirate Outfits"
 		outfitter "Ammo North"
 		outfitter "Ammo South"
 		outfitter "Basic Expansions"
@@ -205,7 +119,7 @@ event "midnight scar's hideout (Hai) patch 3"
 fleet "Scar's Asteroid Defense"
 	government "Scar's Legion"
 	personality vindictive
-		confusion 120
+		#confusion 120
 	cargo 0	
 	variant
 		"Asteroid Defense"
@@ -358,15 +272,36 @@ mission "Midnight Scar: Bounty Hai"
 		personality derelict waiting coward
 		fleet "Large Human Merchants (Hai)"
 	npc kill
+		to spawn
+			"armament deterrence" >= 1.0
 		government "Scar's Legion"
 		system Waypoint
 		personality target plunders harvests marked
-			confusion 20
+			#confusion 20
+		"cargo settings"
+			cargo 3
+			outfitters "Scar's Plunder"
+		fleet "Small Scar's Legion"
+	npc kill
+		to spawn
+			"armament deterrence" >= 1.2
+		government "Scar's Legion"
+		system Waypoint
+		personality target plunders harvests marked
+			#confusion 20
+		"cargo settings"
+			cargo 3
+			outfitters "Scar's Plunder"
+		fleet "Small Scar's Legion"
+	npc kill
+		government "Scar's Legion"
+		system Waypoint
+		personality target plunders harvests marked
+			#confusion 20
 		"cargo settings"
 			cargo 3
 			outfitters "Scar's Plunder"
 		fleet "Large Scar's Legion"
-		fleet "Small Scar's Legion" 2
 	on complete
 		payment 1000000
 		dialog `The authorities on <planet> reward you with <payment> for eliminating the <npc> and its pirate fleet.`
@@ -401,7 +336,7 @@ mission "Midnight Scar: Scar's Legion Raid"
 	npc evade
 		government "Scar's Legion"
 		personality target plunders harvests marked
-			confusion 20
+			#confusion 20
 		"cargo settings"
 			cargo 3
 			outfitters "Scar's Plunder"
@@ -774,7 +709,7 @@ mission "Midnight Scar: Bounty North"
 		system
 			near Rajak 0 2
 		personality target plunders harvests marked
-			confusion 20
+			#confusion 20
 		fleet "Large Scar's Legion"
 		fleet "Small Scar's Legion" 2
 	on complete
@@ -797,7 +732,7 @@ mission "Midnight Scar: Bounty Core"
 		system
 			near Rajak 0 2
 		personality target plunders harvests marked
-			confusion 20
+			#confusion 20
 		fleet "Large Scar's Legion"
 		fleet "Small Scar's Legion" 2
 	on complete
@@ -823,36 +758,36 @@ mission "Midnight Scar: Hai Merchant Escort [Hai-North]"
 		government "Scar's Legion"
 		system Rajak
 		personality nemesis waiting harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Small Scar's Legion"
 	npc
 		government "Scar's Legion"
 		system Danoa
 		personality nemesis waiting harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Large Scar's Legion"
 	npc
 		government "Scar's Legion"
 		system "Rigel"
 		personality nemesis waiting harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Small Scar's Legion"
 	npc
 		government "Scar's Legion"
 		system "Cardax"
 		personality nemesis waiting harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Small Scar's Legion"
 	npc
 		government "Pirate"
 		personality nemesis staying harvests plunders
-			confusion 20
+			#confusion 20
 		system destination
 		fleet "Large Northern Pirates"
 	npc accompany save
 		government "Merchant"
 		personality escort timid
-			confusion 30
+			#confusion 30
 		fleet
 			names "civilian"
 			variant
@@ -882,37 +817,37 @@ mission "Midnight Scar: Hai Merchant Escort [Hai-Core]"
 		government "Scar's Legion"
 		system Rajak
 		personality nemesis waiting harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Small Scar's Legion" 3
 	npc
 		government "Scar's Legion"
 		system Danoa
 		personality nemesis waiting harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Large Scar's Legion"
 	npc
 		government "Scar's Legion"
 		system "Rigel"
 		personality nemesis waiting harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Large Scar's Legion"
 	npc
 		government "Scar's Legion"
 		system "Cardax"
 		personality nemesis waiting harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Large Scar's Legion"
 	npc
 		government "Pirate"
 		personality nemesis staying harvests plunders
-			confusion 20
+			#confusion 20
 		system destination
 		fleet "Large Core Pirates"
 		fleet "Small Core Pirates"
 	npc accompany save
 		government "Merchant"
 		personality escort timid
-			confusion 30
+			#confusion 30
 		fleet
 			names "civilian"
 			variant
@@ -942,35 +877,35 @@ mission "Midnight Scar: Hai Merchant Escort [North-Hai]"
 		government "Scar's Legion"
 		system "Rigel"
 		personality nemesis waiting harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Small Scar's Legion"
 	npc
 		government "Scar's Legion"
 		system Danoa
 		personality nemesis waiting harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Large Scar's Legion"
 	npc
 		government "Scar's Legion"
 		system Rajak
 		personality nemesis waiting harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Small Scar's Legion"
 	npc
 		government "Scar's Legion"
 		system "Cardax"
 		personality nemesis waiting harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Small Scar's Legion"
 	npc
 		government "Pirate"
 		personality entering staying harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Large Northern Pirates"
 	npc accompany save
 		government "Merchant"
 		personality escort timid
-			confusion 30
+			#confusion 30
 		fleet
 			names "civilian"
 			cargo 3
@@ -1002,35 +937,35 @@ mission "Midnight Scar: Hai Merchant Escort [Core-Hai]"
 		government "Scar's Legion"
 		system "Cardax"
 		personality nemesis waiting harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Small Scar's Legion"
 	npc
 		government "Scar's Legion"
 		system Danoa
 		personality nemesis waiting harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Large Scar's Legion"
 	npc
 		government "Scar's Legion"
 		system "Rigel"
 		personality nemesis waiting harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Small Scar's Legion"
 	npc
 		government "Scar's Legion"
 		system Rajak
 		personality nemesis waiting harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Small Scar's Legion"
 	npc
 		government "Pirate"
 		personality entering staying harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "Large Core Pirates"
 	npc accompany save
 		government "Merchant"
 		personality escort timid
-			confusion 30
+			#confusion 30
 		fleet
 			names "civilian"
 			variant
@@ -1391,7 +1326,7 @@ fleet "Small Scar's Legion"
 	government "Scar's Legion"
 	names "pirate"
 	personality plunders harvests
-		confusion 20
+		#confusion 20
 	outfitters "Hai Advanced"
 	variant
 		"Firebird (Hai Weapons)" 2
@@ -1459,7 +1394,7 @@ fleet "Large Scar's Legion"
 	government "Scar's Legion"
 	names "pirate"
 	personality plunders harvests
-		confusion 20
+		#confusion 20
 	outfitters "Hai Advanced"
 	variant
 		"Bactrian (Hai Weapons)"
@@ -1569,3 +1504,54 @@ fleet "Large Scar's Legion"
 		"Lance"
 		"Corvette (Hai)"
 		"Buckler (Hai)"
+
+
+
+############################
+#
+# deprecated
+#
+############################
+
+mission "Midnight Scar (non-Hai) Patch"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "event: midnight scar's hideout (non-Hai)"
+#		not "midnight scar's hideout (non-Hai) patched"
+	on offer
+		event "midnight scar's hideout (non-Hai) patch" 0
+		fail
+
+event "midnight scar's hideout (non-Hai) patch"
+
+mission "Midnight Scar (Hai) patch 2"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "event: midnight scar's hideout (Hai)"
+#		not "midnight scar's hideout (Hai) patched"
+	on offer
+		event "midnight scar's hideout (Hai) patch 2"
+		fail
+
+event "midnight scar's hideout (Hai) patch 2"
+
+mission "Midnight Scar (Hai) Patch 3"
+	non-blocking
+	landing
+	invisible
+	to offer
+		never
+#		has "event: midnight scar's hideout (Hai)"
+#		not "midnight scar's hideout (Hai) patched 3"
+	on offer
+		event "midnight scar's hideout (Hai) patch 3" 0
+		fail
+
+event "midnight scar's hideout (Hai) patch 3"
+

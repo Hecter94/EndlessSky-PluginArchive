@@ -36,13 +36,13 @@ mission "Midnight Successor Shadow House 0"
 			scene "outfit/predecessor armor plate"
 			`The sales crew are perplexed by the armor you present. "This armour doth not seem agreeable with our moderne configuratzions! I feare we cannot employ it for service upon thy ship."`
 			``
-			`	As you leave, one of the other customers approaches. Glancing about before speaking, this one says "The honest Artisans here mayhap cannot aid thee, yet knavish ones may." The suggestion is given with a discreet tone barely above a whisper. The altruist quickly moves away before anyone else notices.`
+			`	As you leave, one of the other customers approaches. Glancing about before speaking, this one says "The honest artisans here mayhap cannot aid thee, yet knavish ones may." The suggestion is given with a discreet tone barely above a whisper. The altruist quickly moves away before anyone else notices.`
 				accept
 	npc
 		government "People's Houses (Hostile)"
 		system Kella-Uoasa
 		personality waiting staying disables harvests plunders
-			confusion 20
+			#confusion 20
 		fleet "People's Houses Raiders"
 
 mission "Midnight Successor Shadow House 1"
@@ -80,7 +80,40 @@ mission "Midnight Successor Shadow House 1"
 			label refuse
 			`	The shopkeeper shoos you away with their tentacles "Then hast thou no affaire with me. Get thee hence from my sight!"`
 				decline
-	on stopover
+
+mission "Midnight Successor Shadow House 1 (Kasii-Cavasaa-Oa)"
+	landing
+	invisible
+	infiltrating
+	deadline 1
+	source Kasii-Cavasaa-Oa
+	to offer
+		has "Midnight Successor Shadow House 1: active"
+	on offer
+		dialog `After several hours of searching the spaceport, you find a suitable location to descreetly place the eavesdropping sculpture.`
+
+mission "Midnight Successor Shadow House 1 (Khora-Vasa-Reyyaa)"
+	landing
+	invisible
+	infiltrating
+	deadline 1
+	source Khora-Vasa-Reyyaa
+	to offer
+		has "Midnight Successor Shadow House 1: active"
+	on offer
+		dialog `After several hours of searching the spaceport, you find a suitable location to descreetly place the eavesdropping sculpture.`
+
+mission "Midnight Successor Shadow House 1 (Completion)"
+	transition
+	name "Multimode Armor"
+	description "Place two sculptures at the shipyards on <stopovers>. Then return to <destination>. You will be sentenced to death if the authorities catch you."
+	destination Kasii-Tuur-Saqru
+	to offer
+		has "Midnight Successor Shadow House 1 (Kasii-Cavasaa-Oa): offered"
+		has "Midnight Successor Shadow House 1 (Khora-Vasa-Reyyaa): offered"
+		not "Midnight Successor Shadow House 2: offered"
+	on offer
+		fail "Midnight Successor Shadow House 1"
 		dialog `You've placed the listening devices at both locations. Return to <destination> to learn about the Multimode Armor.`
 	on complete
 		event "midnight successor shadow house"
@@ -120,28 +153,6 @@ event "midnight successor shadow house"
 			"Kvelqde-Sosrue"
 
 
-mission "Midnight Successor Shadow House 1 (Kasii-Cavasaa-Oa)"
-	landing
-	invisible
-	infiltrating
-	deadline 1
-	source Kasii-Cavasaa-Oa
-	to offer
-		has "Midnight Successor Shadow House 1: active"
-	on offer
-		dialog `After several hours of searching the spaceport, you find a suitable location to descreetly place the eavesdropping sculpture.`
-
-mission "Midnight Successor Shadow House 1 (Khora-Vasa-Reyyaa)"
-	landing
-	invisible
-	infiltrating
-	deadline 1
-	source Khora-Vasa-Reyyaa
-	to offer
-		has "Midnight Successor Shadow House 1: active"
-	on offer
-		dialog `After several hours of searching the spaceport, you find a suitable location to descreetly place the eavesdropping sculpture.`
-
 mission "Midnight Successor Shadow House 2"
 	landing
 	name "Multimode Armor?"
@@ -149,7 +160,8 @@ mission "Midnight Successor Shadow House 2"
 	source Kasii-Tuur-Saqru
 	destination Vade-Kella-Kaska
 	to offer
-		has "Midnight Successor Shadow House 1: done"
+		has "Midnight Successor Shadow House 1 (Kasii-Cavasaa-Oa): offered"
+		has "Midnight Successor Shadow House 1 (Khora-Vasa-Reyyaa): offered"
 	on offer
 		conversation
 			scene "outfit/unknown"
@@ -201,14 +213,14 @@ mission "Midnight Successor Shadow Cloak"
 				`	"I understand."`
 					goto end
 				`	"What if I tell the High Houses about you?"`
-			`	The Shadow House agent shudders, flashing shades of yellow while making a noise that seems like laughter. "Then shall thee be put to death. We have insidiated all other Houses, with at least one of our agents. These are dedicate to ensure the House of Shadows remaineth but a tale amongst the common sort."`
+			`	The Shadow House agent shudders, flashing shades of yellow while making a noise that seems like laughter. "We have insidiated all other Houses, with at least one of our agents. These are dedicate to ensure the House of Shadows remaineth but a myth amongst the common sort. Bear thou this in mind. In simple terms, the House of Shadows doth not exist in the minds of the High Houses. Whosoever thou speak'st with thereof shall likely hold thy tale as naught but a mere flight of fancy."`
 			choice
 				`	"I see."`
 			label end
 			`	The agent slithers away into the shadows, leaving you to explore the station on your own.`
 				accept
 	to complete
-		has "outfit: Multimode Armor: Cloak"
+		has "outfit (removable): Multimode Armor: Cloak"
 
 
 mission "Midnight Successor House in Shadow"
@@ -217,7 +229,7 @@ mission "Midnight Successor House in Shadow"
 	source Vade-Kella-Kaska
 	to offer
 		has "Midnight Successor Shadow Cloak: done"
-		has "outfit: Multimode Armor: Cloak"
+		has "outfit (removable): Multimode Armor: Cloak"
 	on offer
 		conversation
 			scene "outfit/unknown"
@@ -235,24 +247,63 @@ mission "Midnight Successor House in Shadow"
 				set "midnight delivered shadow house cloak"
 				"reputation: Shadow House" ++
 				event "midnight add shadow house shipyard"
-			`	The Multimode Armor: Cloak is removed from your ship. "The Shadow House doth give thee thanks for thy service. We shall grant thee the grace to purchase our lesser vessels. It is our hope to continue in this our mutuall good accord."`
+			`	The Multimode Armor: Cloak is removed from your ship. "Give them great meals of beef and iron and steel, they will eat like wolves and fight like devils. The Shadow House doth give thee thanks for thy service. We shall grant thee the grace to purchase our lesser vessels. It is our hope to continue in this our mutuall good accord."`
 				accept
 	on enter
 		conversation
 			scene "thumbnail/ojde-sado-thumb"
 			`A heavily modified Ojde is patrolling the system...`
+	npc
+		government "Shadow House"
+		personality waiting staying secretive uninterested timid coward quiet
+			#confusion 10
+		ship "Kvelqde-Kiitaa (Coilgun Turret)" "Raaja-myiara"
+		ship "Kvelqde-Kiitaa (Coilgun Turret)" "Sera-myiara"
 	npc kill
 		government "Shadow House"
 		personality waiting staying secretive uninterested timid coward quiet
-			confusion 10
+			#confusion 10
 		ship "Ojde-Sado" "Deathless Myiara"
-		ship "Kvelqde-Kiitaa (Coilgun Turret)" "Raaja-myiara"
-		ship "Kvelqde-Kiitaa (Coilgun Turret)" "Sera-myiara"
+		on kill
+			set "Deathless Myiara destroyed"
+			fail
 
 event "midnight add shadow house shipyard"
 	planet Vade-Kella-Kaska
 		add shipyard "Shadow House"
-	
+
+event "Deathless Myiara returns"
+
+mission "Midnight Successor Deathless Myiara returns"
+	landing
+	invisible
+	source
+		not planet Vade-Kella-Kaska
+	destination Vade-Kella-Kaska
+	to offer
+		has "Deathless Myiara busy"
+		has "event: Deathless Myiara returns"
+		"reputation: Shadow House" >= 0
+		has "license: Shadow House"
+		not "Deathless Myiara destroyed"
+	on offer
+		clear "Deathless Myiara busy"
+		clear "event: Deathless Myiara returns"
+	npc
+		government "Shadow House"
+		personality waiting staying secretive uninterested timid coward quiet
+			#confusion 10
+		ship "Kvelqde-Kiitaa (Coilgun Turret)" "Raaja-myiara"
+		ship "Kvelqde-Kiitaa (Coilgun Turret)" "Sera-myiara"
+	npc kill
+		government "Shadow House"
+		personality waiting staying secretive uninterested timid coward quiet
+			#confusion 10
+		ship "Ojde-Sado" "Deathless Myiara"
+		on kill
+			set "Deathless Myiara destroyed"
+			fail
+
 mission "Midnight Add Tundra Espionage Scanner"
 	landing
 	invisible
@@ -264,7 +315,7 @@ mission "Midnight Add Tundra Espionage Scanner"
 		event "midnight add tundra espionage scanner"
 		conversation
 			scene "outfit/tundra espionage scanner"
-			`A Shadow House agent emerges from the shadows. "Thou hast served us well. As a token of our good will, we shall soon grant thee access to our scanners, to aid thee in performing more tasks for us. It is our hope to continue in this our mutuall good accord." The agent slithers into the shadows.`
+			`"The eye sees all, but the mind shows us what we want to see." A Shadow House agent emerges from the shadows. "Thou hast served us well. As a token of our good will, we shall soon grant thee access to our scanners, to aid thee in performing more tasks for us. It is our hope to continue in this our mutuall good accord." The agent slithers into the shadows.`
 				decline
 
 event "midnight add tundra espionage scanner"
@@ -289,7 +340,7 @@ mission "Midnight Add Myiara Fire Spout"
 		event "midnight add myiara fire spout"
 		conversation
 			scene "outfit/successor fire spout"
-			`A Shadow House agent emerges from the shadows. "Thou hast served us well. As a token of our good will, we shall soon grant thee access to one of our weapons, to aid thee in performing more tasks for us. It is our hope to continue in this our mutuall good accord." The agent slithers into the shadows.`
+			`"Keep up your bright swords, for the dew will rust them." A Shadow House agent emerges from the shadows. "Thou hast served us well. As a token of our good will, we shall soon grant thee access to one of our weapons, to aid thee in performing more tasks for us. It is our hope to continue in this our mutuall good accord." The agent slithers into the shadows.`
 				decline
 
 event "midnight add myiara fire spout"
@@ -307,7 +358,7 @@ mission "Midnight Add Myiara Reverser Interlink"
 		event "midnight add myiara reverser interlink"
 		conversation
 			scene "outfit/successor fire spout interlink"
-			`A Shadow House agent emerges from the shadows. "Thou hast served us well. As a token of our good will, we shall soon grant thee access to a certaine engine, to aid thee in performing more tasks for us. It is our hope to continue in this our mutuall good accord." The agent slithers into the shadows.`
+			`"Bid me run, and I will strive with things impossible." A Shadow House agent emerges from the shadows. "Thou hast served us well. As a token of our good will, we shall soon grant thee access to a certaine engine, to aid thee in performing more tasks for us. It is our hope to continue in this our mutuall good accord." The agent slithers into the shadows.`
 				decline
 
 event "midnight add myiara reverser interlink"
@@ -383,7 +434,7 @@ mission "Midnight Successor Stolsaqra-Sosrue"
 			choice
 				`	"What was that ship?"`
 			scene "thumbnail/stolsaqra-sosrue-thumb"
-			`	"The Stolsaqra-Sosrue. A new addition 'tis to our armory. We shall grant thee the privilege to purchase them, so that thou mayest aid us with our fortifications. The agent slithers into the shadows."`
+			`	"Though she be but little, she is fierce! A new addition 'tis to our armory, the Stolsaqra-Sosrue. We shall grant thee the privilege to purchase it, so that thou mayest aid us with our fortifications. The agent slithers into the shadows."`
 
 event "midnight add stolsaqra-sosrue"
 	shipyard "Shadow House"
@@ -447,7 +498,7 @@ mission "Midnight Successor Myaede-Sosrue"
 		event "midnight add myaede-sosrue"
 		conversation
 			scene "thumbnail/myaede-sosrue-thumb"
-			`You deliver the weapon parts to your contact. "The House of Shadows rendereth thanks for thy assistance herein. A special freighter shall be made available to aid thee in these requests hereafter."`
+			`You deliver the weapon parts to your contact. "Smooth runs the water where the brook is deep. The House of Shadows rendereth thanks for thy assistance herein. A special freighter shall be made available to aid thee in these requests hereafter."`
 
 event "midnight add myaede-sosrue"
 	shipyard "Shadow House"
@@ -478,6 +529,37 @@ mission "Midnight Jorv-myiara Sentry"
 		ship "Myaede-Sosrue (Pristine)" "Jorv-myiara"
 		ship "Kvelqde-Sosrue (Ojet Turret)" "Rej-myiara"
 		ship "Kvelqde-Sosrue (Ojet Turret)" "Ruuv-myiara"
+
+
+mission "Midnight Successors: Void Jelly Intro"
+	minor
+	invisible
+	source Vade-Kella-Kaska
+	to offer
+		or
+			has "outfit (flagship installed): Voidjelly"
+			has "outfit (flagship installed): Voidfish"
+			has "outfit (flagship installed): Voidlunker"
+			has "outfit (flagship installed): Integral Wood"
+			has "outfit (flagship installed): Jamfruit"
+			has "outfit (flagship installed): Pollen"
+	on offer
+		conversation
+			scene "outfit/voidjelly"
+			`A Shadow House agent slithers out of the shadows. "Our scans shows signs that thou hast visited places where the Voidjellies dwell. Occasionally we hast use for those foul creatures. We shall add it to our requests from time to time."`
+			choice
+				`	"I'll look out for them."`
+					goto understand
+				`	"What do you use them for?"`
+			`	The agent answers in a subdued tone "Throughout our exploration of the stars, we found no better source for poison that suits our purposes."`
+			choice
+				`	"Because of how quickly it kills?"`
+			`	The Shadow House agent shudders, flashing shades of yellow while making a noise that seems like laughter. "No. Perpetual death from this poison comes slowly and painfully. 'twere a perfect tool for sending a message."`
+			choice
+				`	"I see."`
+			label understand
+			`	The agent slithers away...`
+				decline
 
 
 mission "Midnight Successor Shadow House Hostile"
@@ -561,29 +643,29 @@ mission "Midnight Blood Armor Activation (Outfitter)"
 		attributes "spaceport"
 	to offer
 		has "event: midnight bloodstone portal"
-		has "outfit: Multimode Armor: Graviton"
+		has "outfit (removable): Multimode Armor: Graviton"
 	on offer
 		conversation
 			scene "outfit/predecessor armor bloodstone"
 			`Long dormant abilities in your Multimode Armor spontaneously activate...`
 			branch 10
-				"outfit: Multimode Armor: Graviton" >= 10
+				"outfit (removable): Multimode Armor: Graviton" >= 10
 			branch 9
-				"outfit: Multimode Armor: Graviton" == 9
+				"outfit (removable): Multimode Armor: Graviton" == 9
 			branch 8
-				"outfit: Multimode Armor: Graviton" == 8
+				"outfit (removable): Multimode Armor: Graviton" == 8
 			branch 7
-				"outfit: Multimode Armor: Graviton" == 7
+				"outfit (removable): Multimode Armor: Graviton" == 7
 			branch 6
-				"outfit: Multimode Armor: Graviton" == 6
+				"outfit (removable): Multimode Armor: Graviton" == 6
 			branch 5
-				"outfit: Multimode Armor: Graviton" == 5
+				"outfit (removable): Multimode Armor: Graviton" == 5
 			branch 4
-				"outfit: Multimode Armor: Graviton" == 4
+				"outfit (removable): Multimode Armor: Graviton" == 4
 			branch 3
-				"outfit: Multimode Armor: Graviton" == 3
+				"outfit (removable): Multimode Armor: Graviton" == 3
 			branch 2
-				"outfit: Multimode Armor: Graviton" == 2
+				"outfit (removable): Multimode Armor: Graviton" == 2
 			action
 				outfit "Multimode Armor: Graviton" -1
 				outfit "Multimode Armor: Blood" 1
@@ -643,6 +725,168 @@ mission "Midnight Blood Armor Activation (Outfitter)"
 				outfit "Multimode Armor: Blood" 10
 			``
 				decline
+
+
+###########################
+#
+# Shadow Ghosts
+#
+###########################
+
+mission "Midnight Successor Shadow Ghosts (Confront)"
+	landing
+	non-blocking
+	invisible
+	source
+		not planet Vade-Kella-Kaska
+	destination Vade-Kella-Kaska
+	to offer
+		or
+			has "Midnight Successor House in Shadow: active"
+			has "Midnight Successor Deathless Myiara returns: active"
+		has "event: successors: ghosts incident"
+		"reputation: Shadow House" >= 0
+		has "license: Shadow House"
+		not "Deathless Myiara destroyed"
+		not "outfit (all): Multimode Armor: Cloak"
+		not "ship model (all): Ojde-Sado"
+	on offer
+		fail "Midnight Successor House in Shadow"
+		set "Deathless Myiara busy"
+	on complete
+		event "Deathless Myiara returns" 7
+		clear "Midnight Successor Deathless Myiara returns: offered"
+		conversation
+			`A Shadow House agent emerges from the shadows. "We be the hidden hand, keeping our candle kindled through this darksome age. Something troubles thee?"`
+			choice
+				`	"Is House Sado responsible for the incident at Qasa-Sija-Iri?"`
+			`	"Lord, what fools these mortals be! By being seldom seen, I could not stir but like a comet I was wondered at..." The agent shudders, flashing shades of yellow while making a noise that seems to be their peculiar form of laughter. After settling down, they continue, "We may have machinations that span centuries, yet I must sorrowfully confess that this bold madness lieth beyond our power. Another hidden hand hath enter'd the game, and we must discover who they be and what they seek."`
+			choice
+				`	"Is that why the Deathless Myiara isn't here?"`
+				`	"You don't think it was me, do you?"`
+					goto me
+			action
+				set "Deathless Myiara investigates Qasa-Sija-Iri"
+			`	The agent answers, "They art investigating and the thing thou hast deliver’d unto us shall let them do so unseen. Our other machinations art still in place, but the misterie of this interloper is our chiefest priortie. The stakes be high, and if thou find'st the culprit ere we do, we shall reward thee richly." With that, the agent slithers away.`
+				accept
+			label me
+			`	The agent answers, "We are conducting our owne investigation, of course. Our other machinations art still in place, but the misterie of this interloper is our chiefest priortie. The stakes be high, and if thou clear thy name by finding the culprit ere we do, we shall spare thee from punishment." With that, the agent slithers away.`
+
+mission "Midnight Successor Shadow Ghosts (Cloak hint)"
+	landing
+	invisible
+	source Vade-Kella-Kaska
+	to offer
+		or
+			has "Successors: Ghosts 7a: done"
+			has "Successors: Ghosts 7b: done"
+		not "Successors: Ghosts 8: offered"
+		has "Deathless Myiara investigates Qasa-Sija-Iri"
+		has "Midnight Successor Deathless Myiara returns: active"
+		"reputation: Shadow House" >= 0
+		has "license: Shadow House"
+		not "Deathless Myiara destroyed"
+		not "outfit (all): Multimode Armor: Cloak"
+		not "ship model (all): Ojde-Sado"
+	on offer
+		conversation
+			`A Shadow House agent emerges from the shadows.`
+			choice
+				`	"Did the Deathless Myiara find anything?"`
+			`	"The moon's an arrant thief, and her pale fire she snatches from the sun." The agent falls silent, lost in thought. "Thou wouldst not believe me unless thou sawest it thyself." Another pause. "I scarce believe it mine own self.`
+			choice
+				`	"But House Kaatrij has a blockade there."`
+			`	"Stars, hide your fires; Let not light see my black and deep desires..." The agent mutters this quietly, then slithers away.`
+				decline
+
+mission "Midnight Successor Shadow Ghosts (Quarg)"
+	landing
+	invisible
+	source Vade-Kella-Kaska
+	to offer
+		has "Successors: Ghosts 8: offered"
+		has "Midnight Successor Deathless Myiara returns: active"
+		"reputation: Shadow House" >= 0
+		has "license: Shadow House"
+		not "Deathless Myiara destroyed"
+		not "outfit (all): Multimode Armor: Cloak"
+		not "ship model (all): Ojde-Sado"
+		random < 100 - ( "sado quarg liar" * 95 )
+	on offer
+		conversation
+			`A Shadow House agent emerges from the shadows. "Hast thou learned that which thou wert not meant to know?"`
+			choice
+				`	"The base on Qasa-Sija-Iri has Quarg technology."`
+				`	"I have not."`
+					goto lie
+			`	The agent slowly turns red. "I am determined to prove a villain, and hate the idle pleasures of these days. The atrocious Quarg hath hasten'd our Predecessour's ruine. Wilt thou aid us in wreaking vengeance?"`
+			choice
+				`	"I can fight them."`
+				`	"I can provide support."`
+					goto espionage
+				`	"I can't go against them."`
+					goto jump
+			action
+				set "sado quarg bounty"
+				set "sado quarg espionage"
+				set "sado quarg jump"
+			`	The agent calms down. "Hell is empty and all the devils are here. Though this be madness, yet there is method in't. Thou hast our thanks. We shall prepare tasks for thee to aid us in this enterprise. We shall have need of bounties, espionage, and Jump Drives..." With that, the agent slithers away.`
+				decline
+			label espionage
+			action
+				set "sado quarg espionage"
+				set "sado quarg jump"
+			`	The agent calms down. "This cold night will turn us all to fools and madmen. Thou hast our thanks. We shall prepare tasks for thee to aid us in this enterprise. We shall have need of espionage and Jump Drives..." With that, the agent slithers away.`
+				decline
+			label jump
+			action
+				set "sado quarg jump"
+			`	The agent calms down. "It is not in the stars to hold our destiny but in ourselves. We shall have need of Jump Drives..." With that, the agent slithers away.`
+				decline
+			label lie
+			action
+				set "sado quarg liar"
+				clear "Midnight Successor Shadow Ghosts (Quarg): offered"
+			`	"The night is long that never finds the day." With that, the agent slithers away.`
+				defer
+
+mission "Midnight Successor Shadow Ghosts (House Seineq)"
+	landing
+	invisible
+	source "Shassa-Wyra-Orrou"
+	to offer
+		has "Midnight Successor Shadow Cloak: offered"
+		has "Successors: Ghosts 4: offered"
+	on offer
+		conversation
+			scene "outfit/unknown"
+			`Sijra and Rijatet of House Seineq have asked you to report back whether you observe anything incriminating you've observed with the other Houses. Do you want to tell them about House Sado?`
+			choice
+				`	(Reveal the existence of House Sado.)`
+					goto reveal
+				`	(Keep it secret. Keep it safe.)`
+			action
+				"shadow house conspiracy" ++
+			scene "outfit/license shadow house"
+			`	You've decided to keep the existence of Shadow House a secret.`
+				decline
+			label reveal
+			action
+				set "sado unrecognized by seineq"
+				"shadow house theory" ++
+			`	You are once again in the same room in which you met with Sijra and Rijatet before. Both slither in shortly after your arrival. "Hail again Captain. Hast thou brought tidings of the other Houses?"`
+			choice
+				`	"I was approached by House Sado..."`
+			`	As you start to describe your encounter with House Sado, Rijatet interrupts, splotches of pink flashing. "I crave pardon, but I have not heard of this House. Sijra?"`
+			`	The other Successor waves some tentacles in a gesture resembling a shrug. "To my remembrance, there is no House Sado. It is no more real than the fabled Sosrue."`
+			choice
+				`	"But I've met one at Vade-Kella-Kaska!"`
+				`	"But I've met one, at Vade-Kella-Kaska."`
+			`	Rijatet replies, "So some scoundrel from the People's Houses hath made yond dubious claim? Pardon me, but thou art a stranger to our space. Perchance some one sought to make a fool of thee, avouching to represent a secret House that exists not. 'Twould be best to give them no regard."`
+			`	Sijra agrees, "We thank thee for warning us hereof. But we are far more interessed by movements of the High Houses. Alas, the petty intrigues of the People's Houses doth little concern us." It is clear they have no interest in pursuing this lead.`
+			`	Perhaps they're right. "House Sado" has no proof to back their claims. Their story could just be an elaborate scam to trick you into working for them. But this exchange with House Seineq shows that the Shadow House agent was also correct. Their existence among the Successors is firmly entrenched in the culture as nothing more than a conspiracy theory to be disregarded. How convenient for them...`
+				decline
+
 
 ###########################
 #

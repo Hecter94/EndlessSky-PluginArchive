@@ -66,12 +66,14 @@ mission "Midnight Quarg Distress"
 	npc kill
 		to spawn
 			random < 66
+			"armament deterrence" >= 1.6
 		government "Quarg"
 		personality entering opportunistic vindictive
 		fleet "Quarg"
 	npc kill
 		to spawn
 			random < 33
+			"armament deterrence" >= 2.4
 		government "Quarg"
 		personality entering opportunistic vindictive
 		fleet "Quarg"
@@ -524,7 +526,7 @@ mission "Midnight Quarg Lagrange Ouroboros"
 		government "Merchant"
 		system Enif
 		personality waiting staying appeasing uninterested
-			confusion 30
+			#confusion 30
 		fleet
 			names "civilian"
 			cargo 3
@@ -637,7 +639,7 @@ mission "Midnight Quarg Gorgon - Skylance"
 	to offer
 		has "Midnight Quarg Gorgon: active"
 	to complete
-		has "outfit (cargo): Skylance"
+		has "ooutfit (removable): Skylance"
 	on complete
 		outfit "Skylance" -1
 		conversation
@@ -711,7 +713,7 @@ mission "Midnight Quarg Gorgon - Stratospear"
 	to offer
 		has "Midnight Quarg Gorgon: active"
 	to complete
-		has "outfit (cargo): Stratospear"
+		has "outfit (removable): Stratospear"
 	on complete
 		outfit "Stratospear" -1
 		conversation
@@ -785,7 +787,7 @@ mission "Midnight Quarg Gorgon - Phalanx System"
 	to offer
 		has "Midnight Quarg Gorgon: active"
 	to complete
-		has "outfit (cargo): Phalanx System"
+		has "outfit (removable): Phalanx System"
 	on complete
 		outfit "Phalanx System" -1
 		conversation
@@ -882,7 +884,7 @@ mission "Midnight Quarg Gorgon - Singularity Core"
 	to offer
 		has "Midnight Quarg Gorgon: active"
 	to complete
-		has "outfit (cargo): Singularity Core"
+		has "outfit (removable): Singularity Core"
 	on complete
 		outfit "Singularity Core" -1
 		conversation
@@ -959,7 +961,7 @@ mission "Midnight Quarg Gorgon - Ancile Shield Generator"
 	to offer
 		has "Midnight Quarg Gorgon: active"
 	to complete
-		has "outfit (cargo): Ancile Shield Generator"
+		has "outfit (removable): Ancile Shield Generator"
 	on complete
 		outfit "Ancile Shield Generator" -1
 		conversation
@@ -1037,7 +1039,7 @@ mission "Midnight Quarg Gorgon - Peripheral Repair Hub"
 	to offer
 		has "Midnight Quarg Gorgon: active"
 	to complete
-		has "outfit (cargo): Peripheral Repair Hub"
+		has "outfit (removable): Peripheral Repair Hub"
 	on complete
 		outfit "Peripheral Repair Hub" -1
 		conversation
@@ -1212,7 +1214,7 @@ mission "Midnight Quarg Gorgon - Quantum Vacuum Battery"
 	to offer
 		has "Midnight Quarg Gorgon: active"
 	to complete
-		has "outfit (cargo): Quantum Vacuum Battery"
+		has "outfit (removable): Quantum Vacuum Battery"
 	on complete
 		outfit "Quantum Vacuum Battery" -1
 		conversation
@@ -1297,7 +1299,7 @@ mission "Midnight Quarg Gorgon - Small Graviton Thruster"
 	to offer
 		has "Midnight Quarg Gorgon: active"
 	to complete
-		has "outfit (cargo): Small Graviton Thruster"
+		has "outfit (removable): Small Graviton Thruster"
 	on complete
 		outfit "Small Graviton Thruster" -1
 		conversation
@@ -1382,7 +1384,7 @@ mission "Midnight Quarg Gorgon - Medium Graviton Steering"
 	to offer
 		has "Midnight Quarg Gorgon: active"
 	to complete
-		has "outfit (cargo): Medium Graviton Steering"
+		has "outfit (removable): Medium Graviton Steering"
 	on complete
 		outfit "Medium Graviton Steering" -1
 		conversation
@@ -1557,21 +1559,20 @@ mission "Midnight Market - Tarazed Smuggling 1"
 			`	"Worrysses not from wheress it caymesses fromss!" The voice raises slightly, perhaps offended at your question. After a brief pause, it seems to have calmed down and continues...`
 				goto sort
 			label price
-			`	"Dealing in Quarg technology is dangerous business!" The voice raises slightly, perhaps offended at your comment. After a brief pause, it seems to have calmed down and continues...`
+			`	"Dealings in Quargses technologieses is dangerous businesses!" The voice raises slightly, perhaps offended at your comment. After a brief pause, it seems to have calmed down and continues...`
 			label sort
 			`	"I cansses getss whateversses you needss. What sayisses you?"`
 			choice
 				`	"I could use a Quarg..."`
 				`	"I'm not interested."`
 					goto refuse
+			label wish
 			choice
 				`	"... anti-missile defense."`
 				`	"... energy storage unit."`
 					goto "Quantum Vacuum Battery"
-				`	"... intrusion countermeasure."`
+				`	"... boarding defense weapon."`
 					goto "Phalanx System"
-				`	"... jump drive."`
-					goto "Jump Drive"
 				`	"... power supply."`
 					goto "Singularity Core"
 				`	"... propulsion system"`
@@ -1584,58 +1585,72 @@ mission "Midnight Market - Tarazed Smuggling 1"
 					goto "Skylance"
 				`	"... steering engine."`
 					goto "Medium Graviton Steering"
+				`	"... jump drive."`
+					goto "Jump Drive"
+					to display
+						not "midnight market tarazed smuggling: Jump Drive"
 				`	"... Nevermind, I'm not interested."`
 					goto refuse
 			action
 				set "midnight market tarazed smuggling: Stratospear"
-			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
-				accept
+			``
+				goto end
 			label "Quantum Vacuum Battery"
 			action
 				set "midnight market tarazed smuggling: Quantum Vacuum Battery"
-			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
-				accept
+			``
+				goto end
 			label "Phalanx System"
 			action
 				set "midnight market tarazed smuggling: Phalanx System"
-			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
-				accept
-			label "Jump Drive"
-			`	"Unfortunateliess, that iss not a thingss I canss providesses. Sadss... Forgetss we hadss thiss meetingsses." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
-				decline
+			``
+				goto end
 			label "Singularity Core"
 			action
 				set "midnight market tarazed smuggling: Singularity Core"
-			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
-				accept
+			``
+				goto end
 			label "Small Graviton Thruster"
 			action
 				set "midnight market tarazed smuggling: Small Graviton Thruster"
-			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
-				accept
+			``
+				goto end
 			label "Peripheral Repair Hub"
 			action
 				set "midnight market tarazed smuggling: Peripheral Repair Hub"
-			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
-				accept
+			``
+				goto end
 			label "Ancile Shield Generator"
 			action
 				set "midnight market tarazed smuggling: Ancile Shield Generator"
-			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
-				accept
+			``
+				goto end
 			label "Skylance"
 			action
 				set "midnight market tarazed smuggling: Skylance"
-			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
-				accept
+			``
+				goto end
 			label "Medium Graviton Steering"
 			action
 				set "midnight market tarazed smuggling: Medium Graviton Steering"
-			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
-				accept
+			``
+				goto end
+			label "Jump Drive"
+			action
+				set "midnight market tarazed smuggling: Jump Drive"
+			`	"Unfortunateliess, that iss not a thingss I canss providesses. Perhaps yous wantses somethings elses?`
+				goto wish
 			label refuse
+			action
+				clear "midnight market tarazed smuggling: Jump Drive"
 			`	"Sadss... Forgetss we hadss thiss meetingsses." It rushes off deeper into the darkness of the alley. It would be dangerous to follow.`
 				decline
+			label end
+			action
+				clear "midnight market tarazed smuggling: Jump Drive"
+			`	"Excellentss... Bringss 50,000,000 creditss to <destination> for the exchangesses..." The cloaked figure disappears into the darkness of the alley. It would be dangerous to follow.`
+				accept
+			
 
 mission "Midnight Market - Tarazed Smuggling 2"
 	landing
@@ -1650,7 +1665,7 @@ mission "Midnight Market - Tarazed Smuggling 2"
 		"Midnight Market" ++
 		conversation
 			scene "scene/scene-wooden crates"
-			`	The smuggler arranges a meeting with you in a remote area of the spaceport to make the exchange. After transferring 50,000,000 credits into an anonymous account, they leave you with several large crates...`
+			`	The smuggler arranges a meeting with you in a remote area of the spaceport to make the exchange. After transferring 50,000,000 credits into an anonymous account, you are left with with several large crates...`
 			choice
 				`	(Open them.)`
 			action

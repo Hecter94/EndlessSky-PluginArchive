@@ -939,7 +939,7 @@ mission "Midnight Fake Pilot's License Deactivate"
 	invisible
 	repeat
 	to offer
-		has "outfit: Fake Pilot's License Token"
+		has "outfit (removable): Fake Pilot's License Token"
 	on offer
 		outfit "Fake Pilot's License Token" -1
 		fail
@@ -1817,7 +1817,7 @@ mission "Kamikaze Chaser"
 	npc disable
 		government "Bounty Hunter"
 		personality target waiting vindictive nemesis
-			confusion 20
+			#confusion 20
 		ship "Marauder Sparrow (Blaster)" "Robber's Revenge"
 		dialog `The bank robbers must have had plans for the strange device you found aboard their Marauder Sparrow. You should check if the authorities on  <origin> have placed a price on their heads.`
 	on complete
@@ -1830,7 +1830,7 @@ fleet "Marauder Sparrows"
 	cargo 3
 	commodities "Heavy Metals" "Metal" "Plastic"
 	personality target waiting vindictive nemesis
-		confusion 20
+		#confusion 20
 	variant 2
 		"Marauder Sparrow"
 	variant 1
@@ -1864,38 +1864,34 @@ mission "Kamikaze Ambush"
 	on offer
 		require "Thermo Detonator"
 	npc disable
-		to spawn
-			"ships: Light Warship" + "ships: Medium Warship" + "ships: Space Liner" + "ships: Utility" + "ships: Superheavy" + "ships: Heavy Warship" == 0
 		government "Bounty Hunter"
 		personality target waiting vindictive nemesis
-			confusion 20
+			#confusion 20
 		fleet "Marauder Sparrows"
-		dialog `If this Marauder Sparrow has the same device as yours, it may not be wise to approach it. You should check if the authorities on  <origin> have placed a price on their heads.`
-	npc disable
-		to spawn
-			has "ships: Light Warship"
-			"ships: Medium Warship" + "ships: Space Liner" + "ships: Utility" + "ships: Superheavy" + "ships: Heavy Warship" == 0
-		government "Bounty Hunter"
-		personality target waiting vindictive nemesis
-			confusion 20
-		fleet "Marauder Sparrows" 2
 		dialog phrase "marauder sparrows death"
 	npc disable
 		to spawn
-			"ships: Medium Warship" + "ships: Space Liner" + "ships: Utility" >= 1
-			"ships: Superheavy" + "ships: Heavy Warship" == 0
+			"armament deterrence" >= 0.2
 		government "Bounty Hunter"
 		personality target waiting vindictive nemesis
-			confusion 20
-		fleet "Marauder Sparrows" 3
+			#confusion 20
+		fleet "Marauder Sparrows"
 		dialog phrase "marauder sparrows death"
 	npc disable
 		to spawn
-			"ships: Heavy Warship" + "ships: Heavy Warship" >= 1
+			"armament deterrence" >= 0.3
 		government "Bounty Hunter"
 		personality target waiting vindictive nemesis
-			confusion 20
-		fleet "Marauder Sparrows" 4
+			#confusion 20
+		fleet "Marauder Sparrows"
+		dialog phrase "marauder sparrows death"
+	npc disable
+		to spawn
+			"armament deterrence" >= 0.4
+		government "Bounty Hunter"
+		personality target waiting vindictive nemesis
+			#confusion 20
+		fleet "Marauder Sparrows"
 		dialog phrase "marauder sparrows death"
 	on complete
 		payment 25000
@@ -2984,7 +2980,7 @@ mission "Conundrum Intro [1]"
 	npc
 		government "Pirate"
 		personality waiting staying timid forbearing plunders harvests
-			confusion 20
+			#confusion 20
 		fleet
 			names "pirate"
 			variant

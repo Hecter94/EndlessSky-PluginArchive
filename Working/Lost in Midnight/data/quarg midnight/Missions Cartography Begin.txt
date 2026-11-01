@@ -10,7 +10,6 @@
 # PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 
-
 mission "Quash: Humanika Infiltration 1"
 	minor
 	infiltrating
@@ -252,7 +251,7 @@ mission "Cartography: Quarg Hitchhiker 1.5"
 		has "Cartography: Quarg Hitchhiker 1: active"
 	on offer
 		fail "Cartography: Quarg Hitchhiker 1"
-		event "Archipelago reveal"
+		event "Archipelago reveal" 0
 		set "archipelago inaccessible patched"
 		dialog `When you arrive in Orbona, Quash asks you to transmit a certain coded signal far beyond the edge of the system. Not long after, your navigational computer shows a hyperspace link to a new system has opened! "As promised, the path ahead is clear," says Quash.`
 	on enter Archipelago
@@ -267,16 +266,6 @@ event "Archipelago reveal"
 		remove hidden
 		remove attributes "inaccessible"
 	link Orbona Archipelago
-
-mission "Archipelago Inaccessible Patch"
-	landing
-	invisible
-	to offer
-		has "event: Archipelago reveal"
-		not "archipelago inaccessible patched"
-	on offer
-		event "Archipelago reveal"
-		fail
 
 mission "Cartography: Quarg Hitchhiker 2"
 	invisible
@@ -600,11 +589,11 @@ mission "Cartography: Diyu Link"
 	on offer
 		conversation
 			scene "outfit/unknown"
-			`Someone wearing a dragon mask approaches you. "You seem lost. Do you need the hyperlink codes for entering this system? I can sell them to you for 100,000 credits.`
+			`Someone wearing a dragon mask approaches you. "You seem lost. Do you need the hyperlink codes for crossing this system? I can sell them to you for 100,000 credits.`
 			choice
 				`	"Hyperlink codes?"`
 			scene "planet/station0ver8"
-			`	"Yes, you'll need to transmit the codes to the device near the center of this system in order to ride the hyperspace links to nearby systems."`
+			`	"Yes, you'll need to transmit the codes to the device near the center of this system in order to ride the hyperspace links from Fala or Mora."`
 			choice
 				`	(Purchase the codes.)`
 				`	(Refuse to buy them.)`
@@ -1085,16 +1074,29 @@ mission "Cartography: Rum Cellar Side Trip"
 	on offer
 		clear pokerscore
 		conversation
-			`When you enter the bar, the crowd falls silent upon seeing Quash. The awkward silence is broken when a group playing poker calls out "Quash! Found your way to Rum Cellar, did you? You're just in time to join in! How about it?"`
+			`When you enter the bar, the crowd falls silent upon seeing Quash. The awkward silence is broken when the bartender speaks up. "Quash! Welcome back to Rum Cellar! You're not here to take back the station, are you?"`
+			choice
+				`	"Take back the station?"`
+			`	Quash rubs its head. "I was one of many who took a turn at running this station over it's long history. But that was over a century ago..."`
+			`	A group playing poker calls out, "You're just in time to join in! How about it?"`
 			`	Quash shakes its head. "I'll abstain. However..." The Quarg turns to you. "Perhaps <first> would like to play."`
 			choice
-				`	"Deal me in."`
+				`	"Deal me in." (requires 10,000 credits)`
 					goto game
+					to activate
+						"credits" >= 10000
 				`	"No thanks."`
-			`	The players at the table deliberate then ask, "How about if we throw in the the hyperlink codes for entering this system if you can wipe us out?"`
+					accept
+					to display
+						has "event: link chasm"
+				`	"No thanks."`
+					to display
+						not "event: link chasm"
+			`	The players at the table deliberate then ask, "We're not sure which direction you came from, but how about if we throw in the the hyperlink codes for crossing this system to the other side if you can wipe us out?"`
 			choice
-				`	"Deal me in."`
-					goto game
+				`	"Deal me in." (requires 10,000 credits)`
+					to activate
+						"credits" >= 10000
 				`	"No, I'm not interested."`
 					accept
 			label game
@@ -1449,7 +1451,7 @@ mission "Cartography: Rum Cellar Side Trip"
 			action
 				clear pokerscore
 			scene "outfit/map"
-			`	The other players have had enough. One of them shares the hyperlink codes for entering this system with you before leaving. These appear to be same codes you already have. Quash offers you praise. "Congratulations! You demonstrated remarkable skill at that game. I tried playing once before. It did not suit me."`
+			`	The other players have had enough and leave you with your winnings. Quash offers you praise. "Congratulations! You demonstrated remarkable skill at that game. I tried playing before. It did not suit me."`
 				accept
 			label bust
 			action
@@ -1461,12 +1463,18 @@ mission "Cartography: Rum Cellar Side Trip"
 				event "link chasm"
 				clear pokerscore
 			scene "outfit/map"
-			`	The other players have had enough. One of them shares the hyperlink codes for entering this system with you before leaving. Quash offers you praise. "Congratulations! You demonstrated remarkable skill at that game. I tried playing once before. It did not suit me."`
+			`	The other players have had enough. One of them shares the hyperlink codes for crossing over both sides of Chasm with you before leaving. Quash offers you praise. "Congratulations! You demonstrated remarkable skill at that game. I tried playing before. It did not suit me."`
 				accept
 	on enter
 		conversation
 			scene "thumbnail/carabao-thumb"
 			`Quash takes longer than expected to launch. After a short delay, the Halcyon appears. "Rum Cellar is an interesting place. Apologies for the delay. I caught some fools trying to steal the Halcyon and had to remind them why no one opposes the Quarg."`
+			choice
+				`	"How did you lose control of the station?"`
+				`	(Keep silent.)`
+					accept
+			`	Quash takes a moment to respond. "No violence was involved. I simply lost it in a game of poker."`
+				accept
 	npc
 		government "Pirate"
 		personality waiting staying vindictive uninterested
@@ -1496,7 +1504,7 @@ mission "Cartography: Chasm Link"
 				random < 10
 	on offer
 		conversation
-			`Someone in a cloak and gas mask approaches you. "Do you need the hyperlink codes for entering this system? I can sell them to you for 100,000 credits.`
+			`Someone in a cloak and gas mask approaches you. "Do you need the hyperlink codes for crossing this system? I can sell them to you for 100,000 credits.`
 			choice
 				`	(Buy the codes.)`
 				`	(Refuse.)`
@@ -2598,3 +2606,22 @@ mission "Midnight Pictograph 2"
 				decline
 	on defer
 		set "Randomize Midnight Pictograph 2"
+
+
+############################################
+#
+# deprecated
+#
+############################################
+
+mission "Archipelago Inaccessible Patch"
+	landing
+	invisible
+	to offer
+		never
+#		has "event: Archipelago reveal"
+#		not "archipelago inaccessible patched"
+	on offer
+		event "Archipelago reveal"
+		fail
+

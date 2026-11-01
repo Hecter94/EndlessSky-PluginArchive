@@ -640,6 +640,10 @@ mission "Oathbreaker Supply Run"
 					to display
 						has "flagship attribute: quantum keyblade"
 					goto keyblade
+				`	(Use T.H.O.R.)`
+					to display
+						has "outfit (flagship installed): T.H.O.R."
+					goto thor
 			scene "effect/blood"
 			`	As soon as you open the hatch, a firing squad bathes you in hellfire.`
 				die
@@ -657,6 +661,8 @@ mission "Oathbreaker Supply Run"
 				`	(Deactivate Quantum Shifting.)`
 				`	(Wait for them to stop shooting.)`
 					goto quantumwait
+					to display
+						not quantumwait
 				`	(Retreat to your ship.)`
 					goto quantumretreat
 			label deactivate
@@ -665,12 +671,21 @@ mission "Oathbreaker Supply Run"
 				die
 
 			label quantumwait
+			action
+				set quantumwait
 			`	The laser fire and sniper fire are staggered, never relenting. Captain Benedict has trained these troops well. You are having difficulty holding your breath...`
 				goto quantumchoice
 
 			label quantumretreat
 			scene "effect/blood"
-			`	You try to return to the <ship>, but you've drifted too far from the hull... With your ability to hold your breath running out, you have no choice but to deactivate the Quantum Keyblade. Perhaps you held onto a silver of hope to dodge the remaining bullets and cut down the nearest soldier. Unfortunately, there are too many to dodge and you crumple under their relentless fire.`
+			`	You try to return to the <ship>, but you've drifted too far from the hull... With your ability to hold your breath running out, you have no choice...`
+			choice
+				`	(Deactivate Quantum Shifting.)`
+					goto deactivate
+
+			label thor
+			scene "scene/scene-explosion"
+			`	You send T.H.O.R. out the cargo bay. The robot opens fire with its shoulder mounted gatling gun and Tactical Laser Rifle. It seems to overwhelm the Oathbreakers at first, but a Sidewinder launched from an Outrider on a strafing run knocks T.H.O.R. out of the way. A second Sidewinder flies straight into the unguarded cargo bay and you die in the explosion.`
 				die
 
 			label escape
@@ -806,18 +821,21 @@ mission "Oathbreaker Pirate Ambush"
 	npc kill
 		to spawn
 			random < 75
+			"armament deterrence" >= 1.2
 		government "Pirate"
 		personality nemesis harvests plunders entering
 		fleet "pirate raid"
 	npc kill
 		to spawn
 			random < 50
+			"armament deterrence" >= 1.6
 		government "Pirate"
 		personality nemesis harvests plunders entering
 		fleet "pirate raid"
 	npc kill
 		to spawn
 			random < 25
+			"armament deterrence" >= 2.4
 		government "Pirate"
 		personality nemesis harvests plunders entering
 		fleet "pirate raid"
@@ -847,13 +865,13 @@ mission "Oathbreaker Sabotage: Shield Suppressor"
 			`As you leave the atmosphere of <origin> an Oathbreaker fleet ambushes you! One of the ships hails to taunt you: "Captain <last>, you won't be so tough with your shields compromised!" Fortunately, you removed the Shield Suppressor someone planted on your ship at the outfitter before leaving <origin>.`
 	npc evade
 		to spawn
-			"ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" >= 4
+			"armament deterrence" >= 1.2
 		government "Oathbreaker"
 		personality waiting heroic vindictive
 		fleet "Fugitive Oathbreaker"
 	npc evade
 		to spawn
-			"ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" >= 5
+			"armament deterrence" >= 1.6
 		government "Oathbreaker"
 		system
 			distance 1
@@ -861,7 +879,7 @@ mission "Oathbreaker Sabotage: Shield Suppressor"
 		fleet "Fugitive Oathbreaker"
 	npc evade
 		to spawn
-			"ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" >= 6
+			"armament deterrence" >= 2.0
 		government "Oathbreaker"
 		system
 			distance 2
@@ -869,7 +887,7 @@ mission "Oathbreaker Sabotage: Shield Suppressor"
 		fleet "Small Oathbreaker"
 	npc evade
 		to spawn
-			"ships: Heavy Warship" + "ships: Utility" + "ships: Superheavy" >= 7
+			"armament deterrence" >= 2.4
 		government "Oathbreaker"
 		system
 			distance 3
@@ -944,14 +962,14 @@ mission "Oathbreakers: Rum Cellar Fight"
 			`	"Well, well, if it isn't Captain <first> <last>, hero of the war!" The disheveled Navy uniforms on a pirate station tells you that you've crossed paths with a group of Oathbreakers. There are seven of them, probably the crew of a Gunboat.`
 			choice
 				`	(Get ready to rumble.)`
-				`	(Wield the terrifying power of Midnight's Lost Orphan.)`
-					goto MLO
-					to display
-						has "outfit (flagship installed): Midnight's Lost Orphan"
 				`	(Draw the Quantum Keyblade.)`
 					goto QKB
 					to display
 						has "flagship attribute: quantum keyblade"
+				`	(Wield the terrifying power of Midnight's Lost Orphan.)`
+					goto MLO
+					to display
+						has "outfit (flagship installed): Midnight's Lost Orphan"
 			branch "not alone"
 				"flagship crew" > 1
 			scene "scene/scene-airlock"
@@ -1042,6 +1060,7 @@ mission "Oathbreakers: Rum Cellar Fight"
 	npc
 		to spawn
 			has "event: Oathbreakers in Rum Cellar"
+			"armament deterrence" >= 1.2
 		system Chasm
 		government "Oathbreaker"
 		personality waiting heroic coward
@@ -1318,7 +1337,7 @@ mission "Oathbreakers: CCOR Conscriptor 3"
 		government "Pirate"
 		system Fumalsamakah
 		personality waiting staying vindictive
-			confusion 20
+			#confusion 20
 		fleet
 			names "pirate"
 			cargo 1
@@ -1921,7 +1940,7 @@ fleet "Oathbreaker Stolen Militia"
 	cargo 1
 	outfitters "Ammo South"
 	personality coward timid
-		confusion 20
+		#confusion 20
 	variant
 		"Bastion"
 	variant
@@ -2413,35 +2432,6 @@ mission "Nemesis: Oath Breaker"
 		system Naper
 		fleet "Fugitive Oathbreaker"
 	npc
-		government "Oathbreaker"
-		personality waiting
-		system destination
-		fleet
-			names "Oathbreaker"
-			fighters
-				names "Oathbreaker fighter"
-			variant
-				"Lance" 6
-				"Combat Drone" 14
-				"Dropship (Troops)" 4
-				"Outrider (Mark II)" 8
-	npc
-		government "Oathbreaker"
-		personality target waiting heroic vindictive
-		system destination
-		fleet
-			names "Oathbreaker"
-			fighters
-				names "Oathbreaker fighter"
-			variant
-				"Marauder Falcon"
-				"Marauder Bastion"
-				"Marauder Osprey"
-				"Gunboat (Mark II)"
-				"Gunboat"
-				"Rainmaker"
-				"Pirate Drone"
-	npc
 		to spawn
 			has "Midnight Market: Trailblazer 2: declined"
 		government "Oathbreaker"
@@ -2487,6 +2477,57 @@ mission "Nemesis: Oath Breaker"
 				names "Oathbreaker fighter"
 			variant
 				"Dagger" 3
+	npc
+		to spawn
+			"armament deterrence" >= 4.2
+		government "Oathbreaker"
+		personality target waiting heroic vindictive
+		system destination
+		fleet
+			names "Oathbreaker"
+			fighters
+				names "Oathbreaker fighter"
+			variant
+				"Marauder Falcon"
+	npc
+		to spawn
+			"armament deterrence" >= 3.6
+		government "Oathbreaker"
+		personality target waiting heroic vindictive
+		system destination
+		fleet
+			names "Oathbreaker"
+			fighters
+				names "Oathbreaker fighter"
+			variant
+				"Marauder Bastion"
+				"Pirate Drone"
+				"Gunboat (Mark II)"
+	npc
+		government "Oathbreaker"
+		personality target waiting heroic vindictive
+		system destination
+		fleet
+			names "Oathbreaker"
+			fighters
+				names "Oathbreaker fighter"
+			variant
+				"Marauder Osprey"
+				"Gunboat"
+				"Rainmaker"
+	npc
+		government "Oathbreaker"
+		personality waiting
+		system destination
+		fleet
+			names "Oathbreaker"
+			fighters
+				names "Oathbreaker fighter"
+			variant
+				"Lance" 6
+				"Combat Drone" 14
+				"Dropship (Troops)" 4
+				"Outrider (Mark II)" 8
 	npc
 		government "Oathbreaker"
 		personality target waiting heroic vindictive
@@ -2732,7 +2773,7 @@ fleet "Small Oathbreaker"
 	cargo 1
 	outfitters "Ammo North"
 	personality	heroic
-		confusion 10
+		#confusion 10
 	variant
 		"Frigate"
 		"Gunboat" 2
@@ -2761,7 +2802,7 @@ fleet "Large Oathbreaker"
 	cargo 1
 	outfitters "Ammo North"
 	personality	heroic
-		confusion 10
+		#confusion 10
 	variant
 		"Carrier"
 		"Cruiser"
@@ -2778,7 +2819,7 @@ fleet "Fugitive Oathbreaker"
 	fighters
 		names "Oathbreaker fighter"
 	personality coward plunders harvests
-		confusion 20
+		#confusion 20
 	variant 1
 		"Cruiser"
 		"Pirate Drone" 2
