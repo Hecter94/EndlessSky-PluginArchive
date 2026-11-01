@@ -5,6 +5,13 @@
 (latest 15 entries):
 <table><tr><td width=800>
 
+2026-11-01 | Updated plugin 'Midnight Expansion' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#midnight-expansion)<br>
+2026-11-01 | Updated plugin 'Lost in Midnight' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#lost-in-midnight)<br>
+2026-11-01 | Updated plugin 'Space Shuttle Start' by MidnightPlugins | [starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/starts.md#space-shuttle-start)<br>
+2026-11-01 | Updated plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#-omnis)<br>
+2026-11-01 | Updated plugin 'Midnight Scrapyard' by MidnightPlugins | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#midnight-scrapyard)<br>
+2026-11-01 | Updated plugin 'High DPI' by Michael Zahniser (Maintained by the ES Community) | [graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md#high-dpi)<br>
+2026-11-01 | Updated plugin 'Ruin the Fun' by Pshy0 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#ruin-the-fun)<br>
 2026-10-28 | Updated plugin 'LowerDamage' by Arachi | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#lowerdamage)<br>
 2026-10-28 | Updated plugin 'Glory to the CCOR' by Arachi | [story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md#glory-to-the-ccor)<br>
 2026-10-28 | Updated plugin 'PirateVariantsHPFix' by Arachi | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#piratevariantshpfix)<br>
@@ -13,13 +20,6 @@
 2026-10-28 | Updated plugin 'LinearHPScaling' by Arachi | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#linearhpscaling)<br>
 2026-10-28 | Updated plugin 'SmolEngines' by Arachi | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#smolengines)<br>
 2026-10-27 | Updated plugin 'Fundamental.Outfit.Expansion' by (many authors) | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#fundamentaloutfitexpansion)<br>
-2026-10-24 | Updated plugin 'Louise.Conglomerate.Shipyards' by Loyse | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#louiseconglomerateshipyards)<br>
-2026-10-24 | Updated plugin 'Fundamental.Outfit.Expansion' by (many authors) | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#fundamentaloutfitexpansion)<br>
-2026-10-21 | Updated plugin 'World Forge' by Amazinite | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#world-forge)<br>
-2026-10-19 | Updated plugin 'Fundamental.Outfit.Expansion' by (many authors) | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#fundamentaloutfitexpansion)<br>
-2026-10-19 | Updated plugin 'Bunsen.Burner' by ItsNickBarry | [weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md#bunsenburner)<br>
-2026-10-19 | Updated plugin 'Factory.Outlets' by Lifeyouristhis & Timeout | [gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md#factoryoutlets)<br>
-2026-10-16 | Updated plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#-omnis)<br>
 
 </td></tr></table>
 Provide a direct link to your zipped plugin to enable automatic updating.<br>
