@@ -3,7 +3,9 @@
 
 **Author: [TheronEpic](https://github.com/TheronEpic)**
 
-**Thanks:** Kitteh
+**Editor:** Timeout
+
+**Thanks:** Kitteh (for valuable discussion)
 
 An overhaul and re-publication of TheronEpic's [Solar Sails](https://github.com/TheronEpic/theronepic-solar-sails). Since the last update of the plugin in October 2020 there have been made massive changes in ES considering engines, so a stat overhaul was overdue. Also various syntax bugs had to be hunted down, and some gaps have been filled, e.g. considering variants, as seemingly TheronEpic could not complete the work on this plugin.
 
@@ -18,6 +20,7 @@ Overwrites the starter ship sales with optimized variants of the Shuttle and Sta
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-11-04 | 2.2.0 | Nerfed turn rates, buffed required turn energy. Adjusted ship variants where necessary. |
 | 2026-03-30 | 2.1.3 | Adjusted sales to conform to the new starts since ES 0.11.0. Added license files. |
 | 2025-11-16 | 2.1.2 | Reduced acceleration penalty to make large and huge sails more usable. Reworked stock outfits for sail-ship sales. Removed Sails-Blackbird sale. Replaced starter ships on New Boston. |
 | 2025-11-09 | 2.1.1 | Added sail variants of the Clipper and Blackbird for sale and fleets. |
