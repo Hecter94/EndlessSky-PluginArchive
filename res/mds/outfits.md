@@ -1441,7 +1441,7 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Solar Sails/icon.png' height='100'></img><br>
 
 
-[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 1.47 mb | 2026-03-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Solar%20Sails/) <br>
+[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 1.47 mb | 2026-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Solar%20Sails/) <br>
 Author: TheronEpic | Category: Outfits <br>
 [https://github.com/TheronEpic/theronepic-solar-sails](https://github.com/TheronEpic/theronepic-solar-sails) (last commit 2020-10-30) <br>
 
@@ -1460,9 +1460,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Solar.Sails/icon.png' height='100'></img><br>
 
 
-[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 1.47 mb | 2026-03-30 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Solar.Sails/) <br>
+[Solar.Sails.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Solar.Sails.zip) | 1.47 mb | 2026-11-05 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Solar.Sails/) <br>
 Author: TheronEpic | Category: Outfits <br>
-[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#SolarSails](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#SolarSails) (last commit 2026-03-30) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#SolarSails](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#SolarSails) (last commit 2026-11-04) <br>
 
 >Epic diffractive solar sails for Human and Coalition space, providing thrust, turn and solar collection, thereby using only outfitspace worth of half the consumed enginespace.
 >
@@ -1474,7 +1474,9 @@ Author: TheronEpic | Category: Outfits <br>
 
 **Author: [TheronEpic](https://github.com/TheronEpic)**
 
-**Thanks:** Kitteh
+**Editor:** Timeout
+
+**Thanks:** Kitteh (for valuable discussion)
 
 An overhaul and re-publication of TheronEpic's [Solar Sails](https://github.com/TheronEpic/theronepic-solar-sails). Since the last update of the plugin in October 2020 there have been made massive changes in ES considering engines, so a stat overhaul was overdue. Also various syntax bugs had to be hunted down, and some gaps have been filled, e.g. considering variants, as seemingly TheronEpic could not complete the work on this plugin.
 
@@ -1489,6 +1491,7 @@ Overwrites the starter ship sales with optimized variants of the Shuttle and Sta
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-11-04 | 2.2.0 | Nerfed turn rates, buffed required turn energy. Adjusted ship variants where necessary. |
 | 2026-03-30 | 2.1.3 | Adjusted sales to conform to the new starts since ES 0.11.0. Added license files. |
 | 2025-11-16 | 2.1.2 | Reduced acceleration penalty to make large and huge sails more usable. Reworked stock outfits for sail-ship sales. Removed Sails-Blackbird sale. Replaced starter ships on New Boston. |
 | 2025-11-09 | 2.1.1 | Added sail variants of the Clipper and Blackbird for sale and fleets. |
