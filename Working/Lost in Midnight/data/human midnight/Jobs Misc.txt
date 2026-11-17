@@ -4855,7 +4855,7 @@ mission "Midnight Poker"
 					has "poker sore losers"
 	npc kill
 		to spawn
-			"armament deterrence" < 3
+			"armament deterrence" < 0.3
 			has "poker sore losers"
 		government "Bounty Hunter"
 		personality heroic unconstrained waiting nemesis plunders harvests
@@ -4884,8 +4884,8 @@ mission "Midnight Poker"
 			fail
 	npc kill
 		to spawn
-			"armament deterrence" >= 5
-			"armament deterrence" < 6
+			"armament deterrence" >= 0.5
+			"armament deterrence" < 0.6
 			has "poker sore losers"
 		government "Bounty Hunter"
 		personality heroic unconstrained waiting nemesis plunders harvests
@@ -4935,7 +4935,7 @@ mission "Midnight Poker"
 	npc kill
 		to spawn
 			"armament deterrence" >= 1.4
-			"armament deterrence" < 1.6
+			"armament deterrence" < 1.7
 			has "poker sore losers"
 		government "Bounty Hunter"
 		personality heroic unconstrained waiting nemesis plunders harvests
@@ -4944,7 +4944,7 @@ mission "Midnight Poker"
 			fail
 	npc kill
 		to spawn
-			"armament deterrence" >= 1.6
+			"armament deterrence" >= 1.7
 			has "poker sore losers"
 		government "Bounty Hunter"
 		personality heroic unconstrained waiting nemesis plunders harvests
@@ -5011,7 +5011,7 @@ mission "Midnight: Search For Survivors (Republic)"
 	repeat
 	deadline 7
 	name "Search For Survivors"
-	description "The <npc> was destroyed in the <system> system. The Free Worlds is asking for volunteers with at least <bunks> bunks available to help in the search for survivors. The search will end on <date>."
+	description "The <npc> was destroyed in the <system> system. The Republic is asking for volunteers with at least <bunks> bunks available to help in the search for survivors. The search will end on <date>."
 	passengers 4 15
 	source
 		government "Republic"
@@ -5065,7 +5065,7 @@ mission "Midnight: Search For Survivors (Syndicate)"
 	repeat
 	deadline 7
 	name "Search For Survivors"
-	description "The <npc> was destroyed in the <system> system. The Free Worlds is asking for volunteers with at least <bunks> bunks available to help in the search for survivors. The search will end on <date>."
+	description "The <npc> was destroyed in the <system> system. The Syndicate is asking for volunteers with at least <bunks> bunks available to help in the search for survivors. The search will end on <date>."
 	passengers 4 15
 	source
 		government "Syndicate"
@@ -5138,10 +5138,10 @@ mission "Midnight Spaceport Nuisance"
 			cargo 0
 			variant
 				"Scrapper (Spotlight)"
-		dialog "The government of <origin> pays you 5,000 credits for disabling the <npc>. The local authorities will handle the rest."
 		on disable
 			payment 5000
 			"combat rating" ++
+			dialog "The government of <origin> pays you 5,000 credits for disabling the <npc>. The local authorities will handle the rest."
 			fail
 		on kill
 			set "killed spaceport nuisance"
@@ -6636,6 +6636,8 @@ mission "Stealing From Rival Smugglers"
 			variant
 				"Modified Enforcer (Smuggled Cargo)"
 		dialog "Take the Smuggled Cargo from the <npc>'s cargo. Then deliver it to <planet>."
+	on visit
+		dialog "You've arrived on <planet> but you don't have the smuggler's cargo."
 	on complete
 		"pirate jobs" ++
 		"reputation: Bounty (Disguised)" >?= 1
