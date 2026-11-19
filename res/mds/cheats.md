@@ -322,9 +322,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/captureable.person.ships/icon.png' height='100'></img><br>
 
 
-[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 199.69 kb | 2026-11-18 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
+[captureable.person.ships.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/captureable.person.ships.zip) | 199.7 kb | 2026-11-19 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/captureable.person.ships/) <br>
 Author: zuckung | Category: Cheats <br>
-[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-11-17) <br>
+[https://github.com/zuckung/endless-sky-plugins](https://github.com/zuckung/endless-sky-plugins) (last commit 2026-11-19) <br>
 
 >Makes person ships capturable. See the readme for details.
 >
@@ -371,7 +371,7 @@ Though not really a person ship, the Rulei ship is also made capturable<br>
 Changelog:<br>
 <br>
 2026-11-17<br>
-fixed not-working capturing (rported by SiegerExtra)
+fixed not-working capturing (reported by SiegerExtra)<br>
 changed all persons from replaced versions to overwritten originals<br>
 updated person changes from 0.11.4<br>
 updated rulei ship capturing<br>
