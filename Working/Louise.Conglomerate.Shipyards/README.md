@@ -5,7 +5,7 @@
 
 **Editorial Board:** Timeout, Kitteh
 
-**Thanks** for feedback: Corvettefan, Glorbimus Prime, Kassandra Haruki, Lowry, Loymdayddaud, Redtechgamer236.
+**Thanks** for feedback: Corvettefan, Glorbimus Prime, Kassandra Haruki, Larkas, Lowry, Loymdayddaud, Redtechgamer236.
 
 **Attention**: Saves with ships acquired under version 1.x or 2.0 stay valid till version 3.1.1. Afterwards the old sprites are missing.
 
@@ -19,6 +19,7 @@ Yeer e Ki Cooperative Shipyards reached out to the Louise Conglomerate, and sign
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-11-20 | 3.2.0 | Venditor got two external drone bays, aligning it with Commercator and Mercator (thx to Larkas). Made the stock outfits of the Senator a bit more luxurious (thx to Kitteh). Messor reclassified as a light warship and got a turret slot. Added corresponding variants, reworked descriptions and fleets. |
 | 2026-10-23 | 3.1.3 | Added administrative costs. Small maintenance stuff. |
 | 2026-07-08 | 3.1.2 | Fixed sprite warnings because of odd number of pixels. Removed obsolete image versions -- end of compatibility with ships acquired using Louise 1.x and 2.0. | 
 | 2026-05-27 | 3.1.1 | Improved the ship descriptions (thx to Glorbimus Prime and Loymdayddaud). Changed the outfits equipped on the Hai variants of Commercator and Mercator to make the stock sales more affordable. |
