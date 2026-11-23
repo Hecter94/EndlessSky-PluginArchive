@@ -1,16 +1,17 @@
 mission "FW Bunsen Burner Timer"
 	landing
 	invisible
+	non-blocking
 	to offer
 		has "event: flamethrower available"
 	on offer
-		event "fw bunsen burner init" 60
+		event "fw bunsen burner init" 30
 		
 event "fw bunsen burner init"
 
-
 mission "FW Bunsen Burner 1"
 	landing
+	non-blocking
 	source
 		government "Free Worlds" "Syndicate" "Republic" "Pirate" "Neutral" "Independent"
 	name "Weapon Testing"
@@ -29,8 +30,9 @@ mission "FW Bunsen Burner 1"
 
 mission "FW Bunsen Burner 2"
 	landing
+	non-blocking
 	name "Weapon Testing"
-	description "A test ship with new weaponry is in orbit around <planet>. Fight and disable it (but do not destroy it!) and then land to give Dr. Cardona feedback on its performance."
+	description "A test ship with new weaponry is in orbit around <planet>. Fight and disable but do not destroy it, and then land to give Dr. Cardona feedback on its performance."
 	source Rust
 	to offer
 		has "FW Bunsen Burner 1: done"
@@ -60,7 +62,7 @@ mission "FW Bunsen Burner 2"
 		government "Test Dummy"
 		ship "Falcon (Bunsen)" "Red Hammer"
 	on complete
-		event "bunsen burner available" 30
+		event "bunsen burner availability timer" 30
 		conversation
 			`You return to Kraz Cybernetics to deliver your report to Dr. Cardona. As you approach the hangar, he steps outside, removes a respirator and pair of safety goggles from his face, and rushes forward to meet you.`
 			`	"Captain <last>, you're back so soon? Come, let us discuss your findings in my office, where the air is - uh - better conditioned. It's humid out here, no?"`
@@ -83,3 +85,42 @@ mission "FW Bunsen Burner 2"
 				`	"Don't call me Shirley."`
 			label end
 			`	"You should be able to find production models at our distributors within one to two months. On behalf of Kraz Cybernetics, I thank you for your assistance. Mr. Edward will be pleased to hear of our success." You bid Dr. Cardona farewell, and return to your ship.`
+
+event "bunsen burner availability timer"
+
+
+mission "FW Bunsen Burner Available"
+	landing
+	invisible
+	non-blocking
+	source
+		government "Free Worlds" "Syndicate" "Republic" "Independent" "Pirate" "Neutral"
+	to offer
+		has "event: bunsen burner availability timer"
+	on offer
+		event "bunsen burner available"
+		conversation
+			scene "scene/bunsen"
+			"KRAZ presents the next-generation flamethrower -- the BUNSEN BURNER!"
+			"What was your favorite device in chemistry lessons? Exactly! Now honor Robert W. Bunsen's name, and take this massively upscaled burner from the lab onto the battlefield for glory in a new age of liberty! Fueled with hyperfuel instead of gas for a new level of hotness! Whether for space combat or boarding, there's a bunsen burner in every size!"
+			"KRAZ -- Strike a match, spark a moment!"
+				decline
+
+
+mission "FW Bunsen Torch Banned"
+	landing
+	invisible
+	non-blocking
+	source
+		government "Free Worlds" "Syndicate" "Republic" "Independent" "Pirate" "Neutral"
+	to offer
+		has "event: bunsen burner available"
+		has "main plot completed"
+	on offer
+		event "bunsen torch banned"
+		conversation
+			scene "outfit/bunsen torch"
+			`During war the more militant factions in the Free Worlds' Senate could push through that licensed captains were allowed to equip their boarding crews with the Bunsen Torch to break the resistance of enemy crews. Nevertheless, its use remained debated, and many people considered this weapon to be inhumane.`
+			`Now the war has ended, and the Bunsen Torch herewith is banned not only in the territories of the Free Worlds, but by the peace agreement with the Republic also everywhere else.`
+			`Torches which have been bought legally during the war however won't be fined because of exception rules in the corresponding paragraphs. Experts from KRAZ crticize, that this opens a gap and Pirates will recognize a black market business opportunity.`
+				decline

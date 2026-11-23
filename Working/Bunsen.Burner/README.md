@@ -1,25 +1,30 @@
 
 ### Bunsen Burner ###
 
+**Tested on:** ES 0.11.4
+
 **Author: [Nick Barry](https://github.com/ItsNickBarry)**
 
-**Thanks**: Kassandra Haruki
+**Editor:** Timeout
+
+**Thanks**: Kassandra Haruki, Darcy Manoel
 
 An overhaul and re-publication of [Flamethrower-Turret-1.1.0](https://github.com/ItsNickBarry/endless-sky-flamethrower-turret). Since the last update of the plugin in January 2021 the Flamethrower was nerfed and got a new outfit image, so the Flamethrower Turret didn't fit anymore to the vanilla Flamethrower.
 
-Therefore, N.Barry's turret was combined with the old vanilla Flamethrower image it was based on to create a next-generation Flamethrower which burns hotter -- the Bunsen Burner. Now with *blue* flames. Naturally, as we are used to, one has to complete Barmy's weapon test mission, written by N.Barry, to unlock it.
+Therefore, Nick Barry's turret was combined with the old vanilla Flamethrower image it was based on to create a next-generation Flamethrower which burns hotter -- the Bunsen Burner. Now with *blue* flames. Naturally, as we are used to, one has to complete Barmy's weapon test mission, written by Nick Barry, to unlock it.
 
 Also Darcy Manoel's H2H flamethrower, which is based on the same design, was added as the Bunsen Torch. Available during the war, it will be banned afterwards as inhumane and only be obtainable on Pirate-ruled planets. However, legally bought torches still won't be fined because of exception rules in the corresponding paragraphs.
 
 **Conditions**
 
-Needs that 60 days have lapsed since the Flamethrower became available, that the Free Worlds got the Catalytic Ramscoop, and that the Dreadnought has been deployed.
+Needs that 30 days have lapsed since the Flamethrower became available, that the Free Worlds got the Catalytic Ramscoop, and that the Dreadnought has been deployed.
 
 **Changelog**
 
 | Date | Version | Comment |
 |------|---------|---------|
-| 2026-10-18 | 1.4.7 | Metadata fix. | 
+| 2026-11-22 | 1.5.0 | Added flavor texts to mark events, and an own secondary weapon icon. Shortened waiting time till start (60d --> 30d). Reduced fee for illegal post-war Torches purchased from Pirates (800k --> 500k). Some maintenance stuff. | 
+| 2026-10-18 | 1.4.7 | Metadata fix. |
 | 2026-10-18 | 1.4.6 | Removed Flamethrower-related content after PR #12491 has been merged. |
 | 2026-06-09 | 1.4.5 | Reworked ship and fleet variants employing the Bunsen Burner. |
 | 2026-06-05 | 1.4.4 | Aligned with [PR #12491](https://github.com/endless-sky/endless-sky/pull/12491). |
