@@ -1,7 +1,7 @@
 
-All Plugins (624)
+All Plugins (625)
 
-[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (42) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (61) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (55)<br>
+[Cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md) (42) | [Gameplay](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/gameplay.md) (61) | [Graphics](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/graphics.md) (29) | [Outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md) (56)<br>
 [Overhauls](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overhauls.md) (46) | [Overwrites](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/overwrites.md) (4) | [Patches](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/patches.md) (3) | [Races](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/races.md) (70)<br>
 [Ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md) (145) | [Starts](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/md/starts.md) (17) | [Story](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/story.md) (83) | [Weapons](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/weapons.md) (43)<br>
 [Uncategorized](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/uncategorized.md) (26)<br>
@@ -10,7 +10,7 @@ All Plugins (624)
 
 ## Outfits
 
-<p>55 plugins in this category.<p>
+<p>56 plugins in this category.<p>
 
 
  
@@ -647,6 +647,53 @@ Author: (many authors) | Category: Outfits <br>
 | 2025-05-27 | 1.1.0 | Added Nuke Turret, new projectile and sound for Heavy Blasters from PR #11358, added subsets of QOL Outfits and RW Extras, buffed Shipwright Gear, added Hesperian Red Lager, Hesperian Toolbox incl. HTS tools. |
 | 2025-05-18 | 1.0.0 | Initial publication with Barrage Blaster, Flak Cannon, Heavy Blasters, Particle Turrets, Shipwright Gear. |
 
+</blockquote>
+</details>
+
+Status: complete <br>
+Daily update check: <img src='../img/check.png' width='15' ></img><br>
+
+
+---
+
+### Fundamental.Outfit.Expansion.Alien
+<img src='../../Working/Fundamental.Outfit.Expansion.Alien/icon.png' height='100'></img><br>
+
+
+[Fundamental.Outfit.Expansion.Alien.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Fundamental.Outfit.Expansion.Alien.zip) | 909.37 kb | 2026-11-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Fundamental.Outfit.Expansion.Alien/) <br>
+Author: (many authors) | Category: Outfits <br>
+[https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#FundamentalOutfitExpansionAlien](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#FundamentalOutfitExpansionAlien) (last commit 2026-10-26) <br>
+
+>Alka'etukafet iri tokatala'af pamasa aglat ire' tirtek. Ikafsir sebahaliaar abati!
+>
+
+<details>
+<summary>:blue_book: Plugin readme</summary>
+<blockquote>
+### Fundamental Outfit Expansion: Alien ###
+
+**Authors:** see table
+
+**Editors:** Timeout, Kitteh
+
+**Thanks** for feedback: Haniyasushiff
+
+**Content**
+
+| Creator | Outfit | Origin |
+|---------|--------|--------|
+| [Amazinite](https://github.com/Amazinite) | Radiant Type 0 Engine<br>Radiant Type 5 Thruster & Steering<br>Shield Disruptor Gun<br>Dual Husk-Slice Turret | [Enigma Corp.](https://github.com/Amazinite/Enigma-Corp) |
+| [Kaiboyjiang](https://github.com/kaiboyjiang) & Ubrief | Radiant Type 1-4 Reversers | [Wanderer Reverse Thrusters](https://github.com/kaiboyjiang/endless-sky-plugins?tab=readme-ov-file#wanderer_reverse_thrusters) |
+
+Alka'etukafet iri tokatala'af pamasa aglat ire' tirtek. Ikafsir sebahaliaar abati!
+
+**Changelog**
+
+| Date | Version | Comment |
+|------|---------|---------|
+| 2026-10-26 | 1.0.1 | Added Korath Mereti FOE-variants to Korath Exiles' home fleet after corresponding event (thx Haniyasushiff). |
+| 2026-10-18 | 1.0.0 | Separation from FOE, starting with Wanderers' Radiant Engines (Type 1-4 Reversers, Type 0 Engine, Type 5 Thruster/Steering) and Korath Mereti's Shield Disruptor Gun and Dual Husk-Slice Turret. Reworked stats for Type 0/5 Engines, and Korath Mereti variants and fleets. |
+| 2025-05-27 | -- | Added Wanderer's reworked Type 0/5 engines to FOE 1.1.0. |
 </blockquote>
 </details>
 
