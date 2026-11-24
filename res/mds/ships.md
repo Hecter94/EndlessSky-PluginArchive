@@ -1147,9 +1147,9 @@ Daily update check: <img src='../img/check.png' width='15' ></img><br>
 <img src='../../Working/Korunak.Defense.Drones/icon.png' height='100'></img><br>
 
 
-[Korunak.Defense.Drones.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korunak.Defense.Drones.zip) | 791.69 kb | 2026-11-23 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Korunak.Defense.Drones/) <br>
+[Korunak.Defense.Drones.zip](https://github.com/Hecter94/EndlessSky-PluginArchive/releases/download/Latest/Korunak.Defense.Drones.zip) | 791.82 kb | 2026-11-24 | [view files](https://github.com/Hecter94/EndlessSky-PluginArchive/tree/main/Working/Korunak.Defense.Drones/) <br>
 Author: Starmlerp | Category: Ships <br>
-[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2026-11-22) <br>
+[https://github.com/LixiChronikouOriou/ES-plugins](https://github.com/LixiChronikouOriou/ES-plugins) (last commit 2026-11-23) <br>
 
 >Korunak Robotics provides combat drones from primitive missile sponges to innovative fighting machines, popular among merchants, but not only.
 >
@@ -1159,7 +1159,7 @@ Author: Starmlerp | Category: Ships <br>
 <blockquote>
 ### Korunak Defense Drones ###
 
-**Tested on:** ES 0.11.4
+**Status:** Up to date. Last tested on ES 0.11.4.
 
 **Suggests:** [Louise Conglomerate](https://github.com/LixiChronikouOriou/ES-plugins/blob/main/README.md#LouiseConglomerateShipyards) and [Pickerberry Shipyards](https://www.moddb.com/mods/rw-ships) for more human drone carriers. 
 
@@ -1168,6 +1168,8 @@ Author: Starmlerp | Category: Ships <br>
 **Editors:** Timeout, Kitteh
 
 **Artwork: [Loyse](https://github.com/loiseeer), [Becca](https://github.com/beccabunny), Kitteh, [Vasily Khazykov](https://www.deviantart.com/tugodoomer), [Anton Kuhlevskyi](https://sketchfab.com/anton.kuhlevskyi)**
+
+**Thanks:** Redtechgamer236
 
 An overhaul and re-publication of the [Defense Drone Plugin](https://github.com/starmlerp/ESDefenseDronePlugin), with consideration of the corresponding ES PRs [#5071](https://github.com/endless-sky/endless-sky/pull/5071) and [#5417](https://github.com/endless-sky/endless-sky/pull/5417).
 
@@ -1183,6 +1185,7 @@ The *KRD-2952MUX* repair droid, the basic *Defense Drone* and the carriers *Frei
 
 | Date | Version | Comment |
 |------|---------|---------|
+| 2026-11-23 | 2.0.2 | Fix: Reestablished full compatibility with Pickerberry Shipyards (thx Redtechgamer236). |
 | 2026-11-22 | 2.0.1 | Fix: Added missing admin costs for the carriers. |
 | 2026-11-22 | 2.0.0 | Reworked all drones and ships -- lore, stats (incl. administrative costs), stock sales, variants, fleet deployment. Removed the secret Syndicate Security carrier, added a purchasable Bulk Freighter carrier-modification, and a Manta-derived drone carrier, the *Skate* (artwork by Kitteh). Reworked events. |
 | 2026-04-02 | 1.2.0 | Added the KRD-2952MUX repair droid (designed by [Vasily Khazykov](https://www.deviantart.com/tugodoomer), modelled by [Anton Kuhlevskyi](https://sketchfab.com/anton.kuhlevskyi)), and license files. |
