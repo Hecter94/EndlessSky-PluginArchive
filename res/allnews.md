@@ -1,3 +1,4 @@
+2026-11-27 | Updated plugin '-Omnis' by TheGiraffe3 | [cheats](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/cheats.md#-omnis)<br>
 2026-11-24 | Updated plugin 'Korunak.Defense.Drones' by Starmlerp | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#korunakdefensedrones)<br>
 2026-11-23 | Updated plugin 'Korunak.Defense.Drones' by Starmlerp | [ships](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/ships.md#korunakdefensedrones)<br>
 2026-11-23 | New plugin 'Fundamental.Outfit.Expansion.Alien' by (many authors) | [outfits](https://github.com/Hecter94/EndlessSky-PluginArchive/blob/main/res/mds/outfits.md#fundamentaloutfitexpansionalien)<br>
